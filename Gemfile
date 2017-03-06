@@ -13,6 +13,9 @@ gem 'autoprefixer-rails'
 gem 'annotate'
 gem 'devise'
 gem 'figaro'
+gem 'sendgrid-ruby'
+gem 'simple_form'
+gem 'stripe'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
