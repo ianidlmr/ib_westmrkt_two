@@ -14,5 +14,8 @@ module RailwayMrkt
 
     # Make sure lib files are auto loaded
     config.autoload_paths += %W(#{config.root}/lib)
+
+    # For 404 and 500 pages
+    config.exceptions_app = self.routes
   end
 end
