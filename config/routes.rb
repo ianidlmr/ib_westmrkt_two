@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  root to: 'home#index'
+  #------------------------------------------------------------------------------
+  # ROBOTS
   get '/robots.txt' => RobotsTxt # lib/robots_txt.rb
 
   #------------------------------------------------------------------------------
