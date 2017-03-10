@@ -1,5 +1,6 @@
+# frozen_string_literal: true
 class RobotsTxt
-  def self.call(env)
+  def self.call(_env)
     # start building a new response
     response = Rack::Response.new
 

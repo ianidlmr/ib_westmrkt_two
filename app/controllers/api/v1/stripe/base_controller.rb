@@ -8,9 +8,7 @@ class Api::V1::Stripe::BaseController < ApplicationController
 
   def protect
     @ips = ['54.187.174.169', '54.187.205.235', '54.187.216.72', '54.241.31.99', '54.241.31.102', '54.241.34.107']
-    unless @ips.include? request.remote_ip
-      render text: 'You are unauthorized'
-      return
-    end
+    return unless @ips.include? request.remote_ip
+    render text: 'You are unauthorized'
   end
 end
