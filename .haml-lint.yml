@@ -1,0 +1,15 @@
+# See default config: https://github.com/brigade/haml-lint/blob/master/config/default.yml
+
+linters:
+  ImplicitDiv:
+    enabled: false
+    severity: error
+
+  LineLength:
+    enabled: false
+
+  LeadingCommentSpace:
+    enabled: false
+
+  UnnecessaryInterpolation:
+    exclude: 'app/views/home/terms_and_conditions.html.haml'
