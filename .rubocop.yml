@@ -1,0 +1,71 @@
+AllCops:
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'db/**/*'
+    - 'script/**/*'
+
+  TargetRubyVersion: 2.4
+
+Rails:
+  Enabled: true
+
+Rails/HttpPositionalArguments:
+  Enabled: false
+
+Style/Encoding:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/RedundantSelf:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Metrics/AbcSize:
+  # Assignment, branches, conditions. See: http://c2.com/cgi/wiki?AbcMetric
+  Max: 35
+
+Metrics/CyclomaticComplexity:
+  Max: 20
+
+Metrics/PerceivedComplexity:
+  Max: 20
+
+Metrics/MethodLength:
+  CountComments: false  # count full line comments?
+  Max: 25
+
+Metrics/ModuleLength:
+  Max: 125
+
+Metrics/ClassLength:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Lint/UnusedBlockArgument:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Style/BracesAroundHashParameters:
+  EnforcedStyle: context_dependent
+
+Style/WordArray:
+  Enabled: false
+
+Style/NestedTernaryOperator:
+  Enabled: false
