@@ -42,21 +42,21 @@ Airbrake.configure do |c|
   # Array, which means Airbrake Ruby sends exceptions occurring in all
   # environments.
   # https://github.com/airbrake/airbrake-ruby#ignore_environments
-  # c.ignore_environments = %w(development test)
+  c.ignore_environments = %w(development test)
 end
 
 Airbrake.add_filter do |notice|
   # The library supports nested exceptions, so one notice can carry several
   # exceptions.
 
-  # ignored_exceptions = [
-  #   'ActiveRecord::RecordNotFound',
-  #   'ActionController::InvalidAuthenticityToken'
-  # ]
+  ignored_exceptions = [
+    'ActiveRecord::RecordNotFound',
+    'ActionController::InvalidAuthenticityToken'
+  ]
 
-  # if notice[:errors].any? { |error| ignored_exceptions.include? error[:type] }
-  #   notice.ignore!
-  # end
+  if notice[:errors].any? { |error| ignored_exceptions.include? error[:type] }
+    notice.ignore!
+  end
 end
 
 # If Airbrake doesn't send any expected exceptions, we suggest to uncomment the
