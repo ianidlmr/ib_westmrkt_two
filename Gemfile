@@ -35,6 +35,9 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'capistrano', '~> 3.6'
   gem 'capistrano-rails', '~> 1.2'
+  gem 'capistrano-rvm'
+  gem 'capistrano-figaro-yml', '~> 1.0.2'
+  gem 'capistrano-rails-console'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
