@@ -1,11 +1,12 @@
+# frozen_string_literal: true
 # config valid only for current version of Capistrano
-lock "3.8.0"
+lock '3.8.0'
 
 set :application, 'railway-mrkt'
 set :repo_url, 'git@bitbucket.org:devbbq/railway-mrkt.git'
 
 # Default value for :log_level is :debug
-set :log_level, :debug
+set :log_level, :info
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -28,6 +29,8 @@ set :log_level, :debug
 
 # Default value for linked_dirs is []
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets'
+
+set :assets_roles, [:puma_role] # Defaults to [:web]
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
