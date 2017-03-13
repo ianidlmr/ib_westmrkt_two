@@ -18,6 +18,16 @@ install_plugin Capistrano::SCM::Git
 # Include tasks from other gems included in your Gemfile
 #
 # For documentation on these, see for example:
+require "capistrano/bundler"
+require "capistrano/rails/migrations"
+require "capistrano/rails/assets"
+require "capistrano/rvm"
+require 'capistrano/figaro_yml'
+require 'capistrano/rails/console'
+require 'capistrano/delayed_job'
+# require "capistrano/rbenv"
+# require "capistrano/chruby"
+# require "capistrano/passenger"
 #
 #   https://github.com/capistrano/rvm
 #   https://github.com/capistrano/rbenv
@@ -26,13 +36,6 @@ install_plugin Capistrano::SCM::Git
 #   https://github.com/capistrano/rails
 #   https://github.com/capistrano/passenger
 #
-# require "capistrano/rvm"
-# require "capistrano/rbenv"
-# require "capistrano/chruby"
-# require "capistrano/bundler"
-# require "capistrano/rails/assets"
-# require "capistrano/rails/migrations"
-# require "capistrano/passenger"
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
