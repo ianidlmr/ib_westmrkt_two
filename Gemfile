@@ -6,16 +6,18 @@ gem 'rails', '~> 5.0.1'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 
-gem 'haml-rails'
-gem 'sass-rails', '~> 5.0'
-gem 'jquery-rails'
-gem 'autoprefixer-rails'
 gem 'annotate'
+gem 'autoprefixer-rails'
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 gem 'figaro'
+gem 'haml-rails'
+gem 'jquery-rails'
+gem 'sass-rails', '~> 5.0'
 gem 'sendgrid-ruby'
 gem 'simple_form'
 gem 'stripe'
+gem 'toastr_rails'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
@@ -24,13 +26,13 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
+  gem 'haml_lint', require: false
   gem 'listen', '~> 3.0.5'
+  gem 'pry-rails'
+  gem 'rubocop', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'rubocop', require: false
-  gem 'haml_lint', require: false
-  gem 'pry-rails'
+  gem 'web-console', '>= 3.3.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
