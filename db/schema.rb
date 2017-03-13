@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170313151354) do
+ActiveRecord::Schema.define(version: 20170313175210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,13 +33,29 @@ ActiveRecord::Schema.define(version: 20170313151354) do
   end
 
   create_table "unit_types", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "name"
+    t.text     "description"
+    t.text     "front_page_description"
+    t.integer  "quantity_remaining"
+    t.integer  "number_of_bedrooms"
+    t.integer  "number_of_bathrooms"
+    t.integer  "balcony_sqft"
+    t.integer  "interior_sqft"
+    t.boolean  "den"
+    t.boolean  "balcony"
   end
 
   create_table "units", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "unit_number"
+    t.integer  "floor_number"
+    t.string   "orientation"
+    t.integer  "price"
+    t.integer  "savings"
+    t.string   "currency"
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,8 +71,12 @@ ActiveRecord::Schema.define(version: 20170313151354) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "provider"
+    t.string   "uid"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["provider"], name: "index_users_on_provider", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["uid"], name: "index_users_on_uid", using: :btree
   end
 
 end
