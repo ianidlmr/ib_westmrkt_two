@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require toastr_rails
+//= require ahoy
 //= require_tree .

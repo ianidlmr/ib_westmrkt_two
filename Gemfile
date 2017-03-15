@@ -6,6 +6,7 @@ gem 'rails', '~> 5.0.1'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 
+gem 'ahoy_matey'
 gem 'airbrake', '5.2.3'
 gem 'airbrake-ruby', '1.2.2'
 gem 'annotate'
