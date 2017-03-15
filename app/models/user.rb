@@ -88,7 +88,6 @@ class User < ApplicationRecord
     user
   end
 
-
   #------------------------------------------------------------------------------
   # Instance methods
 

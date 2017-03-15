@@ -15,5 +15,4 @@
 #
 
 class Unit < ApplicationRecord
-
 end

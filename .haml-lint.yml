@@ -10,6 +10,3 @@ linters:
 
   LeadingCommentSpace:
     enabled: false
-
-  UnnecessaryInterpolation:
-    exclude: 'app/views/home/terms_and_conditions.html.haml'
