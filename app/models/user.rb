@@ -83,7 +83,7 @@ class User < ApplicationRecord
       uid: auth.uid
     )
     # No need to confirm the email address when a user signs up from their social media account
-    user.skip_confirmation! # enable if using the confirmable Devise module
+    user.skip_confirmation!
     user.save
     user
   end
