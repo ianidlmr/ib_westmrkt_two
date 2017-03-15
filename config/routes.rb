@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 Rails.application.routes.draw do
   devise_for :admins, skip: [:registrations]
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 

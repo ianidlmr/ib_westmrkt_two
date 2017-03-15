@@ -18,9 +18,13 @@
 #  updated_at             :datetime         not null
 #  provider               :string
 #  uid                    :string
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
 #
 # Indexes
 #
+#  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_provider              (provider)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
@@ -29,8 +33,10 @@
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  # :lockable, :timeoutable
+  devise :database_authenticatable, :registerable, :confirmable,
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, omniauth_providers: [:google_oauth2]
 
   #------------------------------------------------------------------------------
   # Associations
@@ -50,10 +56,38 @@ class User < ApplicationRecord
   # Enumerations
 
   #------------------------------------------------------------------------------
-  # AASM definitions
-
-  #------------------------------------------------------------------------------
   # Class methods
+
+  def self.from_omniauth(auth)
+    if User.find_by(provider: auth.provider, uid: auth.uid).present?
+      # User has used this OAuth provider before
+      # We prefer using provider and uid because the user/provider may have revoked ability to see the email
+      User.find_by(provider: auth.provider, uid: auth.uid)
+    elsif User.find_by(email: auth.info.email).present?
+      # User has not used OAuth before but does have a registered user account.
+      # We set the provider and uid for future use.
+      user = User.find_by(email: auth.info.email)
+      user.update(provider: auth.provider, uid: auth.uid)
+      user
+    elsif auth.info.email.present?
+      # User has never signed in and the oauth provider has returned an email address. Create the new account.
+      User.omniauth_create(auth)
+    end
+  end
+
+  def self.omniauth_create(auth)
+    user = User.new(
+      email: auth.info.email,
+      password: Devise.friendly_token[0, 20],
+      provider: auth.provider,
+      uid: auth.uid
+    )
+    # No need to confirm the email address when a user signs up from their social media account
+    user.skip_confirmation! # enable if using the confirmable Devise module
+    user.save
+    user
+  end
+
 
   #------------------------------------------------------------------------------
   # Instance methods
