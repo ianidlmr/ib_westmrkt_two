@@ -25,6 +25,7 @@ gem 'simple_form'
 gem 'stripe'
 gem 'toastr_rails'
 gem 'uglifier', '>= 1.3.0'
+gem 'wannabe_bool'
 
 group :development, :test do
   gem 'byebug', platform: :mri
