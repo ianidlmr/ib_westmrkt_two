@@ -5,7 +5,17 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  root to: 'home#index'
+  devise_scope :user do
+    authenticated :user do
+      root to: 'home#index'
+    end
+
+    unauthenticated :user do
+      root to: 'home#landing', as: :unauthenticated_root
+    end
+  end
+
+  resources :units, only: [:index]
   #------------------------------------------------------------------------------
   # ROBOTS
   get '/robots.txt' => RobotsTxt # lib/robots_txt.rb
