@@ -20,4 +20,8 @@
     %li.sidebar-item
       .sidebar-item-text
         Help
-
+  - if user_signed_in?
+    = link_to destroy_user_session_path, method: :delete do
+      %li.sidebar-item
+        .sidebar-item-text
+          Sign Out
