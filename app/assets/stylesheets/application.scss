@@ -6,11 +6,13 @@
 @import 'base/bootstrap_custom'; // Go here to change the Bootstrap variables
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+@import "font-awesome";
 @import 'toastr_rails';
 
 //------------------------------------------------------------------------------
 // Internal assets
 
 // Global styles
+@import 'base/layout';
 
 // Page specific styles

@@ -15,4 +15,8 @@
 //= require bootstrap-sprockets
 //= require toastr_rails
 //= require ahoy
+//= require jquery.validate
 //= require_tree .
+
+// Project assets
+//= require common
