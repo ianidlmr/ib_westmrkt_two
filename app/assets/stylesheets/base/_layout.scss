@@ -341,7 +341,7 @@ nav.navbar {
   outline: none;
 }
 
-.input-text-wrap .has-error {
+.input-text-wrap input.has-error {
   border-bottom: 4px solid #ff5353;
 }
 
@@ -357,6 +357,10 @@ nav.navbar {
   color: #adadad;
   font-weight: normal;
   text-transform: capitalize;
+
+  &.has-error {
+    color: #ff5353;
+  }
 }
 
 .input-text-wrap.is-focused .input-text-label, .input-text-wrap.has-value .input-text-label {

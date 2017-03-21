@@ -33,12 +33,13 @@ $(function() {
 
     highlight: function(element, errorClass, validClass) {
       $(element).parents('.input-text-wrap').children('.form-control-feedback').hide();
-      $(element).addClass(errorClass).removeClass(validClass);
+      $(element).parents('.input-text-wrap').children('.input-text-label').addClass('has-error');
       $(element).closest('.input-text-wrap input').removeClass('has-success').addClass('has-error');
     },
     success: function(element) {
       $(element).parents('.input-text-wrap').children('.form-control-feedback').show();
-      $(element).parent().children('input').removeClass('has-error').addClass('has-success');
+      $(element).parents('.input-text-wrap').children('.input-text-label').removeClass('has-error');
+      $(element).parent().children('input').removeClass('has-error');
       $(element).remove();
     }
   });
