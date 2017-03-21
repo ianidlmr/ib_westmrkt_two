@@ -10,7 +10,15 @@
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
-  %body
-    .container
-      = render 'toastr_rails/flash'
-      = yield
+  %body{ class: "#{controller_path.tr('_', '-').tr('/', '-')} #{action_name.tr('_', '-')}" }
+    .wrapper
+      .sidebar
+        = render 'layouts/sidebar'
+      .right-sidebar
+        = render 'layouts/right_sidebar'
+      = render 'layouts/navigation'
+      %main{ role: 'main' }
+        .container
+          = yield
+      %footer
+        = render 'layouts/footer'
