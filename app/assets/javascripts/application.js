@@ -13,9 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require toastr_rails
-//= require ahoy
 //= require jquery.validate
+//= require jquery.slick
+//= require jquery.countdown.min
+//= require ahoy
+//= require toastr_rails
 //= require_tree .
 
 // Project assets

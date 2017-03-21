@@ -17,6 +17,7 @@ gem 'figaro'
 gem "font-awesome-rails"
 gem 'haml-rails'
 gem 'jquery-rails'
+gem "jquery-slick-rails"
 gem 'jquery-validation-rails'
 gem 'omniauth-google-oauth2'
 gem 'pg_search'

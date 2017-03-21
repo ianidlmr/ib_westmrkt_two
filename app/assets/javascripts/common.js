@@ -23,14 +23,13 @@ $(function() {
   });
 
 
+  $.extend($.validator.messages, { equalTo: "Passwords do not match." })
   $('.simple_form.new_user').validate({
     rules: {
-      email: {
-        required: true,
-        email: true
-      },
+      "user[email]": {required: true, email: true},
+      "user[password]": {required: true, minlength: 8},
+      "user[password_confirmation]": {required: true, equalTo: "#user_password"}
     },
-
     highlight: function(element, errorClass, validClass) {
       $(element).parents('.input-text-wrap').children('.form-control-feedback').hide();
       $(element).parents('.input-text-wrap').children('.input-text-label').addClass('has-error');
@@ -42,5 +41,20 @@ $(function() {
       $(element).parent().children('input').removeClass('has-error');
       $(element).remove();
     }
+  });
+
+  $('.your-class').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: true
+  });
+
+  $(".countdown").countdown("2017/05/01", function(event) {
+    var $this = $(this).html(event.strftime(''
+    + '<span>%d</span>d '
+    + '<span>%H</span>h '
+    + '<span>%M</span>m '
+    + '<span>%S</span>s'));
   });
 });
