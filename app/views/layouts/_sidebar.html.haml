@@ -1,0 +1,23 @@
+%ul.sidebar-nav
+  %li.search-unit-container
+    .input-text-wrap
+      = label_tag 'Search by Unit Number', nil, class: 'input-text-label'
+      = text_field :search, required: true, class: 'form-control'
+
+  = link_to root_path do
+    %li.sidebar-item
+      .sidebar-item-text
+        Home
+  = link_to root_path do
+    %li.sidebar-item
+      .sidebar-item-text
+        Units
+  = link_to root_path do
+    %li.sidebar-item
+      .sidebar-item-text
+        About
+  = link_to root_path do
+    %li.sidebar-item
+      .sidebar-item-text
+        Help
+

@@ -1,0 +1,14 @@
+.right-sidebar-nav
+  .notification-container.text-center
+    %p Only registered users can save and purchase units
+    %h5
+      = link_to 'Sign Up', '#', 'data-toggle': 'modal', 'data-target': '#signup-modal'
+      or
+      = link_to 'Log In', '#', 'data-toggle': 'modal', 'data-target': '#login-modal'
+  .saved-units-container
+    %p
+      Use
+      <span class="red">+ Add to Saved</span>
+      to add a unit
+    %h3 Compare units and proceed to the checkout from the saved list
+
