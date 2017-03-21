@@ -21,6 +21,8 @@
 #  confirmation_token     :string
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
+#  first_name             :string
+#  last_name              :string
 #
 # Indexes
 #
