@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.4.0'
 
-gem 'rails', '~> 5.0.1'
+gem 'rails', '~> 5.0.2'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 
@@ -14,8 +14,10 @@ gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 gem 'figaro'
+gem "font-awesome-rails"
 gem 'haml-rails'
 gem 'jquery-rails'
+gem 'jquery-validation-rails'
 gem 'omniauth-google-oauth2'
 gem 'pg_search'
 gem 'rails_admin', '~> 1.1.1'
@@ -34,9 +36,9 @@ end
 
 group :development do
   gem 'haml_lint', require: false
+  gem 'rubocop', require: false
   gem 'listen', '~> 3.0.5'
   gem 'pry-rails'
-  gem 'rubocop', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
