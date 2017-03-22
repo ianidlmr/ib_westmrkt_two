@@ -41,7 +41,7 @@ test:
   # It doesn't make sense to report to New Relic from automated test runs.
   monitor_mode: false
 
-staging:
+integration:
   <<: *default_settings
   app_name: railway-mrkt (integration)
 
