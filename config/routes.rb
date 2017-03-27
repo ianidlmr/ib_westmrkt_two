@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   end
 
   resources :units, only: [:show]
-  # get '/'
   #------------------------------------------------------------------------------
   # ROBOTS
   get '/robots.txt' => RobotsTxt # lib/robots_txt.rb
