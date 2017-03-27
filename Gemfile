@@ -21,8 +21,11 @@ gem "jquery-slick-rails"
 gem 'jquery-validation-rails'
 gem 'omniauth-google-oauth2'
 gem 'pg_search'
-gem 'rails_admin', '~> 1.1.1'
+gem 'rails_admin'
+gem 'rails_admin_import'
+gem 'rails-settings-cached'
 gem 'sass-rails', '~> 5.0'
+gem 'selectize-rails'
 gem 'sendgrid-ruby'
 gem 'simple_form'
 gem 'stripe'
@@ -37,6 +40,7 @@ end
 
 group :development do
   gem 'haml_lint', require: false
+  gem 'scss_lint', require: false
   gem 'rubocop', require: false
   gem 'listen', '~> 3.0.5'
   gem 'pry-rails'

@@ -18,6 +18,7 @@
 //= require jquery.countdown.min
 //= require ahoy
 //= require toastr_rails
+//= require selectize
 //= require_tree .
 
 // Project assets

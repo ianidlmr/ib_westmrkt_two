@@ -9,6 +9,11 @@ $(function() {
     }
   });
 
+  $('.selectize').selectize({
+    create: false,
+    sortField: 'text'
+  });
+
   $('body').on('click', function(e) {
     // e.preventDefault();
     if ($(e.target).hasClass('hamburger-icon')) {
@@ -22,6 +27,9 @@ $(function() {
     }
   });
 
+  // $('.unit-panel').hover(function() {
+  //   $(this).find('.view-text').toggleClass('hidden');
+  // });
 
   $.extend($.validator.messages, { equalTo: "Passwords do not match." })
   $('.simple_form.new_user').validate({
@@ -30,11 +38,13 @@ $(function() {
       "user[password]": {required: true, minlength: 8},
       "user[password_confirmation]": {required: true, equalTo: "#user_password"}
     },
+
     highlight: function(element, errorClass, validClass) {
       $(element).parents('.input-text-wrap').children('.form-control-feedback').hide();
       $(element).parents('.input-text-wrap').children('.input-text-label').addClass('has-error');
       $(element).closest('.input-text-wrap input').removeClass('has-success').addClass('has-error');
     },
+
     success: function(element) {
       $(element).parents('.input-text-wrap').children('.form-control-feedback').show();
       $(element).parents('.input-text-wrap').children('.input-text-label').removeClass('has-error');
