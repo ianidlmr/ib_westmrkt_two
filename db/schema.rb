@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170320140431) do
+ActiveRecord::Schema.define(version: 20170327023209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(version: 20170320140431) do
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
   end
 
+  create_table "settings", force: :cascade do |t|
+    t.string   "var",                   null: false
+    t.text     "value"
+    t.integer  "thing_id"
+    t.string   "thing_type", limit: 30
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["thing_type", "thing_id", "var"], name: "index_settings_on_thing_type_and_thing_id_and_var", unique: true, using: :btree
+  end
+
   create_table "unit_types", force: :cascade do |t|
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
@@ -76,6 +86,8 @@ ActiveRecord::Schema.define(version: 20170320140431) do
     t.integer  "price"
     t.integer  "savings"
     t.string   "currency"
+    t.integer  "unit_type_id"
+    t.index ["unit_type_id"], name: "index_units_on_unit_type_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -136,4 +148,5 @@ ActiveRecord::Schema.define(version: 20170320140431) do
     t.index ["visit_token"], name: "index_visits_on_visit_token", unique: true, using: :btree
   end
 
+  add_foreign_key "units", "unit_types"
 end

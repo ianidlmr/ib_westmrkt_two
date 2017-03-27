@@ -12,7 +12,13 @@
 #  price        :integer
 #  savings      :integer
 #  currency     :string
+#  unit_type_id :integer
+#
+# Indexes
+#
+#  index_units_on_unit_type_id  (unit_type_id)
 #
 
 class Unit < ApplicationRecord
+  belongs_to :unit_type
 end
