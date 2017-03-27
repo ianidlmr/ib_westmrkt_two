@@ -8,7 +8,7 @@
     %li.sidebar-item
       .sidebar-item-text
         Home
-  = link_to root_path do
+  = link_to units_path do
     %li.sidebar-item
       .sidebar-item-text
         Units
@@ -30,3 +30,8 @@
       %li.sidebar-item
         .sidebar-item-text
           Sign Out
+
+  - else
+    %li.sidebar-item
+      .sidebar-item-text
+        Sign Up or Log In

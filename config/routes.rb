@@ -15,7 +15,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :units, only: [:show]
+  resources :units, only: [:index, :show] do
+    collection do
+      get '/search' => 'search#search', as: 'search'
+    end
+  end
+
   #------------------------------------------------------------------------------
   # ROBOTS
   get '/robots.txt' => RobotsTxt # lib/robots_txt.rb

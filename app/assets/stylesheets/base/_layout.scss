@@ -641,3 +641,38 @@ footer {
     padding: 20px 20px 40px 0px;
   }
 }
+
+.bedrooms-filter {
+  width: 100%;
+  display: flex;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  background: white;
+  border-top: 1px solid #ccc;
+}
+
+.bedroom {
+  border-right: 1px solid #ccc;
+
+  p {
+    margin: 0;
+  }
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  background: black;
+}
+
+.nav > li > a {
+  padding: 15px 35px;
+}
+
+.nav-pills > li > a {
+  border-radius: 0px;
+  color: black;
+}
+
+.nav-pills > li + li {
+  margin-left: 0px;
+}
