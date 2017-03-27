@@ -622,3 +622,22 @@ footer {
     font-size: 16px;
   }
 }
+
+.trending-container {
+  background: #e6e6e6;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.explore-container {
+  background: #1a1a1a;
+  margin-top: 60px;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .explore-text {
+    padding: 20px 20px 40px 0px;
+  }
+}

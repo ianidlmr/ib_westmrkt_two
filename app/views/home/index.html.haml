@@ -23,7 +23,7 @@
         = link_to '#' do
           %p.link-how-does-it-work How does it work?
 
-.trending-container{style: 'background: #e6e6e6; padding-top: 40px;'}
+.trending-container
   .container
     %h1{style: 'margin-bottom: 40px;'} Trending layouts
     .row
@@ -33,12 +33,13 @@
 
     .row
       .col-xs-12
-        .explore-container{style: 'background: #1a1a1a; margin-top: 60px; padding-top: 50px;'}
-          .explore-text{style: 'padding: 20px 20px 40px 20px;'}
-            %h1{style: 'color: white;'} Explore Railway Market
-            = image_tag('icons/arrow-right-light.svg')
-          .image-container{style: 'display: flex; justify-content: center;'}
-            = image_tag('img-explore-railway-market.jpg', class: 'img-responsive')
+        .explore-container
+          .explote-sub-container
+            .explore-text
+              %h1{style: 'color: white;'} Explore Railway Market
+              = image_tag('icons/arrow-right-light.svg')
+            .image-container{style: 'display: flex; justify-content: center;'}
+              = image_tag('img-explore-railway-market.jpg', class: 'img-responsive')
 
 / .row
 /   .col-md-12

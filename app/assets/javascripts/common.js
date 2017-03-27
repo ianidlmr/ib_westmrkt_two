@@ -18,7 +18,9 @@ $(function() {
     // e.preventDefault();
     if ($(e.target).hasClass('hamburger-icon')) {
       $('.sidebar').addClass('sidebar-is-open');
+      $('.right-sidebar').removeClass('right-sidebar-is-open');
     } else if ($(e.target).hasClass('saved-icon')) {
+      $('.sidebar').removeClass('sidebar-is-open');
       $('.right-sidebar').addClass('right-sidebar-is-open');
     } else if (!$(e.target).hasClass('sidebar') && !$(e.target).parents('.sidebar').length && $('.sidebar').hasClass('sidebar-is-open')) {
       $('.sidebar').removeClass('sidebar-is-open');
@@ -27,9 +29,9 @@ $(function() {
     }
   });
 
-  // $('.unit-panel').hover(function() {
-  //   $(this).find('.view-text').toggleClass('hidden');
-  // });
+  $('.unit-panel').on('click', function() {
+    window.location.href = $(this).data('url');
+  });
 
   $.extend($.validator.messages, { equalTo: "Passwords do not match." })
   $('.simple_form.new_user').validate({
