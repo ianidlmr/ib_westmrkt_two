@@ -33,6 +33,10 @@ $(function() {
     window.location.href = $(this).data('url');
   });
 
+  $('.unit-panel').hover(function() {
+    $(this).find('.view-text').toggleClass('hidden');
+  });
+
   $.extend($.validator.messages, { equalTo: "Passwords do not match." })
   $('.simple_form.new_user').validate({
     rules: {
