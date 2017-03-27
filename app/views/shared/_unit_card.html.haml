@@ -1,0 +1,14 @@
+.panel.panel-default.unit-panel
+  .panel-body
+    - unit_type = unit.unit_type
+    %h1= unit_type.name
+    %p #{unit_type.interior_sqft} SQFT interior with #{unit_type.number_of_bedrooms} and balcony
+    .view-container{style: 'display: flex;'}
+      %p.view-text.hidden{style: 'margin: 0;'} View
+      = image_tag('arrow-right-dark')
+  .panel-footer{ style: 'display: flex; width: 100%; padding: 0px;' }
+    .units-left{ style: 'width: 50%; padding: 10px 15px;' }
+      %p <strong>Only #{unit_type.quantity_remaining} units left</strong>
+    .price-container{ style: 'background: #1a1a1a; width: 50%; padding: 10px 20px;' }
+      %p{ style: 'color: white;' } For $#{price_converter(unit.price)} #{unit.currency}
+      %p{ style: 'color: #00aaff;' } Save $#{price_converter(unit.savings)} #{unit.currency}

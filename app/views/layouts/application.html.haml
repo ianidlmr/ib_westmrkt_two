@@ -10,6 +10,15 @@
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
+
+    -# Loading Typekit font
+    = javascript_include_tag 'https://use.typekit.net/nff7niv.js'
+    :javascript
+      try {
+        Typekit.load({ async: true });
+      } catch(e) {
+
+      }
   %body{ class: "#{controller_path.tr('_', '-').tr('/', '-')} #{action_name.tr('_', '-')}" }
     .wrapper
       .sidebar
@@ -18,7 +27,9 @@
         = render 'layouts/right_sidebar'
       = render 'layouts/navigation'
       %main{ role: 'main' }
-        .container
-          = yield
+        = yield
       %footer
         = render 'layouts/footer'
+
+= render 'shared/signup_modal'
+= render 'shared/login_modal'

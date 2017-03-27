@@ -1,19 +1,59 @@
 .row
-  .col-md-12
-    .panel.panel-default.devise-panel{ style: 'width: 300px; margin: 0 auto;' }
-      .panel-heading
-        .heading-container
-          %h2.text-uppercase.text-center Railway <strong>Mrkt.</strong>
-          .form-actions.text-center
-            = link_to 'Sign up With Email', '#', 'data-toggle': 'modal', 'data-target': '#signup-modal', class: 'btn btn-success btn-block'
-            %p{ style: 'margin-top: 10px;' } or
-            = link_to omniauth_authorize_path(resource_name, :google_oauth2), class: 'btn btn-block btn-white' do
-              %span
-              %span Sign up with Google
+  .col-xs-12
+    .countdown-message.text-center
+      %h1{ style: 'color: white;' } Pre-Sale ending in
+      .countdown
 
-        .panel-footer
-          %p Already Have an Account?
-          = link_to 'Log In', '#', 'data-toggle': 'modal', 'data-target': '#login-modal', class: 'btn btn-success btn-md btn-white'
+      .search-container{ style: 'color: white;' }
+        %p{style: 'display: inline-block;'} I'm looking for
+        .select-container{ style: 'width: 170px; display: inline-block;' }
+          = select_tag 'unit_types', options_from_collection_for_select(UnitType.all, 'id', 'name', '1'), class: 'selectize'
 
-= render 'shared/signup_modal'
-= render 'shared/login_modal'
+.row
+  .col-xs-12.text-center
+    = button_tag 'Search', class: 'btn btn-lg btn-search'
+
+.container{style: 'margin-top: 30px;'}
+  .row
+    .col-xs-12
+      .save-info
+        %h2 <strong>Save up to 20%</strong> when buying online
+        %h3{style: 'margin-top: 20px;'} Welcome to the new way of buying preconstruction condominiums. Pay a $3500 refundable deposit online to lock in at an online exclusive price up to 20% off list price, and reserve your unit. Complete the paperwork in person at the Junction Gallery within 10 days to finalize your purchase.
+
+        = link_to '#' do
+          %p.link-how-does-it-work How does it work?
+
+.trending-container{style: 'background: #e6e6e6; padding-top: 40px;'}
+  .container
+    %h1{style: 'margin-bottom: 40px;'} Trending layouts
+    .row
+      - Unit.limit(5).order('RANDOM()').each do |unit|
+        .col-md-6
+          = render 'shared/unit_card', unit: unit
+
+    .row
+      .col-xs-12
+        .explore-container{style: 'background: #1a1a1a; margin-top: 60px; padding-top: 50px;'}
+          .explore-text{style: 'padding: 20px 20px 40px 20px;'}
+            %h1{style: 'color: white;'} Explore Railway Market
+            = image_tag('arrow-right-light')
+          .image-container{style: 'display: flex; justify-content: center;'}
+            = image_tag('http://placehold.it/650x250', class: 'img-responsive')
+
+/ .row
+/   .col-md-12
+/     .panel.panel-default.devise-panel{ style: 'width: 300px; margin: 0 auto;' }
+/       .panel-heading
+/         .heading-container
+/           %h2.text-uppercase.text-center Railway <strong>Mrkt.</strong>
+/           .form-actions.text-center
+/             = link_to 'Sign up With Email', '#', 'data-toggle': 'modal', 'data-target': '#signup-modal', class: 'btn btn-success btn-block'
+/             %p{ style: 'margin-top: 10px;' } or
+/             = link_to omniauth_authorize_path(resource_name, :google_oauth2), class: 'btn btn-block btn-white' do
+/               %span
+/               %span Sign up with Google
+
+/         .panel-footer
+/           %p Already Have an Account?
+/           = link_to 'Log In', '#', 'data-toggle': 'modal', 'data-target': '#login-modal', class: 'btn btn-success btn-md btn-white'
+
