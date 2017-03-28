@@ -119,38 +119,43 @@ $(function() {
     }
   });
 
-  $('.btn-accept, .btn-decline').on('click', function() {
+  $('.btn-accept, .btn-decline').on('click', function(e) {
+    e.preventDefault();
     if($(".filters-container").css('bottom') == '0px'){
       $(".filters-container").animate({ bottom:'-500px' }, 300);
       hideMask();
     }
+
+    if ($(this).hasClass('btn-accept')) {
+      var sendingData = false;
+      var url = $(this).data('url');
+
+      if (!sendingData) {
+        sendingData = true;
+
+        $.ajax({
+          url: url,
+          type: 'POST',
+          dataType: 'SCRIPT',
+          data: { balcony: $("input[name='balcony']").val(), den: $("input[name='den']").val()},
+          beforeSend: function() {
+            $('.tab-pane.active#one-bed').html("<h1 class='text-center'>Retrieving results...</h1>");
+            $('.tab-pane.active#two-bed').html("<h1 class='text-center'>Retrieving results...</h1>");
+            $('.tab-pane.active#three-bed').html("<h1 class='text-center'>Retrieving results...</h1>");
+          }
+        })
+        .done(function(data) {
+          // toastrNotification('success', 'Content published');
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+          // ajaxToastrError(jqXHR);
+        })
+        .always(function() {
+          sendingData = false;
+        });
+      }
+    }
   });
-
-  $('.btn-accept').on('click', function() {
-    // e.preventDefault();
-    // var sendingData = false;
-    // var url = $(this).data('url').data('publication-url');
-
-    // if (!sendingData) {
-    //   sendingData = true;
-
-    //   $.ajax({
-    //     url: url,
-    //     type: 'POST',
-    //     dataType: 'SCRIPT'
-    //   })
-    //   .done(function(data) {
-    //     toastrNotification('success', 'Content published');
-    //   })
-    //   .fail(function(jqXHR, textStatus, errorThrown) {
-    //     ajaxToastrError(jqXHR);
-    //   })
-    //   .always(function() {
-    //     sendingData = false;
-    //   });
-    // }
-  });
-
 
   function showMask() {
     $('.mask').css({'display': 'block'});

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :units, only: [:index, :show] do
     collection do
-      get '/search' => 'search#search', as: 'search'
+      post '/search' => 'search#search', as: 'search'
     end
   end
 

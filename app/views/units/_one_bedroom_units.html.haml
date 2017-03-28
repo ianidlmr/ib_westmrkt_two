@@ -1,0 +1,9 @@
+.row
+  - if @one_bedroom_units.blank?
+    .col-md-12.text-center
+      %h1 Sorry, no results for 1 Bedroom
+      %p Use tabs to display search results or try to use less filters to find what you’re looking for.
+  - else
+    - @one_bedroom_units.each do |unit|
+      .col-md-6
+        = render 'shared/unit_card', unit: unit
