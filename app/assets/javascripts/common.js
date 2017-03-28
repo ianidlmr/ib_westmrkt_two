@@ -18,14 +18,20 @@ $(function() {
     // e.preventDefault();
     if ($(e.target).hasClass('hamburger-icon')) {
       $('.sidebar').addClass('sidebar-is-open');
+      $('.sidebar').css({'box-shadow': '5px 0 20px -5px #888'});
       $('.right-sidebar').removeClass('right-sidebar-is-open');
+      $('.right-sidebar').css({'box-shadow': 'none'});
     } else if ($(e.target).hasClass('saved-icon')) {
       $('.sidebar').removeClass('sidebar-is-open');
+      $('.sidebar').css({'box-shadow': 'none'});
       $('.right-sidebar').addClass('right-sidebar-is-open');
+      $('.right-sidebar').css({'box-shadow': '5px 0 20px 5px #888'});
     } else if (!$(e.target).hasClass('sidebar') && !$(e.target).parents('.sidebar').length && $('.sidebar').hasClass('sidebar-is-open')) {
+      $('.sidebar').css({'box-shadow': 'none'});
       $('.sidebar').removeClass('sidebar-is-open');
     } else if (!$(e.target).hasClass('right-sidebar') && !$(e.target).parents('.right-sidebar').length && $('.right-sidebar').hasClass('right-sidebar-is-open')) {
       $('.right-sidebar').removeClass('right-sidebar-is-open');
+      $('.right-sidebar').css({'box-shadow': 'none'});
     }
   });
 
@@ -59,11 +65,43 @@ $(function() {
     }
   });
 
-  $('.your-class').slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    fade: true
+  $('.den').on('click', function() {
+    var $otherParagraph = (typeof $(this).next('p').html() === 'undefined') ? $(this).prev('p') : $(this).next('p');
+    if ($(this).css('font-weight') == 'bold') {
+      $(this).css({'font-weight': 'normal'});
+    } else if ($otherParagraph.css('font-weight') == 'bold') {
+      $otherParagraph.css({'font-weight': 'normal'});
+      $(this).css({'font-weight': 'bold'});
+    } else {
+      $(this).css({'font-weight': 'bold'});
+    }
+    $("input[name='den']").val($(this).data('included'));
+  });
+
+  $('.balcony').on('click', function() {
+    var $otherParagraph = (typeof $(this).next('p').html() === 'undefined') ? $(this).prev('p') : $(this).next('p');
+    if ($(this).css('font-weight') == 'bold') {
+      $(this).css({'font-weight': 'normal'});
+    } else if ($otherParagraph.css('font-weight') == 'bold') {
+      $otherParagraph.css({'font-weight': 'normal'});
+      $(this).css({'font-weight': 'bold'});
+    } else {
+      $(this).css({'font-weight': 'bold'});
+    }
+    $("input[name='balcony']").val($(this).data('included'))
+  });
+
+  $('.bathroom').on('click', function() {
+    // var $otherParagraph = (typeof $(this).next('p').html() === 'undefined') ? $(this).prev('p') : $(this).next('p');
+    // if ($(this).css('font-weight') == 'bold') {
+    //   $(this).css({'font-weight': 'normal'});
+    // } else if ($otherParagraph.css('font-weight') == 'bold') {
+    //   $otherParagraph.css({'font-weight': 'normal'});
+    //   $(this).css({'font-weight': 'bold'});
+    // } else {
+    //   $(this).css({'font-weight': 'bold'});
+    // }
+    // $("input[name='balcony']").val($(this).data('number-of-bathrooms'))
   });
 
   $(".countdown").countdown("2017/05/01", function(event) {
@@ -73,4 +111,52 @@ $(function() {
     + '<span>%M</span>m '
     + '<span>%S</span>s'));
   });
+
+  $('.filters').on('click', function() {
+    if($(".filters-container").css('bottom') == '-500px'){
+      $(".filters-container").animate({ bottom:'0px' }, 300);
+      showMask();
+    }
+  });
+
+  $('.btn-accept, .btn-decline').on('click', function() {
+    if($(".filters-container").css('bottom') == '0px'){
+      $(".filters-container").animate({ bottom:'-500px' }, 300);
+      hideMask();
+    }
+  });
+
+  $('.btn-accept').on('click', function() {
+    // e.preventDefault();
+    // var sendingData = false;
+    // var url = $(this).data('url').data('publication-url');
+
+    // if (!sendingData) {
+    //   sendingData = true;
+
+    //   $.ajax({
+    //     url: url,
+    //     type: 'POST',
+    //     dataType: 'SCRIPT'
+    //   })
+    //   .done(function(data) {
+    //     toastrNotification('success', 'Content published');
+    //   })
+    //   .fail(function(jqXHR, textStatus, errorThrown) {
+    //     ajaxToastrError(jqXHR);
+    //   })
+    //   .always(function() {
+    //     sendingData = false;
+    //   });
+    // }
+  });
+
+
+  function showMask() {
+    $('.mask').css({'display': 'block'});
+  }
+
+  function hideMask() {
+    $('.mask').css({'display': 'none'});
+  }
 });

@@ -1,17 +1,20 @@
-.row
-  .col-xs-12
-    .countdown-message.text-center
-      %h1{ style: 'color: white;' } Pre-Sale ending in
-      .countdown
+= form_tag(units_path, method: :get) do
+  .row
+    .col-xs-12
+      .countdown-message.text-center
+        %h1{ style: 'color: white;' } Pre-Sale starting in
+        / %h1{ style: 'color: white;' } Pre-Sale ending in
+        / %h1{ style: 'color: white;' } Pre-Sale closed
+        .countdown
 
-      .search-container{ style: 'color: white;' }
-        %p{style: 'display: inline-block;'} I'm looking for
-        .select-container{ style: 'width: 170px; display: inline-block;' }
-          = select_tag 'unit_types', options_from_collection_for_select(UnitType.all, 'id', 'name', '1'), class: 'selectize'
+        .search-container{ style: 'color: white;' }
+          %p{style: 'display: inline-block;'} I'm looking for
+          .select-container{ style: 'width: 170px; display: inline-block;' }
+            = select_tag 'unit_type', options_from_collection_for_select(UnitType.available, 'id', 'name', '1'), class: 'selectize'
 
-.row
-  .col-xs-12.text-center
-    = button_tag 'Search', class: 'btn btn-lg btn-search'
+  .row
+    .col-xs-12.text-center
+      = submit_tag 'Search', class: 'btn btn-lg btn-search'
 
 .container{style: 'margin-top: 30px;'}
   .row
@@ -25,12 +28,6 @@
 
 .trending-container
   .container
-    %h1{style: 'margin-bottom: 40px;'} Trending layouts
-    .row
-      - Unit.limit(5).order('RANDOM()').each do |unit|
-        .col-md-6
-          = render 'shared/unit_card', unit: unit
-
     .row
       .col-xs-12
         .explore-container
@@ -40,6 +37,13 @@
               = image_tag('icons/arrow-right-light.svg')
             .image-container{style: 'display: flex; justify-content: center;'}
               = image_tag('img-explore-railway-market.jpg', class: 'img-responsive')
+    -#
+      %h1{ style: 'margin-bottom: 40px;' } Trending layouts
+      .row
+        - Unit.limit(5).order('RANDOM()').each do |unit|
+          .col-md-6
+            = render 'shared/unit_card', unit: unit
+
 
 / .row
 /   .col-md-12

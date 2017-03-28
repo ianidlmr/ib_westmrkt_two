@@ -83,7 +83,6 @@ main {
   z-index: 1000;
   background: white;
   overflow-y: auto;
-  box-shadow: 5px 0 20px -5px #888;
 
   // @media #{$xs-down} {
   //   left: -250px;
@@ -104,7 +103,6 @@ main {
   z-index: 1000;
   background: white;
   overflow-y: auto;
-  box-shadow: 5px 0 20px 5px #888;
 
   // @media #{$xs-down} {
   //   left: -250px;
@@ -675,4 +673,83 @@ footer {
 
 .nav-pills > li + li {
   margin-left: 0px;
+}
+
+.nav-item.empty {
+  flex: 1 0 auto;
+}
+
+li.filters {
+  border-left: 1px solid #ccc;
+}
+
+.filters-container {
+  position:fixed;
+  width: 100%;
+  z-index: 10000;
+  text-align:center;
+  height: 500px;
+  font-size:18px;
+  color: #000;
+  background: #FFF;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  flex-direction: column;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  bottom: -500px;
+  padding-top: 50px;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #ccc;
+}
+
+.btn-accept,
+.btn-decline {
+  width: 100%;
+  height: 50px;
+  text-decoration: none;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:active,
+  &:focus,
+  &:hover,
+  &:hover:active, {
+    text-decoration: none;
+  }
+}
+
+.btn-decline {
+  &:active,
+  &:focus,
+  &:hover,
+  &:hover:active, {
+    color: black;
+  }
+}
+
+.btn-accept {
+  color: white;
+  background: black;
+
+  &:active,
+  &:focus,
+  &:hover,
+  &:hover:active, {
+    color: white;
+  }
+}
+
+body.units.index {
+  main {
+    background: #e6e6e6;
+  }
 }
