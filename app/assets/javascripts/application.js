@@ -16,6 +16,7 @@
 //= require jquery.validate
 //= require jquery.slick
 //= require jquery.countdown.min
+//= require nouislider.min
 //= require ahoy
 //= require toastr_rails
 //= require selectize

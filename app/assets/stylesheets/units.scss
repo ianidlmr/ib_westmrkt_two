@@ -2,4 +2,90 @@ body.units.index {
   footer {
     display: none;
   }
+
+  .flex-row {
+    display: flex;
+    flex: 1;
+    text-align: left;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    .price-column {
+      width: 40%;
+      padding: 0 20px;
+    }
+
+    .den-column,
+    .balcony-column,
+    .bathroom-column {
+      width: 20%;
+      padding: 0 20px;
+    }
+
+    @media #{$md-down} {
+
+    }
+  }
+
+  .bathroom-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .bedrooms-filter {
+    width: 100%;
+    display: flex;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: white;
+    border-bottom: 1px solid #ccc;
+    z-index: 26;
+  }
+
+  @media #{$sm-down} {
+    .bedrooms-filter {
+      bottom: 0;
+      top: calc(100% - 51px);
+      position: fixed;
+      border-top: 1px solid #ccc;
+    }
+
+    .nav > li > a {
+      padding: 15px 20px;
+      font-size: 14px;
+    }
+  }
+
+  .noUi-target {
+    border-radius: 20px;
+    background: #e6e6e6;
+    border: none;
+  }
+
+  .noUi-horizontal {
+    height: 8px;
+  }
+
+  .noUi-horizontal .noUi-handle {
+    height: 25px;
+    width: 25px;
+    top: -7px;
+    border-radius: 100%;
+    background: black;
+    box-shadow: none;
+    border: none;
+  }
+
+  .noUi-handle:after, .noUi-handle:before {
+    content: none;
+  }
+
+  .noUi-connect {
+    top: -1px;
+    height: 11px;
+    background: #ccc;
+    border-radius: 20px;
+  }
 }

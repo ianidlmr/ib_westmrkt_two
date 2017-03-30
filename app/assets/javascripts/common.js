@@ -113,16 +113,16 @@ $(function() {
   });
 
   $('.filters').on('click', function() {
-    if($(".filters-container").css('bottom') == '-500px'){
-      $(".filters-container").animate({ bottom:'0px' }, 300);
+    if($(".filters-container").css('top') == '-350px'){
+      $(".filters-container").animate({ top:'113px' }, 300);
       showMask();
     }
   });
 
   $('.btn-accept, .btn-decline').on('click', function(e) {
     e.preventDefault();
-    if($(".filters-container").css('bottom') == '0px'){
-      $(".filters-container").animate({ bottom:'-500px' }, 300);
+    if($(".filters-container").css('top') == '113px'){
+      $(".filters-container").animate({ top:'-350px' }, 300);
       hideMask();
     }
 
@@ -139,16 +139,12 @@ $(function() {
           dataType: 'SCRIPT',
           data: { balcony: $("input[name='balcony']").val(), den: $("input[name='den']").val()},
           beforeSend: function() {
-            $('.tab-pane.active#one-bed').html("<h1 class='text-center'>Retrieving results...</h1>");
-            $('.tab-pane.active#two-bed').html("<h1 class='text-center'>Retrieving results...</h1>");
-            $('.tab-pane.active#three-bed').html("<h1 class='text-center'>Retrieving results...</h1>");
+            $('.tab-pane.active#one-bed, .tab-pane.active#two-bed, .tab-pane.active#three-bed').html("<div class='dot-animation-two'><div class='circleone'></div><div class='circletwo'></div><div class='circlethree'></div></div>");
           }
         })
         .done(function(data) {
-          // toastrNotification('success', 'Content published');
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
-          // ajaxToastrError(jqXHR);
         })
         .always(function() {
           sendingData = false;
@@ -164,4 +160,18 @@ $(function() {
   function hideMask() {
     $('.mask').css({'display': 'none'});
   }
+
+  var handlesSlider = document.getElementById('slider-handles');
+  noUiSlider.create(handlesSlider, {
+    start: 127,
+    connect: [true, false],
+    range: {
+      'min': 0,
+      'max': 255
+    }
+  });
+
+  handlesSlider.noUiSlider.on('change', function(e){
+    debugger;
+  })
 });
