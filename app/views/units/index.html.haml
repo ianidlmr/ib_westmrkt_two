@@ -53,6 +53,7 @@
         %p.bathroom{ data: { number_of_bathrooms: '1' } } 1 Bathroom
         %p.bathroom{ data: { number_of_bathrooms: '2' } } 2 Bathrooms
         %p.bathroom{ data: { number_of_bathrooms: '3' } } 3+ Bathrooms
+      = hidden_field_tag 'number_of_bathrooms'
 
   .btn-container
     = link_to 'Decline', '#', class: 'btn-decline'

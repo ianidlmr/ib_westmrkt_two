@@ -1,18 +1,36 @@
 # frozen_string_literal: true
 class SearchController < ApplicationController
   def search
-    if params[:den].present? && params[:balcony].present?
-      @one_bedroom_units = UnitType.where('number_of_bedrooms = ? AND number_of_bathrooms = ? AND den = ? AND balcony = ?', 1, 1, params[:den], params[:balcony]).joins(:units).where('units.price > ?', 100000).map(&:units).flatten
-      @two_bedroom_units = UnitType.where('number_of_bedrooms = ? AND number_of_bathrooms = ? AND den = ? AND balcony = ?', 2, 1, params[:den], params[:balcony]).joins(:units).where('units.price > ?', 100000).map(&:units).flatten
-      @three_plus_bedroom_units = UnitType.where('number_of_bedrooms >= ? AND number_of_bathrooms = ? AND den = ? AND balcony = ?', 3, 1, params[:den], params[:balcony]).joins(:units).where('units.price > ?', 100000).map(&:units).flatten
-    elsif params[:balcony].present?
-      @one_bedroom_units = UnitType.where('number_of_bedrooms = ? AND number_of_bathrooms = ? AND balcony = ?', 1, 1, params[:balcony]).joins(:units).where('units.price > ?', 100000).map(&:units).flatten
-      @two_bedroom_units = UnitType.where('number_of_bedrooms = ? AND number_of_bathrooms = ? AND balcony = ?', 2, 1, params[:balcony]).joins(:units).where('units.price > ?', 100000).map(&:units).flatten
-      @three_plus_bedroom_units = UnitType.where('number_of_bedrooms >= ? AND number_of_bathrooms = ? AND balcony = ?', 3, 1, params[:balcony]).joins(:units).where('units.price > ?', 100000).map(&:units).flatten
-    elsif params[:den].present?
-      @one_bedroom_units = UnitType.where('number_of_bedrooms = ? AND number_of_bathrooms = ? AND den = ?', 1, 1, params[:den]).joins(:units).where('units.price > ?', 100000).map(&:units).flatten
-      @two_bedroom_units = UnitType.where('number_of_bedrooms = ? AND number_of_bathrooms = ? AND den = ?', 2, 1, params[:den]).joins(:units).where('units.price > ?', 100000).map(&:units).flatten
-      @three_plus_bedroom_units = UnitType.where('number_of_bedrooms >= ? AND number_of_bathrooms = ? AND den = ?', 3, 1, params[:den]).joins(:units).where('units.price > ?', 100000).map(&:units).flatten
+    @one_bedroom_units = UnitType.where('number_of_bedrooms = ?', 1)
+    @two_bedroom_units = UnitType.where('number_of_bedrooms = ?', 2)
+    @three_plus_bedroom_units = UnitType.where('number_of_bedrooms >= ?', 3)
+
+    if params[:den].present?
+      @one_bedroom_units = @one_bedroom_units.where('den = ?', params[:den])
+      @two_bedroom_units = @two_bedroom_units.where('den = ?', params[:den])
+      @three_plus_bedroom_units = @three_plus_bedroom_units.where('den = ?', params[:den])
     end
+
+    if params[:balcony].present?
+      @one_bedroom_units = @one_bedroom_units.where('balcony = ?', params[:balcony])
+      @two_bedroom_units = @two_bedroom_units.where('balcony = ?', params[:balcony])
+      @three_plus_bedroom_units = @three_plus_bedroom_units.where('balcony = ?', params[:balcony])
+    end
+
+    if params[:number_of_bathrooms].present?
+      if params[:number_of_bathrooms] == '3'
+        @one_bedroom_units = @one_bedroom_units.where('number_of_bathrooms >= ?', params[:number_of_bathrooms])
+        @two_bedroom_units = @two_bedroom_units.where('number_of_bathrooms >= ?', params[:number_of_bathrooms])
+        @three_plus_bedroom_units = @three_plus_bedroom_units.where('number_of_bathrooms >= ?', params[:number_of_bathrooms])
+      else
+        @one_bedroom_units = @one_bedroom_units.where('number_of_bathrooms = ?', params[:number_of_bathrooms])
+        @two_bedroom_units = @two_bedroom_units.where('number_of_bathrooms = ?', params[:number_of_bathrooms])
+        @three_plus_bedroom_units = @three_plus_bedroom_units.where('number_of_bathrooms = ?', params[:number_of_bathrooms])
+      end
+    end
+
+    @one_bedroom_units = @one_bedroom_units.map(&:units).flatten
+    @two_bedroom_units = @two_bedroom_units.map(&:units).flatten
+    @three_plus_bedroom_units = @three_plus_bedroom_units.map(&:units).flatten
   end
 end

@@ -92,16 +92,16 @@ $(function() {
   });
 
   $('.bathroom').on('click', function() {
-    // var $otherParagraph = (typeof $(this).next('p').html() === 'undefined') ? $(this).prev('p') : $(this).next('p');
-    // if ($(this).css('font-weight') == 'bold') {
-    //   $(this).css({'font-weight': 'normal'});
-    // } else if ($otherParagraph.css('font-weight') == 'bold') {
-    //   $otherParagraph.css({'font-weight': 'normal'});
-    //   $(this).css({'font-weight': 'bold'});
-    // } else {
-    //   $(this).css({'font-weight': 'bold'});
-    // }
-    // $("input[name='balcony']").val($(this).data('number-of-bathrooms'))
+    var $otherParagraph = (typeof $(this).next('p').html() === 'undefined') ? $(this).prev('p') : $(this).next('p');
+    if ($(this).css('font-weight') == 'bold') {
+      $(this).css({'font-weight': 'normal'});
+    } else if ($otherParagraph.css('font-weight') == 'bold') {
+      $otherParagraph.css({'font-weight': 'normal'});
+      $(this).css({'font-weight': 'bold'});
+    } else {
+      $(this).css({'font-weight': 'bold'});
+    }
+    $("input[name='number_of_bathrooms']").val($(this).data('number-of-bathrooms'))
   });
 
   $(".countdown").countdown("2017/05/01", function(event) {
@@ -137,7 +137,7 @@ $(function() {
           url: url,
           type: 'POST',
           dataType: 'SCRIPT',
-          data: { balcony: $("input[name='balcony']").val(), den: $("input[name='den']").val()},
+          data: { balcony: $("input[name='balcony']").val(), den: $("input[name='den']").val(), number_of_bathrooms: $("input[name='number_of_bathrooms']").val()},
           beforeSend: function() {
             $('.tab-pane.active#one-bed, .tab-pane.active#two-bed, .tab-pane.active#three-bed').html("<div class='dot-animation-two'><div class='circleone'></div><div class='circletwo'></div><div class='circlethree'></div></div>");
           }
