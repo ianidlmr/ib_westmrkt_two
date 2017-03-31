@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # == Schema Information
 #
 # Table name: settings
@@ -20,13 +21,13 @@ class Setting < RailsSettings::Base
   # set the value field, YAML encoded
   # KZ: Hack to ensure values are updated properly through RailsAdmin
   def value=(new_value)
-    if !self.new_record? && value.class.eql?(Fixnum)
-      self[:value] = new_value.to_i.to_yaml
-    elsif !self.new_record? && value.class.eql?(Float)
-      self[:value] = new_value.to_f.to_yaml
-    else
-      self[:value] = new_value.to_yaml
-    end
+    self[:value] = if !self.new_record? && value.class.eql?(Integer)
+                     new_value.to_i.to_yaml
+                   elsif !self.new_record? && value.class.eql?(Float)
+                     new_value.to_f.to_yaml
+                   else
+                     new_value.to_yaml
+                   end
   end
 
   rails_admin do
@@ -35,8 +36,8 @@ class Setting < RailsSettings::Base
         label 'Setting'
       end
       field :value do
-        pretty_value do       # used in list view columns and show views, defaults to formatted_value for non-association fields
-          YAML.load(value)    # required to display the YAML value
+        pretty_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
+          YAML.safe_load(value) # required to display the YAML value
         end
       end
     end
@@ -46,8 +47,8 @@ class Setting < RailsSettings::Base
         label 'Setting'
       end
       field :value do
-        pretty_value do       # used in list view columns and show views, defaults to formatted_value for non-association fields
-          YAML.load(value)    # required to display the YAML value
+        pretty_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
+          YAML.safe_load(value) # required to display the YAML value
         end
       end
     end
@@ -58,8 +59,8 @@ class Setting < RailsSettings::Base
         read_only true
       end
       field :value do
-        formatted_value do    # used in form views
-          YAML.load(value)    # required to display the YAML value
+        formatted_value do # used in form views
+          YAML.safe_load(value) # required to display the YAML value
         end
       end
     end

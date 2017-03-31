@@ -708,7 +708,14 @@ li.filters {
   margin-right: auto;
   margin-left: auto;
   top: -350px;
+  // bottom: 113px;
   padding-top: 25px;
+
+  @media #{$sm-down} {
+    z-index: 26;
+    top: auto;
+    bottom: -350px;
+  }
 }
 
 .btn-container {
@@ -808,6 +815,10 @@ body.units.index {
 
 p.den,
 p.balcony,
-p.bathroom {
+p.number-of-bathrooms {
   cursor: pointer;
+
+  &.bold {
+    font-weight: bold;
+  }
 }

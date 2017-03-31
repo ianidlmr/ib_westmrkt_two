@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 class SearchController < ApplicationController
   def search
+    # @bathroom_units = (1..3).map { |unit|  UnitType.where('number_of_bedrooms', unit )}
     @one_bedroom_units = UnitType.where('number_of_bedrooms = ?', 1)
     @two_bedroom_units = UnitType.where('number_of_bedrooms = ?', 2)
     @three_plus_bedroom_units = UnitType.where('number_of_bedrooms >= ?', 3)
 
     if params[:den].present?
+      # @bedroom_units.map { |units| }
       @one_bedroom_units = @one_bedroom_units.where('den = ?', params[:den])
       @two_bedroom_units = @two_bedroom_units.where('den = ?', params[:den])
       @three_plus_bedroom_units = @three_plus_bedroom_units.where('den = ?', params[:den])
@@ -29,6 +31,7 @@ class SearchController < ApplicationController
       end
     end
 
+    # bedroom_units.each { |units| map(&:units).flatten }
     @one_bedroom_units = @one_bedroom_units.map(&:units).flatten
     @two_bedroom_units = @two_bedroom_units.map(&:units).flatten
     @three_plus_bedroom_units = @three_plus_bedroom_units.map(&:units).flatten
