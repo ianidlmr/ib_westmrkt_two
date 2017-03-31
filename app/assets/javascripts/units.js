@@ -30,7 +30,7 @@ $(function() {
         showMask();
       }
 
-      if($(".filters-container").css('bottom') == '-350px') {
+      if($(".filters-container").css('bottom') == '-530px') {
         $(".filters-container").animate({ bottom: '0px' }, 300);
         showMask();
       }
@@ -44,7 +44,7 @@ $(function() {
       }
 
       if($(".filters-container").css('bottom') == '0px'){
-        $(".filters-container").animate({ bottom: '-350px' }, 300);
+        $(".filters-container").animate({ bottom: '-530px' }, 300);
         hideMask();
       }
 
@@ -75,19 +75,18 @@ $(function() {
       }
     });
 
-
-    var handlesSlider = document.getElementById('slider-handles');
-    noUiSlider.create(handlesSlider, {
-      start: 127,
+    var priceSlider = document.getElementById('price-average');
+    noUiSlider.create(priceSlider, {
+      start: $('#price-average').data('highest-price'),
       connect: [true, false],
       range: {
-        'min': 0,
-        'max': 255
+        'min': $('#price-average').data('lowest-price'),
+        'max': $('#price-average').data('highest-price')
       }
     });
 
-    handlesSlider.noUiSlider.on('change', function(e){
-      debugger;
+    priceSlider.noUiSlider.on('change', function(value){
+
     })
   }
 });

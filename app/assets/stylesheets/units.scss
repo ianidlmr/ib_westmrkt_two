@@ -11,7 +11,9 @@ body.units.index {
     padding-right: 20px;
 
     @media #{$sm-down} {
-      flex-direction: column;
+      flex-wrap: wrap;
+      padding-left: 0;
+      padding-right: 0;
     }
 
     .price-column {
@@ -28,10 +30,16 @@ body.units.index {
     .bathroom-column {
       width: 20%;
       padding: 0 20px;
+
+      @media #{$sm-down} {
+        width: 50%;
+      }
     }
 
-    @media #{$md-down} {
-
+    .bathroom-column {
+      @media #{$sm-down} {
+        width: 100%;
+      }
     }
   }
 
@@ -39,6 +47,11 @@ body.units.index {
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    @media #{$sm-down} {
+      flex-direction: row;
+      justify-content: flex-start;
+    }
   }
 
   .bedrooms-filter {
@@ -64,6 +77,10 @@ body.units.index {
       padding: 15px 20px;
       font-size: 14px;
     }
+  }
+
+  #price-average {
+    margin-top: 50px;
   }
 
   .noUi-target {

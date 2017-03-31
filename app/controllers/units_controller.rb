@@ -10,6 +10,9 @@ class UnitsController < ApplicationController
       @two_bedroom_units = UnitType.available.where('number_of_bedrooms = 2').map(&:units).flatten
       @three_plus_bedroom_units = UnitType.available.where('number_of_bedrooms >= 3').map(&:units).flatten
     end
+
+    @lowest_price = UnitType.available.joins(:units).order('units.price').map(&:units).flatten.first.price
+    @highest_price = UnitType.available.joins(:units).order('units.price').map(&:units).flatten.last.price
   end
 
   def show; end

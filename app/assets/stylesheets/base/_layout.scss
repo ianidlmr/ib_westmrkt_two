@@ -708,13 +708,13 @@ li.filters {
   margin-right: auto;
   margin-left: auto;
   top: -350px;
-  // bottom: 113px;
   padding-top: 25px;
 
   @media #{$sm-down} {
     z-index: 26;
     top: auto;
-    bottom: -350px;
+    bottom: -530px;
+    height: 530px;
   }
 }
 
@@ -773,6 +773,10 @@ body.units.index {
   position: absolute;
   top: 50%;
   left: 50%;
+
+  @media #{$sm-down} {
+    left: 42%;
+  }
 }
 
 .dot-animation-two .circleone:before {
@@ -820,5 +824,12 @@ p.number-of-bathrooms {
 
   &.bold {
     font-weight: bold;
+  }
+}
+
+@media #{$sm-down} {
+  p.number-of-bathrooms {
+    margin-right: 10px;
+    font-size: 15px;
   }
 }
