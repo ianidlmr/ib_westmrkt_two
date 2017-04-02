@@ -1,0 +1,9 @@
+- if @liked_units.present?
+  - @liked_units.each do |liked_unit|
+    = render 'shared/saved_unit_card', liked_unit: liked_unit
+- else
+  %p
+    Use
+    <span class="red">+ Add to Saved</span>
+    to add a unit
+  %h3 Compare units and proceed to the checkout from the saved list

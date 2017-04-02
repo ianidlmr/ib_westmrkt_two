@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   devise_scope :user do
     authenticated :user do
       root to: 'home#landing'
+
+      scope '/units' do
+        put ':id/like-unit' => 'likes#like_unit', as: :like_unit
+        put ':id/unlike-unit' => 'likes#unlike_unit', as: :unlike_unit
+      end
     end
 
     unauthenticated :user do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327023209) do
+ActiveRecord::Schema.define(version: 20170402195153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,15 @@ ActiveRecord::Schema.define(version: 20170327023209) do
     t.index ["name", "time"], name: "index_ahoy_events_on_name_and_time", using: :btree
     t.index ["user_id", "name"], name: "index_ahoy_events_on_user_id_and_name", using: :btree
     t.index ["visit_id", "name"], name: "index_ahoy_events_on_visit_id_and_name", using: :btree
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "unit_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["unit_id"], name: "index_likes_on_unit_id", using: :btree
+    t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
   end
 
   create_table "pg_search_documents", force: :cascade do |t|
@@ -148,5 +157,7 @@ ActiveRecord::Schema.define(version: 20170327023209) do
     t.index ["visit_token"], name: "index_visits_on_visit_token", unique: true, using: :btree
   end
 
+  add_foreign_key "likes", "units"
+  add_foreign_key "likes", "users"
   add_foreign_key "units", "unit_types"
 end

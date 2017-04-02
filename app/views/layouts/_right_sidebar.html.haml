@@ -6,9 +6,4 @@
       or
       = link_to 'Log In', '#', 'data-toggle': 'modal', 'data-target': '#login-modal', 'data-dismiss': 'modal'
   .saved-units-container
-    %p
-      Use
-      <span class="red">+ Add to Saved</span>
-      to add a unit
-    %h3 Compare units and proceed to the checkout from the saved list
-
+    = render 'shared/saved_units'

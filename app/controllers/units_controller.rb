@@ -15,5 +15,7 @@ class UnitsController < ApplicationController
     @highest_price = UnitType.available.joins(:units).order('units.price').map(&:units).flatten.last.price
   end
 
-  def show; end
+  def show
+    @unit = Unit.find(params[:id])
+  end
 end
