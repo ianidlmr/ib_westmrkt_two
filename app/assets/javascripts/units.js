@@ -1,6 +1,5 @@
 $(function() {
   if ($('body.units.index').length) {
-
     function updateOptionValueUI(key, value) {
       var $options = $('.filters-container').find('.' + key);
 
@@ -115,6 +114,5 @@ $(function() {
         }
       }
     });
-
   }
 });
