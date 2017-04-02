@@ -17,6 +17,7 @@
 //= require jquery.slick
 //= require jquery.countdown.min
 //= require nouislider.min
+//= require wNumb
 //= require ahoy
 //= require toastr_rails
 //= require selectize

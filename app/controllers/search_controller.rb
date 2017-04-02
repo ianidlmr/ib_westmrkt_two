@@ -31,6 +31,12 @@ class SearchController < ApplicationController
       end
     end
 
+    if params[:price].present?
+      @one_bedroom_units = @one_bedroom_units.joins(:units).where('units.price <= ?', params[:price]).distinct
+      @two_bedroom_units = @two_bedroom_units.joins(:units).where('units.price <= ?', params[:price]).distinct
+      @three_plus_bedroom_units = @three_plus_bedroom_units.joins(:units).where('units.price <= ?', params[:price]).distinct
+    end
+
     # bedroom_units.each { |units| map(&:units).flatten }
     @one_bedroom_units = @one_bedroom_units.map(&:units).flatten
     @two_bedroom_units = @two_bedroom_units.map(&:units).flatten
