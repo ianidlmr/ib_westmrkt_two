@@ -42,6 +42,9 @@ class User < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Associations
+  has_many :likes
+  has_many :units, through: :likes
+  has_many :liked_units, class_name: 'Like', foreign_key: 'user_id'
 
   #------------------------------------------------------------------------------
   # Scopes
