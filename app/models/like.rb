@@ -25,6 +25,7 @@ class Like < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Validations
+  validates :user_id, uniqueness: { scope: :unit_id }
 
   #------------------------------------------------------------------------------
   # Callbacks

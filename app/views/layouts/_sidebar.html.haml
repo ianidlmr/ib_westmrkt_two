@@ -20,8 +20,8 @@
     %li.sidebar-item
       .sidebar-item-text
         Help
-  - if user_signed_in?
-    .logout-container
+  .logout-container
+    - if user_signed_in?
       = link_to edit_user_registration_path do
         %li.sidebar-item
           .sidebar-item-text
@@ -31,6 +31,16 @@
         %li.sidebar-item
           .sidebar-item-text
             Sign Out
+    - else
+      %li.sidebar-item
+        .sidebar-item-text.sign-up-message
+          = link_to 'Sign Up', '#', 'data-toggle': 'modal', 'data-target': '#signup-modal', 'data-dismiss': 'modal'
+          or
+          = link_to 'Log In', '#', 'data-toggle': 'modal', 'data-target': '#login-modal', 'data-dismiss': 'modal'
+
+  %li.sidebar-item
+    .sidebar-item-text.phone-info
+      Need help?<strong> +1 (666) 123-9857</strong>
 
 
   / - else

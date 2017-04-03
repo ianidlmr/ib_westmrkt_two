@@ -263,8 +263,24 @@ nav.navbar {
     .sidebar-item-text {
       display: flex;
       flex-direction: column;
-    }
 
+      &.phone-info {
+        font-size: 15px;
+        font-weight: normal;
+        cursor: default;
+        display: block;
+      }
+
+      &.sign-up-message {
+        cursor: default;
+        display: block;
+
+        a {
+          color: black;
+          font-weight: bold;
+        }
+      }
+    }
 
     &:hover,
     &:active,
