@@ -401,6 +401,19 @@ nav.navbar {
   }
 }
 
+.btn-black {
+  background-color: black;
+  color: white;
+
+  &:hover,
+  &:active,
+  &:focus,
+  &:hover:active, {
+    opacity: 0.8;
+    color: black;
+  }
+}
+
 .search-unit-container {
   padding: 50px;
 }
@@ -658,7 +671,7 @@ footer {
 
 .trending-container {
   background: #e6e6e6;
-  padding-top: 60px;
+  padding-top: 90px;
   padding-bottom: 40px;
 
   @media #{$sm-down} {

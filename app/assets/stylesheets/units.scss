@@ -12,16 +12,26 @@ body.units.index {
 
     @media #{$sm-down} {
       flex-wrap: wrap;
-      padding-left: 0;
-      padding-right: 0;
+      padding: 0 33px;
     }
 
     .price-column {
       width: 40%;
-      padding: 0 30px;
+      padding: 0 38px;
 
       @media #{$sm-down} {
         width: 100%;
+        padding: 0 15px;
+      }
+
+      p.lowest-price {
+        position: absolute;
+        left: 4px;
+        top: 158px;
+
+        @media #{$sm-down} {
+          font-size: 14px;
+        }
       }
     }
 
@@ -118,6 +128,10 @@ body.units.index {
     border: none;
     width: 105px;
     background: transparent;
+
+    @media #{$sm-down} {
+      font-size: 14px;
+    }
   }
 }
 
