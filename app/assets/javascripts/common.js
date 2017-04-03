@@ -68,6 +68,14 @@ $(function() {
     + '<span>%M</span>m '
     + '<span>%S</span>s'));
   });
+
+  $('.saved-unit').on('click', function() {
+    if ($(this).children('.btn-checkout-container').hasClass('hidden')) {
+      $(this).children('.btn-checkout-container, .close-icon').removeClass('hidden');
+      $(this).children('.people-saved').css({'color': 'black'});
+      $(this).css({'background': '#f5f5f5'});
+    }
+  });
 });
 
 function showMask() {

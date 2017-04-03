@@ -1,7 +1,10 @@
 - unit_saved = @unit.likes.where(user: current_user).present?
 .saved-container{ style: (unit_saved ? 'background: #64c879;' : 'background: #ff5353;'), data: { url: like_unit_path } }
-  %p Save $20K CAD
-  - if unit_saved
-    %h1 + Added to Saved
-  - else
-    %h1 + Add to Saved
+  %p Save $#{price_converter(@unit.savings)} CAD
+  .saved-message
+    - if unit_saved
+      = image_tag('icons/tick-white.svg')
+      %h2 Added to Saved
+    - else
+      = image_tag('icons/add-white.svg')
+      %h2 Add to Saved

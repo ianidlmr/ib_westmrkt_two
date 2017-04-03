@@ -209,6 +209,19 @@ nav.navbar {
 .sidebar-nav {
   padding: 0;
 
+  .logout-container {
+    margin-top: 20px;
+
+    .sidebar-item {
+      padding: 10px 0px 10px 50px;
+    }
+
+    .sidebar-item-text {
+      font-size: 20px;
+      font-weight: normal;
+    }
+  }
+
   a {
     &:hover,
     &:active,
@@ -251,6 +264,7 @@ nav.navbar {
       display: flex;
       flex-direction: column;
     }
+
 
     &:hover,
     &:active,
@@ -887,6 +901,31 @@ p.number-of-bathrooms {
 .saved-unit {
   padding: 20px 0 20px 15px;
   border-top: 1px solid rgba(204, 204, 204, 0.8);
+  position: relative;
+  cursor: pointer;
+
+  .close-icon {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    cursor: pointer;
+  }
+
+  .btn-checkout-container {
+    margin-top: 10px
+  }
+
+  .btn-view {
+    background: transparent;
+    text-decoration: none;
+    border-radius: 3px;
+    border: 1px solid #e6e6e6;
+
+    a {
+      color: black;
+      text-decoration: none;
+    }
+  }
 
   p {
     margin-bottom: 0;
@@ -897,8 +936,19 @@ p.number-of-bathrooms {
   }
 
   h2 {
-    font-size: 20px;
+    font-size: 19px;
     font-weight: bold;
     margin: 0;
+  }
+}
+
+.saved-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    margin: 0;
+    margin-left: 5px;
   }
 }

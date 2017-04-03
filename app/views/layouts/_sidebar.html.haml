@@ -21,15 +21,17 @@
       .sidebar-item-text
         Help
   - if user_signed_in?
-    = link_to edit_user_registration_path do
-      %li.sidebar-item
-        .sidebar-item-text
-          My Account
+    .logout-container
+      = link_to edit_user_registration_path do
+        %li.sidebar-item
+          .sidebar-item-text
+            My Account
 
-    = link_to destroy_user_session_path, method: :delete do
-      %li.sidebar-item
-        .sidebar-item-text
-          Sign Out
+      = link_to destroy_user_session_path, method: :delete do
+        %li.sidebar-item
+          .sidebar-item-text
+            Sign Out
+
 
   / - else
   /   %li.sidebar-item
