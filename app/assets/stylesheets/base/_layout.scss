@@ -498,10 +498,7 @@ nav.navbar {
   }
 
   .saved-units-container {
-    padding: 40px;
-    padding-top: 130px;
-
-    p {
+    p.add-message {
       font-size: 23px;
       font-weight: bold;
       letter-spacing: 0.02em;
@@ -883,5 +880,25 @@ p.number-of-bathrooms {
 .circle {
   p.amount {
     margin-bottom: 3px;
+  }
+}
+
+
+.saved-unit {
+  padding: 20px 0 20px 15px;
+  border-top: 1px solid rgba(204, 204, 204, 0.8);
+
+  p {
+    margin-bottom: 0;
+    font-size: 13px;
+    color: #ccc;
+    opacity: 0.9;
+    font-weight: normal;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
   }
 }

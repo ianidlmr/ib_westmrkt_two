@@ -1,3 +1,3 @@
-%ul
-  %li
-    %h2= liked_unit.unit.orientation
+.saved-unit
+  %h2 Unit #{liked_unit.unit.unit_number} &#9632; $#{price_converter(liked_unit.unit.price)} &#9632; CAD &#8593; #{liked_unit.unit.orientation}
+  %p #{liked_unit.unit.users.count} people added to saved

@@ -27,4 +27,5 @@
       .copyright
         &copy; #{Time.zone.now.year} Railway Market as part of Lower Junction
     .col-xs-4.text-right
-      %p Terms & Privacy
+      = link_to terms_and_privacy_path do
+        %p Terms & Privacy

@@ -20,7 +20,10 @@ Rails.application.routes.draw do
     end
   end
 
+  #------------------------------------------------------------------------------
+  # STATIC PAGES
   get '/about' => 'home#about', as: 'about'
+  get '/terms-and-privacy' => 'home#terms_and_privacy', as: 'terms_and_privacy'
   root to: 'home#index'
 
   #------------------------------------------------------------------------------
