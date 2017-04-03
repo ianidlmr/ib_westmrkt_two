@@ -618,14 +618,47 @@ label.error {
 }
 
 footer {
+  padding: 30px 0;
+
   h1 {
+    color: #ccc;
     font-size: 16px;
+  }
+
+  p {
+    color: #ccc;
+    font-size: 14px;
+  }
+
+  .black {
+    color: black;
+    font-weight: bold;
+  }
+
+  .flex-row {
+    display: flex;
+  }
+
+  .flex-column {
+    width: 50%;
+  }
+
+  @media #{$sm-down} {
+    .pre-sale-flex-column {
+      display: flex;
+      width: 50%;
+      justify-content: space-between;
+    }
+  }
+
+  .copyright-row {
+    margin-top: 40px;
   }
 }
 
 .trending-container {
   background: #e6e6e6;
-  padding-top: 90px;
+  padding-top: 60px;
   padding-bottom: 40px;
 
   @media #{$sm-down} {
