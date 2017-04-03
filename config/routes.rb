@@ -7,16 +7,10 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     authenticated :user do
-      root to: 'home#landing'
-
       scope '/units' do
         put ':id/like-unit' => 'likes#like_unit', as: :like_unit
         put ':id/unlike-unit' => 'likes#unlike_unit', as: :unlike_unit
       end
-    end
-
-    unauthenticated :user do
-      root to: 'home#index', as: :unauthenticated_root
     end
   end
 
@@ -25,6 +19,9 @@ Rails.application.routes.draw do
       post '/search' => 'search#search', as: 'search'
     end
   end
+
+  get '/about' => 'home#about', as: 'about'
+  root to: 'home#index'
 
   #------------------------------------------------------------------------------
   # ROBOTS
