@@ -984,3 +984,16 @@ p.number-of-bathrooms {
     margin-left: 5px;
   }
 }
+
+
+.btn-google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .google-logo {
+    position: absolute;
+    width: 25px;
+    left: 40px;
+  }
+}
