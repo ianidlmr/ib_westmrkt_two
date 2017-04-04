@@ -8,7 +8,7 @@ class LikesController < ApplicationController
   end
 
   def unlike_unit
-    current_user.liked.where(unit: @likable_unit).first.destroy if @likable_unit.present?
+    current_user.liked_units.where(unit: @likable_unit).first.destroy if @likable_unit.present?
     @liked_units = current_user.liked_units
   end
 

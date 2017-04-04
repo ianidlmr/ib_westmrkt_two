@@ -69,7 +69,8 @@ $(function() {
     + '<span>%S</span>s'));
   });
 
-  $('.saved-unit').on('click', function() {
+  $('body').on('click', '.saved-unit', function(e) {
+     e.preventDefault();
     if ($(this).children('.btn-checkout-container').hasClass('hidden')) {
       $(this).children('.btn-checkout-container, .close-icon').removeClass('hidden');
       $(this).children('.people-saved').css({'color': 'black'});

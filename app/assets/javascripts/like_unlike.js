@@ -18,53 +18,41 @@ $(function() {
 
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
-        // ajaxToastrError(jqXHR);
       })
       .always(function() {
-
         sendingData = false;
       });
     }
   }
 
-  // function unlike(btnLike, btnUnlike) {
-  //   var url = btnUnlike.data('url');
-  //   var not_signed_in = btnUnlike.data('not-signed-in');
+  function unlike($closeIcon) {
+    var url = $closeIcon.data('url');
 
-  //   if (not_signed_in == true) {
-  //     window.location = url;
-  //     return;
-  //   }
+    if (!sendingData && url.length) {
+      sendingData = true;
 
-  //   if (!sendingData && url.length) {
-  //     sendingData = true;
-
-  //     $.ajax({
-  //       url: url,
-  //       type: 'PUT',
-  //       dataType: 'JSON'
-  //     })
-  //     .done(function(data) {
-  //       if (data.success) {
-  //         btnUnlike.fadeOut('fast', function(){
-  //           btnLike.fadeIn('fast', null);
-  //         });
-  //       } else {
-  //         toastrError(data.message);
-  //       }
-  //     })
-  //     .fail(function(jqXHR, textStatus, errorThrown) {
-  //       ajaxToastrError(jqXHR);
-  //     })
-  //     .always(function() {
-  //       btnUnlike.attr('disabled', false);
-  //       sendingData = false;
-  //     });
-  //   }
-  // }
+      $.ajax({
+        url: url,
+        type: 'PUT',
+        dataType: 'SCRIPT'
+      })
+      .done(function(data) {
+      })
+      .fail(function(jqXHR, textStatus, errorThrown) {
+      })
+      .always(function() {
+        sendingData = false;
+      });
+    }
+  }
 
   $('body').on('click', '.saved-container', function(e) {
     e.preventDefault();
     like($(this));
+  });
+
+  $('body').on('click', '.close-icon', function(e) {
+    e.preventDefault();
+    unlike($(this));
   });
 });
