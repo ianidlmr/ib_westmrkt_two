@@ -1,7 +1,7 @@
 .trending-container
   .container
     .tab-content
-      - bedrooms = @number_of_bedrooms.present? ? @number_of_bedrooms : ''
+      - bedrooms = @number_of_bedrooms.present? ? @number_of_bedrooms : '1'
       .tab-pane#one-bed{ role: "tabpanel", class: (bedrooms == '1' ? 'active' : '') }
         = render 'one_bedroom_units'
 
@@ -31,7 +31,7 @@
     .price-column
       %h1
         %strong Price Average
-      #price-average{data: { lowest_price: @lowest_price, highest_price: @highest_price}}
+      #price-average{ data: { lowest_price: @lowest_price, highest_price: @highest_price } }
       = hidden_field_tag 'price'
       %p.lowest-price $#{price_converter(@lowest_price)} CAD
 
@@ -52,7 +52,7 @@
     .bathroom-column
       %h1
         %strong Bathrooms
-      .bathroom-container{style: 'display: flex; justify-content: space-between;'}
+      .bathroom-container{ style: 'display: flex; justify-content: space-between;' }
         %p.number-of-bathrooms{ data: { value: '1' } } 1 Bathroom
         %p.number-of-bathrooms{ data: { value: '2' } } 2 Bathrooms
         %p.number-of-bathrooms{ data: { value: '3' } } 3+ Bathrooms
