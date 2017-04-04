@@ -439,8 +439,13 @@ nav.navbar {
   &:active,
   &:focus,
   &:hover:active, {
-    opacity: 0.8;
-    color: black;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+  }
+
+  &:active,
+  &:hover:active, {
+    background-color: rgba(0, 0, 0, 0.9);
   }
 }
 

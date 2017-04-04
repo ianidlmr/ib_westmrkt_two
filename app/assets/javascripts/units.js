@@ -55,13 +55,15 @@ $(function() {
       window.location.href = $(this).data('url');
     });
 
-    $('.den, .balcony, .number-of-bathrooms').on('click', function() {
+    $('.den, .balcony, .number-of-bathrooms').on('click', function(e) {
+      e.preventDefault();
       var key = this.className;
       $("input[name='" + key.trim().replace(/-/g, '_') + "']").val($(this).data('value'));
       updateOptionValueUI(key, $(this).data('value'));
     });
 
-    $('.filters').on('click', function() {
+    $('.filters').on('click', function(e) {
+      e.preventDefault();
       if($(".filters-container").css('top') == '-350px') {
         $(".filters-container").animate({ top: '113px' }, 300);
         showMask();
@@ -73,7 +75,7 @@ $(function() {
       }
     });
 
-    $('.btn-accept, .btn-decline').on('click', function(e) {
+    $('body').on('click', '.btn-accept, .btn-decline', function(e) {
       e.preventDefault();
       if($(".filters-container").css('top') == '113px'){
         $(".filters-container").animate({ top:'-350px' }, 300);
@@ -113,6 +115,16 @@ $(function() {
           });
         }
       }
+    });
+
+    $('body').on('click', '.btn-black', function(e) {
+      e.preventDefault();
+      $('.den, .balcony, .number-of-bathrooms').removeClass('bold');
+      $("input[name='balcony']").val('');
+      $("input[name='den']").val('');
+      $("input[name='number_of_bathrooms']").val('');
+      priceSlider.noUiSlider.set($('#price-average').data('highest-price'));
+      $('.btn-accept').trigger('click');
     });
   }
 });
