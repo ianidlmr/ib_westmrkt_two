@@ -615,9 +615,12 @@ label.error {
 
   &:active,
   &:focus,
-  &:hover:active, {
+  &:hover:active,
+  &.disabled,
+  &[disabled] {
     box-shadow: none;
     background: #f5f5f5;
+    opacity: 1;
   }
 }
 
