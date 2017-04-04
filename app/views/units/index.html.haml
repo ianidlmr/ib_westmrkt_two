@@ -1,24 +1,25 @@
 .trending-container
   .container
     .tab-content
-      .tab-pane.active#one-bed{ role: "tabpanel" }
+      - bedrooms = @number_of_bedrooms.present? ? @number_of_bedrooms : ''
+      .tab-pane#one-bed{ role: "tabpanel", class: (bedrooms == '1' ? 'active' : '') }
         = render 'one_bedroom_units'
 
-      .tab-pane#two-bed{ role: "tabpanel" }
+      .tab-pane#two-bed{ role: "tabpanel", class: (bedrooms == '2' ? 'active' : '') }
         = render 'two_bedroom_units'
 
-      .tab-pane#three-bed{ role: "tabpanel" }
+      .tab-pane#three-bed{ role: "tabpanel", class: (bedrooms == '3' ? 'active' : '') }
         = render 'three_plus_bedroom_units'
 
 
 %ul.nav.nav-pills.bedrooms-filter{ role: "tablist" }
-  %li.nav-item.bedroom.active
+  %li.nav-item.bedroom{ class: (bedrooms == '1' ? 'active' : '') }
     = link_to '1 Bedroom', '#one-bed', 'data-toggle': "tab", role: "tab", class: 'hidden-xs'
     = link_to '1 Bed', '#one-bed', 'data-toggle': "tab", role: "tab", class: 'visible-xs'
-  %li.nav-item.bedroom
+  %li.nav-item.bedroom{ class: (bedrooms == '2' ? 'active' : '') }
     = link_to '2 Bedrooms', '#two-bed', 'data-toggle': "tab", role: "tab", class: 'hidden-xs'
     = link_to '2 Bed', '#two-bed', 'data-toggle': "tab", role: "tab", class: 'visible-xs'
-  %li.nav-item.bedroom
+  %li.nav-item.bedroom{ class: (bedrooms == '3' ? 'active' : '') }
     = link_to '3+ Bedrooms', '#three-bed', 'data-toggle': "tab", role: "tab", class: 'hidden-xs'
     = link_to '3+ Bed', '#three-bed', 'data-toggle': "tab", role: "tab", class: 'visible-xs'
   %li.nav-item.empty

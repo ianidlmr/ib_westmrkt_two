@@ -10,7 +10,7 @@
         .search-container{ style: 'color: white;' }
           %p{style: 'display: inline-block;'} I'm looking for
           .select-container{ style: 'width: 170px; display: inline-block;' }
-            = select_tag 'unit_type', options_from_collection_for_select(UnitType.available, 'id', 'front_page_description', '1'), class: 'selectize'
+            = select_tag 'search', options_for_select(UnitType.available.select(:front_page_description).uniq.map(&:front_page_description).sort_by(&:to_i)), class: 'selectize'
 
   .row
     .col-xs-12.text-center
