@@ -51,7 +51,7 @@ $(function() {
       }
     });
 
-    $('.unit-panel').on('click', function() {
+    $('body').on('click', '.unit-panel', function() {
       window.location.href = $(this).data('url');
     });
 
