@@ -150,5 +150,13 @@ body.units.show {
 
   .login-link {
     text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:hover:active, {
+      text-decoration: none;
+      outline: none;
+    }
   }
 }
