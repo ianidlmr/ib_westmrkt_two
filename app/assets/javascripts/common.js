@@ -1,4 +1,6 @@
 $(function() {
+  $('.alert').not('.alert-danger').delay(3000).slideUp(750);
+
   $('body').on('click', function(e) {
     if ($(e.target).hasClass('hamburger-icon')) {
       showMask();
