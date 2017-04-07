@@ -1,13 +1,11 @@
-.panel.panel-default.unit-panel{ data: {url: unit_path(unit) } }
+.panel.panel-default.unit-panel{ data: { url: unit_path(unit) } }
   .panel-body
     - unit_type = unit.unit_type
     %h1= unit_type.name
-    - balcony_string = unit_type.balcony ? "balcony" : "no balcony"
-    - den_string = unit_type.den ? "den" : "no den"
-    - bathroom_string = unit_type.number_of_bathrooms > 1 ? "#{unit_type.number_of_bathrooms} bathrooms" : "#{unit_type.number_of_bathrooms} bathroom"
-    %p #{unit_type.interior_sqft} SQFT interior with #{unit_type.number_of_bedrooms} bedrooms and #{den_string} and #{balcony_string} and #{bathroom_string}
-    .view-container{style: 'display: flex; align-items: center; height: 25px;'}
-      %p.view-text.hidden{style: 'margin: 0; margin-right: 10px; font-size: 14px;'} View
+    - balcony_string = unit_type.balcony ? 'and balcony' : ''
+    %p #{unit_type.interior_sqft} SQFT interior included #{pluralize(unit_type.number_of_bathrooms, 'bathroom')} #{balcony_string}
+    .view-container{ style: 'display: flex; align-items: center; height: 25px;' }
+      %p.view-text.hidden{ style: 'margin: 0; margin-right: 10px; font-size: 14px;' } View
       = image_tag('icons/arrow-right-dark.svg')
   .panel-footer{ style: 'display: flex; width: 100%; padding: 0px;' }
     .units-left{ style: 'width: 50%; padding: 10px 15px;' }
