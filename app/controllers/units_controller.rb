@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 class UnitsController < ApplicationController
   def index
-    @one_bedroom_units = UnitType.where('number_of_bedrooms = ?', 1)
-    @two_bedroom_units = UnitType.where('number_of_bedrooms = ?', 2)
-    @three_plus_bedroom_units = UnitType.where('number_of_bedrooms >= ?', 3)
+    @one_bedroom_units = UnitType.where('number_of_bedrooms = ?', 1).order(:name)
+    @two_bedroom_units = UnitType.where('number_of_bedrooms = ?', 2).order(:name)
+    @three_plus_bedroom_units = UnitType.where('number_of_bedrooms >= ?', 3).order(:name)
 
     if params[:search].present?
       @number_of_bedrooms = params[:search].split('')[0]

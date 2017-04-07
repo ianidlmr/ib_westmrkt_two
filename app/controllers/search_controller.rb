@@ -2,9 +2,9 @@
 class SearchController < ApplicationController
   def search
     # @bathroom_units = (1..3).map { |unit|  UnitType.where('number_of_bedrooms', unit )}
-    @one_bedroom_units = UnitType.where('number_of_bedrooms = ?', 1)
-    @two_bedroom_units = UnitType.where('number_of_bedrooms = ?', 2)
-    @three_plus_bedroom_units = UnitType.where('number_of_bedrooms >= ?', 3)
+    @one_bedroom_units = UnitType.where('number_of_bedrooms = ?', 1).order(:name)
+    @two_bedroom_units = UnitType.where('number_of_bedrooms = ?', 2).order(:name)
+    @three_plus_bedroom_units = UnitType.where('number_of_bedrooms >= ?', 3).order(:name)
 
     if params[:den].present?
       # @bedroom_units.map { |units| }
