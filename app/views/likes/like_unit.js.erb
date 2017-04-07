@@ -2,3 +2,4 @@ $('.saved-units-container').html("<%= escape_javascript(render 'shared/saved_uni
 $('.saved-icon').html("<%= escape_javascript(render 'shared/saved_count') %>")
 $('.saved-container').css({'background': '#64c879'});
 $('.saved-container').children('.saved-message').html("<%= escape_javascript(image_tag('icons/tick-white.svg')) %><h2>Added to Saved</h2>")
+openSavedUnit();

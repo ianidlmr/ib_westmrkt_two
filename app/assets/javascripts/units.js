@@ -127,4 +127,23 @@ $(function() {
       $('.btn-accept').trigger('click');
     });
   }
+
+  if ($('body.units.show').length) {
+    openSavedUnit();
+  }
 });
+
+function openSavedUnit() {
+  var $savedUnits = $('.saved-units-container').find('.saved-unit');
+  var url = window.location.pathname;
+  var unitId = url.substring(url.lastIndexOf('/') + 1);
+
+  $savedUnits.each(function (i, node) {
+    var $option = $(node);
+    if ($option.data('unit-id') == unitId) {
+      $option.children('.btn-checkout-container, .close-icon').removeClass('hidden');
+      $option.children('.people-saved').css({'color': 'black'});
+      $option.css({'background': '#f5f5f5'});
+    }
+  });
+}

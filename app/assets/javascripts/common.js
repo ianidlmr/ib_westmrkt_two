@@ -1,6 +1,5 @@
 $(function() {
   $('body').on('click', function(e) {
-    // e.preventDefault();
     if ($(e.target).hasClass('hamburger-icon')) {
       showMask();
       $('.sidebar').addClass('sidebar-is-open');
