@@ -70,12 +70,20 @@ $(function() {
   });
 
   $('body').on('click', '.saved-unit', function(e) {
-     e.preventDefault();
-    if ($(this).children('.btn-checkout-container').hasClass('hidden')) {
-      $(this).children('.btn-checkout-container, .close-icon').removeClass('hidden');
-      $(this).children('.people-saved').css({'color': 'black'});
-      $(this).css({'background': '#f5f5f5'});
-    }
+    e.preventDefault();
+    var thisUnit = this;
+    var $savedUnits = $('.saved-units-container').find('.saved-unit');
+
+    $savedUnits.each(function (i, node) {
+      var $option = $(node);
+      if (thisUnit == node) {
+        $(thisUnit).children('.btn-checkout-container, .close-icon').removeClass('hidden');
+        $(thisUnit).children('.people-saved').css({'color': 'black'});
+        $(thisUnit).css({'background': '#f5f5f5'});
+      } else {
+        $option.children('.btn-checkout-container, .close-icon').addClass('hidden');
+      }
+    });
   });
 });
 
