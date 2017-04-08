@@ -30,9 +30,9 @@ gem 'selectize-rails'
 gem 'sendgrid-ruby'
 gem 'simple_form'
 gem 'stripe'
-gem 'toastr_rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'wannabe_bool'
+gem 'whenever', require: false
 
 group :development, :test do
   gem 'byebug', platform: :mri
