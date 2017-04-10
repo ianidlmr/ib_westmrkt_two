@@ -10,7 +10,6 @@
 @import 'slick';
 @import 'selectize';
 @import 'nouislider.min';
-@import 'toastr_rails';
 
 //------------------------------------------------------------------------------
 // Internal assets
@@ -21,3 +20,4 @@
 
 // Page specific styles
 @import 'units';
+@import 'orders';
