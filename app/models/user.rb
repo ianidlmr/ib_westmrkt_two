@@ -3,26 +3,29 @@
 #
 # Table name: users
 #
-#  id                     :integer          not null, primary key
-#  email                  :string           default(""), not null
-#  encrypted_password     :string           default(""), not null
-#  reset_password_token   :string
-#  reset_password_sent_at :datetime
-#  remember_created_at    :datetime
-#  sign_in_count          :integer          default("0"), not null
-#  current_sign_in_at     :datetime
-#  last_sign_in_at        :datetime
-#  current_sign_in_ip     :inet
-#  last_sign_in_ip        :inet
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#  provider               :string
-#  uid                    :string
-#  confirmation_token     :string
-#  confirmed_at           :datetime
-#  confirmation_sent_at   :datetime
-#  first_name             :string
-#  last_name              :string
+#  id                      :integer          not null, primary key
+#  email                   :string           default(""), not null
+#  encrypted_password      :string           default(""), not null
+#  reset_password_token    :string
+#  reset_password_sent_at  :datetime
+#  remember_created_at     :datetime
+#  sign_in_count           :integer          default("0"), not null
+#  current_sign_in_at      :datetime
+#  last_sign_in_at         :datetime
+#  current_sign_in_ip      :inet
+#  last_sign_in_ip         :inet
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  provider                :string
+#  uid                     :string
+#  confirmation_token      :string
+#  confirmed_at            :datetime
+#  confirmation_sent_at    :datetime
+#  first_name              :string
+#  last_name               :string
+#  phone_number            :string
+#  occupation              :string
+#  social_insurance_number :string
 #
 # Indexes
 #
@@ -36,8 +39,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable
-  devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable,
+  devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
 
   #------------------------------------------------------------------------------
@@ -45,17 +47,23 @@ class User < ApplicationRecord
   has_many :likes
   has_many :units, through: :likes
   has_many :liked_units, class_name: 'Like', foreign_key: 'user_id'
+  has_one :address
+  has_one :order
 
   #------------------------------------------------------------------------------
   # Scopes
+  accepts_nested_attributes_for :address
 
   #------------------------------------------------------------------------------
   # Validations
+  validate :sin_is_correct_length
 
   #------------------------------------------------------------------------------
   # Callbacks
-  # after_create :create_stripe_account
-  # after_save :update_stripe_account, if: :email_changed?
+  before_validation :normalize_phone_numbers
+  before_validation :normalize_sin
+  after_create :create_stripe_account
+  after_save :update_stripe_account, if: :email_changed?
 
   #------------------------------------------------------------------------------
   # Enumerations
@@ -101,18 +109,18 @@ class User < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # private
-  # def create_stripe_account
-  #   unless stripe_token.present? || Rails.env.test?
-  #     customer = Stripe::Customer.create(description: "User ID: #{id}", email: email)
-  #     update_columns(stripe_token: customer.id)
-  #   end
-  # end
+  def create_stripe_account
+    unless stripe_token.present? || Rails.env.test?
+      customer = Stripe::Customer.create(description: "User ID: #{id}", email: email)
+      update_columns(stripe_token: customer.id)
+    end
+  end
 
-  # def update_stripe_account
-  #   unless Rails.env.test?
-  #     customer = Stripe::Customer.retrieve(stripe_token)
-  #     customer.email = email
-  #     customer.save
-  #   end
-  # end
+  def update_stripe_account
+    unless Rails.env.test?
+      customer = Stripe::Customer.retrieve(stripe_token)
+      customer.email = email
+      customer.save
+    end
+  end
 end

@@ -13,6 +13,7 @@
 #  savings      :integer
 #  currency     :string
 #  unit_type_id :integer
+#  state        :string
 #
 # Indexes
 #
@@ -20,12 +21,14 @@
 #
 
 class Unit < ApplicationRecord
+  include AASM
+
   #------------------------------------------------------------------------------
   # Associations
   belongs_to :unit_type
-  belongs_to :user
   has_many :likes
   has_many :users, through: :likes
+  has_one :order
 
   #------------------------------------------------------------------------------
   # Scopes
@@ -38,6 +41,30 @@ class Unit < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Enumerations
+
+  #------------------------------------------------------------------------------
+  # AASM definitions
+  aasm(:state) do
+    state :available, initial: true
+    state :on_hold
+    state :bought
+
+    after_all_transitions :aasm_log_status_change
+
+    #--------------------------------------
+    # Events
+    event :place_order do
+      transitions from: :available, to: :on_hold
+    end
+
+    event :complete_order do
+      transitions from: :on_hold, to: :bought
+    end
+
+    event :cancel_order do
+      transitions from: :bought, to: :available
+    end
+  end
 
   #------------------------------------------------------------------------------
   # Class methods

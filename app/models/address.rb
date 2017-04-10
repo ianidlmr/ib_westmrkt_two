@@ -1,26 +1,27 @@
-# frozen_string_literal: true
 # == Schema Information
 #
-# Table name: unit_types
+# Table name: addresses
 #
-#  id                     :integer          not null, primary key
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#  name                   :string
-#  description            :text
-#  front_page_description :text
-#  number_of_bedrooms     :integer
-#  number_of_bathrooms    :integer
-#  balcony_sqft           :integer
-#  interior_sqft          :integer
-#  den                    :boolean
-#  balcony                :boolean
+#  id           :integer          not null, primary key
+#  street_1     :string
+#  street_2     :string
+#  city         :string
+#  state        :string
+#  postal_code  :string
+#  country_code :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  user_id      :integer
+#
+# Indexes
+#
+#  index_addresses_on_user_id  (user_id)
 #
 
-class UnitType < ApplicationRecord
+class Address < ApplicationRecord
   #------------------------------------------------------------------------------
   # Associations
-  has_many :units
+  belongs_to :user
 
   #------------------------------------------------------------------------------
   # Scopes
@@ -39,11 +40,6 @@ class UnitType < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Instance methods
-
-  # units available
-  def quantity_remaining
-    Unit.where(unit_type: self, state: :available).count
-  end
 
   #------------------------------------------------------------------------------
   # Rails Admin Config
