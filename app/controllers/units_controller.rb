@@ -9,7 +9,7 @@ class UnitsController < ApplicationController
       @number_of_bedrooms = params[:search].split('')[0]
     end
 
-    ordered_units_by_price = UnitType.available.joins(:units).order('units.price').map(&:units).flatten
+    ordered_units_by_price = UnitType.joins(:units).order('units.price').map(&:units).flatten
     @lowest_price = ordered_units_by_price.first.price
     @highest_price = ordered_units_by_price.last.price
 
