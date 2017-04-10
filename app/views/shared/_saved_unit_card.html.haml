@@ -3,5 +3,5 @@
   = image_tag('icons/dark.svg', class: 'close-icon hidden', data: { url: unlike_unit_path(liked_unit.unit) } )
   %p.people-saved #{liked_unit.unit.users.count} people added to saved
   .btn-checkout-container.hidden
-    %button.btn.btn-success Proceed to Checkout
+    %button.btn.btn-success= link_to 'Proceed to Checkout', new_unit_order_path(liked_unit.unit)
     %button.btn.btn-view= link_to 'View', unit_path(liked_unit.unit)

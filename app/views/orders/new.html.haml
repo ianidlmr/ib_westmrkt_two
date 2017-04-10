@@ -1,0 +1,93 @@
+= simple_form_for(@order, url: unit_orders_path) do |f|
+  .container
+    .row
+      .col-md-12
+        %h1 Checkout
+        %h2 Unit #{@unit.unit_number}-#{@unit.unit_type.name}
+
+        .id-upload-container
+          %h1 Upload your photo ID
+          %p We need a digital copy of your <strong>government issued identification.</strong> This will help us verify your identity and process the sale.
+
+        .personal-info-container
+          %h1 Your details
+          %p <strong>Important: </strong> Your details below must be the same as shown on photo ID you've uploaded.
+          = f.error_notification
+          .row
+            .col-sm-6
+              .form-inputs
+                = f.simple_fields_for :user do |u|
+                  .input-text-wrap
+                    = u.label 'First Name', class: 'input-text-label'
+                    = u.input :first_name, required: true, label: false
+                  .input-text-wrap
+                    = u.label 'Last Name', class: 'input-text-label'
+                    = u.input :last_name, required: true, label: false
+                  .input-text-wrap
+                    = u.label 'Phone', class: 'input-text-label'
+                    = u.input :phone_number, required: true, label: false
+                  .input-text-wrap
+                    = u.label 'Occupation', class: 'input-text-label'
+                    = u.input :occupation, required: true, label: false
+                  .input-text-wrap
+                    = u.label 'Social Insurance Number (optional)', class: 'input-text-label'
+                    = u.input :social_insurance_number, required: true, label: false
+
+            .col-sm-6
+              .form-inputs
+                = f.simple_fields_for :address do |a|
+                  .input-text-wrap
+                    = a.label 'Address line 1', class: 'input-text-label'
+                    = a.input :street_1, label: false
+                  .input-text-wrap
+                    = a.label 'Zip Code', class: 'input-text-label'
+                    = a.input :postal_code, label: false
+                  .input-text-wrap
+                    = a.label 'City', class: 'input-text-label'
+                    = a.input :city, label: false
+
+                  .input-text-wrap
+                    = a.label 'State', class: 'input-text-label'
+                    = a.input :state, label: false
+
+        .final-check-container
+          %p Final Check
+          %h1
+            %strong #{@unit.unit_type.name} Unit #{@unit.unit_number}
+          .row
+            .col-xs-6
+              %p Floor No.
+              %h2 #{@unit.floor_number}
+
+              %p Side of the bldg.
+              %h2 #{@unit.orientation}
+
+              %p Den
+              %h2 #{@unit.unit_type.den  ? 'Included' : 'Not Included'}
+
+              %p Balcony
+              %h2 #{@unit.unit_type.balcony ? 'Included' : 'Not Included'}
+
+            .col-xs-6
+              %p Bedrooms
+              %h2 #{@unit.unit_type.number_of_bedrooms}
+
+              %p Bathrooms
+              %h2 #{@unit.unit_type.number_of_bathrooms}
+
+              %p Interior SQFT
+              %h2 #{@unit.unit_type.interior_sqft}
+
+              %p Balcony SQFT
+              %h2 #{@unit.unit_type.balcony_sqft}
+
+        .deposit-container
+          .row
+            .col-xs-12
+              %h1 Your deposit will be $3000 CAD
+              %P The total price of your unit is $450 000 CAD
+
+        .form-actions.text-center
+          = f.button :submit, 'Next', class: 'btn btn-info btn-block'
+
+
