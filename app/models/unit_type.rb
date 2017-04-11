@@ -39,8 +39,6 @@ class UnitType < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Instance methods
-
-  # units available
   def quantity_remaining
     Unit.where(unit_type: self, state: :available).count
   end

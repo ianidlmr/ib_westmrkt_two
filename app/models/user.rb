@@ -37,8 +37,6 @@
 #
 
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :lockable, :timeoutable
   devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
 
@@ -48,7 +46,7 @@ class User < ApplicationRecord
   has_many :units, through: :likes
   has_many :liked_units, class_name: 'Like', foreign_key: 'user_id'
   has_one :address
-  has_one :order
+  has_many :orders
 
   #------------------------------------------------------------------------------
   # Scopes
@@ -56,12 +54,10 @@ class User < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Validations
-  validate :sin_is_correct_length
 
   #------------------------------------------------------------------------------
   # Callbacks
-  before_validation :normalize_phone_numbers
-  before_validation :normalize_sin
+  # before_validation :normalize_phone_numbers
   after_create :create_stripe_account
   after_save :update_stripe_account, if: :email_changed?
 
@@ -70,7 +66,6 @@ class User < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Class methods
-
   def self.from_omniauth(auth)
     if User.find_by(provider: auth.provider, uid: auth.uid).present?
       # User has used this OAuth provider before

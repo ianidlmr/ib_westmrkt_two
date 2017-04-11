@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170408014911) do
+ActiveRecord::Schema.define(version: 20170411152432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,17 +66,16 @@ ActiveRecord::Schema.define(version: 20170408014911) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string   "state"
     t.integer  "user_id"
     t.string   "stripe_charge_id"
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
     t.integer  "unit_id"
-    t.boolean  "payment_confirmed",             default: false
     t.string   "promo_code"
     t.boolean  "agree_to_deal_sheet",           default: false
     t.boolean  "agree_to_terms_and_conditions", default: false
     t.boolean  "broker",                        default: false
+    t.string   "payment_state",                 default: "in_progress"
     t.index ["unit_id"], name: "index_orders_on_unit_id", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
@@ -115,8 +114,8 @@ ActiveRecord::Schema.define(version: 20170408014911) do
   end
 
   create_table "units", force: :cascade do |t|
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.integer  "unit_number"
     t.integer  "floor_number"
     t.string   "orientation"
@@ -124,7 +123,7 @@ ActiveRecord::Schema.define(version: 20170408014911) do
     t.integer  "savings"
     t.string   "currency"
     t.integer  "unit_type_id"
-    t.string   "state"
+    t.string   "state",        default: "available"
     t.index ["unit_type_id"], name: "index_units_on_unit_type_id", using: :btree
   end
 

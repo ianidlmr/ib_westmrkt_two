@@ -13,7 +13,7 @@
 #  savings      :integer
 #  currency     :string
 #  unit_type_id :integer
-#  state        :string
+#  state        :string           default("available")
 #
 # Indexes
 #
@@ -62,7 +62,7 @@ class Unit < ApplicationRecord
     end
 
     event :cancel_order do
-      transitions from: :bought, to: :available
+      transitions from: :on_hold, to: :available
     end
   end
 
@@ -76,5 +76,11 @@ class Unit < ApplicationRecord
   # Rails Admin Config
 
   #------------------------------------------------------------------------------
-  # private
+  private
+
+  #--------------------------------------
+  # AASM STATE methods
+  def aasm_log_status_change
+    logger.debug "Unit state changing from #{aasm(:state).from_state} to #{aasm(:state).to_state} (event: #{aasm(:state).current_event})"
+  end
 end

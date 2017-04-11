@@ -12,7 +12,6 @@ class UserMailer < Devise::Mailer
         '-url-': confirmation_url(record, confirmation_token: token)
       }
     }
-
     sendgrid_send options
   end
 
