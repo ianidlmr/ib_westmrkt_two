@@ -13,7 +13,11 @@ Rails.application.routes.draw do
       end
 
       resources :units, only: [] do
-        resources :orders, only: [:new, :create]
+        resources :orders, only: [:new] do
+          collection do
+            resources :steps, only: [:show, :update], controller: 'orders/steps'
+          end
+        end
       end
     end
   end

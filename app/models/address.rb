@@ -28,6 +28,7 @@ class Address < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Validations
+  validates :street_1, :city, :state, :postal_code, :country_code, presence: true
 
   #------------------------------------------------------------------------------
   # Callbacks

@@ -97,29 +97,30 @@ class Order < ApplicationRecord
   end
 
   def charge_successful?
-    stripe_customer = Stripe::Customer.retrieve(patient.stripe_token)
+    stripe_customer = Stripe::Customer.retrieve(user.stripe_token)
 
     if stripe_customer.present?
       begin
         charge = Stripe::Charge.create(
-          amount: total_fee_cents,        # amount in cents
+          amount: total_fee_cents,
           currency: total_fee_currency.downcase,
-          customer: patient.stripe_token,
-          description: to_s,
+          customer: user.stripe_token,
           metadata: {
-            user_email: id,
-            user_id: id,
-            unit_id: patient.id,
-            order_id: patient.email,
+            order_id: id,
+            user_id: user.id,
+            user_email: user.email,
+            unit_id: unit.id,
           }
         )
+        return true
       rescue Stripe::CardError => e
-        # The card has been declined
         Rails.logger.info("Failed to charge user (#{user.id}) for order (#{id}): CARD ERROR")
         fail_payment!
+        return false
       end
     else
-      Rails.logger.info("Failed to charge user (#{user.id}) for appointment (#{id}): STRIPE USER (#{patient.stripe_token}) NOT FOUND")
+      Rails.logger.info("Failed to charge user (#{user.id}) for order (#{id}): STRIPE USER (#{user.stripe_token}) NOT FOUND")
+      return false
     end
   end
 
