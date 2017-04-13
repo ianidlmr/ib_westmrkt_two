@@ -554,6 +554,17 @@ nav.navbar {
       color: #ff5353;
     }
   }
+
+  .saved-unit-types .saved-unit:last-child,
+  .sold-units .sold-unit:last-child {
+    border-bottom: 1px solid rgba(204, 204, 204, 0.8);
+  }
+
+  .saved-unit-types > h2,
+  .sold-units > h2 {
+    padding: 20px 0px 5px 15px;
+    font-size: 14px;
+  }
 }
 
 label.error {
@@ -930,7 +941,8 @@ p.number-of-bathrooms {
 }
 
 
-.saved-unit {
+.saved-unit,
+.sold-unit {
   padding: 20px 0 20px 15px;
   border-top: 1px solid rgba(204, 204, 204, 0.8);
   position: relative;
@@ -974,6 +986,15 @@ p.number-of-bathrooms {
   }
 }
 
+.sold-unit {
+  cursor: default;
+
+  h2 {
+    font-weight: normal;
+    color: #ccc;
+  }
+}
+
 .saved-message {
   display: flex;
   justify-content: center;
@@ -984,7 +1005,6 @@ p.number-of-bathrooms {
     margin-left: 5px;
   }
 }
-
 
 .btn-google {
   display: flex;
