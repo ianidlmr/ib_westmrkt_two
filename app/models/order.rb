@@ -35,7 +35,7 @@ class Order < ApplicationRecord
   #------------------------------------------------------------------------------
   # Wicked Gem Step Attributes
   cattr_accessor :steps do
-    %w(update-personal-info finalize-payment)
+    %w(update-personal-info finalize-payment order-confirmation)
   end
 
   #------------------------------------------------------------------------------
@@ -43,6 +43,7 @@ class Order < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Callbacks
+  before_destroy :cancel_order
 
   #------------------------------------------------------------------------------
   # Enumerations
@@ -146,5 +147,9 @@ class Order < ApplicationRecord
       }
     }
     ApplicationMailer.sendgrid_send(options).deliver_now
+  end
+
+  def cancel_order
+    unit.cancel_order!
   end
 end

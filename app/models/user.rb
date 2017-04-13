@@ -98,6 +98,9 @@ class User < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Instance methods
+  def allow_multiple_orders?
+    allow_multiple_orders
+  end
 
   #------------------------------------------------------------------------------
   # Rails Admin Config
