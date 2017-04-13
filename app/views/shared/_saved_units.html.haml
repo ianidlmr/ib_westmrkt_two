@@ -1,6 +1,21 @@
-- if @liked_units.present?
-  - @liked_units.each do |liked_unit|
-    = render 'shared/saved_unit_card', liked_unit: liked_unit
+- if @liked_unit_groups.present?
+  - sold_units = []
+  - @liked_unit_groups.each do |liked_unit_group|
+    - if liked_unit_group.first[:state] == 'available'
+      .saved-unit-types
+        %h2= liked_unit_group.first[:name]
+        - liked_unit_group.second.each do |liked_unit|
+          = render 'shared/saved_unit_card', liked_unit: liked_unit
+    - else
+      - liked_unit_group.second.each do |liked_unit|
+        - sold_units << liked_unit
+
+  - if sold_units.present?
+    .sold-units
+      %h2 Sold
+      - sold_units.each do |sold_unit|
+        = render 'shared/sold_unit_card', liked_unit: sold_unit
+
 - else
   %p.add-message
     Use
