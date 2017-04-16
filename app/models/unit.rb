@@ -25,10 +25,11 @@ class Unit < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Associations
+  belongs_to :owner, class_name: 'User'
   belongs_to :unit_type
   has_many :likes
   has_many :users, through: :likes
-  has_one :order
+  has_many :orders
 
   #------------------------------------------------------------------------------
   # Scopes
@@ -47,21 +48,23 @@ class Unit < ApplicationRecord
   aasm(:state) do
     state :available, initial: true
     state :on_hold
-    state :bought
+    state :purchased
 
     after_all_transitions :aasm_log_status_change
 
     #--------------------------------------
     # Events
-    event :place_order do
+    event :hold do
       transitions from: :available, to: :on_hold
     end
 
-    event :complete_order do
-      transitions from: :on_hold, to: :bought
+    event :purchase do
+      transitions from: :on_hold, to: :purchased, after: Proc.new { |*args|
+        owner = order.user
+      }
     end
 
-    event :cancel_order do
+    event :cancel_hold do
       transitions from: :on_hold, to: :available
     end
   end

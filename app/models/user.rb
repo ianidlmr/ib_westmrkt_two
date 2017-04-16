@@ -42,8 +42,8 @@ class User < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Associations
+  has_many :units
   has_many :likes
-  has_many :units, through: :likes
   has_many :liked_units, class_name: 'Like', foreign_key: 'user_id'
   has_one :address
   has_many :orders
@@ -98,8 +98,8 @@ class User < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Instance methods
-  def allow_multiple_orders?
-    allow_multiple_orders
+  def personal_info_filled_in?
+    address.present? && first_name.present? && last_name.present? && phone_number.present? and occupation.present?
   end
 
   #------------------------------------------------------------------------------

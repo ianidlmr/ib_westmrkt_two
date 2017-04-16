@@ -1,19 +1,25 @@
 # frozen_string_literal: true
 class OrdersController < ApplicationController
+  before_action :can_checkout_unit?
+
   def new
-    if current_user.orders.in_progress.find_by(unit_id: params[:unit_id]).present?
-      @order = current_user.orders.in_progress.find_by(unit_id: params[:unit_id])
-      @unit = @order.unit
-    else
-      current_user.orders.in_progress.each(&:destroy!)
-      @unit = Unit.available.find(params[:unit_id])
-      @order = current_user.orders.new(unit: @unit)
-      @unit.place_order!
-      @order.save
-    end
-    redirect_to unit_step_path(@unit, Order.steps.first)
+    @unit = Unit.available.find(params[:unit_id])
+    current_user.orders.in_progress.each(&:expire!)
+    @order = current_user.orders.create!(unit: @unit)
+    @unit.hold!
+    redirect_to unit_step_path(@unit, @order.current_step)
   rescue ActiveRecord::RecordNotFound => e
-    flash[:error] = 'This unit is no longer available.'
-    redirect_to units_path
+    @unit = Unit.on_hold.find(params[:unit_id])
+    @order = current_user.orders.in_progress.find_by(unit: @unit)
+    redirect_to unit_step_path(@unit, @order.current_step)
+  end
+
+  private
+
+  def can_checkout_unit?
+    if current_user.orders.successful.count > 0 && !current_user.allowed_multiple_orders
+      flash[:error] = 'You are only allowed one order at the moment. If you would like more please contact our agents.'
+      redirect_to units_path and return
+    end
   end
 end

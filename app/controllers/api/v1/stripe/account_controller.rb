@@ -11,8 +11,6 @@ class Api::V1::Stripe::AccountController < Api::V1::Stripe::BaseController
     @object = @event.data.object
 
     case @event.type
-    when 'customer.updated'
-      customer_updated
     when 'charge.failed'
       charge_failed
     when 'charge.succeeded'
@@ -26,24 +24,16 @@ class Api::V1::Stripe::AccountController < Api::V1::Stripe::BaseController
 
   #------------------------------------------------------------------------------
   # EVENT HANDLING METHODS
-  def customer_updated
-    # => @object = Stripe::Customer
-  end
-
   def charge_succeeded
     # => @object = Stripe::Charge
     @order = Order.find_by(stripe_charge_id: @object.id)
-    if @order.present?
-      @order.confirm_payment!
-    end
+    @order.confirm_payment! if @order.present?
   end
 
   def charge_failed
     # => @object = Stripe::Charge
     @order = Order.find_by(stripe_charge_id: @object.id)
-    if @order.present?
-      @order.fail_payment!
-    end
+    @order.fail_payment! if @order.present?
   end
 
   #------------------------------------------------------------------------------

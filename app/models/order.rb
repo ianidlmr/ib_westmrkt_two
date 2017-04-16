@@ -13,6 +13,7 @@
 #  agree_to_terms_and_conditions :boolean          default("false")
 #  broker                        :boolean          default("false")
 #  payment_state                 :string           default("in_progress")
+#  current_step                  :string           default("update-personal-info")
 #
 # Indexes
 #
@@ -33,17 +34,10 @@ class Order < ApplicationRecord
   # Scopes
 
   #------------------------------------------------------------------------------
-  # Wicked Gem Step Attributes
-  cattr_accessor :steps do
-    %w(update-personal-info finalize-payment order-confirmation)
-  end
-
-  #------------------------------------------------------------------------------
   # Validations
 
   #------------------------------------------------------------------------------
   # Callbacks
-  before_destroy :cancel_order
 
   #------------------------------------------------------------------------------
   # Enumerations
@@ -55,6 +49,7 @@ class Order < ApplicationRecord
     state :pending_verification
     state :successful
     state :failed
+    state :expired
 
     after_all_transitions :aasm_log_status_change
 
@@ -67,6 +62,7 @@ class Order < ApplicationRecord
     event :confirm_payment do
       transitions from: :pending_verification, to: :successful
       after do
+        unit.purchase!(nil, order)
         send_payment_success_email
       end
     end
@@ -75,6 +71,13 @@ class Order < ApplicationRecord
       transitions from: :pending_verification, to: :failed
       after do
         send_payment_failed_email
+      end
+    end
+
+    event :expire do
+      transitions from: :in_progress, to: :expired
+      after do
+        unit.cancel_hold!
       end
     end
   end
@@ -94,7 +97,7 @@ class Order < ApplicationRecord
   #--------------------------------------
   # AASM STATE methods
   def aasm_log_status_change
-    logger.debug "Order state changing from #{aasm(:state).from_state} to #{aasm(:state).to_state} (event: #{aasm(:state).current_event})"
+    logger.debug "Order state changing from #{aasm(:payment_state).from_state} to #{aasm(:payment_state).to_state} (event: #{aasm(:payment_state).current_event})"
   end
 
   def charge_successful?
@@ -147,9 +150,5 @@ class Order < ApplicationRecord
       }
     }
     ApplicationMailer.sendgrid_send(options).deliver_now
-  end
-
-  def cancel_order
-    unit.cancel_order!
   end
 end
