@@ -1,4 +1,4 @@
-namespace :db_cleanup do
+namespace :orders do
 
   # Sets up logging - should only be called from other rake tasks
   task setup_logger: :environment do
@@ -10,11 +10,11 @@ namespace :db_cleanup do
   #------------------------------------------------------------------------------
   # status: Clean up in_progress Order records
   desc 'Clean up in_progress Order records'
-  task in_progress_orders: :setup_logger do
+  task remove_in_progress: :setup_logger do
     Rails.logger.info("===================")
-    Rails.logger.info("db_cleanup:in_progress_orders")
+    Rails.logger.info("orders:remove_in_progress")
 
-    Order.in_progress.where('updated_at >= ?', 20.minutes.ago.utc).destroy_all
+    Order.in_progress.where('updated_at <= ?', 20.minutes.ago.utc).each(&:expire!)
 
     Rails.logger.info('*******************')
   end
