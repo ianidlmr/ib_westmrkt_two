@@ -21,7 +21,7 @@
 class UnitType < ApplicationRecord
   has_many :units
 
-  def self.available
-    where('quantity_remaining > 0')
+  def quantity_remaining
+    Unit.where(unit_type: self, state: :available).count
   end
 end
