@@ -47,10 +47,10 @@ class User < ApplicationRecord
   has_many :liked_units, class_name: 'Like', foreign_key: 'user_id'
   has_one :address
   has_many :orders
+  accepts_nested_attributes_for :address
 
   #------------------------------------------------------------------------------
   # Scopes
-  accepts_nested_attributes_for :address
 
   #------------------------------------------------------------------------------
   # Validations
@@ -99,7 +99,7 @@ class User < ApplicationRecord
   #------------------------------------------------------------------------------
   # Instance methods
   def personal_info_filled_in?
-    address.present? && first_name.present? && last_name.present? && phone_number.present? and occupation.present?
+    address.present? && first_name.present? && last_name.present? && phone_number.present? && occupation.present?
   end
 
   #------------------------------------------------------------------------------

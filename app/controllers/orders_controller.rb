@@ -7,11 +7,11 @@ class OrdersController < ApplicationController
     current_user.orders.in_progress.each(&:expire!)
     @order = current_user.orders.create!(unit: @unit)
     @unit.hold!
-    redirect_to unit_step_path(@unit, @order.current_step)
+    redirect_to unit_step_path(@unit, @order.current_step) and return
   rescue ActiveRecord::RecordNotFound => e
     @unit = Unit.on_hold.find(params[:unit_id])
     @order = current_user.orders.in_progress.find_by(unit: @unit)
-    redirect_to unit_step_path(@unit, @order.current_step)
+    redirect_to unit_step_path(@unit, @order.current_step) and return
   end
 
   private

@@ -1,4 +1,4 @@
-= simple_form_for(@order, url: unit_step_path) do |f|
+= simple_form_for(@order, url: wizard_path, method: :put) do |f|
   .container
     .row
       .col-md-12
@@ -7,8 +7,6 @@
 
         .personal-info-container
           %h1 Your details
-          %p <strong>Important: </strong> Your details below must be the same as shown on photo ID you've uploaded.
-          = f.error_notification
           .row
             .col-sm-6
               .form-inputs
@@ -48,26 +46,28 @@
           %h1
             %strong #{@unit.unit_type.name} Unit #{@unit.unit_number}
           .row
-            .col-xs-6
+            .col-xs-3
               %p{style: 'margin: 0'} Floor No.
               %h2{style: 'margin: 0; margin-bottom: 20px;'} #{@unit.floor_number}
 
               %p{style: 'margin: 0'} Side of the bldg.
               %h2{style: 'margin: 0; margin-bottom: 20px;'} #{@unit.orientation}
 
+            .col-xs-3
               %p{style: 'margin: 0'} Den
               %h2{style: 'margin: 0; margin-bottom: 20px;'} #{@unit.unit_type.den  ? 'Included' : 'Not Included'}
 
               %p{style: 'margin: 0'} Balcony
               %h2{style: 'margin: 0; margin-bottom: 20px;'} #{@unit.unit_type.balcony ? 'Included' : 'Not Included'}
 
-            .col-xs-6
+            .col-xs-3
               %p{style: 'margin: 0'} Bedrooms
               %h2{style: 'margin: 0; margin-bottom: 20px;'} #{@unit.unit_type.number_of_bedrooms}
 
               %p{style: 'margin: 0'} Bathrooms
               %h2{style: 'margin: 0; margin-bottom: 20px;'} #{@unit.unit_type.number_of_bathrooms}
 
+            .col-xs-3
               %p{style: 'margin: 0'} Interior SQFT
               %h2{style: 'margin: 0; margin-bottom: 20px;'} #{@unit.unit_type.interior_sqft}
 
@@ -78,9 +78,7 @@
           .row
             .col-xs-12
               %h1 Your deposit will be $3000 CAD
-              %P The total price of your unit is $450 000 CAD
+              %P The total price of your unit is $#{@unit.price} CAD
 
         .form-actions.text-center
           = f.button :submit, 'Next', class: 'btn btn-info btn-block'
-
-

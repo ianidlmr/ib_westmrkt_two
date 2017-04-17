@@ -35,6 +35,8 @@ class Order < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Validations
+  validates :user_id, :unit_id, presence: true, if: :in_progress?
+  validates :stripe_charge_id, :agree_to_deal_sheet, :agree_to_terms_and_conditions, :broker, presence: true, if: :pending_verification?
 
   #------------------------------------------------------------------------------
   # Callbacks
@@ -108,7 +110,7 @@ class Order < ApplicationRecord
         charge = Stripe::Charge.create(
           amount: total_fee_cents,
           currency: total_fee_currency.downcase,
-          customer: user.stripe_token,
+          source: user.stripe_token,
           metadata: {
             order_id: id,
             user_id: user.id,
