@@ -8,7 +8,7 @@
         .countdown
 
         .search-container{ style: 'color: white;' }
-          %p{style: 'display: inline-block;'} I'm looking for
+          %p{ style: 'display: inline-block;' } I'm looking for
           .select-container{ style: 'width: 170px; display: inline-block;' }
             - options = UnitType.select(:number_of_bedrooms).distinct.sort_by(&:number_of_bedrooms).map{ |unit_type| pluralize(unit_type.number_of_bedrooms, 'bedroom') }
             = select_tag 'number_of_bedrooms', options_for_select(options), class: 'selectize'

@@ -23,6 +23,9 @@
 #  confirmation_sent_at   :datetime
 #  first_name             :string
 #  last_name              :string
+#  phone_number           :string
+#  occupation             :string
+#  allow_multiple_orders  :boolean          default("false")
 #
 # Indexes
 #
@@ -34,17 +37,17 @@
 #
 
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :lockable, :timeoutable
-  devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable,
+  devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
 
   #------------------------------------------------------------------------------
   # Associations
+  has_many :units
   has_many :likes
-  has_many :units, through: :likes
   has_many :liked_units, class_name: 'Like', foreign_key: 'user_id'
+  has_one :address
+  has_many :orders
+  accepts_nested_attributes_for :address
 
   #------------------------------------------------------------------------------
   # Scopes
@@ -54,15 +57,15 @@ class User < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Callbacks
-  # after_create :create_stripe_account
-  # after_save :update_stripe_account, if: :email_changed?
+  # before_validation :normalize_phone_numbers
+  after_create :create_stripe_account
+  after_save :update_stripe_account, if: :email_changed?
 
   #------------------------------------------------------------------------------
   # Enumerations
 
   #------------------------------------------------------------------------------
   # Class methods
-
   def self.from_omniauth(auth)
     if User.find_by(provider: auth.provider, uid: auth.uid).present?
       # User has used this OAuth provider before
@@ -95,24 +98,27 @@ class User < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Instance methods
+  def personal_info_filled_in?
+    address.present? && first_name.present? && last_name.present? && phone_number.present? && occupation.present?
+  end
 
   #------------------------------------------------------------------------------
   # Rails Admin Config
 
   #------------------------------------------------------------------------------
   # private
-  # def create_stripe_account
-  #   unless stripe_token.present? || Rails.env.test?
-  #     customer = Stripe::Customer.create(description: "User ID: #{id}", email: email)
-  #     update_columns(stripe_token: customer.id)
-  #   end
-  # end
+  def create_stripe_account
+    unless stripe_token.present? || Rails.env.test?
+      customer = Stripe::Customer.create(description: "User ID: #{id}", email: email)
+      update_columns(stripe_token: customer.id)
+    end
+  end
 
-  # def update_stripe_account
-  #   unless Rails.env.test?
-  #     customer = Stripe::Customer.retrieve(stripe_token)
-  #     customer.email = email
-  #     customer.save
-  #   end
-  # end
+  def update_stripe_account
+    unless Rails.env.test?
+      customer = Stripe::Customer.retrieve(stripe_token)
+      customer.email = email
+      customer.save
+    end
+  end
 end

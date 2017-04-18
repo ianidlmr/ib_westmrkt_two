@@ -13,6 +13,7 @@
 #  savings      :integer
 #  currency     :string
 #  unit_type_id :integer
+#  state        :string           default("available")
 #
 # Indexes
 #
@@ -20,12 +21,15 @@
 #
 
 class Unit < ApplicationRecord
+  include AASM
+
   #------------------------------------------------------------------------------
   # Associations
+  belongs_to :owner, class_name: 'User'
   belongs_to :unit_type
-  belongs_to :user
   has_many :likes
   has_many :users, through: :likes
+  has_many :orders
 
   #------------------------------------------------------------------------------
   # Scopes
@@ -40,6 +44,32 @@ class Unit < ApplicationRecord
   # Enumerations
 
   #------------------------------------------------------------------------------
+  # AASM definitions
+  aasm(:state) do
+    state :available, initial: true
+    state :on_hold
+    state :purchased
+
+    after_all_transitions :aasm_log_status_change
+
+    #--------------------------------------
+    # Events
+    event :hold do
+      transitions from: :available, to: :on_hold
+    end
+
+    event :purchase do
+      transitions from: :on_hold, to: :purchased, after: Proc.new { |*args|
+        owner = order.user
+      }
+    end
+
+    event :cancel_hold do
+      transitions from: :on_hold, to: :available
+    end
+  end
+
+  #------------------------------------------------------------------------------
   # Class methods
 
   #------------------------------------------------------------------------------
@@ -49,5 +79,11 @@ class Unit < ApplicationRecord
   # Rails Admin Config
 
   #------------------------------------------------------------------------------
-  # private
+  private
+
+  #--------------------------------------
+  # AASM STATE methods
+  def aasm_log_status_change
+    logger.debug "Unit state changing from #{aasm(:state).from_state} to #{aasm(:state).to_state} (event: #{aasm(:state).current_event})"
+  end
 end

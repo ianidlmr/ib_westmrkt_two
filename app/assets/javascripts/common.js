@@ -71,7 +71,6 @@ $(function() {
   });
 
   $('body').on('click', '.saved-unit', function(e) {
-    e.preventDefault();
     var thisUnit = this;
     var $savedUnits = $('.saved-units-container').find('.saved-unit');
 
@@ -83,6 +82,8 @@ $(function() {
         $(thisUnit).css({'background': '#f5f5f5'});
       } else {
         $option.children('.btn-checkout-container, .close-icon').addClass('hidden');
+        $option.children('.people-saved').css({'color': '#ccc'});
+        $option.css({'background': '#fff'});
       }
     });
   });

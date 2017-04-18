@@ -11,6 +11,14 @@ Rails.application.routes.draw do
         put ':id/like-unit' => 'likes#like_unit', as: :like_unit
         put ':id/unlike-unit' => 'likes#unlike_unit', as: :unlike_unit
       end
+
+      resources :units, only: [] do
+        resources :orders, only: [:new] do
+          collection do
+            resources :steps, only: [:show, :update], controller: 'orders/steps'
+          end
+        end
+      end
     end
   end
 

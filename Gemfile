@@ -6,6 +6,7 @@ gem 'rails', '~> 5.0.2'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 
+gem 'aasm'
 gem 'ahoy_matey'
 gem 'airbrake', '5.2.3'
 gem 'airbrake-ruby', '1.2.2'
@@ -29,9 +30,10 @@ gem 'selectize-rails'
 gem 'sendgrid-ruby'
 gem 'simple_form'
 gem 'stripe'
-gem 'toastr_rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'wannabe_bool'
+gem 'whenever', require: false
+gem 'wicked'
 
 group :development, :test do
   gem 'byebug', platform: :mri

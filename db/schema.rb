@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170402195153) do
+ActiveRecord::Schema.define(version: 20170415051635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "street_1"
+    t.string   "street_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "postal_code"
+    t.string   "country_code"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -52,6 +65,22 @@ ActiveRecord::Schema.define(version: 20170402195153) do
     t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "stripe_charge_id"
+    t.datetime "created_at",                                                     null: false
+    t.datetime "updated_at",                                                     null: false
+    t.integer  "unit_id"
+    t.string   "promo_code"
+    t.boolean  "agree_to_deal_sheet",           default: false
+    t.boolean  "agree_to_terms_and_conditions", default: false
+    t.boolean  "broker",                        default: false
+    t.string   "payment_state",                 default: "in_progress"
+    t.string   "current_step",                  default: "update-personal-info"
+    t.index ["unit_id"], name: "index_orders_on_unit_id", using: :btree
+    t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
+  end
+
   create_table "pg_search_documents", force: :cascade do |t|
     t.text     "content"
     t.string   "searchable_type"
@@ -77,7 +106,6 @@ ActiveRecord::Schema.define(version: 20170402195153) do
     t.string   "name"
     t.text     "description"
     t.text     "front_page_description"
-    t.integer  "quantity_remaining"
     t.integer  "number_of_bedrooms"
     t.integer  "number_of_bathrooms"
     t.integer  "balcony_sqft"
@@ -87,8 +115,8 @@ ActiveRecord::Schema.define(version: 20170402195153) do
   end
 
   create_table "units", force: :cascade do |t|
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.integer  "unit_number"
     t.integer  "floor_number"
     t.string   "orientation"
@@ -96,22 +124,23 @@ ActiveRecord::Schema.define(version: 20170402195153) do
     t.integer  "savings"
     t.string   "currency"
     t.integer  "unit_type_id"
+    t.string   "state",        default: "available"
     t.index ["unit_type_id"], name: "index_units_on_unit_type_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "provider"
     t.string   "uid"
     t.string   "confirmation_token"
@@ -119,6 +148,9 @@ ActiveRecord::Schema.define(version: 20170402195153) do
     t.datetime "confirmation_sent_at"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "phone_number"
+    t.string   "occupation"
+    t.boolean  "allow_multiple_orders",  default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["provider"], name: "index_users_on_provider", using: :btree
@@ -157,7 +189,10 @@ ActiveRecord::Schema.define(version: 20170402195153) do
     t.index ["visit_token"], name: "index_visits_on_visit_token", unique: true, using: :btree
   end
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "likes", "units"
   add_foreign_key "likes", "users"
+  add_foreign_key "orders", "units"
+  add_foreign_key "orders", "users"
   add_foreign_key "units", "unit_types"
 end

@@ -19,7 +19,6 @@
 //= require nouislider.min
 //= require wNumb
 //= require ahoy
-//= require toastr_rails
 //= require selectize
 //= require_tree .
 
