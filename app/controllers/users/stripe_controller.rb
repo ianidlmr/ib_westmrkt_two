@@ -1,8 +1,8 @@
 class Users::StripeController < ApplicationController
   def add_card_to_stripe
-    @stripe_customer = Stripe::Customer.retrieve(current_patient.stripe_token)
+    @stripe_customer = Stripe::Customer.retrieve(current_user.stripe_token)
     begin
-      card = @stripe_customer.sources.create({:source => params[:token]}) if params[:token].present?
+      card = @stripe_customer.sources.create({source: params[:token][:id]}) if params[:token][:id].present?
 
       if card.present? && @stripe_customer.default_source != card.id
         @stripe_customer.default_source = card.id
@@ -15,7 +15,7 @@ class Users::StripeController < ApplicationController
     if @error_msg.present?
       render json: @error_msg
     else
-      render layout: false
+      render json: { status: :ok, message: 'success' }
     end
   end
 end

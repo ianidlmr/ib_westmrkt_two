@@ -8,8 +8,11 @@ $(function() {
       "order[user_attributes][occupation]": {required: true},
       "order[address][street_1]": {required: true},
       "order[address][city]": {required: true},
+      "order[address][country_code]": {required: true},
       "order[address][state]": {required: true},
-      "order[address][postal_code]": {required: true}
+      "order[address][postal_code]": {required: true},
+      "order[agree_to_deal_sheet]": {required: true},
+      "order[postal_code]": {required: true}
     },
 
     highlight: function(element, errorClass, validClass) {

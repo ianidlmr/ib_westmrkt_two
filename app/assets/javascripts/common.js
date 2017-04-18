@@ -87,6 +87,23 @@ $(function() {
       }
     });
   });
+
+  $('.help-option').click(function() {
+    var helpMenuArrow = $(this).children('.help-option svg');
+    var helpMenuAnswer = $(this).children('.help-option p');
+
+    if ( $(helpMenuArrow).hasClass('rotate-180') ) {
+      $(helpMenuArrow).removeClass('rotate-180');
+    } else if ( $(helpMenuArrow).not('rotate-180') )  {
+      $(helpMenuArrow).addClass('rotate-180');
+    }
+
+    if ( $(helpMenuAnswer).hasClass('help-active') ) {
+      $(helpMenuAnswer).removeClass('help-active');
+    } else if ( $(helpMenuAnswer).not('help-active') )  {
+      $(helpMenuAnswer).addClass('help-active');
+    }
+  });
 });
 
 function showMask() {

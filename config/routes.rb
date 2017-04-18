@@ -12,6 +12,12 @@ Rails.application.routes.draw do
         put ':id/unlike-unit' => 'likes#unlike_unit', as: :unlike_unit
       end
 
+      namespace :users do
+        scope 'stripe' do
+          put 'add_card_to_stripe'  => 'stripe#add_card_to_stripe'
+        end
+      end
+
       resources :units, only: [] do
         resources :orders, only: [:new] do
           collection do
@@ -28,6 +34,7 @@ Rails.application.routes.draw do
   # STATIC PAGES
   get '/about' => 'home#about', as: 'about'
   get '/terms-and-privacy' => 'home#terms_and_privacy', as: 'terms_and_privacy'
+  get '/help' => 'home#help', as: 'help'
   root to: 'home#index'
 
   #------------------------------------------------------------------------------

@@ -19,7 +19,8 @@
       .pre-sale-flex-column
         = link_to about_path do
           %p.black About
-        %p.black Help
+        = link_to help_path do
+          %p.black Help
         %p.black Press
 
 

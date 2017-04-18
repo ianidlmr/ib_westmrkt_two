@@ -15,6 +15,8 @@ class Api::V1::Stripe::AccountController < Api::V1::Stripe::BaseController
       charge_failed
     when 'charge.succeeded'
       charge_succeeded
+    when 'charge.refunded'
+      charge_refunded
     end
 
     render status: :ok, json: 'success'
@@ -31,6 +33,12 @@ class Api::V1::Stripe::AccountController < Api::V1::Stripe::BaseController
   end
 
   def charge_failed
+    # => @object = Stripe::Charge
+    @order = Order.find_by(stripe_charge_id: @object.id)
+    @order.fail_payment! if @order.present?
+  end
+
+  def charge_refunded
     # => @object = Stripe::Charge
     @order = Order.find_by(stripe_charge_id: @object.id)
     @order.fail_payment! if @order.present?

@@ -24,4 +24,3 @@
 
 // Project assets
 //= require common
-//= require units

@@ -1,5 +1,6 @@
 $(function() {
-  if ($('body.order-steps.show').length && typeof Stripe !== 'undefined') {
+  if ($('body.orders-steps.show').length && typeof Stripe !== 'undefined') {
+    var success = false;
     var stripe = Stripe('pk_test_eIAHlZIBEwVVMGXp7OaNuSsE');
 
     // Create an instance of Elements
@@ -42,21 +43,44 @@ $(function() {
     // Handle form submission
     var $form = $('.simple_form.edit_order');
     $form.on('submit', function(event) {
-      event.preventDefault();
+      if (!success) {
+        event.preventDefault();
 
-      stripe.createToken(card).then(function(result) {
-        if (result.error) {
-          // Inform the user if there was an error
-          var errorElement = document.getElementById('card-errors');
-          errorElement.textContent = result.error.message;
-        } else {
-          stripeTokenHandler(result.token);
-        }
-      });
+        stripe.createToken(card).then(function(result) {
+          if (result.error) {
+            // Inform the user if there was an error
+            var errorElement = document.getElementById('card-errors');
+            errorElement.textContent = result.error.message;
+          } else {
+            stripeTokenHandler(result.token);
+          }
+        });
+      }
     });
 
     function stripeTokenHandler(token) {
-      debugger;
+      $.ajax({
+        url: '/users/stripe/add_card_to_stripe',
+        type: 'PUT',
+        data: {token: token},
+        dataType: 'JSON',
+
+        success: function(data) {
+          success = true;
+          $form.submit();
+        },
+
+        error: function(jqXHR, textStatus, errorThrown) {
+          // $form.find('[type=submit]').html('Try again').prop('disabled', false).removeClass('success').addClass('error');
+          // /* Show Stripe errors on the form */
+          // if (jqXHR.responseText.length) {
+          //   $form.find('.payment-errors').text(jqXHR.responseText);
+          // } else {
+          //   $form.find('.payment-errors').text('Try refreshing the page and trying again.');
+          // }
+          // $form.find('.payment-errors').closest('.row').show();
+        }
+      });
     }
   }
 });

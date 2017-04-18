@@ -36,7 +36,7 @@ class Order < ApplicationRecord
   #------------------------------------------------------------------------------
   # Validations
   validates :user_id, :unit_id, presence: true, if: :in_progress?
-  validates :stripe_charge_id, :agree_to_deal_sheet, :agree_to_terms_and_conditions, :broker, presence: true, if: :pending_verification?
+  validates :stripe_charge_id, :agree_to_deal_sheet, :broker, presence: true, if: :pending_verification?
 
   #------------------------------------------------------------------------------
   # Callbacks
@@ -108,9 +108,9 @@ class Order < ApplicationRecord
     if stripe_customer.present?
       begin
         charge = Stripe::Charge.create(
-          amount: total_fee_cents,
-          currency: total_fee_currency.downcase,
-          source: user.stripe_token,
+          amount: unit.price,
+          currency: unit.currency.downcase,
+          customer: user.stripe_token,
           metadata: {
             order_id: id,
             user_id: user.id,
@@ -118,6 +118,7 @@ class Order < ApplicationRecord
             unit_id: unit.id,
           }
         )
+        update_column(:stripe_charge_id, charge.id)
         return true
       rescue Stripe::CardError => e
         Rails.logger.info("Failed to charge user (#{user.id}) for order (#{id}): CARD ERROR")

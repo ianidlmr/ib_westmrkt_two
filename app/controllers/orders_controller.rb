@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
   private
 
   def can_checkout_unit?
-    if current_user.orders.successful.count > 0 && !current_user.allowed_multiple_orders
+    if (current_user.orders.successful.count > 0 || current_user.orders.pending_verification.count > 0) && !current_user.allow_multiple_orders
       flash[:error] = 'You are only allowed one order at the moment. If you would like more please contact our agents.'
       redirect_to units_path and return
     end

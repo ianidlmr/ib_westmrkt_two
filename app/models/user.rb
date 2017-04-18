@@ -26,6 +26,7 @@
 #  phone_number           :string
 #  occupation             :string
 #  allow_multiple_orders  :boolean          default("false")
+#  stripe_token           :string
 #
 # Indexes
 #
@@ -99,7 +100,7 @@ class User < ApplicationRecord
   #------------------------------------------------------------------------------
   # Instance methods
   def personal_info_filled_in?
-    address.present? && first_name.present? && last_name.present? && phone_number.present? && occupation.present?
+    address.present?
   end
 
   #------------------------------------------------------------------------------
