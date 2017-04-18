@@ -74,6 +74,14 @@
               %p{style: 'margin: 0'} Balcony SQFT
               %h2{style: 'margin: 0; margin-bottom: 20px;'} #{@unit.unit_type.balcony_sqft}
 
+        .promo-container
+          .row
+            .col-xs-2
+              .form-inputs
+                .input-text-wrap
+                  = f.label 'Promo Code'
+                  = f.input :promo_code, label: false
+
         .deposit-container
           .row
             .col-xs-12
