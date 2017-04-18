@@ -26,13 +26,15 @@ $(function() {
     }
 
     var searchParams = {
-      // balcony: getParameterByName('balcony') !== null && getParameterByName('balcony').length > 0  ? JSON.parse(getParameterByName('balcony')) : '',
-      // den: getParameterByName('den') !== null && getParameterByName('den').length > 0 ? JSON.parse(getParameterByName('den')) : '',
-      // 'number-of-bathrooms': getParameterByName('number_of_bathrooms') !== null && getParameterByName('number_of_bathrooms').length > 0 ? JSON.parse(getParameterByName('number_of_bathrooms')) : '',
-      // price: getParameterByName('price') !== null && getParameterByName('price').length > 0 ? JSON.parse(getParameterByName('price')) : ''
+      balcony: getParameterByName('balcony') !== null && getParameterByName('balcony').length > 0  ? JSON.parse(getParameterByName('balcony')) : '',
+      den: getParameterByName('den') !== null && getParameterByName('den').length > 0 ? JSON.parse(getParameterByName('den')) : '',
+      'number-of-bathrooms': getParameterByName('number_of_bathrooms') !== null && getParameterByName('number_of_bathrooms').length > 0 ? JSON.parse(getParameterByName('number_of_bathrooms')) : '',
+      price: getParameterByName('price') !== null && getParameterByName('price').length > 0 ? JSON.parse(getParameterByName('price')) : ''
     };
 
-    Object.keys(searchParams).map(key => updateOptionValueUI(key, searchParams[key]));
+    Object.keys(searchParams).map(function(key) {
+      updateOptionValueUI(key, searchParams[key])
+    });
 
     var priceSlider = document.getElementById('price-average');
     noUiSlider.create(priceSlider, {
@@ -127,7 +129,9 @@ $(function() {
             data: dataObject,
             beforeSend: function() {
               $('.tab-pane#one-bed, .tab-pane#two-bed, .tab-pane#three-bed').html("<div class='dot-animation-two'><div class='circleone'></div><div class='circletwo'></div><div class='circlethree'></div></div>");
-              window.history.pushState(null, document.title, '?' + Object.keys(dataObject).map(key => key + "=" + dataObject[key]).join('&'));
+              window.history.pushState(null, document.title, '?' + Object.keys(dataObject).map(function(key) {
+                key + "=" + dataObject[key]).join('&')
+              });
             }
           })
           .done(function(data) {
@@ -147,7 +151,6 @@ $(function() {
       $("input[name='balcony']").val('');
       $("input[name='den']").val('');
       $("input[name='number_of_bathrooms']").val('');
-      debugger;
       priceSlider.noUiSlider.set($('#price-average').data('highest-price'));
       $('.btn-accept').trigger('click');
     });

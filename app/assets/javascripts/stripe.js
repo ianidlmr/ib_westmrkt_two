@@ -46,15 +46,15 @@ $(function() {
       if (!success) {
         event.preventDefault();
 
-        // stripe.createToken(card).then(function(result) {
-        //   if (result.error) {
-        //     // Inform the user if there was an error
-        //     var errorElement = document.getElementById('card-errors');
-        //     errorElement.textContent = result.error.message;
-        //   } else {
-        //     stripeTokenHandler(result.token);
-        //   }
-        // });
+        stripe.createToken(card).then(function(result) {
+          if (result.error) {
+            // Inform the user if there was an error
+            var errorElement = document.getElementById('card-errors');
+            errorElement.textContent = result.error.message;
+          } else {
+            stripeTokenHandler(result.token);
+          }
+        });
       }
     });
 
