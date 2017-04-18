@@ -58,8 +58,8 @@
       = hidden_field_tag 'number_of_bathrooms'
 
   .btn-container
-    = link_to 'Decline', '#', class: 'btn-decline'
-    = link_to 'Accept', '#', data: { url: search_units_path }, class: 'btn-accept'
+    = link_to 'Clear All', '#', class: 'btn-clear'
+    = link_to 'Accept', '#', class: 'btn-accept'
 
 = render 'shared/signup_modal'
 = render 'shared/login_modal'

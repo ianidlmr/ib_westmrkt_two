@@ -22,11 +22,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :units, only: [:index, :show] do
-    collection do
-      post '/search' => 'search#search', as: 'search'
-    end
-  end
+  resources :units, only: [:index, :show]
 
   #------------------------------------------------------------------------------
   # STATIC PAGES

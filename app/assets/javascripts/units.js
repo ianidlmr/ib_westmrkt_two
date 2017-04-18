@@ -1,5 +1,17 @@
 $(function() {
   if ($('body.units.index').length) {
+
+    function getParameterByName(name, url) {
+      if (!url) {
+        url = window.location.href;
+      }
+      name = name.replace(/[\[\]]/g, "\\$&");
+      var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"), results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
     function updateOptionValueUI(key, value) {
       var $options = $('.filters-container').find('.' + key);
 
@@ -12,6 +24,15 @@ $(function() {
         }
       });
     }
+
+    var searchParams = {
+      balcony: getParameterByName('balcony') !== null && getParameterByName('balcony').length > 0  ? JSON.parse(getParameterByName('balcony')) : '',
+      den: getParameterByName('den') !== null && getParameterByName('den').length > 0 ? JSON.parse(getParameterByName('den')) : '',
+      'number-of-bathrooms': getParameterByName('number_of_bathrooms') !== null && getParameterByName('number_of_bathrooms').length > 0 ? JSON.parse(getParameterByName('number_of_bathrooms')) : '',
+      price: getParameterByName('price') !== null && getParameterByName('price').length > 0 ? JSON.parse(getParameterByName('price')) : ''
+    };
+
+    Object.keys(searchParams).map(key => updateOptionValueUI(key, searchParams[key]));
 
     var priceSlider = document.getElementById('price-average');
     noUiSlider.create(priceSlider, {
@@ -51,6 +72,8 @@ $(function() {
       }
     });
 
+    priceSlider.noUiSlider.set(searchParams['price']);
+
     $('body').on('click', '.unit-panel', function() {
       window.location.href = $(this).data('url');
     });
@@ -75,7 +98,7 @@ $(function() {
       }
     });
 
-    $('body').on('click', '.btn-accept, .btn-decline', function(e) {
+    $('body').on('click', '.btn-accept, .btn-clear', function(e) {
       e.preventDefault();
       if($(".filters-container").css('top') == '113px'){
         $(".filters-container").animate({ top:'-350px' }, 300);
@@ -89,21 +112,22 @@ $(function() {
 
       if ($(this).hasClass('btn-accept')) {
         var sendingData = false;
-        var url = $(this).data('url');
         var priceSlider = document.getElementById('price-average');
         var priceVal = parseFloat(priceSlider.noUiSlider.get().match(/[\d\.]+/g)[0]);
         var price = priceVal < 100 ? priceVal * 1000000 : priceVal * 1000;
+        var dataObject = { balcony: $("input[name='balcony']").val(), den: $("input[name='den']").val(), number_of_bathrooms: $("input[name='number_of_bathrooms']").val(), price: price};
 
         if (!sendingData) {
           sendingData = true;
 
           $.ajax({
-            url: url,
-            type: 'POST',
+            url: '/units',
+            type: 'GET',
             dataType: 'SCRIPT',
-            data: { balcony: $("input[name='balcony']").val(), den: $("input[name='den']").val(), number_of_bathrooms: $("input[name='number_of_bathrooms']").val(), price: price},
+            data: dataObject,
             beforeSend: function() {
               $('.tab-pane#one-bed, .tab-pane#two-bed, .tab-pane#three-bed').html("<div class='dot-animation-two'><div class='circleone'></div><div class='circletwo'></div><div class='circlethree'></div></div>");
+              window.history.pushState(null, document.title, '?' + Object.keys(dataObject).map(key => key + "=" + dataObject[key]).join('&'));
             }
           })
           .done(function(data) {
@@ -117,12 +141,13 @@ $(function() {
       }
     });
 
-    $('body').on('click', '.btn-black', function(e) {
+    $('body').on('click', '.btn-black, .btn-clear', function(e) {
       e.preventDefault();
       $('.den, .balcony, .number-of-bathrooms').removeClass('bold');
       $("input[name='balcony']").val('');
       $("input[name='den']").val('');
       $("input[name='number_of_bathrooms']").val('');
+      debugger;
       priceSlider.noUiSlider.set($('#price-average').data('highest-price'));
       $('.btn-accept').trigger('click');
     });
