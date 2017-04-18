@@ -21,11 +21,13 @@ body.home.help {
 
   .help-option {
     cursor: pointer;
+    position: relative;
   }
 
   .help-option svg {
+    position: absolute;
     top: 10px;
-    right: -7%;
+    right: 0;
   }
 
   .help-option p {
