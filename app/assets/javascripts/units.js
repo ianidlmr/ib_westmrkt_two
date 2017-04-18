@@ -32,7 +32,7 @@ $(function() {
       price: getParameterByName('price') !== null && getParameterByName('price').length > 0 ? JSON.parse(getParameterByName('price')) : ''
     };
 
-    Object.keys(searchParams).map(function(key) {
+    Object.keys(searchParams).forEach(function(key) {
       updateOptionValueUI(key, searchParams[key])
     });
 
@@ -129,9 +129,11 @@ $(function() {
             data: dataObject,
             beforeSend: function() {
               $('.tab-pane#one-bed, .tab-pane#two-bed, .tab-pane#three-bed').html("<div class='dot-animation-two'><div class='circleone'></div><div class='circletwo'></div><div class='circlethree'></div></div>");
-              window.history.pushState(null, document.title, '?' + Object.keys(dataObject).map(function(key) {
-                key + "=" + dataObject[key]).join('&')
-              });
+
+              var queryString = Object.keys(dataObject).map(function(key) {
+                return key + "=" + dataObject[key];
+              }).join('&');
+              window.history.pushState(null, document.title, '?' + queryString);
             }
           })
           .done(function(data) {
