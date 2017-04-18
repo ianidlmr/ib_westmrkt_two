@@ -1,5 +1,12 @@
 $(function() {
   $('.alert').not('.alert-danger').delay(3000).slideUp(750);
+  $('.about-carousel').slick({
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    adaptiveHeight: true
+  });
 
   $('body').on('click', function(e) {
     if ($(e.target).hasClass('hamburger-icon')) {

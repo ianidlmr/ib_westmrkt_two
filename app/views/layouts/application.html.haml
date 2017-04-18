@@ -8,11 +8,13 @@
     -# The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
 
     %title RailwayMrkt
-    %script{:src => "https://api.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js"}
-    %link{:href => "https://api.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css", :rel => "stylesheet"}/
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
+
+    - if "#{controller_path.tr('_', '-').tr('/', '-')} #{action_name.tr('_', '-')}" == "home about"
+      %script{ src: "https://api.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js" }/
+      %link{ href: "https://api.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css", rel: "stylesheet" }/
 
     -# Loading Typekit font
     = javascript_include_tag 'https://use.typekit.net/nff7niv.js'
