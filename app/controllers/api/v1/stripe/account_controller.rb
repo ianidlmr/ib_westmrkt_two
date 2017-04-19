@@ -41,7 +41,7 @@ class Api::V1::Stripe::AccountController < Api::V1::Stripe::BaseController
   def charge_refunded
     # => @object = Stripe::Charge
     @order = Order.find_by(stripe_charge_id: @object.id)
-    @order.fail_payment! if @order.present?
+    @order.refund_payment! if @order.present?
   end
 
   #------------------------------------------------------------------------------

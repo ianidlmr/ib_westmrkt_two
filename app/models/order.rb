@@ -51,6 +51,7 @@ class Order < ApplicationRecord
     state :pending_verification
     state :successful
     state :failed
+    state :refunded
     state :expired
 
     after_all_transitions :aasm_log_status_change
@@ -64,8 +65,8 @@ class Order < ApplicationRecord
     event :confirm_payment do
       transitions from: :pending_verification, to: :successful
       after do
-        unit.purchase!(nil, order)
         send_payment_success_email
+        unit.purchase!(nil, self)
       end
     end
 
@@ -73,6 +74,14 @@ class Order < ApplicationRecord
       transitions from: :pending_verification, to: :failed
       after do
         send_payment_failed_email
+      end
+    end
+
+    event :refund_payment do
+      transitions from: [:pending_verification, :successful], to: :refunded
+      after do
+        send_payment_refunded_email
+        unit.cancel_hold!
       end
     end
 
@@ -122,7 +131,6 @@ class Order < ApplicationRecord
         return true
       rescue Stripe::CardError => e
         Rails.logger.info("Failed to charge user (#{user.id}) for order (#{id}): CARD ERROR")
-        fail_payment!
         return false
       end
     else
@@ -132,26 +140,32 @@ class Order < ApplicationRecord
   end
 
   def send_payment_success_email
-    options = {
-      to: user.email,
-      subject: 'You have successfully pre-ordered a unit at Railway Market',
-      template_id: '72acd583-1649-49ef-9fbd-41a1d42a6ada',
-      substitutions: {
-        # '-url-':
+    ApplicationMailer.sendgrid_send(
+      options = {
+        to: user.email,
+        subject: 'You have successfully pre-ordered a unit at Railway Market',
+        template_id: '72acd583-1649-49ef-9fbd-41a1d42a6ada'
       }
-    }
-    ApplicationMailer.sendgrid_send(options).deliver_now
+    ).deliver_now
   end
 
   def send_payment_failed_email
-    options = {
-      to: user.email,
-      subject: 'Something went wrong while processing your payment at Railway Market',
-      template_id: '3e076287-1dab-4cee-be0f-055d94d0cbef',
-      substitutions: {
-        # '-url-':
+    ApplicationMailer.sendgrid_send(
+      options = {
+        to: user.email,
+        subject: 'Something went wrong while processing your payment at Railway Market',
+        template_id: '3e076287-1dab-4cee-be0f-055d94d0cbef'
       }
-    }
-    ApplicationMailer.sendgrid_send(options).deliver_now
+    ).deliver_now
+  end
+
+  def send_payment_refunded_email
+    ApplicationMailer.sendgrid_send(
+      options = {
+        to: user.email,
+        subject: 'We have refunded your payment at Railway Market',
+        template_id: '3e0169a6-6fc8-4a2b-b0d6-6f28675c1a00'
+      }
+    ).deliver_now
   end
 end

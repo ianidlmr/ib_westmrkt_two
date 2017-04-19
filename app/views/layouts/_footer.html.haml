@@ -10,7 +10,7 @@
         - options = UnitType.select(:number_of_bedrooms).distinct.sort_by(&:number_of_bedrooms).each_slice(3) do |front_page_description_slice|
           .flex-column
             - front_page_description_slice.each do |unit_type|
-              = link_to units_path(search: pluralize(unit_type.number_of_bedrooms, 'bedroom')) do
+              = link_to units_path(number_of_bedrooms: pluralize(unit_type.number_of_bedrooms, 'bedroom')) do
                 %p.black
                   %strong= pluralize(unit_type.number_of_bedrooms, 'bedroom')
 

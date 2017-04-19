@@ -14,9 +14,11 @@
 #  currency     :string
 #  unit_type_id :integer
 #  state        :string           default("available")
+#  owner_id     :integer
 #
 # Indexes
 #
+#  index_units_on_owner_id      (owner_id)
 #  index_units_on_unit_type_id  (unit_type_id)
 #
 
@@ -59,13 +61,16 @@ class Unit < ApplicationRecord
     end
 
     event :purchase do
-      transitions from: :on_hold, to: :purchased, after: Proc.new { |*args|
-        owner = order.user
+      transitions from: :on_hold, to: :purchased, after: Proc.new { |order|
+        update_column(:owner_id, order.user.id)
       }
     end
 
     event :cancel_hold do
-      transitions from: :on_hold, to: :available
+      transitions from: [:on_hold, :purchased], to: :available
+      after do
+        update_column(:owner_id, nil)
+      end
     end
   end
 
