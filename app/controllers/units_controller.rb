@@ -46,6 +46,15 @@ class UnitsController < ApplicationController
     @unit_views = Ahoy::Event.all.map { |event| event.properties['id'] }.count(@unit.id.to_s)
   end
 
+  def unit_number_search
+    @unit = Unit.find_by(unit_number: params[:unit_number])
+    if @unit.present?
+      render js: "window.location = '#{unit_path(@unit)}'"
+    else
+      render js: "window.location = '#{units_path}'"
+    end
+  end
+
   private
 
   def querybuilder(params)

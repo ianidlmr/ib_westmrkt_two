@@ -167,16 +167,50 @@ body.units.show {
     margin-top: 40px;
     position: fixed;
 
-    // .units-dropdown
-    .trending-container,
+    .units-dropdown {
+      padding: 15px;
+
+      .select-container {
+        width: 100%;
+        background: $brand-info;
+      }
+    }
+
     .checkout-container {
       padding: 25px;
+    }
+
+    .trending-container {
+      padding: 10px 25px;
+
+      .title {
+        font-size: 12px;
+        color: $brand-success;
+        font-weight: bold;
+      }
+
+      .description {
+        font-size: 12px;
+
+      }
     }
 
     .price-container,
     .checkout-container,
     .unit-info-footer {
       border-bottom: 1px solid rgba(204, 204, 204, 0.8);
+    }
+
+    .price-container {
+      padding: 20px;
+
+      .price {
+        margin: 0;
+      }
+
+      .parking {
+        font-size: 12px;
+      }
     }
 
     .checkout-container {
@@ -201,11 +235,3 @@ body.units.show {
     }
   }
 }
-
-
-
-
-
-
-
-

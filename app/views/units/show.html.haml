@@ -45,15 +45,15 @@
       #floating-box{style: 'margin-left: 5%;'}
         .units-dropdown.text-center
           %p Available units in this layout
-          .select-container{ style: 'width: 170px; display: inline-block;' }
-            - options = UnitType.select(:number_of_bedrooms).distinct.sort_by(&:number_of_bedrooms).map{ |unit_type| pluralize(unit_type.number_of_bedrooms, 'bedroom') }
+          .select-container
+            - options = Unit.where(unit_type: @unit.unit_type).map{ |unit| ('Unit ' + unit.unit_number.to_s) }
             = select_tag 'number_of_bedrooms', options_for_select(options), class: 'selectize'
         .trending-container
-          %p Trending now
-          %p It's highly possible this unit will be sold out this week
+          %p.title Trending now
+          %p.description It's highly possible this unit will be sold out this week
         .price-container.text-center
-          %h2 $#{@unit.price}
-          %p Parking and storage not included
+          %h2.price $#{@unit.price} CAD
+          %p.parking Parking and storage not included
         .checkout-container.text-center
           %h1 $2000 CAD
           %p Deposit required to buy selected unit

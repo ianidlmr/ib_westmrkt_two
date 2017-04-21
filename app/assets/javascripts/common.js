@@ -104,6 +104,26 @@ $(function() {
       $(helpMenuAnswer).addClass('help-active');
     }
   });
+
+
+  $('#unit_number').on('keypress', function(e) {
+    if (e.keyCode == 13) {
+      $.ajax({
+        url: '/unit_number_search',
+        type: 'GET',
+        data: {unit_number: $('#unit_number').val()},
+        dataType: 'SCRIPT'
+      })
+      .done(function(data) {
+        debugger;
+      })
+      .fail(function(jqXHR, textStatus, errorThrown) {
+      })
+      .always(function() {
+        sendingData = false;
+      });
+    }
+  });
 });
 
 function showMask() {

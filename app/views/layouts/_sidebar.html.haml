@@ -2,7 +2,7 @@
   %li.search-unit-container
     .input-text-wrap
       = label_tag 'Search by Unit Number', nil, class: 'input-text-label'
-      = text_field :search, required: true, class: 'form-control'
+      = text_field_tag 'unit_number'
 
   = link_to root_path do
     %li.sidebar-item
