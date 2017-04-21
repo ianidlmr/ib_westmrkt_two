@@ -28,7 +28,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :units, only: [:index, :show]
+  resources :unit_types, path: '/unit-types', only: [:index] do
+    resources :units, only: [:show]
+  end
 
   #------------------------------------------------------------------------------
   # STATIC PAGES

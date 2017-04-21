@@ -35,11 +35,6 @@ $(function() {
     }
   });
 
-  $('.selectize').selectize({
-    create: false,
-    sortField: 'text'
-  });
-
   $.extend($.validator.messages, { equalTo: "Passwords do not match." })
   $('.simple_form.new_user').validate({
     rules: {
@@ -115,12 +110,11 @@ $(function() {
         dataType: 'SCRIPT'
       })
       .done(function(data) {
-        debugger;
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
       })
       .always(function() {
-        sendingData = false;
+        // sendingData = false;
       });
     }
   });

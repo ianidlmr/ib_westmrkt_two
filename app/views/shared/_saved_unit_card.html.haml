@@ -5,5 +5,5 @@
   .btn-checkout-container.hidden
     = link_to new_unit_order_path(liked_unit.unit) do
       %button.btn.btn-success{ disabled: !current_user.confirmed? } Proceed to Checkout
-    = link_to unit_path(liked_unit.unit) do
+    = link_to unit_type_unit_path(liked_unit.unit.unit_type, liked_unit.unit) do
       %button.btn.btn-view{style: 'color: black;'} View

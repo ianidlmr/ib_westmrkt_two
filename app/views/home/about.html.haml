@@ -1,17 +1,16 @@
 .about-container
-  .row.one
+  .row.one.no-gutters
     .col-12
-      .row.two.no-gutters
-        %h1.text-xs-center.col-sm-10.offset-sm-1.col-md-10.offset-md-1.col-lg-10.offset-lg-1 The common ground of the Lower Junction
-        .row.three.text-xs-center
-          %p.col-sm-5.offset-sm-1.col-md-5.col-lg-5.col-xs-10 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam mattis neque sapien, ut laoreet nibh feugiat id. Maecenas facilisis, ipsum nec porta tempus, dolor quam.
-          .col-sx-10.col-sm-5.col-md-5.col-lg-5.offset-sm-1=image_tag "about.png"
-          -# %img.col-sm-5.col-md-5.col-lg-5.col-xs-10{:src => "https://placekitten.com/385/280"}
+      .row.two
+        %h1.text-xs-center.col-sm-10.col-sm-offset-1.col-md-10.col-md-offset-1.col-lg-10.col-lg-offset-1 The common ground of the Lower Junction
+      .row.three.text-xs-center
+        %p.col-sm-5.col-sm-offset-1.col-md-5.col-lg-5.col-xs-10.col-xs-offset-1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam mattis neque sapien, ut laoreet nibh feugiat id. Maecenas facilisis, ipsum nec porta tempus, dolor quam.
+        .col-sx-10.col-sm-5.col-md-5.col-lg-5.col-sm-offset-1=image_tag "about.png"
   .row.four
     .col-12
       .row.five.no-gutters
-        %h2.col-12.offset-sm-1 Area
-        %p.col-sm-5.offset-sm-1.col-md-5.col-lg-5.col-xs-10 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam enim sem.
+        %h2.col-xs-12.col-xs-offset-1.col-sm-offset-1 Area
+        %p.col-sm-5.col-sm-offset-1.col-md-5.col-lg-5.col-xs-10.col-xs-offset-1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam enim sem.
   .row.six
     .col-12
       #map
@@ -22,30 +21,43 @@
             style: 'mapbox://styles/ianbruce/cj13rfpai000l2rnzlpn272r1',
             center: [-79.446, 43.654],
             zoom: 14.5,
-            bearing: -5
+            bearing: -5,
+            scrollWheelZoom: false
           });
   .row.seven.text-xs-center
     .col-12
-      %h2.col-12.offset-sm-2 The Building
-      %p.col-sm-5.offset-sm-2.col-md-5.col-lg-5.col-xs-10 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam enim sem, gravida non efficitur vel, euismod sed velit. Etiam nibh libero, ultrices vitae felis sed.
-      %p.col-sm-5.offset-sm-2.col-md-5.col-lg-5.col-xs-10 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam enim sem, gravida non efficitur vel, euismod sed velit. Etiam nibh libero, ultrices vitae felis sed.
+      %h2.col-12.col-sm-offset-2
+        Frequently Asked Questions
+      %p.col-sm-5.col-sm-offset-2.col-md-5.col-lg-5.col-xs-10.col-xs-offset-1
+        1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam enim sem, gravida non efficitur vel, euismod sed velit. Etiam nibh libero, ultrices vitae felis sed.
+      %p.col-sm-5.col-sm-offset-2.col-md-5.col-lg-5.col-xs-10.col-xs-offset-1
+        2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam enim sem, gravida non efficitur vel, euismod sed velit. Etiam nibh libero, ultrices vitae felis sed.
   .row.nine
-    .col.col-12.col-sm-6.offset-sm-1
-      -# .col-12.col-sm-12=image_tag "about-2.png"
-      .about-carousel.col-10.col-sm-12
+    .col.col-xs-12.col-sm-10.col-sm-offset-1
+      .about-carousel.col-xs-offset-1.col-sm-6.col-md-6
         =image_tag "about-2.png"
         =image_tag "about.png"
         =image_tag "about-3.png"
-      -# %p.pagination-title.offset-1.col-sm-10.col-xs-12 Party Room
-    .col.col-12.col-sm-4.no-gutters
-      %h2.col-sm-10.col-10  Amenities
-      %p.amenities.col-sm-10.col-10 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam enim sem, gravida non efficitur vel, euismod sed velit. Etiam nibh libero, ultrices vitae felis sed.
+      %h2.col-sm-3.col-md-3
+        Amenities
+      %p.amenities.col-sm-4.col-md-4
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Nullam enim sem, gravida non efficitur vel, euismod sed velit.
+        Etiam nibh libero, ultrices vitae felis sed.
   .row.ten.justify-content-center
-    .col.col-10
-      %h2.col-12.text-center View
-      %p.col-xs-12.col-sm-6.offset-sm-3.text-center Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam enim sem, gravida non efficitur vel, euismod sed velit. Etiam nibh libero, ultrices vitae felis sed, sollicitudin aliquet arcu.
+    .col-10.col-sm-10.col-sm-offset-1
+      .row
+        %h2.col-12.text-center View
+        %p.col-xs-12.col-sm-6.col-sm-offset-3.text-center Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam enim sem, gravida non efficitur vel, euismod sed velit. Etiam nibh libero, ultrices vitae felis sed, sollicitudin aliquet arcu.
   .row.eleven
-    .col.col-12
-      .col-12=image_tag "about-3.png"
-  .row.twelve
+    .col-12=image_tag "about-3.png"
+  .row.twelve.justify-content-center
+    .col-10.col-sm-10.col-sm-offset-1
+      .row
+        %p.col-10.text-center
+          Find out more
+        %p.col-10.text-center
+          %a{:href => "http://www.lowerjct.com/"}
+            %strong www.lowerjct.com
+  .row.thirteen
     .col-12

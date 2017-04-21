@@ -3,7 +3,7 @@
     .col-sm-6
       .unit-info-container{style: 'margin-top: 40px;'}
         %h1{style: 'margin: 0;'}
-          #{@unit.unit_type.name}
+          #{@unit_type.name}
         %h1{style: 'margin: 0;'}
           Unit #{@unit.unit_number}
 
@@ -46,8 +46,8 @@
         .units-dropdown.text-center
           %p Available units in this layout
           .select-container
-            - options = Unit.where(unit_type: @unit.unit_type).map{ |unit| ('Unit ' + unit.unit_number.to_s) }
-            = select_tag 'number_of_bedrooms', options_for_select(options), class: 'selectize'
+            - options = Unit.where(unit_type: @unit.unit_type).map{ |unit| ['Unit ' + unit.unit_number.to_s, unit_type_unit_path(@unit_type, unit)] }
+            = select_tag 'number_of_bedrooms', options_for_select(options, unit_type_unit_path(@unit_type, @unit)), class: 'selectize'
         .trending-container
           %p.title Trending now
           %p.description It's highly possible this unit will be sold out this week
@@ -61,7 +61,7 @@
             %button.btn.btn-success.btn-block Proceed to Checkout
         .unit-info-footer
           .watchers-container
-            %p #{@unit_views} views
+            %p #{@unit_type_views} views
           .people-saved-container
             %p #{@unit.users.count} people added to saved
 

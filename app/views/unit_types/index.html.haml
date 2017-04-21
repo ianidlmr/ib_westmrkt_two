@@ -3,13 +3,13 @@
     .tab-content
       - bedrooms = @number_of_bedrooms.present? ? @number_of_bedrooms : '1'
       .tab-pane#one-bed{ role: "tabpanel", class: (bedrooms == '1' ? 'active' : '') }
-        = render 'one_bedroom_units'
+        = render 'one_bedroom_unit_types'
 
       .tab-pane#two-bed{ role: "tabpanel", class: (bedrooms == '2' ? 'active' : '') }
-        = render 'two_bedroom_units'
+        = render 'two_bedroom_unit_types'
 
       .tab-pane#three-bed{ role: "tabpanel", class: (bedrooms == '3' ? 'active' : '') }
-        = render 'three_plus_bedroom_units'
+        = render 'three_plus_bedroom_unit_types'
 
 
 %ul.nav.nav-pills.bedrooms-filter{ role: "tablist" }

@@ -1,10 +1,10 @@
 .row
-  - if @three_plus_bedroom_units.blank?
+  - if @three_plus_bedroom_unit_types.blank?
     .col-md-12.text-center
       %h1 Sorry, no results for 3+ Bedrooms
       %p Use tabs to display search results or try to use less filters to find what you’re looking for
       %button.btn.btn-lg.btn-black Reset all filters
   - else
-    - @three_plus_bedroom_units.each do |unit|
+    - @three_plus_bedroom_unit_types.each do |unit_type|
       .col-md-6
-        = render 'shared/unit_card', unit: unit
+        = render 'shared/unit_type_card', unit_type: unit_type
