@@ -1,6 +1,5 @@
 $(function() {
   if ($('body.units.index').length) {
-
     function getParameterByName(name, url) {
       if (!url) {
         url = window.location.href;
@@ -83,6 +82,7 @@ $(function() {
     $('.den, .balcony, .number-of-bathrooms').on('click', function(e) {
       e.preventDefault();
       var key = this.className;
+      $('li.filters a span').show();
       $("input[name='" + key.trim().replace(/-/g, '_') + "']").val($(this).data('value'));
       updateOptionValueUI(key, $(this).data('value'));
     });
@@ -155,6 +155,7 @@ $(function() {
       $("input[name='number_of_bathrooms']").val('');
       priceSlider.noUiSlider.set($('#price-average').data('highest-price'));
       $('.btn-accept').trigger('click');
+      $('li.filters a span').hide();
     });
   }
 
