@@ -565,6 +565,19 @@ nav.navbar {
     padding: 20px 0px 5px 15px;
     font-size: 14px;
   }
+
+  .confirmation-container {
+    padding: 5px 0 25px 0;
+
+    h2 {
+      font-size: 14px;
+      color: white;
+    }
+
+    .email {
+      margin-top: 10px;
+    }
+  }
 }
 
 label.error {

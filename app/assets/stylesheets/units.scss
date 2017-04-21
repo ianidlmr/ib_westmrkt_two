@@ -159,4 +159,53 @@ body.units.show {
       outline: none;
     }
   }
+
+  #floating-box {
+    width: 400px;
+    float: right;
+    box-shadow: -1px 2px 42px 4px rgba(204,204,204,1);
+    margin-top: 40px;
+    position: fixed;
+
+    // .units-dropdown
+    .trending-container,
+    .checkout-container {
+      padding: 25px;
+    }
+
+    .price-container,
+    .checkout-container,
+    .unit-info-footer {
+      border-bottom: 1px solid rgba(204, 204, 204, 0.8);
+    }
+
+    .checkout-container {
+      padding-top: 0;
+    }
+
+    .unit-info-footer {
+      display: flex;
+
+      .watchers-container {
+        padding: 5px 10px;
+        text-align: center;
+        width: 30%;
+        border-right: 1px solid rgba(204, 204, 204, 0.8);
+      }
+
+      .people-saved-container {
+        padding: 5px 10px;
+        width: 70%;
+        text-align: center;
+      }
+    }
+  }
 }
+
+
+
+
+
+
+
+

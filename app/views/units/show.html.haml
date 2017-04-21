@@ -1,27 +1,97 @@
-- if user_signed_in?
-  - if @unit.available?
-    - unit_saved = @unit.likes.where(user: current_user).present?
-    .saved-container{ style: (unit_saved ? 'background: #64c879;' : 'background: #ff5353;'), data: { url: like_unit_path(@unit) } }
-      %p Save $#{price_converter(@unit.savings)} CAD
-      .saved-message
-        - if unit_saved
-          = image_tag('icons/tick-white.svg')
-          %h2 Added to Saved
-        - else
-          = image_tag('icons/add-white.svg')
-          %h2 Add to Saved
-  - else
-    .saved-container{ style: 'background: #ff5353;' }
-      .saved-message
-        %h2 Sold
+.container{style: 'background: '}
+  .row
+    .col-sm-6
+      .unit-info-container{style: 'margin-top: 40px;'}
+        %h1{style: 'margin: 0;'}
+          #{@unit.unit_type.name}
+        %h1{style: 'margin: 0;'}
+          Unit #{@unit.unit_number}
 
-- else
-  = link_to '#', 'data-toggle': 'modal', 'data-target': '#signup-modal', 'data-dismiss': 'modal', class: 'login-link' do
-    .saved-container{ style: 'background: #ff5353;' }
-      %p Save $#{price_converter(@unit.savings)} CAD
-      .saved-message
-        = image_tag('icons/add-white.svg')
-        %h2 Add to Saved
+        .row
+          .col-xs-4
+            %p{style: 'margin: 0; font-size: 15px;'} Bedrooms
+            %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.unit_type.number_of_bedrooms}
+          .col-xs-4
+            %p{style: 'margin: 0; font-size: 15px;'} Den
+            %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.unit_type.den  ? 'Included' : 'Not Included'}
+          .col-xs-4
+            %p{style: 'margin: 0; font-size: 15px;'} Interior SQFT
+            %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.unit_type.interior_sqft}
+
+        .row
+          .col-xs-4
+            %p{style: 'margin: 0; font-size: 15px;'} Bathrooms
+            %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.unit_type.number_of_bathrooms}
+
+          .col-xs-4
+            %p{style: 'margin: 0; font-size: 15px;'} Balcony
+            %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.unit_type.balcony ? 'Included' : 'Not Included'}
+
+          .col-xs-4
+            %p{style: 'margin: 0; font-size: 15px;'} Balcony SQFT
+            %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.unit_type.balcony_sqft}
+
+        .row
+          .col-xs-4
+            %p{style: 'margin: 0; font-size: 15px;'} Floor No.
+            %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.floor_number}
+
+        .row
+          .col-xs-4
+            %p{style: 'margin: 0; font-size: 15px;'} Side of the bldg.
+            %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.orientation}
+
+    .col-sm-6
+      #floating-box{style: 'margin-left: 5%;'}
+        .units-dropdown.text-center
+          %p Available units in this layout
+          .select-container{ style: 'width: 170px; display: inline-block;' }
+            - options = UnitType.select(:number_of_bedrooms).distinct.sort_by(&:number_of_bedrooms).map{ |unit_type| pluralize(unit_type.number_of_bedrooms, 'bedroom') }
+            = select_tag 'number_of_bedrooms', options_for_select(options), class: 'selectize'
+        .trending-container
+          %p Trending now
+          %p It's highly possible this unit will be sold out this week
+        .price-container.text-center
+          %h2 $#{@unit.price}
+          %p Parking and storage not included
+        .checkout-container.text-center
+          %h1 $2000 CAD
+          %p Deposit required to buy selected unit
+          = link_to new_unit_order_path(@unit) do
+            %button.btn.btn-success.btn-block Proceed to Checkout
+        .unit-info-footer
+          .watchers-container
+            %p #{@unit_views} views
+          .people-saved-container
+            %p #{@unit.users.count} people added to saved
+
+  %h2 Floorplan
 
 = render 'shared/signup_modal'
 = render 'shared/login_modal'
+
+-#
+  - if user_signed_in?
+    - if @unit.available?
+      - unit_saved = @unit.likes.where(user: current_user).present?
+      .saved-container{ style: (unit_saved ? 'background: #64c879;' : 'background: #ff5353;'), data: { url: like_unit_path(@unit) } }
+        %p Save $#{price_converter(@unit.savings)} CAD
+        .saved-message
+          - if unit_saved
+            = image_tag('icons/tick-white.svg')
+            %h2 Added to Saved
+          - else
+            = image_tag('icons/add-white.svg')
+            %h2 Add to Saved
+    - else
+      .saved-container{ style: 'background: #ff5353;' }
+        .saved-message
+          %h2 Sold
+
+  - else
+    = link_to '#', 'data-toggle': 'modal', 'data-target': '#signup-modal', 'data-dismiss': 'modal', class: 'login-link' do
+      .saved-container{ style: 'background: #ff5353;' }
+        %p Save $#{price_converter(@unit.savings)} CAD
+        .saved-message
+          = image_tag('icons/add-white.svg')
+          %h2 Add to Saved

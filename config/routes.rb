@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   get '/about' => 'home#about', as: 'about'
   get '/terms-and-privacy' => 'home#terms_and_privacy', as: 'terms_and_privacy'
   get '/help' => 'home#help', as: 'help'
+  post '/confirmation' => 'home#send_confirmation', as: 'confirmation'
   root to: 'home#index'
 
   #------------------------------------------------------------------------------
