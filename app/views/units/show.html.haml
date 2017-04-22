@@ -6,8 +6,10 @@
       = select_tag 'unit_number', options_for_select(options, unit_type_unit_path(@unit_type, @unit)), class: 'selectize'
 
   .trending-container
-    %p.title Trending now
-    %p.description It's highly possible this unit will be sold out this week
+    = image_tag('icons/bolt.svg')
+    .trending-copy
+      %p.title Trending now
+      %p.description It's highly possible this unit will be sold out this week
 
   .price-container.text-center
     %h2.price $#{@unit.price} CAD
@@ -25,7 +27,7 @@
   .unit-info-footer
     .watchers-container
       = image_tag('icons/eye-dark.svg')
-      %p #{@unit_type_views} views
+      %p #{@unit_views} views
     .people-saved-container
       = image_tag('icons/tick-dark.svg')
       %p #{@unit.users.count} people added to saved
@@ -99,7 +101,7 @@
           = image_tag "img-explore-railway-market.jpg"
         %h1 Aesthetic
         %p A few lines about the aesthetic of the building and the interior of the unit. Painting a portrait of what life would be like living here.
-        = link_to 'Full specification', '#'
+        = link_to 'Full specification', specifications_path, target: '_blank', class: 'specifications-link'
 
 
 = render 'shared/signup_modal'

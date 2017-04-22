@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get '/about' => 'home#about', as: 'about'
   get '/terms-and-privacy' => 'home#terms_and_privacy', as: 'terms_and_privacy'
   get '/help' => 'home#help', as: 'help'
+  get '/specifications' => 'home#specifications', as: 'specifications'
   post '/confirmation' => 'home#send_confirmation', as: 'confirmation'
   get '/unit_number_search' => 'unit_types#unit_number_search', as: 'unit_number_search'
   root to: 'home#index'

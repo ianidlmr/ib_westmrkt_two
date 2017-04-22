@@ -12,6 +12,9 @@ class HomeController < ApplicationController
   def terms_and_privacy
   end
 
+  def specifications
+  end
+
   def send_confirmation
     current_user.send_confirmation_instructions
     flash[:notice] = 'Confirmation instructions have been sent to your email.'
