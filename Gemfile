@@ -21,7 +21,6 @@ gem 'jquery-rails'
 gem "jquery-slick-rails"
 gem 'jquery-validation-rails'
 gem 'omniauth-google-oauth2'
-gem 'pg_search'
 gem 'rails_admin'
 gem 'rails_admin_import'
 gem 'rails-settings-cached'

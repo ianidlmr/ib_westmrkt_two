@@ -1,23 +1,10 @@
 # frozen_string_literal: true
 class UnitTypesController < ApplicationController
   def index
-    @one_bedroom_unit_types = UnitType.joins(:units)
-      .where('number_of_bedrooms = ?', 1)
-      .where(querybuilder(params))
-      .distinct
-      .order(:name)
-
-    @two_bedroom_unit_types = UnitType.joins(:units)
-      .where('number_of_bedrooms = ?', 2)
-      .where('number_of_bedrooms = ?', 3)
-      .distinct
-      .order(:name)
-
-    @three_plus_bedroom_unit_types = UnitType.joins(:units)
-      .where('number_of_bedrooms >= ?', 3)
-      .where(querybuilder(params))
-      .distinct
-      .order(:name)
+    unit_types = UnitType.joins(:units).distinct.order(:name).where(querybuilder(params))
+    @one_bedroom_unit_types = unit_types.where(number_of_bedrooms: 1)
+    @two_bedroom_unit_types = unit_types.where(number_of_bedrooms: 2)
+    @three_plus_bedroom_unit_types = unit_types.where('number_of_bedrooms >= ?', 3)
 
     @lowest_price = Unit.available.order(:price).first.price
     @highest_price = Unit.available.order(:price).last.price

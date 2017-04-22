@@ -79,6 +79,9 @@ class Unit < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Instance methods
+  def trending_now?
+    # Ahoy::Event.all.map { |event| event.properties['id'] }.count(id.to_s)
+  end
 
   #------------------------------------------------------------------------------
   # Rails Admin Config

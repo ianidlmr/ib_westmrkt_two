@@ -29,19 +29,19 @@ class Api::V1::Stripe::AccountController < Api::V1::Stripe::BaseController
   def charge_succeeded
     # => @object = Stripe::Charge
     @order = Order.find_by(stripe_charge_id: @object.id)
-    @order.confirm_payment! if @order.present?
+    @order.confirm_payment! if @order.present? && @order.may_confirm_payment?
   end
 
   def charge_failed
     # => @object = Stripe::Charge
     @order = Order.find_by(stripe_charge_id: @object.id)
-    @order.fail_payment! if @order.present?
+    @order.fail_payment! if @order.present? && @order.may_fail_payment?
   end
 
   def charge_refunded
     # => @object = Stripe::Charge
     @order = Order.find_by(stripe_charge_id: @object.id)
-    @order.refund_payment! if @order.present?
+    @order.refund_payment! if @order.present? && @order.may_refund_payment?
   end
 
   #------------------------------------------------------------------------------
