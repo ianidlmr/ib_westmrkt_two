@@ -79,6 +79,13 @@ class Unit < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Instance methods
+  def views
+    Ahoy::Event.all.map { |event| event.properties['id'] }.count(id.to_s)
+  end
+
+  def trending?
+    views >= Setting.trending_limit
+  end
 
   #------------------------------------------------------------------------------
   # Rails Admin Config

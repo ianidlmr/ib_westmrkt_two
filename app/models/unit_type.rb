@@ -40,7 +40,19 @@ class UnitType < ApplicationRecord
   #------------------------------------------------------------------------------
   # Instance methods
   def quantity_remaining
-    Unit.where(unit_type: self, state: :available).count
+    units.where(state: :available).count
+  end
+
+  def total_views
+    units.map(&:views).reduce(:+)
+  end
+
+  def last_chance?
+    quantity_remaining <= Setting.last_chance_limit
+  end
+
+  def trending?
+    total_views >= Setting.trending_limit
   end
 
   #------------------------------------------------------------------------------

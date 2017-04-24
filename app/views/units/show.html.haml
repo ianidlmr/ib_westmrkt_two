@@ -5,13 +5,14 @@
       - options = Unit.where(unit_type: @unit.unit_type).map{ |unit| ['Unit ' + unit.unit_number.to_s + "#{price_converter(unit.price)}" + unit.orientation, unit_type_unit_path(@unit_type, unit)] }
       = select_tag 'unit_number', options_for_select(options, unit_type_unit_path(@unit_type, @unit)), class: 'selectize'
 
-  .trending-container
-    = image_tag('icons/bolt.svg')
-    .trending-copy
-      %p.title Trending now
-      %p.description It's highly possible this unit will be sold out this week
+  - if @unit.trending?
+    .trending-container
+      = image_tag('icons/bolt.svg')
+      .trending-copy
+        %p.title Trending now
+        %p.description It's highly possible this unit will be sold out this week
 
-  .price-container.text-center
+  .price-container.text-center{ style: (@unit.trending? ? '' : 'border-top: 1px solid rgba(204, 204, 204, 0.8);') }
     %h2.price $#{@unit.price} CAD
     %p.parking Parking and storage not included
 
@@ -27,10 +28,10 @@
   .unit-info-footer
     .watchers-container
       = image_tag('icons/eye-dark.svg')
-      %p #{@unit_views} views
+      %p #{pluralize(@unit_views, 'view')}
     .people-saved-container
       = image_tag('icons/tick-dark.svg')
-      %p #{@unit.users.count} people added to saved
+      %p #{pluralize(@unit.users.count, 'person')} added to saved
 
 .unit-info-row{ style: 'background: #f0f0f0' }
   .container
@@ -86,7 +87,12 @@
     .row
       .col-sm-6
         %h2 Floorplan
-        = image_tag 'bitmap-floorplan.jpg', class: 'img-responsive'
+
+        .my-gallery{ itemtype: "http://schema.org/ImageGallery" }
+          %figure{:itemprop => "associatedMedia", :itemscope => "", :itemtype => "http://schema.org/ImageObject"}
+            %a{"data-size" => "600x400", :href => "/assets/bitmap-floorplan.jpg", :itemprop => "contentUrl"}
+              = image_tag 'bitmap-floorplan.jpg', class: 'img-responsive'
+
         %p.unit-type-description= @unit.unit_type.description
 
         .view-from-window-heading{ style: 'background: black;' }

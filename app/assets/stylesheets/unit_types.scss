@@ -3,6 +3,22 @@ body.unit-types.index {
     display: none;
   }
 
+  .trending-indicator,
+  .last-chance-indicator {
+    display: flex;
+    position: absolute;
+    right: 25px;
+    top: 10px;
+    align-items: center;
+
+    .title {
+      color: #ff5353;
+      font-size: 16px;
+      margin-bottom: 0;
+      margin-left: 5px;
+    }
+  }
+
   .flex-row {
     display: flex;
     flex: 1;
