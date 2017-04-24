@@ -25,8 +25,10 @@ $(function() {
     }
   });
 
-  $('.input-text-wrap input').on('focus', function() {
-    $(this).closest('.input-text-wrap').addClass('is-focused');
+  $('.input-text-wrap input').on('focus', function(e) {
+    if (!$(e.target).val().length) {
+      $(this).closest('.input-text-wrap').addClass('is-focused');
+    }
   });
 
   $('.input-text-wrap input').on('blur', function(e) {
@@ -97,25 +99,6 @@ $(function() {
       $(helpMenuAnswer).removeClass('help-active');
     } else if ( $(helpMenuAnswer).not('help-active') )  {
       $(helpMenuAnswer).addClass('help-active');
-    }
-  });
-
-
-  $('#unit_number').on('keypress', function(e) {
-    if (e.keyCode == 13) {
-      $.ajax({
-        url: '/unit_number_search',
-        type: 'GET',
-        data: {unit_number: $('#unit_number').val()},
-        dataType: 'SCRIPT'
-      })
-      .done(function(data) {
-      })
-      .fail(function(jqXHR, textStatus, errorThrown) {
-      })
-      .always(function() {
-        // sendingData = false;
-      });
     }
   });
 });

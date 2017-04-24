@@ -14,19 +14,10 @@ class UnitTypesController < ApplicationController
     end
   end
 
-  def unit_number_search
-    @unit = Unit.find_by(unit_number: params[:unit_number])
-    if @unit.present?
-      render js: "window.location = '#{unit_type_unit_path(@unit.unit_type, @unit)}'"
-    else
-      render js: "window.location = '#{unit_types_path}'"
-    end
-  end
-
   private
 
   def querybuilder(params)
-    [
+    queries = [
       {
         param: :den,
         query: Proc.new { |value| "den = #{value}" }
@@ -40,7 +31,8 @@ class UnitTypesController < ApplicationController
         param: :price,
         query: Proc.new { |value| "units.price <= #{value}" }
       }
-    ].select { |filter| params.has_key? filter[:param] && !params[filter[:param]].nil? }
+    ]
+    queries.select { |filter| (params.has_key?(filter[:param])) && !params[filter[:param]].nil? }
      .map { |filter| filter[:query].call(params[filter[:param]]) }
      .join(" and ")
   end

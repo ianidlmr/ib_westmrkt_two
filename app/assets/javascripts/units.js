@@ -1,8 +1,4 @@
 $(function() {
-  if ($('body.units.index').length) {
-
-  }
-
   if ($('body.units.show').length) {
     openSavedUnit();
 

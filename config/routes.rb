@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   get '/help' => 'home#help', as: 'help'
   get '/specifications' => 'home#specifications', as: 'specifications'
   post '/confirmation' => 'home#send_confirmation', as: 'confirmation'
-  get '/unit_number_search' => 'unit_types#unit_number_search', as: 'unit_number_search'
+  get '/search' => 'search#search', as: 'search'
   root to: 'home#index'
 
   #------------------------------------------------------------------------------

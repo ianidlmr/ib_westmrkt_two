@@ -319,7 +319,7 @@ nav.navbar {
 .input-text-wrap [type="number"],
 .input-text-wrap [type="email"],
 .input-text-wrap [type="tel"] {
-  display: block;
+  display: inline-block;
   width: 100%;
   padding: 0;
   font-size: 13px;
@@ -371,7 +371,6 @@ nav.navbar {
 .input-text-wrap.is-focused label::after, .input-text-wrap.has-value label::after {
   top: 4px;
 }
-
 
 #signup-modal, #login-modal {
   .modal-dialog {
@@ -1046,4 +1045,19 @@ p.number-of-bathrooms {
 
 .alert {
   margin-bottom: 0;
+}
+
+.input-text-wrap {
+  span.unit-search {
+    position: absolute;
+    right: 0;
+    font-weight: bold;
+    top: 16px;
+  }
+}
+
+.input-text-wrap {
+  input[name="unit_number"] {
+    font-size: 16px;
+  }
 }

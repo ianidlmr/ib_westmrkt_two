@@ -1,8 +1,10 @@
 %ul.sidebar-nav
   %li.search-unit-container
     .input-text-wrap
-      = label_tag 'Search by Unit Number', nil, class: 'input-text-label'
-      = text_field_tag 'unit_number'
+      = form_tag search_path, method: :get do
+        = label_tag 'Search by Unit Number', nil, class: 'input-text-label'
+        = text_field_tag 'unit_number'
+      %span.unit-search ENTER
 
   = link_to root_path do
     %li.sidebar-item
