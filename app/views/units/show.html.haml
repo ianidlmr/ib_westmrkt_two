@@ -14,7 +14,9 @@
 
   .price-container.text-center{ style: (@unit.trending? ? '' : 'border-top: 1px solid rgba(204, 204, 204, 0.8);') }
     %h2.price $#{@unit.price} CAD
-    %p.parking Parking and storage not included
+    .parking-message
+      %p.parking Parking and storage not included
+      = fa_icon 'question-circle', class: 'parking-tip', data: { toggle: 'tooltip' }, title: 'Parking and storage is available to purchase during finalizing deal with Sale Team'
 
   .checkout-container.text-center
     %h1 $3000 CAD

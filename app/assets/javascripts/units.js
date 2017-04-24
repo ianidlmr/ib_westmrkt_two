@@ -17,6 +17,11 @@ $(function() {
       slidesToShow: 1,
       adaptiveHeight: true
     });
+
+    $('.parking-tip').tooltip({
+      trigger: 'click',
+      placement: 'top'
+    });
   }
 });
 
