@@ -1,9 +1,9 @@
 #floating-box
   - if @select_options.present?
-  .units-dropdown.text-center{style: 'background: white;'}
-    %p Available units in this layout
-    .select-container
-      = select_tag 'unit_number', options_for_select(@select_options, unit_type_unit_path(@unit_type, @unit)), class: 'selectize'
+    .units-dropdown.text-center{style: 'background: white;'}
+      %p Available units in this layout
+      .select-container
+        = select_tag 'unit_number', options_for_select(@select_options, unit_type_unit_path(@unit_type, @unit)), class: 'selectize'
 
   - if @unit.trending?
     .trending-container
