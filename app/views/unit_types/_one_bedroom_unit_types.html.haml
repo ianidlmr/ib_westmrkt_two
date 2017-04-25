@@ -12,13 +12,13 @@
             .trending-indicator
               = image_tag('icons/bolt.svg')
               .trending-copy
-                %p.title TRENDING NOW
+                %p.title.text-capitalize Trending Now
 
           - if unit_type.last_chance?
             .last-chance-indicator
               = image_tag('icons/bolt.svg')
               .copy
-                %p.title LAST CHANCE
+                %p.title.text-capitalize Last Chance
 
           .panel-body
             %h1= unit_type.name
