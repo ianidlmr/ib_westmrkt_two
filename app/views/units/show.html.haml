@@ -42,8 +42,31 @@
         .unit-info-container{style: 'margin-top: 40px;'}
           %h1{style: 'margin: 0;'}
             #{@unit_type.name}
-          %h1{style: 'margin: 0;'}
-            Unit #{@unit.unit_number}
+          - if user_signed_in?
+            - if @unit.available?
+              - unit_saved = @unit.likes.where(user: current_user).present?
+              .saved-container{ style: 'display: flex; color: black; align-items: center;' }
+                %h1{style: 'margin: 0;'}
+                  Unit #{@unit.unit_number}
+                .saved-message{ style: 'margin-left: 12px;', data: { url: like_unit_path(@unit) } }
+                  - if unit_saved
+                    = image_tag('icons/tick-dark.svg')
+                    %p Saved
+                  - else
+                    = image_tag('icons/tick-dark.svg')
+                    %p Add to Saved
+            - else
+              .saved-container
+                .saved-message
+                  %h2 Sold
+
+          - else
+            = link_to '#', 'data-toggle': 'modal', 'data-target': '#signup-modal', 'data-dismiss': 'modal', class: 'login-link' do
+              .saved-container{ style: 'background: #ff5353;' }
+                %p Save $#{price_converter(@unit.savings)} CAD
+                .saved-message
+                  = image_tag('icons/add-white.svg')
+                  %h2 Add to Saved
 
           .row{style: 'margin-top: 20px;'}
             .col-xs-4
@@ -83,7 +106,6 @@
             .col-xs-4
               = image_tag 'bldg1.svg', class: 'img-responsive'
 
-
 .floorplan-row
   .container
     .row
@@ -116,28 +138,4 @@
 = render 'shared/login_modal'
 
 -#
-  - if user_signed_in?
-    - if @unit.available?
-      - unit_saved = @unit.likes.where(user: current_user).present?
-      .saved-container{ style: (unit_saved ? 'background: #64c879;' : 'background: #ff5353;'), data: { url: like_unit_path(@unit) } }
-        %p Save $#{price_converter(@unit.savings)} CAD
-        .saved-message
-          - if unit_saved
-            = image_tag('icons/tick-white.svg')
-            %h2 Added to Saved
-          - else
-            = image_tag('icons/add-white.svg')
-            %h2 Add to Saved
-    - else
-      .saved-container{ style: 'background: #ff5353;' }
-        .saved-message
-          %h2 Sold
-
-  - else
-    = link_to '#', 'data-toggle': 'modal', 'data-target': '#signup-modal', 'data-dismiss': 'modal', class: 'login-link' do
-      .saved-container{ style: 'background: #ff5353;' }
-        %p Save $#{price_converter(@unit.savings)} CAD
-        .saved-message
-          = image_tag('icons/add-white.svg')
-          %h2 Add to Saved
 -#

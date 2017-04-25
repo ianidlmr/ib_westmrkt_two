@@ -45,7 +45,6 @@ class User < ApplicationRecord
   # Associations
   has_many :units
   has_many :likes
-  has_many :liked_units, class_name: 'Like', foreign_key: 'user_id'
   has_one :address
   has_many :orders
   accepts_nested_attributes_for :address

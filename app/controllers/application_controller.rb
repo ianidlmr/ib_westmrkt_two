@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
 
   def get_liked_unit_groups
     if user_signed_in?
-      @liked_unit_groups = current_user.liked_units.sort_by{ |liked_unit| liked_unit.unit.unit_type.name }.group_by{ |liked_unit| { name: liked_unit.unit.unit_type.name, state: liked_unit.unit.state } }
-      @liked_units_count = current_user.liked_units.count
+      @liked_unit_groups = current_user.likes.sort_by{ |liked_unit| liked_unit.unit.unit_type.name }.group_by{ |liked_unit| { name: liked_unit.unit.unit_type.name, state: liked_unit.unit.state } }
+      @liked_units_count = current_user.likes.count
     end
   end
 end

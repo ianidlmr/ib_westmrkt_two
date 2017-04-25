@@ -5,10 +5,7 @@
       .saved-unit-types
         %h2= liked_unit_group.first[:name]
         - liked_unit_group.second.each do |liked_unit|
-          .sold-unit
-            %h2 Unit #{liked_unit.unit.unit_number} &#9632; $#{price_converter(liked_unit.unit.price)} &#9632; CAD &#8593; #{liked_unit.unit.orientation}
-            = image_tag('icons/dark.svg', class: 'close-icon', data: { url: unlike_unit_path(liked_unit.unit) } )
-
+          = render 'shared/saved_unit_card', liked_unit: liked_unit
     - else
       - liked_unit_group.second.each do |liked_unit|
         - sold_units << liked_unit
@@ -17,9 +14,7 @@
     .sold-units
       %h2 Sold
       - sold_units.each do |sold_unit|
-        .sold-unit
-          %h2 Unit #{sold_unit.unit.unit_number} &#9632; $#{price_converter(sold_unit.unit.price)} &#9632; CAD &#8593; #{sold_unit.unit.orientation}
-          = image_tag('icons/dark-close.svg', class: 'close-icon', data: { url: unlike_unit_path(sold_unit.unit) } )
+        = render 'shared/sold_unit_card', liked_unit: sold_unit
 
 - else
   %p.add-message

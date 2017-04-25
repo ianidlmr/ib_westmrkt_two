@@ -1,4 +1,3 @@
 $('.saved-units-container').html("<%= escape_javascript(render 'shared/saved_units') %>")
 $('.saved-icon').html("<%= escape_javascript(render 'shared/saved_count') %>")
-$('.saved-container').css({'background': '#ff5353'});
-$('.saved-container').children('.saved-message').html("<%= escape_javascript(image_tag('icons/add-white.svg')) %><h2>Add to Saved</h2>")
+$('.saved-container').children('.saved-message').html("<%= escape_javascript(image_tag('icons/tick-dark.svg')) %><p>Add to Saved</p>")

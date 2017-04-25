@@ -3,8 +3,8 @@ $(function() {
 
   // ------------------------------------------------------------------------------
   // Generic Functions
-  function like($savedContainer) {
-    var url = $savedContainer.data('url');
+  function like($savedMessage) {
+    var url = $savedMessage.data('url');
 
     if (!sendingData && url.length) {
       sendingData = true;
@@ -46,7 +46,7 @@ $(function() {
     }
   }
 
-  $('body').on('click', '.saved-container', function(e) {
+  $('body').on('click', '.saved-message', function(e) {
     e.preventDefault();
     like($(this));
   });

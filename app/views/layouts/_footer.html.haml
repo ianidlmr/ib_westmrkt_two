@@ -17,9 +17,9 @@
     .col-md-2
       %h1.text-uppercase Pre-Sale
       .pre-sale-flex-column
-        = link_to about_path do
+        = link_to about_path, target: '_blank' do
           %p.black About
-        = link_to help_path do
+        = link_to help_path, target: '_blank' do
           %p.black Help
         %p.black Press
 
@@ -29,5 +29,5 @@
       .copyright
         &copy; #{Time.zone.now.year} Railway Market as part of Lower Junction
     .col-xs-4.text-right
-      = link_to terms_and_privacy_path do
+      = link_to terms_and_privacy_path, target: '_blank' do
         %p Terms & Privacy
