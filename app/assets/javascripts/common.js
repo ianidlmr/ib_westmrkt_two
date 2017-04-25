@@ -25,6 +25,14 @@ $(function() {
     }
   });
 
+  $('.input-text-wrap input').each(function(index, node) {
+    if (node.value.length > 0 && node.value != ' ') {
+      $(node).closest('.input-text-wrap').addClass('is-focused');
+    } else {
+      $(this).closest('.input-text-wrap').removeClass('is-focused');
+    }
+  });
+
   $('.input-text-wrap input').on('focus', function(e) {
     if (!$(e.target).val().length) {
       $(this).closest('.input-text-wrap').addClass('is-focused');
