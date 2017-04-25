@@ -2,7 +2,7 @@
   .units-dropdown.text-center{style: 'background: white;'}
     %p Available units in this layout
     .select-container
-      - options = Unit.available.where(unit_type: @unit.unit_type).map{ |unit| ['Unit ' + unit.unit_number.to_s + " $#{price_converter(unit.price)} " + unit.orientation, unit_type_unit_path(@unit_type, unit)] }
+      - options = Unit.available.where(unit_type: @unit.unit_type).map{ |unit| ['Unit ' + unit.unit_number.to_s + "#{price_converter(unit.price)}" + unit.orientation, unit_type_unit_path(@unit_type, unit)] }
       = select_tag 'unit_number', options_for_select(options, unit_type_unit_path(@unit_type, @unit)), class: 'selectize'
 
   - if @unit.trending?
