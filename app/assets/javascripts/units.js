@@ -2,6 +2,11 @@ $(function() {
   if ($('body.units.show').length) {
     openSavedUnit();
 
+    if ($(window).width() >= 768) {
+      var offset = ($(window).width() - $('.container').outerWidth()) / 2;
+      $('#floating-box').css({'right': offset + 'px'});
+    }
+
     $('.selectize').selectize({
       create: false,
       sortField: 'text',

@@ -101,6 +101,19 @@ $(function() {
       $(helpMenuAnswer).addClass('help-active');
     }
   });
+
+  var resizeTimer;
+  $(window).on('resize', function(e) {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      if ($(window).width() >= 768) {
+        var offset = ($(window).width() - $('.container').outerWidth()) / 2;
+        $('#floating-box').css({'right': offset + 'px'});
+      } else {
+        $('#floating-box').css({'right': '0px'});
+      }
+    }, 250);
+  });
 });
 
 function showMask() {
