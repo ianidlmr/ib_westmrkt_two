@@ -17,7 +17,7 @@ class UnitTypesController < ApplicationController
   private
 
   def querybuilder(params)
-    queries = [
+    [
       {
         param: :den,
         query: Proc.new { |value| "den = #{value}" }
@@ -31,8 +31,7 @@ class UnitTypesController < ApplicationController
         param: :price,
         query: Proc.new { |value| "units.price <= #{value}" }
       }
-    ]
-    queries.select { |filter| (params.has_key?(filter[:param])) && !params[filter[:param]].nil? }
+    ].select { |filter| (params.has_key?(filter[:param])) && params[filter[:param]].present? }
      .map { |filter| filter[:query].call(params[filter[:param]]) }
      .join(" and ")
   end
