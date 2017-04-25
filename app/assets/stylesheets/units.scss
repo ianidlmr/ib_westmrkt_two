@@ -1,4 +1,33 @@
 body.units.show {
+  .selectize-input input {
+    display: none !important;
+  }
+
+  .selectize-control.single .selectize-input:after {
+    border-color: white transparent transparent transparent;
+  }
+
+  .selectize-control.single .selectize-input.dropdown-active:after {
+    border-color: transparent transparent white transparent;
+  }
+
+  .selectize-input.items {
+    padding: 0;
+    border: none;
+  }
+
+  .selectize-input .item,
+  .selectize-dropdown-content .option {
+    padding: 15px;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .selectize-dropdown-content .option {
+    border-bottom: 1px solid rgba(204, 204, 204, 0.8);
+  }
+
   .saved-container {
     text-align: center;
     color: white;
@@ -81,11 +110,12 @@ body.units.show {
     }
 
     .units-dropdown {
-      padding: 15px;
+      padding: 20px;
 
       .select-container {
         width: 100%;
         background: $brand-info;
+        border-radius: 4px;
       }
     }
 

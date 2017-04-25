@@ -1,9 +1,9 @@
 #floating-box
+  - if @select_options.present?
   .units-dropdown.text-center{style: 'background: white;'}
     %p Available units in this layout
     .select-container
-      - options = Unit.available.where(unit_type: @unit.unit_type).map{ |unit| ['Unit ' + unit.unit_number.to_s + "#{price_converter(unit.price)}" + unit.orientation, unit_type_unit_path(@unit_type, unit)] }
-      = select_tag 'unit_number', options_for_select(options, unit_type_unit_path(@unit_type, @unit)), class: 'selectize'
+      = select_tag 'unit_number', options_for_select(@select_options, unit_type_unit_path(@unit_type, @unit)), class: 'selectize'
 
   - if @unit.trending?
     .trending-container
@@ -21,11 +21,18 @@
   .checkout-container.text-center
     %h1 $3000 CAD
     %p Deposit required to buy selected unit
-    - if @unit.available? && user_signed_in?
-      = link_to new_unit_order_path(@unit), class: 'link-no-decoration' do
-        %button.btn.btn-success.btn-block Proceed to Checkout
+    - if user_signed_in? && current_user.confirmed?
+      - if @unit.available?
+        = link_to new_unit_order_path(@unit), class: 'link-no-decoration' do
+          %button.btn.btn-success.btn-block Proceed to Checkout
+      - else
+        %button.btn.btn-success.btn-block{ disabled: true } Sold
     - else
-      %button.btn.btn-success.btn-block{ disabled: true } Proceed to Checkout
+      - if @unit.available?
+        = link_to new_unit_order_path(@unit), class: 'link-no-decoration' do
+          %button.btn.btn-success.btn-block Proceed to Checkout
+      - else
+        %button.btn.btn-success.btn-block{ disabled: true } Sold
 
   .unit-info-footer
     .watchers-container
@@ -61,11 +68,12 @@
 
           - else
             = link_to '#', 'data-toggle': 'modal', 'data-target': '#signup-modal', 'data-dismiss': 'modal', class: 'login-link' do
-              .saved-container{ style: 'background: #ff5353;' }
-                %p Save $#{price_converter(@unit.savings)} CAD
-                .saved-message
-                  = image_tag('icons/add-white.svg')
-                  %h2 Add to Saved
+              .saved-container{ style: 'display: flex; color: black; align-items: center;' }
+                %h1{style: 'margin: 0;'}
+                  Unit #{@unit.unit_number}
+                .saved-message{ style: 'margin-left: 12px;', data: { url: '' } }
+                  = image_tag('icons/tick-dark.svg')
+                  %p Add to Saved
 
           .row{style: 'margin-top: 20px;'}
             .col-xs-4
@@ -136,6 +144,3 @@
 
 = render 'shared/signup_modal'
 = render 'shared/login_modal'
-
--#
--#
