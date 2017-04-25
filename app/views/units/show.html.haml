@@ -130,7 +130,8 @@
           = image_tag "img-explore-railway-market.jpg"
         %h1 Aesthetic
         %p A few lines about the aesthetic of the building and the interior of the unit. Painting a portrait of what life would be like living here.
-        = link_to 'Full specification', specifications_path, target: '_blank', class: 'specifications-link'
+        = link_to specifications_path, target: '_blank' do
+          %p.link-how-does-it-work Full specification
 
 
 = render 'shared/signup_modal'
