@@ -38,7 +38,7 @@ $(function() {
   });
 
   $.extend($.validator.messages, { equalTo: "Passwords do not match." })
-  $('.simple_form.new_user').validate({
+  $('.simple_form.new_user, .simple_form.edit_user').validate({
     rules: {
       "user[email]": {required: true, email: true},
       "user[password]": {required: true, minlength: 8},

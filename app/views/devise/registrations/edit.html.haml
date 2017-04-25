@@ -1,14 +1,41 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :email, required: true, autofocus: true
-    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-      %p
-        Currently waiting confirmation for: #{resource.unconfirmed_email}
-    = f.input :password, autocomplete: 'off', hint: "leave it blank if you don't want to change it", required: false
-    = f.input :password_confirmation, required: false
-    = f.input :current_password, hint: 'we need your current password to confirm your changes', required: true
-  .form-actions
-    = f.button :submit, 'Update'
+.container
+  .row
+    .col-sm-offset-4.col-sm-4
+      .panel.panel-default.devise-panel
+        .panel-heading
+          %h2 Your Units
+          - if current_user.units.present?
+          - else
+            %p You haven't purchased any unit yet.
+            = link_to 'Explore Available Units', unit_types_path, class: 'btn btn-black btn-block'
+          %h2 My Account
+          .heading-container
+            = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+              = f.error_notification
+              .form-inputs
+                .input-text-wrap
+                  = f.label 'Email Address', class: 'input-text-label'
+                  = f.input :email, required: true, label: false
+                .input-text-wrap
+                  = f.label 'First Name', class: 'input-text-label'
+                  = f.input :first_name, required: true, label: false
+                .input-text-wrap
+                  = f.label 'Last Name', class: 'input-text-label'
+                  = f.input :last_name, required: true, label: false
+                .input-text-wrap
+                  = f.label 'Password', class: 'input-text-label'
+                  = f.input :password, autocomplete: 'off', required: false, label: false
+                .input-text-wrap
+                  = f.label 'Password Confirmation', class: 'input-text-label'
+                  = f.input :password_confirmation, required: false, label: false
+                .input-text-wrap
+                  = f.label 'Current Password', class: 'input-text-label'
+                  = f.input :current_password, required: true, label: false
+
+              .form-actions.text-center
+                = f.button :submit, 'Update', class: 'btn btn-success btn-block'
+                %p{ style: 'margin-top: 10px;' } or
+                = link_to omniauth_authorize_path(resource_name, :google_oauth2), class: 'btn btn-block btn-white btn-google' do
+                  = image_tag('icons/google-logo.svg', class: 'img-responsive google-logo')
+                  %span Connect with Google
+                  %span

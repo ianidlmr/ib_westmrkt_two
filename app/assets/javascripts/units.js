@@ -19,7 +19,7 @@ $(function() {
     });
 
     $('.parking-tip').tooltip({
-      trigger: 'click',
+      trigger: 'hover',
       placement: 'top'
     });
   }

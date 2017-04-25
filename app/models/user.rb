@@ -43,7 +43,7 @@ class User < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Associations
-  has_many :units
+  has_many :units, foreign_key: 'owner_id'
   has_many :likes
   has_one :address
   has_many :orders

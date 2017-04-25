@@ -1,3 +1,3 @@
 .sold-unit
   %h2 Unit #{liked_unit.unit.unit_number} &#9632; $#{price_converter(liked_unit.unit.price)} &#9632; CAD &#8593; #{liked_unit.unit.orientation}
-  = image_tag('icons/dark.svg', class: 'close-icon', data: { url: unlike_unit_path(liked_unit.unit) } )
+  = image_tag('icons/dark-close.svg', class: 'close-icon', data: { url: unlike_unit_path(liked_unit.unit) } )
