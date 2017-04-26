@@ -16,6 +16,12 @@ class UnitsController < ApplicationController
         url: unit_type_unit_path(@unit_type, unit)
       }.to_json
     end
+    @selected_option = {
+        number: @unit.unit_number,
+        price: price_converter(@unit.price).to_s + " " + @unit.currency,
+        orientation: @unit.orientation,
+        url: unit_type_unit_path(@unit_type, @unit)
+      }.to_json
   end
 
   private
