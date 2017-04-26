@@ -1,6 +1,6 @@
 = javascript_include_tag 'https://js.stripe.com/v3/'
 
-#floating-box
+#floating-box.hidden-xs
   .unit-info-container.text-center
     %p #{@unit.unit_type.name}
     %p.unit-number
@@ -14,7 +14,6 @@
     %h2
       %strong $3000 CAD
     %p Deposit required to buy selected unit
-
 
 = simple_form_for(@order, url: wizard_path, method: :put) do |f|
   .container
@@ -50,6 +49,21 @@
 
             #card-element
             #card-errors
+
+        #floating-box.visible-xs{style: 'margin: 80px 0 50px 0;'}
+          .unit-info-container.text-center
+            %p #{@unit.unit_type.name}
+            %p.unit-number
+              %strong Unit #{@unit.unit_number}
+
+          .price-container.text-center
+            %h2.price $#{@unit.price} CAD
+            %p Total price of unit
+
+          .checkout-container.text-center
+            %h2
+              %strong $3000 CAD
+            %p Deposit required to buy selected unit
 
         .form-actions.text-left
           = f.button :submit, 'Confirm & Pay', class: 'btn btn-success btn-lg'

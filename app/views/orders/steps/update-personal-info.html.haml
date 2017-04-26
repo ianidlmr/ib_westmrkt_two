@@ -1,4 +1,4 @@
-#floating-box
+#floating-box.hidden-xs
   .unit-info-container.text-center
     %p #{@unit.unit_type.name}
     %p.unit-number
@@ -116,11 +116,20 @@
                   = f.label 'Promo Code', class: 'input-text-label'
                   = f.input :promo_code, label: false
 
-        .deposit-container
-          .row
-            .col-xs-12
-              %h1 Your deposit will be $3000 CAD
-              %P The total price of your unit is $#{@unit.price} CAD
+        #floating-box.visible-xs{style: 'margin: 40px 0 40px 0;'}
+          .unit-info-container.text-center
+            %p #{@unit.unit_type.name}
+            %p.unit-number
+              %strong Unit #{@unit.unit_number}
+
+          .price-container.text-center
+            %h2.price $#{@unit.price} CAD
+            %p Total price of unit
+
+          .checkout-container.text-center
+            %h2
+              %strong $3000 CAD
+            %p Deposit required to buy selected unit
 
         .form-actions.text-left
           = f.button :submit, 'Next', class: 'btn btn-info btn-lg'
