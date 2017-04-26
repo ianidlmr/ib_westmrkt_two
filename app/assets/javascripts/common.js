@@ -110,6 +110,7 @@ $(function() {
     }
   });
 
+  // Adjust margin on right side for floating box
   var resizeTimer;
   $(window).on('resize', function(e) {
     clearTimeout(resizeTimer);

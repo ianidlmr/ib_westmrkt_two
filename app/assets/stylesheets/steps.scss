@@ -1,4 +1,60 @@
 body.orders-steps.show {
+  #floating-box {
+    width: 400px;
+    float: right;
+    box-shadow: -1px 2px 42px 4px rgba(204,204,204,1);
+    margin-top: 40px;
+    position: fixed;
+
+    @media #{$sm-only} {
+      width: 350px;
+    }
+
+    @media #{$xs-down} {
+      margin: 0;
+      position: relative;
+      top: 0;
+      right: 0;
+      width: 100%;
+    }
+
+    .unit-info-container {
+      padding: 10px;
+      background: white;
+      border-bottom: 1px solid rgba(204, 204, 204, 0.8);
+
+      p.unit-number {
+        margin-bottom: 0;
+      }
+    }
+
+    .price-container {
+      padding: 10px;
+
+      h2 {
+        margin-top: 0;
+      }
+
+      p {
+        font-size: 12px;
+      }
+    }
+
+    .checkout-container {
+      padding: 10px;
+      background: $brand-info;
+      color: white;
+
+      h2 {
+        margin-top: 0;
+      }
+
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+
   .deal-sheet-text {
     height: 300px;
     width: 100%;

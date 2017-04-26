@@ -1,3 +1,18 @@
+#floating-box
+  .unit-info-container.text-center
+    %p #{@unit.unit_type.name}
+    %p.unit-number
+      %strong Unit #{@unit.unit_number}
+
+  .price-container.text-center
+    %h2.price $#{@unit.price} CAD
+    %p Total price of unit
+
+  .checkout-container.text-center
+    %h2
+      %strong $3000 CAD
+    %p Deposit required to buy selected unit
+
 = simple_form_for(@order, url: wizard_path, method: :put) do |f|
   .container
     .row
