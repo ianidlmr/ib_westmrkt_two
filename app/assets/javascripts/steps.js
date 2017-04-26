@@ -33,4 +33,17 @@ $(function() {
     var offset = ($(window).width() - $('.container').outerWidth()) / 2;
     $('#floating-box').css({'right': offset + 'px'});
   }
+
+  $('.wrapper').scroll(function() {
+    if ($(window).width() >= 768) {
+      if($('#floating-box').offset().top + $('#floating-box').height() >= $('footer').offset().top - 30) {
+        $('#floating-box').css({'position': 'absolute', 'bottom': '50px', 'top': 'auto'});
+      }
+
+      if($('.wrapper').scrollTop() < $('footer').offset().top + 400) {
+        $('#floating-box').css({'position': 'fixed', 'top': '60px', 'bottom': 'auto'});
+      }
+    }
+  });
+
 });

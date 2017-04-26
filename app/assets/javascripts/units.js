@@ -3,14 +3,13 @@ $(function() {
     openSavedUnit();
 
     $('.wrapper').scroll(function() {
-
       if ($(window).width() >= 768) {
-        if($('#floating-box').offset().top + $('#floating-box').height() >= $('footer').offset().top - 10) {
-          $('#floating-box').css({'top': '0'});
+        if($('#floating-box').offset().top + $('#floating-box').height() >= $('footer').offset().top - 30) {
+          $('#floating-box').css({'position': 'absolute', 'bottom': '50px', 'top': 'auto'});
         }
 
-        if($('.wrapper').scrollTop() + window.innerHeight < $('footer').offset().top) {
-          $('#floating-box').css({'top': '20px'}); // restore when you scroll up
+        if($('.wrapper').scrollTop() < $('footer').offset().top + 400) {
+          $('#floating-box').css({'position': 'fixed', 'top': '60px', 'bottom': 'auto'});
         }
       }
     });
