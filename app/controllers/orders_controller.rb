@@ -17,6 +17,11 @@ class OrdersController < ApplicationController
   private
 
   def can_checkout_unit?
+    if !current_user.confirmed?
+      flash[:error] = 'Please check your email to confirm your email address before continuing.'
+      redirect_to unit_types_path and return
+    end
+
     if (current_user.orders.successful.count > 0 || current_user.orders.pending_verification.count > 0) && !current_user.allow_multiple_orders
       flash[:error] = 'You are only allowed one order at the moment. If you would like more please contact our agents.'
       redirect_to unit_types_path and return

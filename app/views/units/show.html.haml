@@ -21,18 +21,28 @@
   .checkout-container.text-center
     %h1 $3000 CAD
     %p Deposit required to buy selected unit
-    - if user_signed_in? && current_user.confirmed?
-      - if @unit.available?
-        = link_to new_unit_order_path(@unit), class: 'link-no-decoration' do
-          %button.btn.btn-success.btn-block Proceed to Checkout
+
+    - if @unit.available?
+      - if user_signed_in?
+        - if current_user.confirmed?
+          - if (current_user.orders.successful.count > 0 || current_user.orders.pending_verification.count > 0) && !current_user.allow_multiple_orders
+            %button.btn.btn-success.btn-block.btn-checkout{ disabled: true } Proceed to Checkout
+            %p.checkout-message
+              Contact
+              :erb
+                <%= mail_to "help@lowerjct.com", nil, style: "font-weight: bold; text-decoration: underline; color: black;" %>
+              to purchase more units
+          - else
+            = link_to new_unit_order_path(@unit), class: 'link-no-decoration' do
+              %button.btn.btn-success.btn-block.btn-checkout Proceed to Checkout
+        - else
+          %button.btn.btn-success.btn-block.btn-checkout{ disabled: true } Proceed to Checkout
+          %p.checkout-message Please check your email to confirm your email address before continuing.
       - else
-        %button.btn.btn-success.btn-block{ disabled: true } Sold
+        = link_to '#', 'data-toggle': 'modal', 'data-target': '#login-modal', 'data-dismiss': 'modal', class: 'link-no-decoration' do
+          %button.btn.btn-success.btn-block.btn-checkout Proceed to Checkout
     - else
-      - if @unit.available?
-        = link_to new_unit_order_path(@unit), class: 'link-no-decoration' do
-          %button.btn.btn-success.btn-block Proceed to Checkout
-      - else
-        %button.btn.btn-success.btn-block{ disabled: true } Sold
+      %button.btn.btn-success.btn-block.btn-checkout{ disabled: true } Sold
 
   .unit-info-footer
     .watchers-container
@@ -140,7 +150,3 @@
         %p A few lines about the aesthetic of the building and the interior of the unit. Painting a portrait of what life would be like living here.
         = link_to specifications_path, target: '_blank' do
           %p.link-how-does-it-work Full specification
-
-
-= render 'shared/signup_modal'
-= render 'shared/login_modal'
