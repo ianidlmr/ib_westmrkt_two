@@ -1,7 +1,8 @@
+---
 defaults: &defaults
   adapter: postgresql
-  username: <%= ENV['database_username'] %>
-  password: <%= ENV['database_password'] %>
+  username: "<%= ENV['database_username'] %>"
+  password: "<%= ENV['database_password'] %>"
   host: localhost
   pool: 25
 
@@ -19,5 +20,6 @@ integration:
 
 production:
   <<: *defaults
-  database: railway_production
+  database: railway_mrkt_production
   host: <%= ENV['database_host'] %>
+  port: <%= ENV['database_port'] %>
