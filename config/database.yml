@@ -20,6 +20,6 @@ integration:
 
 production:
   <<: *defaults
-  database: railway_mrkt_production
+  database: production
   host: <%= ENV['database_host'] %>
   port: <%= ENV['database_port'] %>
