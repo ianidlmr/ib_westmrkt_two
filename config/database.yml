@@ -22,3 +22,4 @@ production:
   <<: *defaults
   database: railway_mrkt_production
   host: <%= ENV['database_host'] %>
+  port: <%= ENV['database_port'] %>
