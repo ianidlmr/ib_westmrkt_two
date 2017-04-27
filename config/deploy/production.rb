@@ -8,7 +8,11 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
+# web
 server '52.60.205.109', user: 'deploy', roles: %w(app db puma_role), primary: true
+
+# utility
+server '52.60.174.146', user: 'deploy', roles: %w(app cron)
 
 # Configuration
 # =============
