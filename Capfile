@@ -24,6 +24,7 @@ require "capistrano/rails/assets"
 require "capistrano/rvm"
 require 'capistrano/figaro_yml'
 require 'capistrano/rails/console'
+require 'whenever/capistrano'
 # require 'capistrano/delayed_job'
 # require "capistrano/rbenv"
 # require "capistrano/chruby"
