@@ -2,9 +2,9 @@
 class UnitTypesController < ApplicationController
   def index
     unit_types = UnitType.joins(:units).distinct.order(:name).where(querybuilder(params))
-    @one_bedroom_unit_types = unit_types.where(number_of_bedrooms: 1).sort_by{ |unit_type| unit_type.trending? ? 0 : 1 }.sort_by{ |unit_type| unit_type.last_chance? ? 0 : 1 }
-    @two_bedroom_unit_types = unit_types.where(number_of_bedrooms: 2).sort_by{ |unit_type| unit_type.trending? ? 0 : 1 }.sort_by{ |unit_type| unit_type.last_chance? ? 0 : 1 }
-    @three_plus_bedroom_unit_types = unit_types.where('number_of_bedrooms >= ?', 3).sort_by{ |unit_type| unit_type.trending? ? 0 : 1 }.sort_by{ |unit_type| unit_type.last_chance? ? 0 : 1 }
+    @one_bedroom_unit_types = unit_types.where(number_of_bedrooms: 1).select{ |unit_type| unit_type.has_available_units? }.sort_by{ |unit_type| unit_type.trending? ? 0 : 1 }.sort_by{ |unit_type| unit_type.last_chance? ? 0 : 1 }
+    @two_bedroom_unit_types = unit_types.where(number_of_bedrooms: 2).select{ |unit_type| unit_type.has_available_units? }.sort_by{ |unit_type| unit_type.trending? ? 0 : 1 }.sort_by{ |unit_type| unit_type.last_chance? ? 0 : 1 }
+    @three_plus_bedroom_unit_types = unit_types.where('number_of_bedrooms >= ?', 3).select{ |unit_type| unit_type.has_available_units? }.sort_by{ |unit_type| unit_type.trending? ? 0 : 1 }.sort_by{ |unit_type| unit_type.last_chance? ? 0 : 1 }
 
     @lowest_price = Unit.available.order(:price).first.price
     @highest_price = Unit.available.order(:price).last.price

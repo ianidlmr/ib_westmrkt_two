@@ -43,6 +43,10 @@ class UnitType < ApplicationRecord
     units.where(state: :available).count
   end
 
+  def has_available_units?
+    quantity_remaining > 0
+  end
+
   def total_views
     units.map(&:views).reduce(:+)
   end
