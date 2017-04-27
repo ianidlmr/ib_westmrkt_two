@@ -20,6 +20,6 @@ integration:
 
 production:
   <<: *defaults
-  database: production
+  database: west_market_production
   host: <%= ENV['database_host'] %>
   port: <%= ENV['database_port'] %>
