@@ -37,3 +37,9 @@ set :assets_roles, [:puma_role] # Defaults to [:web]
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+
+# https://github.com/javan/whenever#capistrano-v3-integration
+set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
+
+# 'db' is the default whenever role
+set :whenever_roles, [:cron]
