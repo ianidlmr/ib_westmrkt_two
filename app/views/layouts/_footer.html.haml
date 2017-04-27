@@ -1,0 +1,33 @@
+.container
+  .row
+    .col-md-5
+      %h1.text-uppercase Railway <strong>Mrkt.</strong>
+      %p The Railway Market is part of Lower Junction development site. This time-limited pre-sale is official and you're buying units from the developer.<span class='black'> Learn More</span>
+
+    .col-md-5
+      %h1.text-uppercase Available Types Of Units
+      .flex-row
+        - options = UnitType.select(:number_of_bedrooms).distinct.sort_by(&:number_of_bedrooms).each_slice(3) do |front_page_description_slice|
+          .flex-column
+            - front_page_description_slice.each do |unit_type|
+              = link_to unit_types_path(number_of_bedrooms: pluralize(unit_type.number_of_bedrooms, 'bedroom')) do
+                %p.black
+                  %strong= pluralize(unit_type.number_of_bedrooms, 'bedroom')
+
+    .col-md-2
+      %h1.text-uppercase Pre-Sale
+      .pre-sale-flex-column
+        = link_to about_path, target: '_blank' do
+          %p.black About
+        = link_to help_path, target: '_blank' do
+          %p.black Help
+        %p.black Press
+
+
+  .row.copyright-row
+    .col-xs-8
+      .copyright
+        &copy; #{Time.zone.now.year} Railway Market as part of Lower Junction
+    .col-xs-4.text-right
+      = link_to terms_and_privacy_path, target: '_blank' do
+        %p Terms & Privacy

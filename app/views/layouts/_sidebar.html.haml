@@ -1,0 +1,44 @@
+%ul.sidebar-nav
+  %li.search-unit-container
+    .input-text-wrap
+      = form_tag search_path, method: :get do
+        = label_tag 'Search by Unit Number', nil, class: 'input-text-label'
+        = text_field_tag 'unit_number'
+
+  = link_to root_path do
+    %li.sidebar-item
+      .sidebar-item-text
+        Home
+  = link_to unit_types_path do
+    %li.sidebar-item
+      .sidebar-item-text
+        Units
+  = link_to about_path do
+    %li.sidebar-item
+      .sidebar-item-text
+        About
+  = link_to help_path do
+    %li.sidebar-item
+      .sidebar-item-text
+        Help
+  .logout-container
+    - if user_signed_in?
+      = link_to edit_user_registration_path do
+        %li.sidebar-item
+          .sidebar-item-text
+            My Account
+
+      = link_to destroy_user_session_path, method: :delete do
+        %li.sidebar-item
+          .sidebar-item-text
+            Sign Out
+    - else
+      %li.sidebar-item
+        .sidebar-item-text.sign-up-message
+          = link_to 'Sign Up', '#', 'data-toggle': 'modal', 'data-target': '#signup-modal', 'data-dismiss': 'modal'
+          or
+          = link_to 'Log In', '#', 'data-toggle': 'modal', 'data-target': '#login-modal', 'data-dismiss': 'modal'
+
+  %li.sidebar-item
+    .sidebar-item-text.phone-info
+      Need help?<strong> +1 (666) 123-9857</strong>

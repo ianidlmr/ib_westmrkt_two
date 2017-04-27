@@ -1,0 +1,66 @@
+body.home.help,
+body.home.specifications {
+  .h-one h1 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .h-one, .h-two {
+    background: #FFFFFF;
+  }
+
+  .h-two li {
+    font-size: 18px;
+    list-style: none;
+    padding-bottom: 30px;
+    width: 75%;
+  }
+
+  .h-two .row {
+    border-top: 4px solid #F5F5F5;
+    padding-top: 5px;
+  }
+
+  .help-option {
+    cursor: pointer;
+    position: relative;
+  }
+
+  .help-option svg {
+    position: absolute;
+    top: 10px;
+    right: 0;
+  }
+
+  .help-option p {
+    font-size: 15px;
+    display: none;
+  }
+
+  .rotate-180 {
+    transform: rotate(180deg);
+  }
+
+  .help-active {
+    display: inline-block !important;
+
+    animation: fadeInAndDown 0.45s ease-in-out forwards;
+  }
+
+  .col-9 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+
+  @keyframes fadeInAndDown {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0.3;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}

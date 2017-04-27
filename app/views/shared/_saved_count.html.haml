@@ -1,0 +1,4 @@
+%h3 Saved
+.circle{ style: (@liked_units_count.present? && @liked_units_count > 0 ? 'background: #64c879;' : 'background: #fff;') }
+  %p.amount
+    #{@liked_units_count.present? && @liked_units_count > 0 ? @liked_units_count : 0}

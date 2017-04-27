@@ -1,0 +1,41 @@
+!!!
+%html{ lang: 'en' }
+  %head
+    %meta{ charset: 'utf-8' }/
+    %meta{ content: 'IE=edge', 'http-equiv' => 'X-UA-Compatible' }/
+    %meta{ content: 'width=device-width, initial-scale=1', name: 'viewport' }/
+    %meta{ name: 'viewport', content: { 'width': 'device-width', 'initial-scale': '1.0', 'maximum-scale': '1.0', 'user-scalable': 'no'} }
+    -# The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
+
+    %title RailwayMrkt
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+
+    - if "#{controller_path.tr('_', '-').tr('/', '-')} #{action_name.tr('_', '-')}" == "home about"
+      %script{ src: "https://api.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js" }/
+      %link{ href: "https://api.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css", rel: "stylesheet" }/
+
+    -# Loading Typekit font
+    = javascript_include_tag 'https://use.typekit.net/nff7niv.js'
+    :javascript
+      try {
+        Typekit.load({ async: true });
+      } catch(e) {
+
+      }
+  %body{ class: "#{controller_path.tr('_', '-').tr('/', '-')} #{action_name.tr('_', '-')}" }
+    .wrapper
+      .mask{ style: 'background: black; display: none; position: absolute; bottom: 0; left: 0; height: 100%; width: 100%; z-index: 15; opacity: 0.5;' }
+      .sidebar
+        = render 'layouts/sidebar'
+      .right-sidebar
+        = render 'layouts/right_sidebar'
+      = render 'layouts/navigation'
+      = render 'layouts/flash'
+      %main{ role: 'main' }
+        = yield
+        = render 'shared/signup_modal'
+        = render 'shared/login_modal'
+      %footer
+        = render 'layouts/footer'

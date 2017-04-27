@@ -1,0 +1,152 @@
+body.unit-types.index {
+  footer {
+    display: none;
+  }
+
+  .trending-indicator,
+  .last-chance-indicator {
+    display: flex;
+    position: absolute;
+    right: 25px;
+    top: 10px;
+    align-items: center;
+
+    .title {
+      color: #ff5353;
+      font-size: 16px;
+      margin-bottom: 0;
+      margin-left: 5px;
+    }
+  }
+
+  .flex-row {
+    display: flex;
+    flex: 1;
+    text-align: left;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    @media #{$sm-down} {
+      flex-wrap: wrap;
+      padding: 0 33px;
+    }
+
+    .price-column {
+      width: 40%;
+      padding: 0 38px;
+
+      @media #{$sm-down} {
+        width: 100%;
+        padding: 0 15px;
+      }
+
+      p.lowest-price {
+        position: absolute;
+        left: 4px;
+        top: 158px;
+
+        @media #{$sm-down} {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .den-column,
+    .balcony-column,
+    .bathroom-column {
+      width: 20%;
+      padding: 0 20px;
+
+      @media #{$sm-down} {
+        width: 50%;
+      }
+    }
+
+    .bathroom-column {
+      @media #{$sm-down} {
+        width: 100%;
+      }
+    }
+  }
+
+  .bathroom-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @media #{$sm-down} {
+      flex-direction: row;
+      justify-content: flex-start;
+    }
+  }
+
+  .bedrooms-filter {
+    width: 100%;
+    display: flex;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: white;
+    border-bottom: 1px solid #ccc;
+    z-index: 26;
+  }
+
+  @media #{$sm-down} {
+    .bedrooms-filter {
+      bottom: 0;
+      top: calc(100% - 51px);
+      position: fixed;
+      border-top: 1px solid #ccc;
+    }
+
+    .nav > li > a {
+      padding: 15px 20px;
+      font-size: 14px;
+    }
+  }
+
+  #price-average {
+    margin-top: 50px;
+  }
+
+  .noUi-target {
+    border-radius: 20px;
+    background: #e6e6e6;
+    border: none;
+  }
+
+  .noUi-horizontal {
+    height: 8px;
+  }
+
+  .noUi-horizontal .noUi-handle {
+    height: 20px;
+    width: 20px;
+    top: -7px;
+    border-radius: 100%;
+    background: black;
+    box-shadow: none;
+    border: none;
+  }
+
+  .noUi-handle:after, .noUi-handle:before {
+    content: none;
+  }
+
+  .noUi-connect {
+    top: -1px;
+    height: 8px;
+    background: #ccc;
+    border-radius: 20px;
+  }
+
+  .noUi-tooltip {
+    border: none;
+    width: 105px;
+    background: transparent;
+
+    @media #{$sm-down} {
+      font-size: 14px;
+    }
+  }
+}

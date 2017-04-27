@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="180px" height="162px" viewBox="0 0 180 162" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Page 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Mobile" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Product-Page-/-Added" transform="translate(-98.000000, -341.000000)">
+            <g id="header" transform="translate(0.000000, 40.000000)">
+                <g id="Page-1" transform="translate(98.000000, 302.000000)">
+                    <rect id="fill" fill="#FF5353" x="7" y="89" width="19" height="10"></rect>
+                    <g id="2" transform="translate(0.000000, 0.052009)" stroke="#231F1F" stroke-width="2">
+                        <path d="M6.19621342e-05,138 L179.896895,138" id="Stroke-1"></path>
+                        <path d="M6.19621342e-05,159 L179.896895,159" id="Stroke-4"></path>
+                        <polyline id="Stroke-7" points="7.48710155 138.691542 7.48710155 0.259517224 57.8313356 0.259517224 57.8313356 138.691542"></polyline>
+                        <path d="M7.17729088,9.94799067 L57.8313356,9.94799067" id="Stroke-10"></path>
+                        <path d="M7.17729088,19.9479907 L57.8313356,19.9479907" id="Stroke-11"></path>
+                        <path d="M7.17729088,29.9479907 L57.8313356,29.9479907" id="Stroke-12"></path>
+                        <path d="M7.17729088,38.9479907 L57.8313356,38.9479907" id="Stroke-13"></path>
+                        <path d="M7.17729088,48.9479907 L57.8313356,48.9479907" id="Stroke-14"></path>
+                        <path d="M7.17729088,58.9479907 L57.8313356,58.9479907" id="Stroke-15"></path>
+                        <path d="M7.17729088,68.9479907 L57.8313356,68.9479907" id="Stroke-16"></path>
+                        <path d="M7.17729088,78.9479907 L57.8313356,78.9479907" id="Stroke-17"></path>
+                        <path d="M7.17729088,88.9479907 L57.8313356,88.9479907" id="Stroke-18"></path>
+                        <path d="M7.17729088,98.9479907 L57.8313356,98.9479907" id="Stroke-19"></path>
+                        <path d="M7.17729088,107.947991 L57.8313356,107.947991" id="Stroke-20"></path>
+                        <path d="M7.17729088,117.947991 L57.8313356,117.947991" id="Stroke-21"></path>
+                        <path d="M7.17729088,127.947991 L57.8313356,127.947991" id="Stroke-22"></path>
+                        <polyline id="Stroke-23" points="174.629959 49.2811045 131.256465 49.2811045 131.256465 88.1953455 174.629959 88.1953455 174.629959 20.095347 134.509477 20.095347 134.509477 49.3520145"></polyline>
+                        <path d="M134.509477,29.9479907 L174.629959,29.9479907" id="Stroke-24"></path>
+                        <path d="M134.509477,38.9479907 L174.629959,38.9479907" id="Stroke-25"></path>
+                        <path d="M131.256465,58.9479907 L174.629959,58.9479907" id="Stroke-26"></path>
+                        <path d="M131.256465,68.9479907 L174.629959,68.9479907" id="Stroke-27"></path>
+                        <path d="M131.256465,78.9479907 L174.629959,78.9479907" id="Stroke-28"></path>
+                        <path d="M133,138.224392 L133,118.759822" id="Stroke-42"></path>
+                        <path d="M172,87.9479907 L172,119.226971" id="Stroke-43"></path>
+                        <path d="M139,89.1736746 L139,119.071255" id="Stroke-44"></path>
+                        <path d="M132,118.281324 L173,118.281324" id="Stroke-40"></path>
+                    </g>
+                    <g id="1" transform="translate(56.000000, 10.000000)" stroke="#231F1F">
+                        <polyline id="Stroke-29" points="1.98624096 0.277386576 87.4939862 0.277386576 87.4939862 10.08753"></polyline>
+                        <path d="M2,10.08753 L78.3683305,9.6" id="Stroke-30"></path>
+                        <path d="M1.98624096,20 L78.3545714,20" id="Stroke-31"></path>
+                        <path d="M1.98624096,29 L78.3545714,29" id="Stroke-32"></path>
+                        <path d="M1.98624096,39 L75.2564647,39.3" id="Stroke-33"></path>
+                        <path d="M1.98624096,49 L75.2564647,49" id="Stroke-34"></path>
+                        <path d="M1.98624096,59 L75.2564647,59" id="Stroke-35"></path>
+                        <path d="M1.98624096,69 L75.2564647,69" id="Stroke-36"></path>
+                        <path d="M2,79 L75,78.8" id="Stroke-37"></path>
+                        <path d="M1.98624096,89 L84.0860688,89" id="Stroke-38"></path>
+                        <path d="M1.98624096,98 L84.0860688,98" id="Stroke-39"></path>
+                        <path d="M0.986240964,108 L77.5,108" id="Stroke-40"></path>
+                        <path d="M1.98624096,118 L77.2296489,118" id="Stroke-41"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

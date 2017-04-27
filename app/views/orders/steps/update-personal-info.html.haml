@@ -1,0 +1,135 @@
+#floating-box.hidden-xs
+  .unit-info-container.text-center
+    %p #{@unit.unit_type.name}
+    %p.unit-number
+      %strong Unit #{@unit.unit_number}
+
+  .price-container.text-center
+    %h2.price $#{@unit.price} CAD
+    %p Total price of unit
+
+  .checkout-container.text-center
+    %h2
+      %strong $3000 CAD
+    %p Deposit required to buy selected unit
+
+= simple_form_for(@order, url: wizard_path, method: :put) do |f|
+  .container
+    .row
+      .col-sm-6
+        .personal-info-container
+          %h1 Your details
+          %p You've signed up with <strong>#{current_user.email}</strong>
+          %p Please note that information you provide below will be used to create the contract. All details should match inforamtion on photo ID you will be asked to confirm your identification and finalize the purchase.
+
+          %h1 Personal details
+          .form-inputs
+            = f.simple_fields_for :user do |u|
+              .row
+                .col-sm-6
+                  .input-text-wrap
+                    = u.label 'First Name', class: 'input-text-label'
+                    = u.input :first_name, required: true, label: false
+                .col-sm-6
+                  .input-text-wrap
+                    = u.label 'Last Name', class: 'input-text-label'
+                    = u.input :last_name, required: true, label: false
+              .row
+                .col-sm-6
+                  .input-text-wrap
+                    = u.label 'Phone', class: 'input-text-label'
+                    = u.input :phone_number, required: true, label: false
+                .col-sm-6
+                  .input-text-wrap
+                    = u.label 'Occupation', class: 'input-text-label'
+                    = u.input :occupation, required: true, label: false
+
+          %h1 Address Information
+          .form-inputs
+            = f.simple_fields_for :address do |a|
+              .row
+                .col-sm-6
+                  .input-text-wrap
+                    = a.label 'Address line 1', class: 'input-text-label'
+                    = a.input :street_1, label: false
+                .col-sm-6
+                  .input-text-wrap
+                    = a.label 'Address line 2 (optional)', class: 'input-text-label'
+                    = a.input :street_2, label: false
+              .row
+                .col-sm-6
+                  .input-text-wrap
+                    = a.label 'Country', class: 'input-text-label'
+                    = a.input :country_code, label: false
+                .col-sm-6
+                  .input-text-wrap
+                    = a.label 'Province', class: 'input-text-label'
+                    = a.input :state, label: false
+              .row
+                .col-sm-6
+                  .input-text-wrap
+                    = a.label 'Zip Code', class: 'input-text-label'
+                    = a.input :postal_code, label: false
+                .col-sm-6
+                  .input-text-wrap
+                    = a.label 'City', class: 'input-text-label'
+                    = a.input :city, label: false
+
+        .final-check-container
+          %h1 Final Check
+          %h2
+            %strong #{@unit.unit_type.name} Unit #{@unit.unit_number}
+          .row
+            .col-xs-3
+              %p{style: 'margin: 0'} Floor No.
+              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 14px;'} #{@unit.floor_number}
+
+              %p{style: 'margin: 0'} Side of the bldg.
+              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 14px;'} #{@unit.orientation}
+
+            .col-xs-3
+              %p{style: 'margin: 0'} Den
+              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 14px;'} #{@unit.unit_type.den  ? 'Included' : 'Not Included'}
+
+              %p{style: 'margin: 0'} Balcony
+              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 14px;'} #{@unit.unit_type.balcony ? 'Included' : 'Not Included'}
+
+            .col-xs-3
+              %p{style: 'margin: 0'} Bedrooms
+              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 14px;'} #{@unit.unit_type.number_of_bedrooms}
+
+              %p{style: 'margin: 0'} Bathrooms
+              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 14px;'} #{@unit.unit_type.number_of_bathrooms}
+
+            .col-xs-3
+              %p{style: 'margin: 0'} Interior SQFT
+              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 14px;'} #{@unit.unit_type.interior_sqft}
+
+              %p{style: 'margin: 0'} Balcony SQFT
+              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 14px;'} #{@unit.unit_type.balcony_sqft}
+
+        .promo-container
+          .row
+            .col-xs-4
+              .form-inputs
+                .input-text-wrap
+                  = f.label 'Promo Code', class: 'input-text-label'
+                  = f.input :promo_code, label: false
+
+        #floating-box.visible-xs{style: 'margin: 40px 0 40px 0;'}
+          .unit-info-container.text-center
+            %p #{@unit.unit_type.name}
+            %p.unit-number
+              %strong Unit #{@unit.unit_number}
+
+          .price-container.text-center
+            %h2.price $#{@unit.price} CAD
+            %p Total price of unit
+
+          .checkout-container.text-center
+            %h2
+              %strong $3000 CAD
+            %p Deposit required to buy selected unit
+
+        .form-actions.text-left
+          = f.button :submit, 'Next', class: 'btn btn-info btn-lg'

@@ -1,0 +1,38 @@
+.row
+  - if @one_bedroom_unit_types.blank?
+    .col-md-12.text-center
+      %h1 Sorry, no results for 1 Bedroom
+      %p Use tabs to display search results or try to use less filters to find what you’re looking for
+      %button.btn.btn-lg.btn-black Reset all filters
+  - else
+    - @one_bedroom_unit_types.each do |unit_type|
+      .col-md-6
+        - available_unit = unit_type.units.where(state: :available).first
+        .panel.panel-default.unit-panel{ data: { url: unit_type_unit_path(unit_type, available_unit) } }
+          - if unit_type.last_chance?
+            .last-chance-indicator
+              = image_tag('icons/bolt.svg')
+              .copy
+                %p.title.text-capitalize Last Chance
+
+          - elsif unit_type.trending?
+            .trending-indicator
+              = image_tag('icons/bolt.svg')
+              .trending-copy
+                %p.title.text-capitalize Trending Now
+
+          .panel-body
+            %h1= unit_type.name
+            - balcony_string = unit_type.balcony ? 'and balcony' : ''
+            %p #{unit_type.interior_sqft} SQFT interior included #{pluralize(unit_type.number_of_bathrooms, 'bathroom')} #{balcony_string}
+            .view-container{ style: 'display: flex; align-items: center; height: 25px;' }
+              %p.view-text.hidden{ style: 'margin: 0; margin-right: 10px; font-size: 14px;' } View
+              = image_tag('icons/arrow-right-dark.svg')
+          .panel-footer{ style: 'display: flex; width: 100%; padding: 0px;' }
+            .units-left{ style: 'width: 50%; padding: 10px 15px;' }
+              %p
+                %strong Only #{pluralize(unit_type.quantity_remaining, 'unit')} left</strong>
+              %p.total-views= pluralize(unit_type.total_views, 'view')
+            .price-container{ style: 'background: #1a1a1a; width: 50%; padding: 10px 20px;' }
+              %p{ style: 'color: white;' } For $#{price_converter(available_unit.price)} #{available_unit.currency}
+              %p{ style: 'color: #00aaff;' } Save $#{price_converter(available_unit.savings)} #{available_unit.currency}

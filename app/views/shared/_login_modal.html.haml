@@ -1,0 +1,29 @@
+.modal.fade#login-modal{ tabindex: '-1', role: 'dialog', 'aria-labelledby': '#modal-label' }
+  .modal-dialog{ role: 'document' }
+    .modal-content
+      .modal-body
+        .panel.panel-default.devise-panel
+          .panel-heading
+            .heading-container
+              %h2.text-uppercase.text-center Railway <strong>Mrkt.</strong>
+              = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+                = f.error_notification
+                .form-inputs
+                  .input-text-wrap
+                    = f.label 'Email Address', class: 'input-text-label'
+                    = f.input :email, required: true, label: false
+                  .input-text-wrap
+                    = f.label 'Password', class: 'input-text-label'
+                    = f.input :password, required: true, label: false
+
+                .form-actions.text-center
+                  = f.button :submit, 'Log In', class: 'btn btn-success btn-block btn-signup'
+                  %p{ style: 'margin-top: 10px;' } or
+                  = link_to omniauth_authorize_path(resource_name, :google_oauth2), class: 'btn btn-block btn-white btn-google' do
+                    = image_tag('icons/google-logo.svg', class: 'img-responsive google-logo')
+                    %span Log in with Google
+                    %span
+
+            .panel-footer
+              %p Don't have an account?
+              = link_to 'Sign Up', '#', 'data-toggle': 'modal', 'data-target': '#signup-modal', 'data-dismiss': 'modal', class: 'btn btn-success btn-md btn-white'

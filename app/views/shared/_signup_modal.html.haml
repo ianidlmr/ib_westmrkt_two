@@ -1,0 +1,40 @@
+.modal.fade#signup-modal{ tabindex: '-1', role: 'dialog', 'aria-labelledby': '#modal-label' }
+  .modal-dialog{ role: 'document' }
+    .modal-content
+      .modal-body
+        .panel.panel-default.devise-panel
+          .panel-heading
+            .heading-container
+              %h2.text-uppercase.text-center Railway <strong>Mrkt.</strong>
+              = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+                = f.error_notification
+                .form-inputs
+                  .input-text-wrap
+                    = f.label 'Email Address', class: 'input-text-label'
+                    = f.input :email, required: true, label: false
+                    %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
+                  .input-text-wrap
+                    = f.label 'First Name', class: 'input-text-label'
+                    = f.input :first_name, required: true, label: false
+                    %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
+                  .input-text-wrap
+                    = f.label 'Last Name', class: 'input-text-label'
+                    = f.input :last_name, required: true, label: false
+                    %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
+                  .input-text-wrap
+                    = f.label 'Create a Password', class: 'input-text-label'
+                    = f.input :password, required: true, label: false
+                    %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
+                  .input-text-wrap
+                    = f.label 'Confirm Password', class: 'input-text-label'
+                    = f.input :password_confirmation, required: true, label: false
+                    %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
+
+                .form-actions.text-center
+                  = f.button :submit, 'Create Account', class: 'btn btn-success btn-block btn-signup'
+                  %p{ style: 'margin-top: 10px;' } or
+                  = link_to 'Sign Up with Google', omniauth_authorize_path(resource_name, :google_oauth2)
+
+            .panel-footer
+              %p Already have an account?
+              = link_to 'Log In', '#', 'data-toggle': 'modal', 'data-target': '#login-modal', 'data-dismiss': 'modal', class: 'btn btn-success btn-md btn-white'

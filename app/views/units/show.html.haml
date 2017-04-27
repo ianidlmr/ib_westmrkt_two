@@ -1,0 +1,152 @@
+#floating-box
+  - if @select_options.present?
+    .units-dropdown.text-center{style: 'background: white;'}
+      %p Available units in this layout
+      .select-container
+        = select_tag 'unit_number', options_for_select(@select_options, @selected_option), class: 'selectize'
+
+  - if @unit.trending?
+    .trending-container
+      = image_tag('icons/bolt.svg')
+      .trending-copy
+        %p.title Trending now
+        %p.description It's highly possible this unit will be sold out this week
+
+  .price-container.text-center{ style: (@unit.trending? ? '' : 'border-top: 1px solid rgba(204, 204, 204, 0.8);') }
+    %h2.price $#{@unit.price} CAD
+    .parking-message
+      %p.parking Parking and storage not included
+      = fa_icon 'question-circle', class: 'parking-tip', data: { toggle: 'tooltip' }, title: 'Parking and storage is available to purchase during finalizing deal with Sale Team'
+
+  .checkout-container.text-center
+    %h1 $3000 CAD
+    %p Deposit required to buy selected unit
+
+    - if @unit.available?
+      - if user_signed_in?
+        - if current_user.confirmed?
+          - if (current_user.orders.successful.count > 0 || current_user.orders.pending_verification.count > 0) && !current_user.allow_multiple_orders
+            %button.btn.btn-success.btn-block.btn-checkout{ disabled: true } Proceed to Checkout
+            %p.checkout-message
+              Contact
+              :erb
+                <%= mail_to "help@lowerjct.com", nil, style: "font-weight: bold; text-decoration: underline; color: black;" %>
+              to purchase more units
+          - else
+            = link_to new_unit_order_path(@unit), class: 'link-no-decoration' do
+              %button.btn.btn-success.btn-block.btn-checkout Proceed to Checkout
+        - else
+          %button.btn.btn-success.btn-block.btn-checkout{ disabled: true } Proceed to Checkout
+          %p.checkout-message Please check your email to confirm your email address before continuing.
+      - else
+        = link_to '#', 'data-toggle': 'modal', 'data-target': '#login-modal', 'data-dismiss': 'modal', class: 'link-no-decoration' do
+          %button.btn.btn-success.btn-block.btn-checkout Proceed to Checkout
+    - else
+      %button.btn.btn-success.btn-block.btn-checkout{ disabled: true } Sold
+
+  .unit-info-footer
+    .watchers-container
+      = image_tag('icons/eye-dark.svg')
+      %p #{pluralize(@unit_views, 'view')}
+    .people-saved-container
+      = image_tag('icons/tick-dark.svg')
+      %p #{pluralize(@unit.users.count, 'person')} added to saved
+
+.unit-info-row{ style: 'background: #f0f0f0' }
+  .container
+    .row
+      .col-sm-6
+        .unit-info-container{style: 'margin-top: 40px;'}
+          %h1{style: 'margin: 0;'}
+            #{@unit_type.name}
+          - if user_signed_in?
+            - if @unit.available?
+              - unit_saved = @unit.likes.where(user: current_user).present?
+              .saved-container{ style: 'display: flex; color: black; align-items: center;' }
+                %h1{style: 'margin: 0;'}
+                  Unit #{@unit.unit_number}
+                .saved-message{ style: 'margin-left: 12px;', data: { url: like_unit_path(@unit) } }
+                  - if unit_saved
+                    = image_tag('icons/tick-dark.svg')
+                    %p Saved
+                  - else
+                    = image_tag('icons/tick-dark.svg')
+                    %p Add to Saved
+            - else
+              %h1{style: 'margin: 0;'}
+                Unit #{@unit.unit_number}
+
+          - else
+            = link_to '#', 'data-toggle': 'modal', 'data-target': '#signup-modal', 'data-dismiss': 'modal', class: 'login-link' do
+              .saved-container{ style: 'display: flex; color: black; align-items: center;' }
+                %h1{style: 'margin: 0;'}
+                  Unit #{@unit.unit_number}
+                .saved-message{ style: 'margin-left: 12px;', data: { url: '' } }
+                  = image_tag('icons/tick-dark.svg')
+                  %p Add to Saved
+
+          .row{style: 'margin-top: 20px;'}
+            .col-xs-4
+              %p{style: 'margin: 0; font-size: 15px;'} Bedrooms
+              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.unit_type.number_of_bedrooms}
+            .col-xs-4
+              %p{style: 'margin: 0; font-size: 15px;'} Den
+              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.unit_type.den  ? 'Included' : 'Not Included'}
+            .col-xs-4
+              %p{style: 'margin: 0; font-size: 15px;'} Interior SQFT
+              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.unit_type.interior_sqft}
+
+          .row{style: 'margin-top: 20px;'}
+            .col-xs-4
+              %p{style: 'margin: 0; font-size: 15px;'} Bathrooms
+              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.unit_type.number_of_bathrooms}
+
+            .col-xs-4
+              %p{style: 'margin: 0; font-size: 15px;'} Balcony
+              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.unit_type.balcony ? 'Included' : 'Not Included'}
+
+            .col-xs-4
+              %p{style: 'margin: 0; font-size: 15px;'} Balcony SQFT
+              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.unit_type.balcony_sqft}
+
+          .row{style: 'margin-top: 20px;'}
+            .col-xs-4
+              %p{style: 'margin: 0; font-size: 15px;'} Floor No.
+              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.floor_number}
+
+              %p{style: 'margin: 0; font-size: 15px;'} Side of the bldg.
+              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.orientation}
+
+            .col-xs-4
+              = image_tag 'bldg2.svg', class: 'img-responsive'
+
+            .col-xs-4
+              = image_tag 'bldg1.svg', class: 'img-responsive'
+
+.floorplan-row
+  .container
+    .row
+      .col-sm-6
+        %h2 Floorplan
+
+        .my-gallery{ itemtype: "http://schema.org/ImageGallery" }
+          %figure{:itemprop => "associatedMedia", :itemscope => "", :itemtype => "http://schema.org/ImageObject"}
+            %a{"data-size" => "600x400", :href => "/assets/bitmap-floorplan.jpg", :itemprop => "contentUrl"}
+              = image_tag 'bitmap-floorplan.jpg', class: 'img-responsive'
+
+        %p.unit-type-description= @unit.unit_type.description
+
+        .view-from-window-heading{ style: 'background: black;' }
+          %h1 View from the window
+
+.aesthetic-row{ style: 'background: #f0f0f0' }
+  .container
+    .row
+      .col-sm-6
+        .view-carousel
+          = image_tag "photo-view.jpg"
+          = image_tag "img-explore-railway-market.jpg"
+        %h1 Aesthetic
+        %p A few lines about the aesthetic of the building and the interior of the unit. Painting a portrait of what life would be like living here.
+        = link_to specifications_path, target: '_blank' do
+          %p.link-how-does-it-work Full specification

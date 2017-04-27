@@ -1,0 +1,23 @@
+defaults: &defaults
+  adapter: postgresql
+  username: <%= ENV['database_username'] %>
+  password: <%= ENV['database_password'] %>
+  host: localhost
+  pool: 25
+
+development:
+  <<: *defaults
+  database: railway_development
+
+test:
+  <<: *defaults
+  database: railway_test
+
+integration:
+  <<: *defaults
+  database: railway_integration
+
+production:
+  <<: *defaults
+  database: railway_production
+  host: <%= ENV['database_host'] %>
