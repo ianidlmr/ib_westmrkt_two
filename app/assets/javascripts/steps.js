@@ -2,16 +2,17 @@ $(function() {
   $.extend($.validator.messages, { equalTo: "Passwords do not match." })
   $('.simple_form.edit_order').validate({
     rules: {
-      "order[user_attributes][first_naem]": {required: true},
+      "order[user_attributes][first_name]": {required: true},
       "order[user_attributes][last_name]": {required: true},
       "order[user_attributes][phone_number]": {required: true},
       "order[user_attributes][occupation]": {required: true},
       "order[address][street_1]": {required: true},
+      "order[address][street_2]": {required: false},
       "order[address][city]": {required: true},
       "order[address][country_code]": {required: true},
       "order[address][state]": {required: true},
       "order[address][postal_code]": {required: true},
-      "order[agree_to_deal_sheet]": {required: true},
+      "order[agree_to_deal_sheet_and_terms]": {required: true},
       "order[postal_code]": {required: true}
     },
 

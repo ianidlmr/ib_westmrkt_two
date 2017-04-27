@@ -9,8 +9,7 @@
 #  updated_at                    :datetime         not null
 #  unit_id                       :integer
 #  promo_code                    :string
-#  agree_to_deal_sheet           :boolean          default("false")
-#  agree_to_terms_and_conditions :boolean          default("false")
+#  agree_to_deal_sheet_and_terms :boolean          default("false")
 #  broker                        :boolean          default("false")
 #  payment_state                 :string           default("in_progress")
 #  current_step                  :string           default("update-personal-info")
