@@ -35,7 +35,7 @@ class Order < ApplicationRecord
   #------------------------------------------------------------------------------
   # Validations
   validates :user_id, :unit_id, presence: true, if: :in_progress?
-  validates :stripe_charge_id, :agree_to_deal_sheet, :broker, presence: true, if: :pending_verification?
+  validates :stripe_charge_id, :agree_to_deal_sheet_and_terms, :broker, presence: true, if: :pending_verification?
 
   #------------------------------------------------------------------------------
   # Callbacks

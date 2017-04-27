@@ -36,7 +36,7 @@ class Orders::StepsController < ApplicationController
     end
 
     if params[:order][:broker].present?
-      @order.update_attributes(broker: params[:order][:broker], agree_to_deal_sheet: params[:order][:agree_to_deal_sheet])
+      @order.update_attributes(broker: params[:order][:broker], agree_to_deal_sheet_and_terms: params[:order][:agree_to_deal_sheet_and_terms])
       if @order.save
         @order.process_payment!
         redirect_to next_wizard_path
