@@ -83,6 +83,7 @@ $(function() {
       e.preventDefault();
       var key = this.className;
       $('li.filters a span').show();
+      $('li.filters a').css({'font-weight': 'bold'});
       $("input[name='" + key.trim().replace(/-/g, '_') + "']").val($(this).data('value'));
       updateOptionValueUI(key, $(this).data('value'));
     });
@@ -156,6 +157,7 @@ $(function() {
       priceSlider.noUiSlider.set($('#price-average').data('highest-price'));
       $('.btn-accept').trigger('click');
       $('li.filters a span').hide();
+      $('li.filters a').css({'font-weight': 'normal'});
     });
   }
 });

@@ -28,10 +28,6 @@ body {
 }
 
 
-.body {
-  // font-family:
-}
-
 .wrapper {
   overflow-x: hidden;
   display: flex;
@@ -1060,4 +1056,8 @@ p.number-of-bathrooms {
   input[name="unit_number"] {
     font-size: 16px;
   }
+}
+
+.alert {
+  font-size: 16px;
 }
