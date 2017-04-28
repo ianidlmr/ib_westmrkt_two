@@ -20,6 +20,8 @@
 //= require wNumb
 //= require ahoy
 //= require selectize
+//= require photoswipe.min
+//= require photoswipe-ui-default.min
 //= require_tree .
 
 // Project assets
