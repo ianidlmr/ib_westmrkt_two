@@ -297,4 +297,20 @@ body.units.show {
   .view-carousel button {
     display: none !important;
   }
+
+  .floor-plan-container {
+    position: relative;
+
+    .floor-plan-image {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      box-shadow: 0px 0px 30px 1px black;
+      border-radius: 100%;
+    }
+  }
 }

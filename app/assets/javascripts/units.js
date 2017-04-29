@@ -61,7 +61,6 @@ $(function() {
       placement: 'top'
     });
 
-
     $('.picture').each( function() {
       var $pic = $(this),
       getItems = function() {
@@ -76,7 +75,7 @@ $(function() {
             src : $href,
             w   : $width,
             h   : $height
-          }
+          };
 
           items.push(item);
         });
@@ -85,15 +84,13 @@ $(function() {
       }
 
       var items = getItems();
-
       var $pswp = $('.pswp')[0];
-      $pic.on('click', 'figure', function(event) {
+
+      $('.zoom-in, .picture').on('click', function(event) {
         event.preventDefault();
 
-        var $index = $(this).index();
         var options = {
-          index: $index,
-          bgOpacity: 0.7,
+          bgOpacity: 0.8,
           showHideOpacity: true
         }
 

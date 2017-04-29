@@ -129,10 +129,13 @@
       .col-sm-6
         %h2 Floorplan
 
-        .picture{ itemscope: "",  itemtype: "http://schema.org/ImageGallery" }
-          %figure{ itemprop: "associatedMedia",  itemscope: "",  itemtype: "http://schema.org/ImageObject" }
-            = link_to image_path('bitmap-floorplan.jpg'), itemprop: "contentUrl", data: { index: "0", size: "1000x667" } do
-              = image_tag("bitmap-floorplan.jpg", alt: "Beach",  height: "400",  itemprop: "thumbnail", class: 'img-responsive')
+        .floor-plan-container
+          .floor-plan-image
+            = image_tag('icons/zoom-in.svg', class: 'zoom-in')
+          .picture{ itemscope: "",  itemtype: "http://schema.org/ImageGallery" }
+            %figure{ itemprop: "associatedMedia",  itemscope: "",  itemtype: "http://schema.org/ImageObject" }
+              = link_to image_path('bitmap-floorplan.jpg'), itemprop: "contentUrl", data: { index: "0", size: "1000x667" } do
+                = image_tag("bitmap-floorplan.jpg", alt: "Beach",  height: "400",  itemprop: "thumbnail", class: 'img-responsive')
 
         %p.unit-type-description= @unit.unit_type.description
 
@@ -161,17 +164,17 @@
     .pswp__ui.pswp__ui--hidden
       .pswp__top-bar
         .pswp__counter
-        %button.pswp__button.pswp__button--close{:title => "Close (Esc)"}
-        %button.pswp__button.pswp__button--share{:title => "Share"}
-        %button.pswp__button.pswp__button--fs{:title => "Toggle fullscreen"}
-        %button.pswp__button.pswp__button--zoom{:title => "Zoom in/out"}
+        %button.pswp__button.pswp__button--close{ title: "Close (Esc)" }
+        %button.pswp__button.pswp__button--share{ title: "Share" }
+        %button.pswp__button.pswp__button--fs{ title: "Toggle fullscreen" }
+        %button.pswp__button.pswp__button--zoom{ title: "Zoom in/out" }
         .pswp__preloader
           .pswp__preloader__icn
             .pswp__preloader__cut
               .pswp__preloader__donut
       .pswp__share-modal.pswp__share-modal--hidden.pswp__single-tap
         .pswp__share-tooltip
-      %button.pswp__button.pswp__button--arrow--left{:title => "Previous (arrow left)"}
-      %button.pswp__button.pswp__button--arrow--right{:title => "Next (arrow right)"}
+      %button.pswp__button.pswp__button--arrow--left{ title: "Previous (arrow left)" }
+      %button.pswp__button.pswp__button--arrow--right{ title: "Next (arrow right)" }
       .pswp__caption
         .pswp__caption__center
