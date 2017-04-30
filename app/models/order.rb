@@ -22,6 +22,7 @@
 
 class Order < ApplicationRecord
   include AASM
+  include Rails.application.routes.url_helpers
 
   #------------------------------------------------------------------------------
   # Associations
@@ -64,8 +65,8 @@ class Order < ApplicationRecord
     event :confirm_payment do
       transitions from: :pending_verification, to: :successful
       after do
-        send_payment_success_email
         unit.purchase!(nil, self)
+        send_payment_success_email
       end
     end
 
@@ -97,6 +98,9 @@ class Order < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Instance methods
+  def confirmation_number
+    id.to_s + "-" + stripe_charge_id.gsub("ch_", "")
+  end
 
   #------------------------------------------------------------------------------
   # Rails Admin Config
@@ -142,8 +146,22 @@ class Order < ApplicationRecord
     ApplicationMailer.sendgrid_send(
       options = {
         to: user.email,
-        subject: 'You have successfully pre-ordered a unit at Railway Market',
-        template_id: '72acd583-1649-49ef-9fbd-41a1d42a6ada'
+        subject: '',
+        template_id: '72acd583-1649-49ef-9fbd-41a1d42a6ada',
+        substitutions: {
+          '-name-': unit.owner.first_name + " " + unit.owner.last_name,
+          '-confirmation_number-': confirmation_number,
+          '-date-': DateTime.now.strftime("%a, %B %e, %Y"),
+          '-unit_number-': unit.unit_number.to_s,
+           '-number_of_bedrooms-': unit.unit_type.number_of_bedrooms.to_s,
+          '-den-': unit.unit_type.den ? 'Included' : 'Not Included',
+          '-number_of_bathrooms-': unit.unit_type.number_of_bathrooms.to_s,
+          '-balcony-': unit.unit_type.balcony ? 'Included' : 'Not Included',
+          '-floor_number-': unit.floor_number.to_s,
+          '-interior_sqft-': unit.unit_type.interior_sqft.to_s || "",
+          '-balcony_sqft-': unit.unit_type.balcony_sqft.to_s || "",
+          '-orientation-': unit.orientation
+        }
       }
     ).deliver_now
   end
@@ -152,18 +170,32 @@ class Order < ApplicationRecord
     ApplicationMailer.sendgrid_send(
       options = {
         to: user.email,
-        subject: 'Something went wrong while processing your payment at Railway Market',
-        template_id: '3e076287-1dab-4cee-be0f-055d94d0cbef'
+        subject: '',
+        template_id: '3e076287-1dab-4cee-be0f-055d94d0cbef',
+        substitutions: {
+          '-amount-': "$3000.00",
+          '-unit_number-': unit.unit_number.to_s
+        }
       }
     ).deliver_now
   end
 
   def send_payment_refunded_email
+    charge = Stripe::Charge.retrieve(stripe_charge_id)
+    card_details = charge.source.brand + ' ending in ' + charge.source.last4
+
     ApplicationMailer.sendgrid_send(
       options = {
         to: user.email,
-        subject: 'We have refunded your payment at Railway Market',
-        template_id: '3e0169a6-6fc8-4a2b-b0d6-6f28675c1a00'
+        subject: '',
+        template_id: '3e0169a6-6fc8-4a2b-b0d6-6f28675c1a00',
+        substitutions: {
+          '-email-': user.email,
+          '-amount-': "$3000.00",
+          '-card_details-': card_details,
+          '-unit_number-': unit.unit_number.to_s,
+          '-help_url-': help_url
+        }
       }
     ).deliver_now
   end

@@ -9,6 +9,7 @@ class UserMailer < Devise::Mailer
       subject: 'Welcome to Railway',
       template_id: 'f025ac9f-bcd3-41d7-a46a-fe8c43e3f27a',
       substitutions: {
+        '-email-': record.email,
         '-url-': confirmation_url(record, confirmation_token: token)
       }
     }
@@ -21,6 +22,7 @@ class UserMailer < Devise::Mailer
       subject: 'Please reset your Railway password',
       template_id: 'daee5565-162a-487c-b7ae-6f76979e90aa',
       substitutions: {
+        '-email-': record.email,
         '-url-': edit_user_password_url(record, reset_password_token: token)
       }
     }
