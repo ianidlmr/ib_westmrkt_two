@@ -127,23 +127,8 @@ nav.navbar {
     display: flex;
     align-items: center;
 
-    // @media #{$sm-down} {
-    //   select {
-    //     display: none;
-    //   }
-    // }
-
-    .navbar-logo-container {
-      width: 60px;
-      height: 50px;
-      margin-left: 20px;
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: flex-start;
-
-      .navbar-logo {
-        flex: 1;
-      }
+    .logo {
+      width: 130px;
     }
 
     .navbar-name {
@@ -466,6 +451,7 @@ nav.navbar {
   align-items: center;
   font-size: 15px;
   margin: 0 15px;
+  margin-left: 0;
 
   h3 {
     margin: 0;

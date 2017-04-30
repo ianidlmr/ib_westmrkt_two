@@ -6,7 +6,7 @@ class ApplicationMailer < ActionMailer::Base
     template_id = '9cea8aa4-3f72-4c66-934a-44741456c367'
     substitutions = { '-environment-': Rails.env }
 
-    sendgrid_send to: email, subject: 'Test email from Railway', substitutions: substitutions, template_id: template_id
+    sendgrid_send to: email, subject: 'Test email from West Mrkt', substitutions: substitutions, template_id: template_id
   end
 
   # rubocop:disable Metrics/AbcSize
