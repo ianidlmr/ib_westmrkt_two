@@ -28,21 +28,21 @@
               .row
                 .col-sm-6
                   .input-text-wrap
-                    = u.label 'First Name', class: 'input-text-label'
-                    = u.input :first_name, required: true, label: false
+                    = u.label 'First Name', class: 'input-text-label', required: true
+                    = u.input :first_name, label: false
                 .col-sm-6
                   .input-text-wrap
-                    = u.label 'Last Name', class: 'input-text-label'
-                    = u.input :last_name, required: true, label: false
+                    = u.label 'Last Name', class: 'input-text-label', required: true
+                    = u.input :last_name, label: false
               .row
                 .col-sm-6
                   .input-text-wrap
-                    = u.label 'Phone', class: 'input-text-label'
-                    = u.input :phone_number, required: true, label: false
+                    = u.label 'Phone', class: 'input-text-label', required: true
+                    = u.input :phone_number, label: false
                 .col-sm-6
                   .input-text-wrap
-                    = u.label 'Occupation', class: 'input-text-label'
-                    = u.input :occupation, required: true, label: false
+                    = u.label 'Occupation', class: 'input-text-label', required: true
+                    = u.input :occupation, label: false
 
           %h1 Address Information
           .form-inputs
@@ -54,7 +54,7 @@
                     = a.input :street_1, label: false
                 .col-sm-6
                   .input-text-wrap
-                    = a.label 'Address line 2 (optional)', class: 'input-text-label'
+                    = a.label 'Address line 2 (optional)', class: 'input-text-label', required: false
                     = a.input :street_2, label: false
               .row
                 .col-sm-6
