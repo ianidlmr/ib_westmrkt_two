@@ -54,6 +54,7 @@ class User < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Validations
+  validates :email, :first_name, :last_name, presence: true
 
   #------------------------------------------------------------------------------
   # Callbacks

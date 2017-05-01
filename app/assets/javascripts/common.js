@@ -123,6 +123,37 @@ $(function() {
       }
     }, 250);
   });
+
+  $(document).on('ajax:success', '#signup-modal', function(e) {
+    window.location.reload();
+  });
+
+  $(document).on('ajax:error', '#signup-modal', function(event, xhr, settings, exceptions) {
+    $('.signup-alert').remove();
+    var $form = $('.simple_form.new_user');
+    $form.prepend('<div class="alert alert-danger signup-alert">' + xhr.responseText +'</div>');
+  });
+
+  $(document).on('ajax:success', '#login-modal', function(e) {
+
+    $('#login-modal').modal('hide');
+    var successAlert = '<div class="alert alert-success">' +
+      '<button class="close" "aria-hidden"="true" "data-dismiss"="alert" "type"="button">' +
+        '×' +
+      '</button>' +
+      '<div id="flash_success">' +
+        'Signed in successfully.' +
+      '</div>' +
+    '</div>';
+    $('.navbar').after(successAlert);
+    $('.alert').not('.alert-danger').delay(3000).slideUp(750);
+  });
+
+  $(document).on('ajax:error', '#login-modal', function(event, xhr, settings, exceptions) {
+    $('.login-alert').remove();
+    var $form = $('.simple_form.new_user');
+    $form.prepend('<div class="alert alert-danger login-alert">' + xhr.responseText +'</div>');
+  });
 });
 
 function showMask() {

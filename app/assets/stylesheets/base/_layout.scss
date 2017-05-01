@@ -1047,4 +1047,10 @@ p.number-of-bathrooms {
 
 .alert {
   font-size: 16px;
+
+  &.login-alert {
+    margin-bottom: 14px;
+    padding: 10px;
+    font-size: 14px;
+  }
 }
