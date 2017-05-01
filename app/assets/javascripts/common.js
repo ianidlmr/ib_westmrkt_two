@@ -46,9 +46,11 @@ $(function() {
   });
 
   $.extend($.validator.messages, { equalTo: "Passwords do not match." })
-  $('.simple_form.new_user').validate({
+  $('.sign-up-new-user').validate({
     rules: {
       "user[email]": {required: true, email: true},
+      "user[first_name]": {required: true},
+      "user[last_name]": {required: true},
       "user[password]": {required: true, minlength: 8},
       "user[password_confirmation]": {required: true, equalTo: "#user_password"}
     },
@@ -65,6 +67,75 @@ $(function() {
       $(element).parent().children('input').removeClass('has-error');
       $(element).remove();
     }
+  });
+
+  $(document).on('ajax:success', '.sign-up-new-user', function(e) {
+    window.location.reload(true);
+    window.location = "#sign-up";
+  });
+
+  var hash = window.location.hash;
+  if (hash.length > 0 && hash === '#sign-up') {
+    var successAlert = '<div class="alert alert-success">' +
+      '<button class="close" "aria-hidden"="true" "data-dismiss"="alert" "type"="button">' +
+        '×' +
+      '</button>' +
+      '<div id="flash_success">' +
+        'A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.' +
+      '</div>' +
+    '</div>';
+    $('.navbar').after(successAlert);
+    $('.alert').not('.alert-danger').delay(3000).slideUp(750);
+  };
+
+  $(document).on('ajax:error', '.sign-up-new-user', function(event, xhr, settings, exceptions) {
+    $('.signup-alert').remove();
+    var $form = $('.sign-up-new-user');
+    $form.prepend('<div class="alert alert-danger signup-alert">Email has already been taken.</div>');
+  });
+
+  $('.login-user').validate({
+    rules: {
+      "user[email]": {required: true, email: true},
+      "user[password]": {required: true, minlength: 8}
+    },
+
+    highlight: function(element, errorClass, validClass) {
+      $(element).parents('.input-text-wrap').children('.form-control-feedback').hide();
+      $(element).parents('.input-text-wrap').children('.input-text-label').addClass('has-error');
+      $(element).closest('.input-text-wrap input').removeClass('has-success').addClass('has-error');
+    },
+
+    success: function(element) {
+      $(element).parents('.input-text-wrap').children('.form-control-feedback').show();
+      $(element).parents('.input-text-wrap').children('.input-text-label').removeClass('has-error');
+      $(element).parent().children('input').removeClass('has-error');
+      $(element).remove();
+    }
+  });
+
+  $(document).on('ajax:success', '.login-user', function(e) {
+    window.location.reload(true);
+    window.location = "#log-in";
+  });
+
+  if (hash.length > 0 && hash === '#log-in') {
+    var successAlert = '<div class="alert alert-success">' +
+      '<button class="close" "aria-hidden"="true" "data-dismiss"="alert" "type"="button">' +
+        '×' +
+      '</button>' +
+      '<div id="flash_success">' +
+        'Signed in successfully.' +
+      '</div>' +
+    '</div>';
+    $('.navbar').after(successAlert);
+    $('.alert').not('.alert-danger').delay(3000).slideUp(750);
+  };
+
+  $(document).on('ajax:error', '.login-user', function(event, xhr, settings, exceptions) {
+    $('.login-alert').remove();
+    var $form = $('.login-user');
+    $form.prepend('<div class="alert alert-danger login-alert">' + xhr.responseText +'</div>');
   });
 
   $(".countdown").countdown("2017/05/01", function(event) {
@@ -124,36 +195,7 @@ $(function() {
     }, 250);
   });
 
-  $(document).on('ajax:success', '#signup-modal', function(e) {
-    window.location.reload();
-  });
 
-  $(document).on('ajax:error', '#signup-modal', function(event, xhr, settings, exceptions) {
-    $('.signup-alert').remove();
-    var $form = $('.simple_form.new_user');
-    $form.prepend('<div class="alert alert-danger signup-alert">' + xhr.responseText +'</div>');
-  });
-
-  $(document).on('ajax:success', '#login-modal', function(e) {
-
-    $('#login-modal').modal('hide');
-    var successAlert = '<div class="alert alert-success">' +
-      '<button class="close" "aria-hidden"="true" "data-dismiss"="alert" "type"="button">' +
-        '×' +
-      '</button>' +
-      '<div id="flash_success">' +
-        'Signed in successfully.' +
-      '</div>' +
-    '</div>';
-    $('.navbar').after(successAlert);
-    $('.alert').not('.alert-danger').delay(3000).slideUp(750);
-  });
-
-  $(document).on('ajax:error', '#login-modal', function(event, xhr, settings, exceptions) {
-    $('.login-alert').remove();
-    var $form = $('.simple_form.new_user');
-    $form.prepend('<div class="alert alert-danger login-alert">' + xhr.responseText +'</div>');
-  });
 });
 
 function showMask() {

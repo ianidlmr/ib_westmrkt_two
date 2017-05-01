@@ -15,7 +15,6 @@ $(function() {
         dataType: 'SCRIPT'
       })
       .done(function(data) {
-
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
       })
