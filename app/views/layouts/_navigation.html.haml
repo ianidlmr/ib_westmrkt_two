@@ -1,10 +1,13 @@
 %nav.navbar
   .nav-block{ style: 'display: flex; width: 100%; justify-content: space-between;' }
-    .hamburger-icon
-      %span
-      %span
-      %span
-      %span
+    .hamburger-container
+      .menu-hamburger
+        %span#one
+        %span#two
+        %span#three
+      .menu-title
+        %p Menu
+
     .logo
       = image_tag 'icons/logo.svg', class: 'img-responsive logo'
     .saved-icon

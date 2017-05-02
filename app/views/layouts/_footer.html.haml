@@ -2,7 +2,7 @@
   .row
     .col-md-5
       %h1.text-uppercase WEST <strong>MRKT.</strong>
-      %p The WEST MRKT is part of Lower Junction development site. This time-limited pre-sale is official and you're buying units from the developer.<span class='black'> Learn More</span>
+      %p The WEST MRKT is part of Lower Junction development site. This time-limited pre-sale is official and you're buying units from the developer.<a href='/about'><span class='black'> Learn More</span></a>
 
     .col-md-5
       %h1.text-uppercase Available Types Of Units
@@ -17,9 +17,9 @@
     .col-md-2
       %h1.text-uppercase Pre-Sale
       .pre-sale-flex-column
-        = link_to about_path, target: '_blank' do
+        = link_to about_path do
           %p.black About
-        = link_to help_path, target: '_blank' do
+        = link_to help_path do
           %p.black Help
 
   .row.copyright-row

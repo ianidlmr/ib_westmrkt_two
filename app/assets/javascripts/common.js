@@ -2,7 +2,7 @@ $(function() {
   $('.alert').not('.alert-danger').delay(3000).slideUp(750);
 
   $('body').on('click', function(e) {
-    if ($(e.target).hasClass('hamburger-icon')) {
+    if ($(e.target).hasClass('hamburger-container') || $(e.target).hasClass('menu-hamburger') || $(e.target).hasClass('menu-title')) {
       showMask();
       $('.sidebar').addClass('sidebar-is-open');
       $('.sidebar').css({'box-shadow': '5px 0 20px -5px #888'});
