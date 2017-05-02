@@ -20,7 +20,7 @@
         .personal-info-container
           %h1 Your details
           %p You've signed up with <strong>#{current_user.email}</strong>
-          %p Please note that information you provide below will be used to create the contract. All details should match inforamtion on photo ID you will be asked to confirm your identification and finalize the purchase.
+          %p Please note that information you provide below will be used to create the contract. All details should match information on photo ID you will be asked to confirm your identification and finalize the purchase.
 
           %h1 Personal details
           .form-inputs
@@ -120,7 +120,7 @@
 
         .promo-container
           .row
-            .col-xs-4
+            .col-xs-6.col-md-6.col-lg-5
               .form-inputs
                 .input-text-wrap
                   = f.label 'Promo Code (optional)', class: 'input-text-label'
