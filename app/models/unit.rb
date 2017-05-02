@@ -80,7 +80,7 @@ class Unit < ApplicationRecord
   #------------------------------------------------------------------------------
   # Instance methods
   def views
-    Ahoy::Event.all.map { |event| event.properties['id'] }.count(id.to_s)
+    Ahoy::Event.where_properties(id: id).size
   end
 
   def trending?

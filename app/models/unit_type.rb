@@ -48,7 +48,7 @@ class UnitType < ApplicationRecord
   end
 
   def total_views
-    units.map(&:views).reduce(:+)
+    self.class.includes(:units).where(id: self).first.units.map(&:views).reduce(:+)
   end
 
   def last_chance?

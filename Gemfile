@@ -40,6 +40,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'bullet'
   gem 'haml_lint', require: false
   gem 'scss_lint', require: false
   gem 'rubocop', require: false
