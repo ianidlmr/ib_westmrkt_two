@@ -1,0 +1,7 @@
+body.devise-confirmations.show {
+  span.error,
+  .error_notification {
+    color: #ff5353;
+    margin-bottom: 10px;
+  }
+}
