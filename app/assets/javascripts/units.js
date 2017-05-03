@@ -48,13 +48,19 @@ $(function() {
       }
     });
 
-    $('.view-carousel').slick({
+    $('#view-carousel').slick({
       dots: true,
       infinite: true,
-      speed: 300,
+      speed: 1000,
       slidesToShow: 1,
+      arrows: false,
       adaptiveHeight: true
     });
+
+    $('#view-carousel').slick('slickPlay');
+    setInterval(function(){
+      $(".slick-next").click();
+    },6000);
 
     $('.parking-tip').tooltip({
       trigger: 'hover',
