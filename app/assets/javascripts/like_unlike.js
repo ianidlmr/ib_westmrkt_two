@@ -50,7 +50,7 @@ $(function() {
     like($(this));
   });
 
-  $('body').on('click', '.close-icon', function(e) {
+  $('body').on('click', '.delete-icon', function(e) {
     e.preventDefault();
     unlike($(this));
   });

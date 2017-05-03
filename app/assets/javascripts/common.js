@@ -153,11 +153,11 @@ $(function() {
     $savedUnits.each(function (i, node) {
       var $option = $(node);
       if (thisUnit == node) {
-        $(thisUnit).children('.btn-checkout-container, .close-icon').removeClass('hidden');
+        $(thisUnit).children('.btn-checkout-container, .delete-icon').removeClass('hidden');
         $(thisUnit).children('.people-saved').css({'color': 'black'});
         $(thisUnit).css({'background': '#f5f5f5'});
       } else {
-        $option.children('.btn-checkout-container, .close-icon').addClass('hidden');
+        $option.children('.btn-checkout-container, .delete-icon').addClass('hidden');
         $option.children('.people-saved').css({'color': '#ccc'});
         $option.css({'background': '#fff'});
       }

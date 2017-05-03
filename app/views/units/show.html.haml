@@ -67,10 +67,10 @@
                   Unit #{@unit.unit_number}
                 .saved-message{ style: 'margin-left: 12px;', data: { url: like_unit_path(@unit) } }
                   - if unit_saved
-                    = image_tag('icons/tick-dark.svg')
+                    = image_tag('icons/saved.svg')
                     %p Saved
                   - else
-                    = image_tag('icons/tick-dark.svg')
+                    = image_tag('icons/add-to-saved.svg')
                     %p Add to Saved
             - else
               %h1{style: 'margin: 0;'}

@@ -111,7 +111,7 @@ function openSavedUnit() {
   $savedUnits.each(function (i, node) {
     var $option = $(node);
     if ($option.data('unit-id') == unitId) {
-      $option.children('.btn-checkout-container, .close-icon').removeClass('hidden');
+      $option.children('.btn-checkout-container, .delete-icon').removeClass('hidden');
       $option.children('.people-saved').css({'color': 'black'});
       $option.css({'background': '#f5f5f5'});
     }

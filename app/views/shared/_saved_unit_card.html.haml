@@ -1,6 +1,6 @@
 .saved-unit{ data: { unit_id: liked_unit.unit.id } }
   %h2 Unit #{liked_unit.unit.unit_number} #{fa_icon 'square', class: 'square-icon'} $#{price_converter(liked_unit.unit.price)} CAD #{fa_icon 'square', class: 'square-icon'} &#8593; #{liked_unit.unit.orientation}
-  = image_tag('icons/dark-close.svg', class: 'close-icon hidden', data: { url: unlike_unit_path(liked_unit.unit) } )
+  = image_tag('icons/delete-icon.svg', class: 'delete-icon hidden', data: { url: unlike_unit_path(liked_unit.unit) } )
   %p.people-saved #{pluralize(liked_unit.unit.users.count, 'person')} added to saved
   .btn-checkout-container.hidden
     - if current_user.confirmed?
