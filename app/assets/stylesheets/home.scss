@@ -1,6 +1,12 @@
 body.home {
   &.about {
     .about-container {
+      @media #{$xs-down} {
+        .text-xs-center {
+          text-align: center;
+        }
+      }
+
       .one {
         background-color: #1A1A1A;
       }
@@ -37,7 +43,7 @@ body.home {
         position: relative;
       }
 
-      .four .col-12 {
+      .four .col {
         margin-top: 100px;
       }
 
@@ -70,7 +76,11 @@ body.home {
       #map {
         max-width: 100%;
         width: 100%;
-        height: 500px;
+        height: 600px;
+      }
+
+      .mapboxgl-ctrl-top-right {
+        top: 70px;
       }
 
       .seven h2 {
@@ -98,6 +108,7 @@ body.home {
       .row.nine {
         margin-top: 100px;
       }
+
       .row.nine .col {
         background: #1A1A1A !important;
       }
@@ -117,10 +128,31 @@ body.home {
         padding-bottom: 30px;
       }
 
-      .about-carousel {
+      .carousel-info {
+        background: #1A1A1A !important;
+      }
+
+      .about-carousel.large {
         position: relative;
         top: -60px;
-        left: -155px;
+        left: -17%;
+      }
+
+      .about-carousel.small {
+        background: #1A1A1A !important;
+        padding: 0;
+      }
+
+      .eight h2 {
+        margin-top: 0;
+      }
+
+      .white-color {
+        color: white;
+      }
+
+      .padding-bottom {
+        padding-bottom: 20px;
       }
 
       @media only screen and (max-width: 530px) {
@@ -132,8 +164,9 @@ body.home {
       .slick-dots {
         position: relative;
         left: 85%;
+        top: -25px;
         display: inline-block;
-        transform: rotate(90deg);
+        transform: rotate(-90deg);
       }
 
       .slick-active {
@@ -144,8 +177,19 @@ body.home {
         display: none;
       }
 
-      .about-carousel button {
-        display: none !important;
+      .slick-arrow {
+        display: block !important;
+        position: absolute !important;
+      }
+
+      .slick-prev {
+        bottom: 11% !important;
+        z-index: 1;
+      }
+
+      .slick-next {
+        left: 30%;
+        bottom: 11%;
       }
 
       .pagination-title {
@@ -208,6 +252,12 @@ body.home {
 
       .thirteen {
         height: 30px;
+      }
+
+      @media only screen and (max-width: 530px) {
+        .about-carousel {
+          left: 0px !important;
+        }
       }
     }
   }

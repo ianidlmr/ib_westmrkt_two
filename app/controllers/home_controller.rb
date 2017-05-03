@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 class HomeController < ApplicationController
   def index
+    @options = UnitType.select(:number_of_bedrooms).distinct.sort_by(&:number_of_bedrooms)
   end
 
   def about

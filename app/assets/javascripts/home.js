@@ -3,15 +3,20 @@ $(function() {
     $('.about-carousel').slick({
       dots: true,
       infinite: true,
-      speed: 300,
+      speed: 1000,
       slidesToShow: 1,
-      adaptiveHeight: true
+      arrows: false
     });
+
+    $('.about-carousel').slick('slickPlay');
+    setInterval(function(){
+      $(".slick-next").click();
+    },6000);
   }
 
   if ($('body.home.index').length) {
     $('.selectize').selectize({
-      create: false,
+      create: true,
       sortField: 'text'
     });
   }

@@ -10,7 +10,7 @@
         .search-container{ style: 'color: white;' }
           %p{ style: 'display: inline-block;' } I'm looking for
           .select-container{ style: 'width: 170px; display: inline-block;' }
-            - options = UnitType.select(:number_of_bedrooms).distinct.sort_by(&:number_of_bedrooms).map{ |unit_type| pluralize(unit_type.number_of_bedrooms, 'bedroom') }
+            - options = @options.map { |unit_type| (unit_type.number_of_bedrooms == 3 ? '3+' : unit_type.number_of_bedrooms.to_s) + ' bedroom units' }
             = select_tag 'number_of_bedrooms', options_for_select(options), class: 'selectize'
 
   .row

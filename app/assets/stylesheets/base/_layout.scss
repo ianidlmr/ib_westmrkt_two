@@ -942,7 +942,7 @@ p.number-of-bathrooms {
 
 .circle {
   p.amount {
-    margin-bottom: 3px;
+    margin: 0;
     font-size: 12px;
   }
 }
@@ -990,6 +990,18 @@ p.number-of-bathrooms {
     font-size: 19px;
     font-weight: bold;
     margin: 0;
+  }
+}
+
+.saved-unit {
+  h2 {
+    display: flex;
+    align-items: center;
+  }
+
+  .square-icon {
+    font-size: 9px;
+    margin: 0 5px;
   }
 }
 
