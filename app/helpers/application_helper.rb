@@ -11,8 +11,6 @@ module ApplicationHelper
   def circle_class
     if @liked_units_count.present? && @liked_units_count == 1
       'circle-pulse'
-    elsif @liked_units_count.present? && @liked_units_count > 0
-      'circle-green'
     else
       'circle-white'
     end
