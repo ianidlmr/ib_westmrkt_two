@@ -71,11 +71,10 @@ $(function() {
 
   $(document).on('ajax:success', '.sign-up-new-user', function(e) {
     window.location.reload(true);
-    window.location = "#sign-up";
+    sessionStorage.setItem('signup-success', true);
   });
 
-  var hash = window.location.hash;
-  if (hash.length > 0 && hash === '#sign-up') {
+  if (sessionStorage.getItem('signup-success')) {
     var successAlert = '<div class="alert alert-success">' +
       '<button class="close" "aria-hidden"="true" "data-dismiss"="alert" "type"="button">' +
         '×' +
@@ -86,6 +85,7 @@ $(function() {
     '</div>';
     $('.navbar').after(successAlert);
     $('.alert').not('.alert-danger').delay(3000).slideUp(750);
+    sessionStorage.removeItem('signup-success');
   };
 
   $(document).on('ajax:error', '.sign-up-new-user', function(event, xhr, settings, exceptions) {
@@ -116,10 +116,10 @@ $(function() {
 
   $(document).on('ajax:success', '.login-user', function(e) {
     window.location.reload(true);
-    window.location = "#log-in";
+    sessionStorage.setItem('login-success', true);
   });
 
-  if (hash.length > 0 && hash === '#log-in') {
+  if (sessionStorage.getItem('login-success')) {
     var successAlert = '<div class="alert alert-success">' +
       '<button class="close" "aria-hidden"="true" "data-dismiss"="alert" "type"="button">' +
         '×' +
@@ -130,7 +130,8 @@ $(function() {
     '</div>';
     $('.navbar').after(successAlert);
     $('.alert').not('.alert-danger').delay(3000).slideUp(750);
-  };
+    sessionStorage.removeItem('login-success');
+  }
 
   $(document).on('ajax:error', '.login-user', function(event, xhr, settings, exceptions) {
     $('.login-alert').remove();
