@@ -3,6 +3,27 @@ body.unit-types.index {
     display: none;
   }
 
+  .unit-panel {
+    border: none;
+    cursor: pointer;
+    transition:  transform .25s;
+
+    h1 {
+      font-size: 25px;
+    }
+
+    .view-container {
+      margin: 20px 0;
+    }
+
+    &:hover {
+      cursor: pointer;
+      transform: scale3d(1.03, 1.03, 1);
+      box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+    }
+  }
+
   .trending-indicator,
   .last-chance-indicator {
     display: flex;

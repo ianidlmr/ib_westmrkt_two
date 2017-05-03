@@ -17,16 +17,7 @@ html,
 body {
   height: 100%;
   -webkit-overflow-scrolling: touch;
-
-  // @media #{$sm-down} {
-  //   font-size: 10px;
-  // }
-
-  // @media #{$xs-down} {
-  //   font-size: 8px;
-  // }
 }
-
 
 .wrapper {
   overflow-x: hidden;
@@ -56,18 +47,10 @@ main {
 
   &.sidebar-is-open {
     left: 300px;
-
-    // @media #{$xs-down} {
-    //   left: 250px;
-    // }
   }
 
   &.right-sidebar-is-open {
     right: 320px;
-
-    // @media #{$xs-down} {
-    //   right: 250px;
-    // }
   }
 }
 
@@ -80,11 +63,6 @@ main {
   z-index: 1000;
   background: white;
   overflow-y: auto;
-
-  // @media #{$xs-down} {
-  //   left: -250px;
-  //   width: 250px;
-  // }
 
   &.sidebar-is-open {
     left: 0;
@@ -100,11 +78,6 @@ main {
   z-index: 1000;
   background: white;
   overflow-y: auto;
-
-  // @media #{$xs-down} {
-  //   left: -250px;
-  //   width: 250px;
-  // }
 
   &.right-sidebar-is-open {
     right: 0;
@@ -696,26 +669,6 @@ label.error {
 
 .save-info {
   padding-bottom: 30px;
-}
-
-.unit-panel {
-  border: none;
-  cursor: pointer;
-
-  h1 {
-    font-size: 25px;
-  }
-
-  .view-container {
-    margin: 20px 0;
-  }
-
-  &:hover {
-    cursor: pointer;
-    transform: scale3d(1.03, 1.03, 1);
-    box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-  }
 }
 
 footer {
