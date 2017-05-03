@@ -139,14 +139,6 @@ $(function() {
     $form.prepend('<div class="alert alert-danger login-alert">' + xhr.responseText +'</div>');
   });
 
-  $(".countdown").countdown("2017/05/01", function(event) {
-    var $this = $(this).html(event.strftime(''
-    + '<span>%d</span>d '
-    + '<span>%H</span>h '
-    + '<span>%M</span>m '
-    + '<span>%S</span>s'));
-  });
-
   $('body').on('click', '.saved-unit', function(e) {
     var thisUnit = this;
     var $savedUnits = $('.saved-units-container').find('.saved-unit');
@@ -165,23 +157,6 @@ $(function() {
     });
   });
 
-  $('.help-option').click(function() {
-    var helpMenuArrow = $(this).children('.help-option svg');
-    var helpMenuAnswer = $(this).children('.help-option p');
-
-    if ( $(helpMenuArrow).hasClass('rotate-180') ) {
-      $(helpMenuArrow).removeClass('rotate-180');
-    } else if ( $(helpMenuArrow).not('rotate-180') )  {
-      $(helpMenuArrow).addClass('rotate-180');
-    }
-
-    if ( $(helpMenuAnswer).hasClass('help-active') ) {
-      $(helpMenuAnswer).removeClass('help-active');
-    } else if ( $(helpMenuAnswer).not('help-active') )  {
-      $(helpMenuAnswer).addClass('help-active');
-    }
-  });
-
   // Adjust margin on right side for floating box
   var resizeTimer;
   $(window).on('resize', function(e) {
@@ -195,8 +170,6 @@ $(function() {
       }
     }, 250);
   });
-
-
 });
 
 function showMask() {

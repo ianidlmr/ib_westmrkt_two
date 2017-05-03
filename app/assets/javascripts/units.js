@@ -99,7 +99,6 @@ $(function() {
         lightBox.init();
       });
     });
-
   }
 });
 

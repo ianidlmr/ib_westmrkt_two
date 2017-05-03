@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions',
     omniauth_callbacks: 'users/omniauth_callbacks'
+  },
+  path_names: {
+    sign_up: '',
+    sign_in: ''
   }
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
