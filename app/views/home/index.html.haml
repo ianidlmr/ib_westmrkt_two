@@ -2,10 +2,15 @@
   .row
     .col-xs-12
       .countdown-message.text-center
-        %h1{ style: 'color: white;' } Pre-Sale starting in
-        / %h1{ style: 'color: white;' } Pre-Sale ending in
-        / %h1{ style: 'color: white;' } Pre-Sale closed
-        .countdown
+        - case sale_state
+        - when 'pre_sale_not_started'
+          %h1{ style: 'color: white;' } Pre-Sale starting in
+          .countdown{data: { epoch_time: @epoch_time } }
+        - when 'pre_sale_started'
+          %h1{ style: 'color: white;' } Pre-Sale ending in
+          .countdown{data: { epoch_time: @epoch_time } }
+        - when 'pre_sale_closed'
+          %h1{ style: 'color: white;' } Pre-Sale closed
 
         .search-container{ style: 'color: white;' }
           %p{ style: 'display: inline-block;' } I'm looking for

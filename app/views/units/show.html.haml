@@ -23,7 +23,13 @@
     %p Deposit required to buy selected unit
 
     - if @unit.available?
-      - if user_signed_in?
+      - if sale_state == 'pre_sale_not_started'
+        %button.btn.btn-success.btn-block.btn-checkout{ disabled: true } Proceed to Checkout
+        %p.checkout-message Pre-sale will be available soon
+      - elsif sale_state == 'pre_sale_ended'
+        %button.btn.btn-success.btn-block.btn-checkout{ disabled: true } Proceed to Checkout
+        %p.checkout-message Pre-sale has ended
+      - elsif user_signed_in?
         - if current_user.confirmed?
           - if (current_user.orders.successful.count > 0 || current_user.orders.pending_verification.count > 0) && !current_user.allow_multiple_orders
             %button.btn.btn-success.btn-block.btn-checkout{ disabled: true } Proceed to Checkout

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 class OrdersController < ApplicationController
+  include ApplicationHelper
   before_action :can_checkout_unit?
 
   def new
@@ -17,6 +18,16 @@ class OrdersController < ApplicationController
   private
 
   def can_checkout_unit?
+    if sale_state == 'pre_sale_not_started'
+      flash[:error] = 'Pre-sale of units has not started yet.'
+      redirect_to unit_types_path and return
+    end
+
+    if sale_state == 'pre_sale_ended'
+      flash[:error] = 'Pre-sale of units has ended.'
+      redirect_to unit_types_path and return
+    end
+
     if !current_user.confirmed?
       flash[:error] = 'Please check your email to confirm your email address before continuing.'
       redirect_to unit_types_path and return

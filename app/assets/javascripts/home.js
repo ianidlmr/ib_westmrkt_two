@@ -22,13 +22,17 @@ $(function() {
       plugins: ['hidden_textfield']
     });
 
-    $(".countdown").countdown("2017/05/01", function(event) {
-      var $this = $(this).html(event.strftime(''
-      + '<span>%d</span>d '
-      + '<span>%H</span>h '
-      + '<span>%M</span>m '
-      + '<span>%S</span>s'));
-    });
+    var epochTime = $(".countdown").data('epoch-time');
+
+    if (typeof epochTime !== 'undefined') {
+      $(".countdown").countdown(epochTime, function(event) {
+        var $this = $(this).html(event.strftime(''
+        + '<span>%d</span>d '
+        + '<span>%H</span>h '
+        + '<span>%M</span>m '
+        + '<span>%S</span>s'));
+      });
+    }
   }
 
   if ($('body.home.about').length) {
