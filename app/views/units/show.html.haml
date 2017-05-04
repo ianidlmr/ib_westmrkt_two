@@ -118,10 +118,10 @@
               %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.orientation}
 
             .col-xs-4
-              = image_tag 'bldg2.svg', class: 'img-responsive'
+              = image_tag 'bldg1.svg', class: 'img-responsive'
 
             .col-xs-4
-              = image_tag 'bldg1.svg', class: 'img-responsive'
+              = image_tag 'bldg3.svg', class: 'img-responsive'
 
 .floorplan-row
   .container
@@ -134,8 +134,8 @@
             = image_tag('icons/zoom-in.svg', class: 'zoom-in')
           .picture{ itemscope: "",  itemtype: "http://schema.org/ImageGallery" }
             %figure{ itemprop: "associatedMedia",  itemscope: "",  itemtype: "http://schema.org/ImageObject" }
-              = link_to image_path('bitmap-floorplan.jpg'), itemprop: "contentUrl", data: { index: "0", size: "1000x667" } do
-                = image_tag("bitmap-floorplan.jpg", alt: "Beach",  height: "400",  itemprop: "thumbnail", class: 'img-responsive')
+              = link_to image_path('bitmap-floorplan-2.png'), itemprop: "contentUrl", data: { index: "0", size: "1000x667" } do
+                = image_tag("bitmap-floorplan-2.png", alt: "Beach",  height: "400",  itemprop: "thumbnail", class: 'img-responsive')
 
         %p.unit-type-description= @unit.unit_type.description
 
