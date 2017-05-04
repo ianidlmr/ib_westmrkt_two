@@ -25,8 +25,8 @@
             %h1= unit_type.name
             - balcony_string = unit_type.balcony ? 'and balcony' : ''
             %p #{unit_type.interior_sqft} SQFT interior included #{pluralize(unit_type.number_of_bathrooms, 'bathroom')} #{balcony_string}
-            .view-container{ style: 'display: flex; align-items: center; height: 25px;' }
-              %p.view-text.hidden{ style: 'margin: 0; margin-right: 10px; font-size: 14px;' } View
+            .view-container
+              %p.view-text View
               = image_tag('icons/arrow-right-dark.svg')
           .panel-footer{ style: 'display: flex; width: 100%; padding: 0px;' }
             .units-left{ style: 'width: 50%; padding: 10px 15px;' }

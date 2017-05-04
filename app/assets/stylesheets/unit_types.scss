@@ -24,6 +24,51 @@ body.unit-types.index {
     }
   }
 
+  .view-container {
+    display: flex;
+    align-items: center;
+    height: 25px;
+
+    img {
+      transform: translateX(-35px);
+      transition: transform 0.25s;
+    }
+
+    .view-text {
+      margin: 0;
+      margin-right: 10px;
+      font-size: 14px;
+      display: inline-block;
+      opacity: 0;
+      transform: translateX(-35px);
+      transition: transform 0.25s;
+    }
+  }
+
+  .unit-panel:hover .view-container img {
+    transform: translateX(0px);
+  }
+
+  .unit-panel:hover .view-text {
+    animation: seeview 0.25s forwards;
+    transform: translateX(0px);
+  }
+
+  @keyframes seeview {
+    0% {
+      -moz-opacity: 0;
+      opacity: 0;
+    }
+    30% {
+      -moz-opacity: 0;
+      opacity: 0;
+    }
+    100% {
+      -moz-opacity: 1;
+      opacity: 1;
+    }
+  }
+
   .trending-indicator,
   .last-chance-indicator {
     display: flex;
