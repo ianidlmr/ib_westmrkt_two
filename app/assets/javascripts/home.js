@@ -27,7 +27,7 @@ $(function() {
     if (typeof epochTime !== 'undefined') {
       $(".countdown").countdown(epochTime, function(event) {
         var $this = $(this).html(event.strftime(''
-        + '<span>%d</span>d '
+        + '<span>%D</span>d '
         + '<span>%H</span>h '
         + '<span>%M</span>m '
         + '<span>%S</span>s'));

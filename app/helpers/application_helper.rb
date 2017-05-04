@@ -31,7 +31,7 @@ module ApplicationHelper
     # else current_time >= pre_sale_end_date_epoch
     #   return 'pre_sale_closed'
     # end
-    @epoch_time = ((DateTime.now + 3.days).utc.to_f * 1000).floor
+    @epoch_time = ((DateTime.now + 30.days).utc.to_f * 1000).floor
     return 'pre_sale_started'
   end
 
