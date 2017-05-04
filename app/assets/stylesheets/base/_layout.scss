@@ -979,10 +979,15 @@ p.number-of-bathrooms {
   }
 }
 
-.saved-unit {
-  h2 {
+.saved-unit,
+.sold-unit {
+  .unit-info {
     display: flex;
     align-items: center;
+
+    h2.square-icon-heading {
+      font-size: 10px;
+    }
   }
 
   .square-icon {
