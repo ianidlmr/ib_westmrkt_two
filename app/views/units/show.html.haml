@@ -117,17 +117,17 @@
 
           .row{style: 'margin-top: 20px;'}
             .col-xs-4
-              %p{style: 'margin: 0; font-size: 15px;'} Floor No.
-              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.floor_number}
+              .height-container{style: "height: 120px;"}
+                %p{style: 'margin: 0; font-size: 15px;'} Floor No.
+                %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.floor_number}
 
-              %p{style: 'margin: 0; font-size: 15px;'} Side of the bldg.
-              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.orientation}
-
-            .col-xs-4
-              = image_tag 'bldg1.svg', class: 'img-responsive'
+                %p{style: 'margin: 0; font-size: 15px;'} Side of the bldg.
+                %h2{style: 'margin: 0; font-size: 18px;'} #{@unit.orientation}
 
             .col-xs-4
-              = image_tag 'bldg3.svg', class: 'img-responsive'
+              = image_tag 'bldg3.svg', class: 'img-responsive', style: "height: 120px;"
+            .col-xs-4
+              = image_tag 'asset_2.svg', class: 'img-responsive', style: "height: 120px;"
 
 .floorplan-row
   .container

@@ -15,6 +15,7 @@
 #  interior_sqft          :integer
 #  den                    :boolean
 #  balcony                :boolean
+#  floor_plan_image       :string
 #
 
 class UnitType < ApplicationRecord

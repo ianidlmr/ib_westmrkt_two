@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170427172035) do
+ActiveRecord::Schema.define(version: 20170504161114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,11 +111,12 @@ ActiveRecord::Schema.define(version: 20170427172035) do
     t.integer  "interior_sqft"
     t.boolean  "den"
     t.boolean  "balcony"
+    t.string   "floor_plan_image"
   end
 
   create_table "units", force: :cascade do |t|
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.integer  "unit_number"
     t.integer  "floor_number"
     t.string   "orientation"
@@ -123,8 +124,11 @@ ActiveRecord::Schema.define(version: 20170427172035) do
     t.integer  "savings"
     t.string   "currency"
     t.integer  "unit_type_id"
-    t.string   "state",        default: "available"
+    t.string   "state",                  default: "available"
     t.integer  "owner_id"
+    t.string   "key_map_top_image"
+    t.string   "key_map_side_image"
+    t.string   "view_from_window_image"
     t.index ["owner_id"], name: "index_units_on_owner_id", using: :btree
     t.index ["unit_type_id"], name: "index_units_on_unit_type_id", using: :btree
   end

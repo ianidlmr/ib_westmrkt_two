@@ -3,18 +3,21 @@
 #
 # Table name: units
 #
-#  id           :integer          not null, primary key
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  unit_number  :integer
-#  floor_number :integer
-#  orientation  :string
-#  price        :integer
-#  savings      :integer
-#  currency     :string
-#  unit_type_id :integer
-#  state        :string           default("available")
-#  owner_id     :integer
+#  id                     :integer          not null, primary key
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  unit_number            :integer
+#  floor_number           :integer
+#  orientation            :string
+#  price                  :integer
+#  savings                :integer
+#  currency               :string
+#  unit_type_id           :integer
+#  state                  :string           default("available")
+#  owner_id               :integer
+#  key_map_top_image      :string
+#  key_map_side_image     :string
+#  view_from_window_image :string
 #
 # Indexes
 #
