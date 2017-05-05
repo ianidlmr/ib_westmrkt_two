@@ -13,6 +13,7 @@
 #  broker                        :boolean          default("false")
 #  payment_state                 :string           default("in_progress")
 #  current_step                  :string           default("update-personal-info")
+#  sale_person_name              :string
 #
 # Indexes
 #

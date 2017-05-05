@@ -16,7 +16,7 @@
 = simple_form_for(@order, url: wizard_path, method: :put) do |f|
   .container-fluid.special
     .row
-      .col-sm-6
+      .col-sm-6.special-margin
         .personal-info-container
           %h1 Your details
           %p You've signed up with <strong>#{current_user.email}</strong>

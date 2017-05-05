@@ -1,0 +1,118 @@
+nav.navbar {
+  width: 100%;
+  border-radius: 0;
+  margin: 0;
+  border: 0;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: white;
+  z-index: 21;
+
+  .nav-block {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+
+    .logo {
+      text-align: center;
+      margin: 0 auto;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -49%);
+      width: 110px;
+      height: 100%;
+
+      @media #{$xs-down} {
+        width: 90px;
+      }
+    }
+
+    .hamburger-container {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+
+      .menu-hamburger {
+        margin-left: 15px;
+        display: inline-block;
+
+        * {
+          pointer-events: none;
+        }
+      }
+
+      .menu-hamburger:hover {
+        cursor: pointer;
+      }
+
+      .menu-hamburger:hover span#three {
+        transform: translateY(2px);
+      }
+
+      .menu-hamburger:hover span#one {
+        transform: translateY(-2px);
+      }
+
+      .menu-hamburger span {
+        display: block;
+        width: 20px;
+        height: 1px;
+        position: relative;
+
+        background: #FFFFFF;
+        border-radius: 3px;
+        transition: transform 0.25s;
+      }
+
+      span#one, span#two {
+        margin-bottom: 4px;
+      }
+
+      .menu-title {
+        display: inline-block;
+        margin-left: 15px;
+
+        * {
+          pointer-events: none;
+        }
+      }
+
+      .menu-title:hover {
+        cursor: pointer;
+      }
+
+      .menu-title p {
+        color: #FFFFFF;
+        font-size: 12px;
+        letter-spacing: 1px;
+        font-weight: 100;
+        margin-bottom: 0;
+      }
+    }
+
+    .back-link {
+      margin-left: 15px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      span {
+        margin-left: 10px;
+      }
+    }
+
+    .logo-right {
+      margin-right: 15px;
+      width: 110px;
+
+      @media #{$sm-down} {
+        width: 90px;
+      }
+    }
+  }
+}

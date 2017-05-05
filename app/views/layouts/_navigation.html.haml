@@ -1,22 +1,20 @@
-- if params[:controller] == 'orders/steps' && (params[:id] == "update-personal-info" || params[:id] == "finalize-payment" )
+.container-fluid.special
+  %nav.navbar
+    .nav-block
+      - if params[:controller] == 'orders/steps' && (params[:id] == "update-personal-info" || params[:id] == "finalize-payment" )
 
-  - session[:back_url_step_1] = url_for(:back) if params[:id] == "update-personal-info" && !url_for(:back).include?('finalize-payment')
-  - session[:back_url_step_2] = url_for(:back) if params[:id] == "finalize-payment"
-  - previous_page = params[:id] == "update-personal-info" ? session[:back_url_step_1] : session[:back_url_step_2]
+        - session[:back_url_step_1] = url_for(:back) if params[:id] == "update-personal-info" && !url_for(:back).include?('finalize-payment')
+        - session[:back_url_step_2] = url_for(:back) if params[:id] == "finalize-payment"
+        - previous_page = params[:id] == "update-personal-info" ? session[:back_url_step_1] : session[:back_url_step_2]
 
-  .container-fluid.special
-    %nav.navbar
-      .nav-block{ style: 'display: flex; width: 100%; justify-content: space-between;' }
-        .menu-title{style: 'margin-left: 10px;'}
-          = link_to image_tag("icons/arrow-left-dark.svg") , previous_page
+        = link_to previous_page, class: 'back-link' do
+          = image_tag "icons/arrow-left.svg", class: 'img-responsive'
           %span Back
+
         .logo-right
           = image_tag 'icons/logo.svg', class: 'img-responsive logo-right'
 
--else
-  .container-fluid.special
-    %nav.navbar
-      .nav-block{ style: 'display: flex; width: 100%; justify-content: space-between;' }
+      -else
         .hamburger-container
           .menu-hamburger
             %span#one
