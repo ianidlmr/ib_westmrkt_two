@@ -115,6 +115,27 @@ nav.navbar {
     display: flex;
     align-items: center;
 
+    .logo-right {
+      text-align: center;
+      margin: 0 auto;
+      position: absolute;
+      left: 88%;
+      top: 50%;
+      transform: translate(-50%, -49%);
+      width: 130px;
+      height: 100%;
+
+      @media #{$sm-down} {
+        width: 110px;
+        left: 85%;
+      }
+
+      @media #{$xs-down} {
+        width: 90px;
+        left: 75%;
+      }
+    }
+
     .logo {
       text-align: center;
       margin: 0 auto;
