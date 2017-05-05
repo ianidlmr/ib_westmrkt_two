@@ -62,6 +62,14 @@ main {
   position: relative;
 }
 
+a {
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
 .sidebar {
   width: 300px;
   height: 100%;
@@ -110,14 +118,6 @@ main {
     .sidebar-item-text {
       font-size: 20px;
       font-weight: normal;
-    }
-  }
-
-  a {
-    &:hover,
-    &:active,
-    &:focus {
-      text-decoration: none;
     }
   }
 

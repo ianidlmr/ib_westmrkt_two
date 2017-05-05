@@ -24,6 +24,24 @@ body.units.show {
     justify-content: space-between;
   }
 
+  .selectize-input {
+    box-shadow: none;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    border-radius: 0px;
+    text-align: left;
+
+    &.focus {
+      box-shadow: none;
+      border: none;
+    }
+
+    &.full {
+      background: transparent;
+    }
+  }
+
   .selectize-dropdown-content .option {
     border-bottom: 1px solid rgba(204, 204, 204, 0.8);
   }

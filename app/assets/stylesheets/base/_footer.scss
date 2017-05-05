@@ -1,6 +1,8 @@
 footer {
+  background: white;
+
   .footer {
-    margin-top: 30px;
+    padding-top: 30px;
   }
 
   .footer p, .footer h4 {
@@ -8,29 +10,37 @@ footer {
     font-size: 14px;
     font-weight: 100;
   }
+
   .footer a p {
     text-transform: uppercase;
     font-weight: 600;
   }
+
   #west-mrkt-svg {
     width: 120px;
   }
+
   #west-mrkt-svg, .footer h4 {
     margin-top: 20px;
     margin-bottom: 20px;
   }
+
   a, a:hover {
     text-decoration: none;
   }
+
   .bedroom-footer-column, .pre-sale-column {
     padding: 0;
   }
+
   .footer-message {
     margin-top: 10px;
   }
+
   .bedroom-footer-column p, .pre-sale-column p {
     margin-top: 10px;
   }
+
   .copyright p {
     margin-top: 40px;
     margin-bottom: 60px;
