@@ -595,7 +595,13 @@ nav.navbar {
 label.error {
   color: #ff5353;
 }
+.online-buying-info{
+  margin-left: 20%;
+  @media #{$sm-down} {
+    margin-left: 0%;
+  }
 
+}
 .countdown-message {
   color: white;
   background: #1a1a1a;
@@ -611,7 +617,7 @@ label.error {
   .countdown {
     color: #ff5353;
     font-weight: bold;
-    font-size: 50px;
+    font-size: 45px;
   }
 }
 
@@ -738,16 +744,39 @@ a, a:hover {
   }
 }
 
+.explore-how-it-works-container {
+  background: rgba(230, 230, 230, 0.52);
+  margin-top: 150px;
+}
+
+.how-it-works-container {
+  padding-left: 83px;
+  h1{
+    margin-top: 65px;
+    margin-bottom: 40px;
+  }
+
+  li {
+    list-style: none;
+    font-size: 18px;
+    line-height: 3;
+  }
+}
+
+.image-container{
+  display: block;
+}
 .explore-container {
+  position: relative;
+  top: -125px;
   background: #1a1a1a;
-  margin-top: 60px;
   padding-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  padding: 0;
   .explore-text {
-    padding: 20px 20px 40px 0px;
+    padding: 54px 66px 59px 79px;
   }
 }
 
@@ -1151,3 +1180,4 @@ p.number-of-bathrooms {
     margin-bottom: 0;
   }
 }
+
