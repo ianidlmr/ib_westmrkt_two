@@ -1,7 +1,41 @@
 = form_tag(unit_types_path, method: :get) do
   .row
     .col-xs-12
-      .countdown-message.text-center
+      .countdown-message.text-center.col-md-12.visible-md
+        - case sale_state
+        - when 'pre_sale_not_started'
+          .col-md-12.visible-md
+            .col-md-6{style: 'text-align: right;'}
+              %h1{ style: 'color: white;padding-top: 14px;' } Pre-Sale ending in
+
+            .col-md-6{style: "padding: 0;text-align: left;"}
+              .countdown{data: { epoch_time: @epoch_time } }
+          .visible-xs
+            %h2{ style: 'color: white;' } Pre-Sale starting in
+            .countdown{data: { epoch_time: @epoch_time } }
+
+        - when 'pre_sale_started'
+          .col-md-12
+            .col-md-6{style: 'text-align: right;'}
+              %h1{ style: 'color: white;padding-top: 14px;' } Pre-Sale ending in
+
+            .col-md-6{style: "padding: 0;text-align: left;"}
+              .countdown{data: { epoch_time: @epoch_time } }
+          .visible-xs
+            %h2{ style: 'color: white;' } Pre-Sale ending in
+            .countdown{data: { epoch_time: @epoch_time } }
+
+        - when 'pre_sale_closed'
+          .col-md-12
+            %h2{ style: 'color: white;' } Pre-Sale closed
+
+        .search-container.col-md-12{ style: 'color: white;' }
+          %p{ style: 'display: inline-block;' } I'm looking for
+          .select-container{ style: 'width: 170px; display: inline-block;' }
+            - options = @options.map { |unit_type| (unit_type.number_of_bedrooms == 3 ? '3+' : unit_type.number_of_bedrooms.to_s) + ' bedroom units' }
+            = select_tag 'number_of_bedrooms', options_for_select(options), class: 'selectize'
+
+      .countdown-message.text-center.visible-xs.visible-sm
         - case sale_state
         - when 'pre_sale_not_started'
           %h1{ style: 'color: white;' } Pre-Sale starting in
@@ -18,31 +52,44 @@
             - options = @options.map { |unit_type| (unit_type.number_of_bedrooms == 3 ? '3+' : unit_type.number_of_bedrooms.to_s) + ' bedroom units' }
             = select_tag 'number_of_bedrooms', options_for_select(options), class: 'selectize'
 
+
   .row
     .col-xs-12.text-center
       = submit_tag 'Search', class: 'btn btn-lg btn-search'
 
 .container{style: 'margin-top: 30px;'}
   .row
-    .col-xs-12
+    .col-xs-12.col-sm-12.col-md-8.online-buying-info
       .save-info
-        %h2 <strong>Save up to 20%</strong> when buying online
-        %h3{style: 'margin-top: 20px;'} Welcome to the new way of buying preconstruction condominiums. Pay a $3500 refundable deposit online to lock in at an online exclusive price up to 20% off list price, and reserve your unit. Complete the paperwork in person at the Junction Gallery within 10 days to finalize your purchase.
+        %h2 <strong>Search and save $10 000 CAD</strong>
+        %h2{style: 'margin-top: 0px;'} when buying online
+        %h3{style: 'margin-top: 20px;'} Welcome to the new way of buying preconstruction condominiums. Pay a $2000 refundable deposit online to lock in at an online exclusive price and reserve your unit. Book appointment in person at the Junction Gallery within 10 days to finalize your purchase.
 
-        = link_to '#' do
-          %p.link-how-does-it-work How does it work?
+        / = link_to '#' do
+        /   %p.link-how-does-it-work How does it work?
 
-.trending-container
-  .container
+
+.trending-container-main
+  .explore-how-it-works-container
     .row
-      .col-xs-12
-        .explore-container
+      .col-xs-12.col-md-12
+        .col-md-1
+        .explore-container.col-md-5
           .explote-sub-container
-            .explore-text
-              %h1{style: 'color: white;'} Explore WEST MRKT
-              = image_tag('icons/arrow-right-light.svg')
             .image-container{style: 'display: flex; justify-content: center;'}
               = image_tag('img-explore-railway-market.jpg', class: 'img-responsive')
+            .explore-text
+              %h2{style: 'color: white;'} Explore WEST MRKT
+              = image_tag('icons/arrow-right-light.svg')
+        / .col-md-1    
+        .how-it-works-container.col-md-6.visible-md
+          %h1 How does it work?
+          %ul
+            %li 1. Search for unit within availabe layouts.
+            %li 2. Add to Saved to explore and compare unit.
+            %li 3. Complete checkout and pay refundable deposit.
+            %li 4. Come to sale center and compelte process.
+
     -#
       %h1{ style: 'margin-bottom: 40px;' } Trending layouts
       .row
