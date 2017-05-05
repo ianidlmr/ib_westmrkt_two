@@ -2,10 +2,10 @@
   = form_tag(unit_types_path, method: :get) do
     .row
       .col-xs-12
-        .countdown-message.text-center.col-md-12.visible-md
+        .countdown-message.text-center.col-md-12.visible-md.visible-lg
           - case sale_state
           - when 'pre_sale_not_started'
-            .col-md-12.visible-md
+            .col-md-12.visible-md.visible-lg
               .col-md-6{style: 'text-align: right;'}
                 %h1{ style: 'color: white;padding-top: 14px;' } Pre-Sale ending in
 
@@ -73,25 +73,27 @@
 
 .trending-container-main
   .explore-how-it-works-container
-    .row
-      .col-xs-12.col-md-12
-        .col-md-1
-        .explore-container.col-md-5
-          .explote-sub-container
-            .image-container{style: 'justify-content: center;'}
-              = image_tag('img-explore-railway-market.jpg', class: 'img-responsive')
+    .container-fluid.special
+      .row
+        .col-xs-12.col-md-12
+          
+          .explore-container.col-md-6
+            .explote-sub-container
+              .image-container{style: 'justify-content: center;'}
+                = image_tag('img-explore-railway-market.jpg', class: 'img-responsive')
 
-            .explore-text
-              %h2{style: 'color: white;'} Explore WEST MRKT
-              = image_tag('icons/arrow-right-light.svg')
-        / .col-md-1    
-        .how-it-works-container.col-md-6.visible-md
-          %h1 How does it work?
-          %ul
-            %li 1. Search for unit within availabe layouts.
-            %li 2. Add to Saved to explore and compare unit.
-            %li 3. Complete checkout and pay refundable deposit.
-            %li 4. Come to sale center and compelte process.
+              .explore-text
+                %h2{style: 'color: white;'} Explore WEST MRKT
+                = image_tag('icons/arrow-right-light.svg')
+          
+              
+          .how-it-works-container.col-md-6.visible-md.visible-lg
+            %h1 How does it work?
+            %ul
+              %li 1. Search for unit within availabe layouts.
+              %li 2. Add to Saved to explore and compare unit.
+              %li 3. Complete checkout and pay refundable deposit.
+              %li 4. Come to sale center and compelte process.
 
     -#
       %h1{ style: 'margin-bottom: 40px;' } Trending layouts
