@@ -738,20 +738,19 @@ a, a:hover {
   }
 }
 
-.explore-how-it-works-container{
+.explore-how-it-works-container {
   background: rgba(230, 230, 230, 0.52);
   margin-top: 150px;
 }
 
-.how-it-works-container{
+.how-it-works-container {
   padding-left: 83px;
   h1{
     margin-top: 65px;
     margin-bottom: 40px;
   }
 
-  li
-  {
+  li {
     list-style: none;
     font-size: 18px;
     line-height: 3;
@@ -759,7 +758,7 @@ a, a:hover {
 }
 
 .image-container{
-  display: block !important;
+  display: block;
 }
 .explore-container {
   position: relative;
