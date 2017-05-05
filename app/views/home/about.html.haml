@@ -1,18 +1,18 @@
 .about-container
-  .row.one.no-gutters
-    .col-xs-12
+  .container-fluid.special
+    .one
       .row.two
         %h1.col-xs-12.col-sm-offset-1.text-xs-center The common ground of the Lower Junction
       .row.three.text-xs-center
         %p.col-sm-5.col-sm-offset-1.col-md-5.col-lg-5.col-xs-10.col-xs-offset-1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam mattis neque sapien, ut laoreet nibh feugiat id. Maecenas facilisis, ipsum nec porta tempus, dolor quam.
-        .col-sx-10.col-sm-5.col-md-5.col-lg-5.col-md-offset-1=image_tag "about.png"
+        .col-sx-10.col-sm-5.col-md-5.col-lg-5.col-lg-offset-1=image_tag "about.png"
   .row.four
     .col.col-xs-12
       .row.five.no-gutters
-        %h2.col-xs-10.col-xs-offset-1 Area
-        %p.col-sm-5.col-sm-offset-1.col-md-5.col-lg-5.col-xs-10.col-xs-offset-1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam enim sem.
+        %h2.col-xs-10.col-xs-offset-1.col-lg-5.col-lg-offset-2 Area
+        %p.col-xs-10.col-xs-offset-1.col-md-5.col-lg-5.col-lg-offset-2  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam enim sem.
   .row.six
-    .col-xs-12
+    .col-12.col-lg-offset-1.col-lg-10
       #map
         :javascript
           mapboxgl.accessToken = 'pk.eyJ1IjoiaWFuYnJ1Y2UiLCJhIjoiY2oxM25rdXVkMDFnOTM4bGp1Y2c1N2plaiJ9.rfNQ41TE2csOSvSoR4ITCw';
@@ -24,46 +24,52 @@
             bearing: -5,
             scrollZoom: false,
           });
+          if (map.tap) {
+            map.tap.disable();
+          }
           map.addControl(new mapboxgl.NavigationControl());
   .row.seven.text-xs-center
     .col-xs-12
-      %h2.col-xs-12.col-sm-offset-1.text-xs-center.col-md-offset-2.col-md-6
+      %h2.col-xs-12.col-sm-offset-1.text-xs-center.col-md-offset-2.col-md-4
         Frequently Asked Questions
-      %p.col-sm-10.col-sm-offset-1.col-md-offset-2.col-md-6.col-lg-6.col-xs-10.col-xs-offset-1
+      %p.col-sm-10.col-sm-offset-1.col-md-offset-2.col-md-5.col-lg-5.col-xs-10.col-xs-offset-1
         1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam enim sem, gravida non efficitur vel, euismod sed velit. Etiam nibh libero, ultrices vitae felis sed.
-      %p.col-sm-10.col-sm-offset-1.col-md-offset-2.col-md-6.col-lg-6.col-xs-10.col-xs-offset-1
+      %p.col-sm-10.col-sm-offset-1.col-md-offset-2.col-md-5.col-lg-5.col-xs-10.col-xs-offset-1
         2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam enim sem, gravida non efficitur vel, euismod sed velit. Etiam nibh libero, ultrices vitae felis sed.
-  .row.nine.hidden-sm.hidden-xs
-    .col.col-xs-12.col-sm-10.col-sm-offset-1
-      .about-carousel.col-xs-offset-1.col-sm-6.col-md-6.large
+  .container-fluid.special
+    .row.nine.hidden-sm.hidden-xs
+      .col.col-md-10.col-md-offset-1
+        .about-carousel.col-md-offset-1.col-md-6.large
+          =image_tag "about-2.png"
+          =image_tag "about-2.png"
+          =image_tag "about-2.png"
+        %h2.col-md-5
+          Amenities
+          %p.amenities
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Nullam enim sem, gravida non efficitur vel, euismod sed velit.
+            Etiam nibh libero, ultrices vitae felis sed.
+  .container-fluid.special
+    .row.eight.hidden-md.hidden-lg.hidden-xl
+      .col-sm-offset-1.col-sm-10.about-carousel.small.col-xs-offset-1.col-xs-10
         =image_tag "about-2.png"
         =image_tag "about-2.png"
         =image_tag "about-2.png"
-      %h2.col-sm-3.col-md-3
-        Amenities
-      %p.amenities.col-sm-4.col-md-4
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Nullam enim sem, gravida non efficitur vel, euismod sed velit.
-        Etiam nibh libero, ultrices vitae felis sed.
-  .row.eight.hidden-md.hidden-lg.hidden-xl
-    .col-sm-offset-1.col-sm-10.about-carousel.small.col-xs-offset-1.col-xs-10
-      =image_tag "about-2.png"
-      =image_tag "about-2.png"
-      =image_tag "about-2.png"
-    .col-sm-10.col-sm-offset-1.carousel-info.col-xs-10.col-xs-offset-1
-      %h2.col-sm-12.white-color.padding-bottom.col-xs-12
-        Amenities
-      %p.amenities.col-sm-12.white-color.padding-bottom.col-xs-12
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Nullam enim sem, gravida non efficitur vel, euismod sed velit.
-        Etiam nibh libero, ultrices vitae felis sed.
-  .row.ten.justify-content-center
+      .col-sm-10.col-sm-offset-1.carousel-info.col-xs-10.col-xs-offset-1
+        %h2.col-sm-12.white-color.padding-bottom.col-xs-12
+          Amenities
+        %p.amenities.col-sm-12.white-color.padding-bottom.col-xs-12
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Nullam enim sem, gravida non efficitur vel, euismod sed velit.
+          Etiam nibh libero, ultrices vitae felis sed.
+  .container-fluid.special
+    .row.ten.justify-content-center
     .col-10.col-sm-10.col-sm-offset-1
-      .row
+      .row.view
         %h2.col-12.text-center View
-        %p.col-xs-12.col-sm-6.col-sm-offset-3.text-center Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam enim sem, gravida non efficitur vel, euismod sed velit. Etiam nibh libero, ultrices vitae felis sed, sollicitudin aliquet arcu.
+        %p.col-xs-12.col-sm-10.col-sm-offset-1.col-md-6.col-md-offset-3.text-center Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam enim sem, gravida non efficitur vel, euismod sed velit. Etiam nibh libero, ultrices vitae felis sed, sollicitudin aliquet arcu.
   .row.eleven
-    .col-12=image_tag "about-3.png"
+    .col-12.col-lg-offset-1.col-lg-10=image_tag "about-3.png"
   .row.twelve.justify-content-center
     .col-10.col-sm-10.col-sm-offset-1
       .row

@@ -1,63 +1,65 @@
-= form_tag(unit_types_path, method: :get) do
-  .row
-    .col-xs-12
-      .countdown-message.text-center.col-md-12.visible-md
-        - case sale_state
-        - when 'pre_sale_not_started'
-          .col-md-12.visible-md
-            .col-md-6{style: 'text-align: right;'}
-              %h1{ style: 'color: white;padding-top: 14px;' } Pre-Sale ending in
+.container-fluid.special
+  = form_tag(unit_types_path, method: :get) do
+    .row
+      .col-xs-12
+        .countdown-message.text-center.col-md-12.visible-md
+          - case sale_state
+          - when 'pre_sale_not_started'
+            .col-md-12.visible-md
+              .col-md-6{style: 'text-align: right;'}
+                %h1{ style: 'color: white;padding-top: 14px;' } Pre-Sale ending in
 
-            .col-md-6{style: "padding: 0;text-align: left;"}
+              .col-md-6{style: "padding: 0;text-align: left;"}
+                .countdown{data: { epoch_time: @epoch_time } }
+            .visible-xs
+              %h2{ style: 'color: white;' } Pre-Sale starting in
               .countdown{data: { epoch_time: @epoch_time } }
-          .visible-xs
-            %h2{ style: 'color: white;' } Pre-Sale starting in
-            .countdown{data: { epoch_time: @epoch_time } }
 
-        - when 'pre_sale_started'
-          .col-md-12
-            .col-md-6{style: 'text-align: right;'}
-              %h1{ style: 'color: white;padding-top: 14px;' } Pre-Sale ending in
+          - when 'pre_sale_started'
+            .col-md-12
+              .col-md-6{style: 'text-align: right;'}
+                %h1{ style: 'color: white;padding-top: 14px;' } Pre-Sale ending in
 
-            .col-md-6{style: "padding: 0;text-align: left;"}
+              .col-md-6{style: "padding: 0;text-align: left;"}
+                .countdown{data: { epoch_time: @epoch_time } }
+            .visible-xs
+              %h2{ style: 'color: white;' } Pre-Sale ending in
               .countdown{data: { epoch_time: @epoch_time } }
-          .visible-xs
-            %h2{ style: 'color: white;' } Pre-Sale ending in
+
+          - when 'pre_sale_closed'
+            .col-md-12
+              %h2{ style: 'color: white;' } Pre-Sale closed
+
+          .search-container.col-md-12{ style: 'color: white;' }
+            %p{ style: 'display: inline-block;' } I'm looking for
+            .select-container{ style: 'width: 170px; display: inline-block;' }
+              - options = @options.map { |unit_type| (unit_type.number_of_bedrooms == 3 ? '3+' : unit_type.number_of_bedrooms.to_s) + ' bedroom units' }
+              = select_tag 'number_of_bedrooms', options_for_select(options), class: 'selectize'
+
+        .countdown-message.text-center.visible-xs.visible-sm
+          - case sale_state
+          - when 'pre_sale_not_started'
+            %h1{ style: 'color: white;' } Pre-Sale starting in
             .countdown{data: { epoch_time: @epoch_time } }
-
-        - when 'pre_sale_closed'
-          .col-md-12
-            %h2{ style: 'color: white;' } Pre-Sale closed
-
-        .search-container.col-md-12{ style: 'color: white;' }
-          %p{ style: 'display: inline-block;' } I'm looking for
-          .select-container{ style: 'width: 170px; display: inline-block;' }
-            - options = @options.map { |unit_type| (unit_type.number_of_bedrooms == 3 ? '3+' : unit_type.number_of_bedrooms.to_s) + ' bedroom units' }
-            = select_tag 'number_of_bedrooms', options_for_select(options), class: 'selectize'
-
-      .countdown-message.text-center.visible-xs.visible-sm
-        - case sale_state
-        - when 'pre_sale_not_started'
-          %h1{ style: 'color: white;' } Pre-Sale starting in
-          .countdown{data: { epoch_time: @epoch_time } }
-        - when 'pre_sale_started'
-          %h1{ style: 'color: white;' } Pre-Sale ending in
-          .countdown{data: { epoch_time: @epoch_time } }
-        - when 'pre_sale_closed'
-          %h1{ style: 'color: white;' } Pre-Sale closed
-
-        .search-container{ style: 'color: white;' }
-          %p{ style: 'display: inline-block;' } I'm looking for
-          .select-container{ style: 'width: 170px; display: inline-block;' }
-            - options = @options.map { |unit_type| (unit_type.number_of_bedrooms == 3 ? '3+' : unit_type.number_of_bedrooms.to_s) + ' bedroom units' }
-            = select_tag 'number_of_bedrooms', options_for_select(options), class: 'selectize'
+          - when 'pre_sale_started'
+            %h1{ style: 'color: white;' } Pre-Sale ending in
+            .countdown{data: { epoch_time: @epoch_time } }
+          - when 'pre_sale_closed'
+            %h1{ style: 'color: white;' } Pre-Sale closed
 
 
-  .row
-    .col-xs-12.text-center
-      = submit_tag 'Search', class: 'btn btn-lg btn-search'
+            .search-container{ style: 'color: white;' }
+              %p{ style: 'display: inline-block;' } I'm looking for
+              .select-container{ style: 'width: 170px; display: inline-block;' }
+                - options = @options.map { |unit_type| (unit_type.number_of_bedrooms == 3 ? '3+' : unit_type.number_of_bedrooms.to_s) + ' bedroom units' }
+                = select_tag 'number_of_bedrooms', options_for_select(options), class: 'selectize'
 
-.container{style: 'margin-top: 30px;'}
+    .row
+      .col-xs-12.text-center
+        = submit_tag 'Search', class: 'btn btn-lg btn-search'
+
+
+.container-fluid.special{style: 'margin-top: 30px;'}
   .row
     .col-xs-12.col-sm-12.col-md-8.online-buying-info
       .save-info
@@ -78,6 +80,7 @@
           .explote-sub-container
             .image-container{style: 'display: flex; justify-content: center;'}
               = image_tag('img-explore-railway-market.jpg', class: 'img-responsive')
+
             .explore-text
               %h2{style: 'color: white;'} Explore WEST MRKT
               = image_tag('icons/arrow-right-light.svg')
