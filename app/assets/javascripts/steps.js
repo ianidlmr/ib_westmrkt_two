@@ -19,10 +19,10 @@ $(function() {
       },
       messages: {
         "order[agree_to_deal_sheet_and_terms]": {
-          required: "You need to read and agree with our dael sheet as well as Terms & Conditions to confirm and pay for the selected unit."
+          required: "You need to read and agree with our deal sheet as well as Terms & Conditions to confirm and pay for the selected unit."
         },
         "order[broker]": {
-          required: "We're the first to give pulic access to our pre-sale to everyone. To get the best price you need to confirm you're not a broker and you didn't use any broker service to buy this unit."
+          required: "We're the first to give public access to our pre-sale to everyone. To get the best price you need to confirm you're not a broker and you didn't use any broker service to buy this unit."
         }
       },
 
