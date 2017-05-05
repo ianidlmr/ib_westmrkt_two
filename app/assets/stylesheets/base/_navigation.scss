@@ -94,12 +94,17 @@ nav.navbar {
       }
     }
 
-    .back-link {
+    .back-link,
+    .all-layouts-link {
       margin-left: 15px;
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
+
+      &:focus {
+        text-decoration: none;
+      }
 
       span {
         margin-left: 10px;
@@ -113,6 +118,17 @@ nav.navbar {
       @media #{$sm-down} {
         width: 90px;
       }
+    }
+  }
+
+  &.secondary {
+    background: #1a1a1a;
+
+    .unit-type {
+      margin: 0;
+      margin-right: 15px;
+      font-size: 14px;
+      font-weight: bold;
     }
   }
 }

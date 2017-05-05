@@ -31,6 +31,8 @@
     .right-sidebar
       = render 'layouts/right_sidebar'
     = render 'layouts/navigation'
+    - if "#{controller_path.tr('_', '-').tr('/', '-')} #{action_name.tr('_', '-')}" == "units show"
+      = render 'layouts/secondary_navigation'
     = render 'layouts/flash'
     %main{ role: 'main' }
       = yield

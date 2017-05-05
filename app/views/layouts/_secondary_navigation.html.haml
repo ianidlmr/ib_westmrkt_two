@@ -1,6 +1,7 @@
-%nav.navbar
-  .nav-block{ style: 'display: flex; width: 100%; justify-content: space-between;' }
-    %p All Layouts
-
-    .unit-type
-      %p 1 Bedroom + Den
+.container-fluid.special
+  %nav.navbar.secondary
+    .nav-block
+      = link_to unit_types_path, class: 'all-layouts-link' do
+        = image_tag "icons/arrow-left.svg", class: 'img-responsive'
+        %span All layouts
+      %p.unit-type= @unit_type.name.upcase

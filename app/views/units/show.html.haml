@@ -58,10 +58,10 @@
       = image_tag('icons/add-to-saved.svg')
       %p #{pluralize(@unit.users.count, 'person')} added to saved
 
-.unit-info-row{ style: 'background: #f0f0f0' }
+.unit-info-row
   .container-fluid.special
     .row
-      .col-sm-6
+      .col-sm-6.special-margin
         .unit-info-container{style: 'margin-top: 40px;'}
           %h1{style: 'margin: 0;'}
             #{@unit_type.name}
@@ -132,7 +132,7 @@
 .floorplan-row
   .container-fluid.special
     .row
-      .col-sm-6
+      .col-sm-6.special-margin
         %h2 Floorplan
 
         .floor-plan-container
@@ -151,7 +151,7 @@
 .aesthetic-row{ style: 'background: #f0f0f0' }
   .container-fluid.special
     .row
-      .col-sm-6
+      .col-sm-6.special-margin
         #view-carousel
           = image_tag "photo-view.jpg"
           = image_tag "img-explore-railway-market.jpg"
@@ -160,7 +160,7 @@
         = link_to specifications_path, target: '_blank' do
           %p.link-how-does-it-work Full specification
 
-.pswp{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+.pswp{"aria-hidden" => "true", role: "dialog", tabindex: "-1"}
   .pswp__bg{style: "opacity: 1;"}
   .pswp__scroll-wrap
     .pswp__container
