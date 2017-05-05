@@ -2,6 +2,78 @@ body.home {
   //------------------------------------------------------------------------------
   // Index
   &.index {
+    .countdown-message {
+      color: white;
+      background: #1a1a1a;
+      padding-top: 40px;
+      padding-bottom: 80px;
+
+      h1 {
+        margin-top: 0;
+        padding-top: 10px;
+        letter-spacing: 0.05em;
+      }
+
+      .countdown {
+        color: #ff5353;
+        font-weight: bold;
+        font-size: 45px;
+      }
+    }
+
+    .selectize-input {
+      box-shadow: none;
+      border: none;
+      border-bottom: 1px solid white;
+      color: white;
+      border-radius: 0px;
+      text-align: left;
+
+      &.focus {
+        box-shadow: none;
+        border: none;
+      }
+
+      &.full {
+        background: transparent;
+      }
+    }
+
+    .selectize-control.single .selectize-input.input-active {
+      background: transparent;
+      cursor: cursor;
+    }
+
+    .selectize-dropdown {
+      text-align: left;
+    }
+
+    .option[data-selectable] {
+      color: black;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+
+      p {
+        margin-bottom: 0;
+        margin-right: 10px;
+      }
+    }
+
+    .link-how-does-it-work {
+      color: black;
+      border-bottom: 1px solid black;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .save-info {
+      padding-bottom: 30px;
+    }
   }
 
   //------------------------------------------------------------------------------
