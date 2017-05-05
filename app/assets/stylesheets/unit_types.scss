@@ -45,6 +45,12 @@ body.unit-types.index {
     }
   }
 
+  @media #{$sm-down} {
+    .trending-container {
+      margin: 10px;
+    }
+  }
+
   .unit-panel:hover .view-container img {
     transform: translateX(0px);
   }
@@ -147,10 +153,10 @@ body.unit-types.index {
   }
 
   .bedrooms-filter {
-    width: 100%;
+    width: 1124px;
     display: flex;
     top: 0;
-    left: 0;
+    left: 8px;
     position: absolute;
     background: white;
     border-bottom: 1px solid #ccc;

@@ -19,11 +19,28 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-.wrapper {
+body, html {
+  font-family: acumin-pro, sans-serif;
+  font-style: normal;
+  background-color: #F5F5F5;
+  width: 100%;
   overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+}
+
+@media (min-width: 1200px) {
+  .container-fluid.special {
+    width: 1140px;
+  }
+}
+
+.container-fluid {
+  padding-left: 8px;
+  padding-right: 8px;
+
+  @media #{$sm-down} {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }
 
 header,
@@ -39,8 +56,6 @@ main {
   position: relative;
 }
 
-//------------------------------------------------------------------------------
-// SLIDER
 .wrapper {
   left: 0;
   overflow-x: hidden;
@@ -94,7 +109,7 @@ nav.navbar {
   align-items: center;
   font-size: 14px;
   color: white;
-  z-index: 27;
+  z-index: 21;
 
   .nav-block {
     display: flex;
@@ -671,47 +686,44 @@ label.error {
   padding-bottom: 30px;
 }
 
-footer {
-  padding: 30px 0;
+.footer {
+  margin-top: 30px;
+}
 
-  h1 {
-    color: #ccc;
-    font-size: 16px;
-  }
-
-  p {
-    color: #ccc;
-    font-size: 14px;
-  }
-
-  .black {
-    color: black;
-    font-weight: bold;
-  }
-
-  .flex-row {
-    display: flex;
-  }
-
-  .flex-column {
-    width: 50%;
-  }
-
-  @media #{$sm-down} {
-    .pre-sale-flex-column {
-      display: flex;
-      width: 50%;
-      justify-content: space-between;
-    }
-  }
-
-  .copyright-row {
-    margin-top: 40px;
-  }
+.footer p, .footer h4 {
+  color: #ADADAD;
+  font-size: 14px;
+  font-weight: 100;
+}
+.footer a p {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+#west-mrkt-svg {
+  width: 120px;
+}
+#west-mrkt-svg, .footer h4 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+a, a:hover {
+  text-decoration: none;
+}
+.bedroom-footer-column, .pre-sale-column {
+  padding: 0;
+}
+.footer-message {
+  margin-top: 10px;
+}
+.bedroom-footer-column p, .pre-sale-column p {
+  margin-top: 10px;
+}
+.copyright p {
+  margin-top: 40px;
+  margin-bottom: 60px;
 }
 
 .trending-container {
-  background: #e6e6e6;
   padding-top: 90px;
   padding-bottom: 40px;
 
@@ -780,8 +792,8 @@ li.filters {
 
 .filters-container {
   position:fixed;
-  width: 100%;
-  z-index: 22;
+  width: 1124px;
+  z-index: 30;
   text-align:center;
   height: 350px;
   font-size:18px;

@@ -1,28 +1,29 @@
 = form_tag(unit_types_path, method: :get) do
-  .row
-    .col-xs-12
-      .countdown-message.text-center
-        - case sale_state
-        - when 'pre_sale_not_started'
-          %h1{ style: 'color: white;' } Pre-Sale starting in
-          .countdown{data: { epoch_time: @epoch_time } }
-        - when 'pre_sale_started'
-          %h1{ style: 'color: white;' } Pre-Sale ending in
-          .countdown{data: { epoch_time: @epoch_time } }
-        - when 'pre_sale_closed'
-          %h1{ style: 'color: white;' } Pre-Sale closed
+  .container-fluid.special
+    .row
+      .col-xs-12
+        .countdown-message.text-center
+          - case sale_state
+          - when 'pre_sale_not_started'
+            %h1{ style: 'color: white;' } Pre-Sale starting in
+            .countdown{data: { epoch_time: @epoch_time } }
+          - when 'pre_sale_started'
+            %h1{ style: 'color: white;' } Pre-Sale ending in
+            .countdown{data: { epoch_time: @epoch_time } }
+          - when 'pre_sale_closed'
+            %h1{ style: 'color: white;' } Pre-Sale closed
 
-        .search-container{ style: 'color: white;' }
-          %p{ style: 'display: inline-block;' } I'm looking for
-          .select-container{ style: 'width: 170px; display: inline-block;' }
-            - options = @options.map { |unit_type| (unit_type.number_of_bedrooms == 3 ? '3+' : unit_type.number_of_bedrooms.to_s) + ' bedroom units' }
-            = select_tag 'number_of_bedrooms', options_for_select(options), class: 'selectize'
+          .search-container{ style: 'color: white;' }
+            %p{ style: 'display: inline-block;' } I'm looking for
+            .select-container{ style: 'width: 170px; display: inline-block;' }
+              - options = @options.map { |unit_type| (unit_type.number_of_bedrooms == 3 ? '3+' : unit_type.number_of_bedrooms.to_s) + ' bedroom units' }
+              = select_tag 'number_of_bedrooms', options_for_select(options), class: 'selectize'
 
-  .row
-    .col-xs-12.text-center
-      = submit_tag 'Search', class: 'btn btn-lg btn-search'
+    .row
+      .col-xs-12.text-center
+        = submit_tag 'Search', class: 'btn btn-lg btn-search'
 
-.container{style: 'margin-top: 30px;'}
+.container-fluid.special{style: 'margin-top: 30px;'}
   .row
     .col-xs-12
       .save-info
@@ -33,7 +34,7 @@
           %p.link-how-does-it-work How does it work?
 
 .trending-container
-  .container
+  .container-fluid.special
     .row
       .col-xs-12
         .explore-container
@@ -43,9 +44,3 @@
               = image_tag('icons/arrow-right-light.svg')
             .image-container{style: 'display: flex; justify-content: center;'}
               = image_tag('img-explore-railway-market.jpg', class: 'img-responsive')
-    -#
-      %h1{ style: 'margin-bottom: 40px;' } Trending layouts
-      .row
-        - Unit.limit(5).order('RANDOM()').each do |unit|
-          .col-md-6
-            = render 'shared/unit_card', unit: unit

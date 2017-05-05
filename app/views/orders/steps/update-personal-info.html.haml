@@ -14,7 +14,7 @@
     %p Deposit required to buy selected unit
 
 = simple_form_for(@order, url: wizard_path, method: :put) do |f|
-  .container
+  .container-fluid.special
     .row
       .col-sm-6
         .personal-info-container
@@ -125,6 +125,7 @@
                 .input-text-wrap
                   = f.label 'Promo Code (optional)', class: 'input-text-label'
                   = f.input :promo_code, label: false
+                  %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
 
         #floating-box.visible-xs{style: 'margin: 40px 0 40px 0;'}
           .unit-info-container.text-center

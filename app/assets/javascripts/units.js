@@ -15,7 +15,7 @@ $(function() {
     });
 
     if ($(window).width() >= 768) {
-      var offset = ($(window).width() - $('.container').outerWidth()) / 2;
+      var offset = ($(window).width() - $('.container-fluid.special').outerWidth()) / 2;
       $('#floating-box').css({'right': offset + 'px'});
     }
 

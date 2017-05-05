@@ -1,14 +1,15 @@
-%nav.navbar
-  .nav-block{ style: 'display: flex; width: 100%; justify-content: space-between;' }
-    .hamburger-container
-      .menu-hamburger
-        %span#one
-        %span#two
-        %span#three
-      .menu-title
-        %p Menu
+.container-fluid.special
+  %nav.navbar
+    .nav-block{ style: 'display: flex; width: 100%; justify-content: space-between;' }
+      .hamburger-container
+        .menu-hamburger
+          %span#one
+          %span#two
+          %span#three
+        .menu-title
+          %p Menu
 
-    .logo
-      = image_tag 'icons/logo.svg', class: 'img-responsive logo'
-    .saved-icon
-      = render 'shared/saved_count'
+      .logo
+        = image_tag 'icons/logo.svg', class: 'img-responsive logo'
+      .saved-icon
+        = render 'shared/saved_count'

@@ -25,18 +25,17 @@
 
       }
   %body{ class: "#{controller_path.tr('_', '-').tr('/', '-')} #{action_name.tr('_', '-')}" }
-    .wrapper
-      .mask{ style: 'background: black; display: none; position: absolute; bottom: 0; left: 0; height: 100%; width: 100%; z-index: 15; opacity: 0.5;' }
-      .sidebar
-        = render 'layouts/sidebar'
-      .right-sidebar
-        = render 'layouts/right_sidebar'
-      = render 'layouts/navigation'
-      = render 'layouts/flash'
-      %main{ role: 'main' }
-        = yield
-      %footer
-        = render 'layouts/footer'
+    .mask{ style: 'background: black; display: none; position: absolute; bottom: 0; left: 0; height: 100%; width: 100%; z-index: 22; opacity: 0.5;' }
+    .sidebar
+      = render 'layouts/sidebar'
+    .right-sidebar
+      = render 'layouts/right_sidebar'
+    = render 'layouts/navigation'
+    = render 'layouts/flash'
+    %main{ role: 'main' }
+      = yield
+    %footer
+      = render 'layouts/footer'
 
   - unless "#{controller_path.tr('_', '-').tr('/', '-')} #{action_name.tr('_', '-')}" == "admins-sessions new"
     = render 'shared/signup_modal'

@@ -59,7 +59,7 @@
       %p #{pluralize(@unit.users.count, 'person')} added to saved
 
 .unit-info-row{ style: 'background: #f0f0f0' }
-  .container
+  .container-fluid.special
     .row
       .col-sm-6
         .unit-info-container{style: 'margin-top: 40px;'}
@@ -130,7 +130,7 @@
               = image_tag 'asset_2.svg', class: 'img-responsive', style: "height: 120px;"
 
 .floorplan-row
-  .container
+  .container-fluid.special
     .row
       .col-sm-6
         %h2 Floorplan
@@ -149,7 +149,7 @@
           %h1 View from the window
 
 .aesthetic-row{ style: 'background: #f0f0f0' }
-  .container
+  .container-fluid.special
     .row
       .col-sm-6
         #view-carousel
