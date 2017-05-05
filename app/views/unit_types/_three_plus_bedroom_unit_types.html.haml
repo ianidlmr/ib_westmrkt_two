@@ -6,7 +6,7 @@
       %button.btn.btn-lg.btn-black Reset all filters
   - else
     - @three_plus_bedroom_unit_types.each do |unit_type|
-      .col-md-6
+      .col-sm-6
         - available_unit = unit_type.units.where(state: :available).first
         .panel.panel-default.unit-panel{ data: { url: unit_type_unit_path(unit_type, available_unit) } }
           - if unit_type.last_chance?

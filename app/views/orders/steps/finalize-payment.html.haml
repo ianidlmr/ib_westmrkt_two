@@ -18,7 +18,7 @@
 = simple_form_for(@order, url: wizard_path, method: :put) do |f|
   .container-fluid.special
     .row
-      .col-sm-6
+      .col-sm-6.special-margin
         %h1 Deal Sheet, Terms and Conditions
 
         .deal-sheet-container
@@ -39,14 +39,24 @@
             = f.input_field :broker, as: :boolean, boolean_style: :inline
             %span I'm not a broker
 
-        .sales-person-container
-          %h1 Sales Person help
-          %p Did a Lower Junction Sales Person help you with this purchase? Please select from the drop-down list.
+        -#
+          .sales-person-container
+            %h1 Sales Person help
+            %p Did a Lower Junction Sales Person help you with this purchase? Please select from the drop-down list.
+
+            .search-container{ style: 'color: white;' }
+              %p{ style: 'display: inline-block;' } I'm looking for
+              .select-container{ style: 'width: 170px; display: inline-block;' }
+                - options = ['1 bedroom', '2 bedrooms', '3 bedrooms']
+                = select_tag 'number_of_bedrooms', options_for_select(options), class: 'selectize'
 
         .deposit-container
-          %h1 Deposit $3000 CAD
-          = image_tag 'powered_by_stripe.png'
-          %p Price included tax and payment is secure. It reserves your unit at the discounted price. Sale must be confirmed within 10 days.
+          .deposit-title
+            %h1 Deposit $3000 CAD
+            .stripe-image
+              = image_tag 'powered_by_stripe.png', class: 'img-responsive'
+
+          %p.deposit-info Payment is super secure. It reserves your unit at the discounted price.
 
           .form-row
             #card-element
@@ -67,5 +77,5 @@
               %strong $3000 CAD
             %p Deposit required to buy selected unit
 
-        .form-actions.text-left
+        .form-actions.text-left.confirm-and-pay-container
           = f.button :submit, 'Confirm & Pay', class: 'btn btn-success btn-lg'

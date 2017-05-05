@@ -43,6 +43,12 @@ body, html {
   }
 }
 
+@media (max-width: 1199px) {
+  .special-margin {
+    margin: 0 15px;
+  }
+}
+
 header,
 footer {
   flex-shrink: 0;
