@@ -21,8 +21,8 @@
 #
 
 class Order < ApplicationRecord
-  include AASM
   include Rails.application.routes.url_helpers
+  include AASM
 
   #------------------------------------------------------------------------------
   # Associations

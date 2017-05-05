@@ -170,16 +170,16 @@ body.orders-steps.show {
       }
     }
 
-    @media #{$xs-down} {
-      .deposit-info {
-        width: 100%;
-      }
-    }
-
     .deposit-info {
       margin: 45px 0;
       font-size: 15px;
       width: 60%;
+    }
+
+    @media #{$xs-down} {
+      .deposit-info {
+        width: 100%;
+      }
     }
   }
 
