@@ -6,7 +6,7 @@ $(function() {
     if ($(e.target).hasClass('hamburger-container') || $(e.target).hasClass('menu-hamburger') || $(e.target).hasClass('menu-title')) {
       showMask();
       $('.sidebar').addClass('sidebar-is-open');
-      $('.sidebar').css({'box-shadow': '5px 0 20px -5px #888'});
+      $('.sidebar').css({'box-shadow': 'rgba(26, 26, 26, 0.2) 5px 0px 20px 5px'});
       $('.right-sidebar').removeClass('right-sidebar-is-open');
       $('.right-sidebar').css({'box-shadow': 'none'});
     } else if ($(e.target).hasClass('saved-icon')) {
@@ -14,7 +14,7 @@ $(function() {
       $('.sidebar').removeClass('sidebar-is-open');
       $('.sidebar').css({'box-shadow': 'none'});
       $('.right-sidebar').addClass('right-sidebar-is-open');
-      $('.right-sidebar').css({'box-shadow': '5px 0 20px 5px #888'});
+      $('.right-sidebar').css({'box-shadow': 'rgba(26, 26, 26, 0.2) 5px 0px 20px 5px'});
     } else if (!$(e.target).hasClass('sidebar') && !$(e.target).parents('.sidebar').length && $('.sidebar').hasClass('sidebar-is-open')) {
       hideMask();
       $('.sidebar').css({'box-shadow': 'none'});
