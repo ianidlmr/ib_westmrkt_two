@@ -39,16 +39,15 @@
             = f.input_field :broker, as: :boolean, boolean_style: :inline
             %span I'm not a broker
 
-        -#
-          .sales-person-container
-            %h1 Sales Person help
-            %p Did a Lower Junction Sales Person help you with this purchase? Please select from the drop-down list.
-
-            .search-container{ style: 'color: white;' }
-              %p{ style: 'display: inline-block;' } I'm looking for
-              .select-container{ style: 'width: 170px; display: inline-block;' }
-                - options = ['1 bedroom', '2 bedrooms', '3 bedrooms']
-                = select_tag 'number_of_bedrooms', options_for_select(options), class: 'selectize'
+        .sales-person-container
+          %h1 Sales Person help
+          %p Did a Lower Junction Sales Person help you with this purchase? Please select from the drop-down list.
+          .row
+            .col-xs-6
+              .sale-person-select
+                - select_options = ['I didn\'t need help', 'I needed help', 'Wajid helped me']
+                = f.label :sale_person_name, 'Sale Person', class: 'input-select-label'
+                = f.input :sale_person_name, collection: select_options, include_blank: false, label: false, input_html: { class: 'selectize' }
 
         .deposit-container
           .deposit-title
@@ -78,4 +77,4 @@
             %p Deposit required to buy selected unit
 
         .form-actions.text-left.confirm-and-pay-container
-          = f.button :submit, 'Confirm & Pay', class: 'btn btn-success btn-lg'
+          = f.button :submit, 'Confirm & Pay', class: 'btn btn-success btn-lg btn-pay'

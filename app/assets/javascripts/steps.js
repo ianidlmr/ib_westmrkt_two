@@ -68,5 +68,10 @@ $(function() {
         }
       }
     });
+
+    $('.selectize').selectize({
+      create: true,
+      sortField: 'text',
+    });
   }
 });

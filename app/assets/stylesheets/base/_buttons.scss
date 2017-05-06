@@ -106,3 +106,12 @@
     color: white;
   }
 }
+
+.btn-next,
+.btn-pay {
+  padding: 15px 100px;
+
+  @media #{$xs-down} {
+    width: 100%;
+  }
+}

@@ -47,7 +47,6 @@
           - when 'pre_sale_closed'
             %h1{ style: 'color: white;' } Pre-Sale closed
 
-
             .search-container{ style: 'color: white;' }
               %p{ style: 'display: inline-block;' } I'm looking for
               .select-container{ style: 'width: 170px; display: inline-block;' }
@@ -60,15 +59,11 @@
 
 .container-fluid.special{style: 'margin-top: 30px;'}
   .row
-    .col-xs-12.col-sm-12.col-md-8.online-buying-info
+    .col-sm-offset-2.col-sm-8.special-margin
       .save-info
         %h2 <strong>Search and save $10 000 CAD</strong>
         %h2{style: 'margin-top: 0px;'} when buying online
         %h3{style: 'margin-top: 20px;'} Welcome to the new way of buying preconstruction condominiums. Pay a $2000 refundable deposit online to lock in at an online exclusive price and reserve your unit. Book appointment in person at the Junction Gallery within 10 days to finalize your purchase.
-
-        / = link_to '#' do
-        /   %p.link-how-does-it-work How does it work?
-
 
 .trending-container-main
   .explore-how-it-works-container
@@ -91,10 +86,3 @@
               %li 2. Add to Saved to explore and compare unit.
               %li 3. Complete checkout and pay refundable deposit.
               %li 4. Come to sale center and compelte process.
-
-    -#
-      %h1{ style: 'margin-bottom: 40px;' } Trending layouts
-      .row
-        - Unit.limit(5).order('RANDOM()').each do |unit|
-          .col-md-6
-            = render 'shared/unit_card', unit: unit

@@ -1,7 +1,9 @@
 body.home {
+  @include select-dropdown;
   //------------------------------------------------------------------------------
   // Index
   &.index {
+    // Countdown
     .countdown-message {
       color: white;
       background: #1a1a1a;
@@ -21,35 +23,27 @@ body.home {
       }
     }
 
-    .selectize-input {
-      box-shadow: none;
-      border: none;
-      border-bottom: 1px solid white;
-      color: white;
-      border-radius: 0px;
-      text-align: left;
-
-      &.focus {
-        box-shadow: none;
-        border: none;
-      }
-
-      &.full {
-        background: transparent;
-      }
-    }
-
+    // Search dropdown
+    .selectize-input,
+    .selectize-input.full,
     .selectize-control.single .selectize-input.input-active {
       background: transparent;
+      border-bottom: 1px solid white;
       cursor: cursor;
+      text-align: left;
+      color: white;
     }
 
     .selectize-dropdown {
       text-align: left;
     }
 
-    .option[data-selectable] {
-      color: black;
+    .selectize-control.single .selectize-input:after {
+      border-color: white transparent transparent transparent
+    }
+
+    .selectize-control.single .selectize-input.dropdown-active:after {
+      border-color: transparent transparent white transparent
     }
 
     .search-container {
@@ -61,6 +55,10 @@ body.home {
       p {
         margin-bottom: 0;
         margin-right: 10px;
+      }
+
+      .select-container {
+        width: 210px !important;
       }
     }
 
