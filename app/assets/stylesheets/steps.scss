@@ -231,6 +231,10 @@ body.orders-steps.show {
 
   //------------------------------------------------------------------------------
   // Order Confirmation
+  .overflow-container {
+    overflow-x: hidden;
+  }
+
   .c-one {
     background: #1A1A1A;
   }
@@ -292,17 +296,16 @@ body.orders-steps.show {
     }
   }
 
-  .c-five {
-    background-color: #FFFFFF;
-  }
   .c-six {
     margin-top: 50px;
   }
+
   .c-five h2 {
     letter-spacing: 0.5px;
     line-height: 40px;
     margin-bottom: 30px;
   }
+
   .c-five p {
     font-size: 15px;
     letter-spacing: 0.25px;
