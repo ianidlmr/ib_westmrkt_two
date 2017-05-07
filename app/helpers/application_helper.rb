@@ -32,7 +32,7 @@ module ApplicationHelper
     #   return 'pre_sale_closed'
     # end
     @epoch_time = ((DateTime.now + 30.days).utc.to_f * 1000).floor
-    return 'pre_sale_started'
+    'pre_sale_started'
   end
 
   def resource_name

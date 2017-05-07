@@ -64,7 +64,7 @@ class Unit < ApplicationRecord
     end
 
     event :purchase do
-      transitions from: :on_hold, to: :purchased, after: Proc.new { |order|
+      transitions from: :on_hold, to: :purchased, after: proc { |order|
         update_column(:owner_id, order.user.id)
       }
     end

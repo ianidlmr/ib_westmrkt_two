@@ -1,0 +1,122 @@
+.sidebar {
+  width: 300px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: -300px;
+  z-index: 1000;
+  background: white;
+  overflow-y: auto;
+
+  &.sidebar-is-open {
+    left: 0;
+  }
+}
+
+.right-sidebar {
+  width: 320px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: -320px;
+  z-index: 1000;
+  background: white;
+  overflow-y: auto;
+
+  &.right-sidebar-is-open {
+    right: 0;
+  }
+}
+
+.sidebar,
+.right-sidebar {
+  transition: all 0.3s ease;
+}
+
+.sidebar-nav {
+  padding: 0;
+
+  .logout-container {
+    margin-top: 20px;
+
+    .sidebar-item {
+      padding: 10px 0px 10px 50px;
+    }
+
+    .sidebar-item-text {
+      font-size: 20px;
+      font-weight: normal;
+    }
+  }
+
+  .sidebar-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px 0px 20px 50px;
+    color: black;
+    cursor: pointer;
+    font-size: 28px;
+    font-weight: bold;
+
+    .image {
+      margin-right: 8px;
+    }
+
+    i.fa {
+      margin-right: 10px;
+      width: 30px;
+    }
+
+    p {
+      margin: 0;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    em {
+      font-size: 14px;
+      font-weight: lighter;
+    }
+
+    .sidebar-item-text {
+      display: flex;
+      flex-direction: column;
+
+      &.phone-info {
+        font-size: 15px;
+        font-weight: normal;
+        cursor: default;
+        display: block;
+      }
+
+      &.sign-up-message {
+        cursor: default;
+        display: block;
+
+        a {
+          color: black;
+          font-weight: bold;
+        }
+      }
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+
+    &.no-link {
+      p {
+        text-transform: uppercase;
+      }
+
+      &:hover,
+      &:active,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+  }
+}

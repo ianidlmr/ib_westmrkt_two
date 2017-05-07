@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # == Schema Information
 #
 # Table name: orders
@@ -100,7 +101,7 @@ class Order < ApplicationRecord
   #------------------------------------------------------------------------------
   # Instance methods
   def confirmation_number
-    id.to_s + "-" + stripe_charge_id.gsub("ch_", "")
+    id.to_s + '-' + stripe_charge_id.gsub('ch_', '')
   end
 
   #------------------------------------------------------------------------------
@@ -128,7 +129,7 @@ class Order < ApplicationRecord
             order_id: id,
             user_id: user.id,
             user_email: user.email,
-            unit_id: unit.id,
+            unit_id: unit.id
           }
         )
         update_column(:stripe_charge_id, charge.id)
@@ -150,17 +151,17 @@ class Order < ApplicationRecord
         subject: '',
         template_id: '72acd583-1649-49ef-9fbd-41a1d42a6ada',
         substitutions: {
-          '-name-': unit.owner.first_name + " " + unit.owner.last_name,
+          '-name-': unit.owner.first_name + ' ' + unit.owner.last_name,
           '-confirmation_number-': confirmation_number,
-          '-date-': DateTime.now.strftime("%a, %B %e, %Y"),
+          '-date-': DateTime.now.strftime('%a, %B %e, %Y'),
           '-unit_number-': unit.unit_number.to_s,
-           '-number_of_bedrooms-': unit.unit_type.number_of_bedrooms.to_s,
+          '-number_of_bedrooms-': unit.unit_type.number_of_bedrooms.to_s,
           '-den-': unit.unit_type.den ? 'Included' : 'Not Included',
           '-number_of_bathrooms-': unit.unit_type.number_of_bathrooms.to_s,
           '-balcony-': unit.unit_type.balcony ? 'Included' : 'Not Included',
           '-floor_number-': unit.floor_number.to_s,
-          '-interior_sqft-': unit.unit_type.interior_sqft.to_s || "",
-          '-balcony_sqft-': unit.unit_type.balcony_sqft.to_s || "",
+          '-interior_sqft-': unit.unit_type.interior_sqft.to_s || '',
+          '-balcony_sqft-': unit.unit_type.balcony_sqft.to_s || '',
           '-orientation-': unit.orientation
         }
       }
@@ -174,7 +175,7 @@ class Order < ApplicationRecord
         subject: '',
         template_id: '3e076287-1dab-4cee-be0f-055d94d0cbef',
         substitutions: {
-          '-amount-': "$3000.00",
+          '-amount-': '$3000.00',
           '-unit_number-': unit.unit_number.to_s
         }
       }
@@ -192,7 +193,7 @@ class Order < ApplicationRecord
         template_id: '3e0169a6-6fc8-4a2b-b0d6-6f28675c1a00',
         substitutions: {
           '-email-': user.email,
-          '-amount-': "$3000.00",
+          '-amount-': '$3000.00',
           '-card_details-': card_details,
           '-unit_number-': unit.unit_number.to_s,
           '-help_url-': help_url

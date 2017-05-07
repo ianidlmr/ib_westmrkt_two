@@ -70,13 +70,13 @@
                     %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
                 .col-sm-6
                   .input-text-wrap
-                    = a.label 'Province', class: 'input-text-label'
-                    = a.input :state, label: false
+                    / = a.label 'Province', class: 'input-select-label'
+                    = a.input :state, collection: Address.select_options_for_province, include_blank: false, label: false, selected: 'ON', input_html: { class: 'selectize' }
                     %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
               .row
                 .col-sm-6
                   .input-text-wrap
-                    = a.label 'Zip Code', class: 'input-text-label'
+                    = a.label 'Postal Code', class: 'input-text-label'
                     = a.input :postal_code, label: false
                     %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
                 .col-sm-6
@@ -91,32 +91,32 @@
             %strong #{@unit.unit_type.name} Unit #{@unit.unit_number}
           .row
             .col-xs-3
-              %p{style: 'margin: 0'} Floor No.
-              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 14px;'} #{@unit.floor_number}
+              %p.title Floor No.
+              %h2.content #{@unit.floor_number}
 
-              %p{style: 'margin: 0'} Side of the bldg.
-              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 14px;'} #{@unit.orientation}
-
-            .col-xs-3
-              %p{style: 'margin: 0'} Den
-              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 14px;'} #{@unit.unit_type.den  ? 'Included' : 'Not Included'}
-
-              %p{style: 'margin: 0'} Balcony
-              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 14px;'} #{@unit.unit_type.balcony ? 'Included' : 'Not Included'}
+              %p.title Side of the bldg.
+              %h2.content #{@unit.orientation}
 
             .col-xs-3
-              %p{style: 'margin: 0'} Bedrooms
-              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 14px;'} #{@unit.unit_type.number_of_bedrooms}
+              %p.title Den
+              %h2.content #{@unit.unit_type.den  ? 'Included' : 'Not Included'}
 
-              %p{style: 'margin: 0'} Bathrooms
-              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 14px;'} #{@unit.unit_type.number_of_bathrooms}
+              %p.title Balcony
+              %h2.content #{@unit.unit_type.balcony ? 'Included' : 'Not Included'}
 
             .col-xs-3
-              %p{style: 'margin: 0'} Interior SQFT
-              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 14px;'} #{@unit.unit_type.interior_sqft}
+              %p.title Bedrooms
+              %h2.content #{@unit.unit_type.number_of_bedrooms}
 
-              %p{style: 'margin: 0'} Balcony SQFT
-              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 14px;'} #{@unit.unit_type.balcony_sqft}
+              %p.title Bathrooms
+              %h2.content #{@unit.unit_type.number_of_bathrooms}
+
+            .col-xs-3
+              %p.title Interior SQFT
+              %h2.content #{@unit.unit_type.interior_sqft}
+
+              %p.title Balcony SQFT
+              %h2.content #{@unit.unit_type.balcony_sqft}
 
         .promo-container
           .row
@@ -127,7 +127,7 @@
                   = f.input :promo_code, label: false
                   %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
 
-        #floating-box.visible-xs{style: 'margin: 40px 0 40px 0;'}
+        #floating-box.visible-xs{ style: 'margin: 40px 0 40px 0;' }
           .unit-info-container.text-center
             %p #{@unit.unit_type.name}
             %p.unit-number

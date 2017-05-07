@@ -11,17 +11,17 @@ class UnitsController < ApplicationController
     @select_options = Unit.available.where(unit_type: @unit.unit_type).map do |unit|
       {
         number: unit.unit_number,
-        price: price_converter(unit.price).to_s + " " + unit.currency,
+        price: price_converter(unit.price).to_s + ' ' + unit.currency,
         orientation: unit.orientation,
         url: unit_type_unit_path(@unit_type, unit)
       }.to_json
     end
     @selected_option = {
-        number: @unit.unit_number,
-        price: price_converter(@unit.price).to_s + " " + @unit.currency,
-        orientation: @unit.orientation,
-        url: unit_type_unit_path(@unit_type, @unit)
-      }.to_json
+      number: @unit.unit_number,
+      price: price_converter(@unit.price).to_s + ' ' + @unit.currency,
+      orientation: @unit.orientation,
+      url: unit_type_unit_path(@unit_type, @unit)
+    }.to_json
   end
 
   private

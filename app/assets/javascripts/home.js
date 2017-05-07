@@ -19,7 +19,8 @@ $(function() {
     $('.selectize').selectize({
       create: true,
       sortField: 'text',
-      plugins: ['hidden_textfield']
+      plugins: ['hidden_textfield'],
+      hideSelected: true
     });
 
     var epochTime = $(".countdown").data('epoch-time');

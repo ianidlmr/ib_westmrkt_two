@@ -115,3 +115,29 @@
     width: 100%;
   }
 }
+
+.btn-checkout {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btn-checkout.disabled:hover,
+.btn-checkout.disabled:focus,
+.btn-checkout.disabled.focus,
+.btn-checkout[disabled]:hover,
+.btn-checkout[disabled]:focus,
+.btn-checkout[disabled].focus,
+fieldset[disabled] .btn-checkout:hover,
+fieldset[disabled] .btn-checkout:focus,
+fieldset[disabled] .btn-checkout.focus {
+  background-color: #ADADAD;
+  border-color: #ADADAD;
+}
+
+.btn-checkout.disabled,
+.btn-checkout[disabled],
+fieldset[disabled] .btn-checkout {
+  background-color: #ADADAD;
+  border-color: #ADADAD;
+  opacity: 1;
+}

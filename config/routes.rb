@@ -2,11 +2,11 @@
 Rails.application.routes.draw do
   devise_for :admins, skip: [:registrations], controllers: { sessions: 'admins/sessions' }
   devise_for :users,
-  controllers: {
-    registrations: 'users/registrations',
-    sessions: 'users/sessions',
-    omniauth_callbacks: 'users/omniauth_callbacks'
-  }
+             controllers: {
+               registrations: 'users/registrations',
+               sessions: 'users/sessions',
+               omniauth_callbacks: 'users/omniauth_callbacks'
+             }
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
       namespace :users do
         scope 'stripe' do
-          put 'add_card_to_stripe'  => 'stripe#add_card_to_stripe'
+          put 'add_card_to_stripe' => 'stripe#add_card_to_stripe'
         end
       end
 

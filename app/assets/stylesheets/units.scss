@@ -1,4 +1,6 @@
 body.units.show {
+  @include link-animation;
+
   .selectize-input input {
     display: none !important;
   }
@@ -230,7 +232,7 @@ body.units.show {
   }
 
   .unit-info-row {
-    padding-bottom: 90px;
+    padding-bottom: 20px;
   }
 
   .floorplan-row {
@@ -240,36 +242,9 @@ body.units.show {
   .aesthetic-row {
     padding-bottom: 100px;
 
-    .specifications-link {
-      font-size: 20px;
-      color: black;
+    p.aesthetic {
+      margin: 40px 0;
     }
-  }
-
-  .btn-checkout {
-    font-size: 16px;
-    font-weight: bold;
-  }
-
-  .btn-checkout.disabled:hover,
-  .btn-checkout.disabled:focus,
-  .btn-checkout.disabled.focus,
-  .btn-checkout[disabled]:hover,
-  .btn-checkout[disabled]:focus,
-  .btn-checkout[disabled].focus,
-  fieldset[disabled] .btn-checkout:hover,
-  fieldset[disabled] .btn-checkout:focus,
-  fieldset[disabled] .btn-checkout.focus {
-    background-color: #ADADAD;
-    border-color: #ADADAD;
-  }
-
-  .btn-checkout.disabled,
-  .btn-checkout[disabled],
-  fieldset[disabled] .btn-checkout {
-    background-color: #ADADAD;
-    border-color: #ADADAD;
-    opacity: 1;
   }
 
   .checkout-message {

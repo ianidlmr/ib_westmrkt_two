@@ -1,6 +1,6 @@
 #floating-box
   - if @select_options.present?
-    .units-dropdown.text-center{style: 'background: white;'}
+    .units-dropdown.text-center{ style: 'background: white;' }
       %p Available units in this layout
       .select-container
         = select_tag 'unit_number', options_for_select(@select_options, @selected_option), class: 'selectize'
@@ -13,7 +13,7 @@
         %p.description It's highly possible this unit will be sold out this week
 
   .price-container.text-center{ style: (@unit.trending? ? '' : 'border-top: 1px solid rgba(204, 204, 204, 0.8);') }
-    %h2.price $#{@unit.price} CAD
+    %h2.price $#{ @unit.price } CAD
     .parking-message
       %p.parking Parking and storage not included
       = fa_icon 'question-circle', class: 'parking-tip', data: { toggle: 'tooltip' }, title: 'Parking and storage is available to purchase during finalizing deal with Sale Team'
@@ -148,7 +148,7 @@
         .view-from-window-heading{ style: 'background: black;' }
           %h1 View from the window
 
-.aesthetic-row{ style: 'background: #f0f0f0' }
+.aesthetic-row
   .container-fluid.special
     .row
       .col-sm-6.special-margin
@@ -156,9 +156,8 @@
           = image_tag "photo-view.jpg"
           = image_tag "img-explore-railway-market.jpg"
         %h1 Aesthetic
-        %p A few lines about the aesthetic of the building and the interior of the unit. Painting a portrait of what life would be like living here.
-        = link_to specifications_path, target: '_blank' do
-          %p.link-how-does-it-work Full specification
+        %p.aesthetic A few lines about the aesthetic of the building and the interior of the unit. Painting a portrait of what life would be like living here.
+        = link_to 'Full specification', specifications_path, target: '_blank', class: 'link-animation'
 
 .pswp{"aria-hidden" => "true", role: "dialog", tabindex: "-1"}
   .pswp__bg{style: "opacity: 1;"}

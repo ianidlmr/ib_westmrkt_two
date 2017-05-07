@@ -4,17 +4,13 @@ class HomeController < ApplicationController
     @options = UnitType.select(:number_of_bedrooms).distinct.sort_by(&:number_of_bedrooms)
   end
 
-  def about
-  end
+  def about; end
 
-  def help
-  end
+  def help; end
 
-  def terms_and_privacy
-  end
+  def terms_and_privacy; end
 
-  def specifications
-  end
+  def specifications; end
 
   def send_confirmation
     current_user.send_confirmation_instructions

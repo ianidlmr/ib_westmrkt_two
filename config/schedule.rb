@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 set :output, '/home/deploy/www/shared/log/cron_log.log'
 
 # Delete in_progress orders every 5 minutes

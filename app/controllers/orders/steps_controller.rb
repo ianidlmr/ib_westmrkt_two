@@ -9,7 +9,7 @@ class Orders::StepsController < ApplicationController
     handle_tasks_for_current_step; return if performed?
     render_wizard
   rescue ActiveRecord::RecordNotFound => e
-    redirect_to units_path, alert: 'This unit is not available.' and return
+    redirect_to(units_path, alert: 'This unit is not available.') && (return)
   end
 
   def update
@@ -36,7 +36,6 @@ class Orders::StepsController < ApplicationController
     end
 
     if params[:order][:broker].present?
-      binding.pry
       @order.update_attributes(
         broker: params[:order][:broker],
         agree_to_deal_sheet_and_terms: params[:order][:agree_to_deal_sheet_and_terms],
@@ -55,15 +54,15 @@ class Orders::StepsController < ApplicationController
 
   def handle_tasks_for_current_step
     case @step.to_s
-      when 'update-personal-info'
-        @order = current_user.orders.in_progress.find_by(unit: @unit)
-        redirect_to units_path, alert: 'You are only allowed one order at the moment. If you would like more please contact our agents.' and return unless @order.present?
-      when 'finalize-payment'
-        @order = current_user.orders.in_progress.find_by(unit: @unit)
-        redirect_to wizard_path(:'update-personal-info'), alert: 'Fill in your personal information.' and return unless @order.present? && @order.user.personal_info_filled_in?
-      when 'order-confirmation'
-        @order = current_user.orders.pending_verification.find_by(unit: @unit)
-        redirect_to wizard_path(:'finalize-payment'), alert: 'Fill in your payment details and agree to our terms.' and return unless @order.present?
+    when 'update-personal-info'
+      @order = current_user.orders.in_progress.find_by(unit: @unit)
+      redirect_to(units_path, alert: 'You are only allowed one order at the moment. If you would like more please contact our agents.') && return unless @order.present?
+    when 'finalize-payment'
+      @order = current_user.orders.in_progress.find_by(unit: @unit)
+      redirect_to(wizard_path(:'update-personal-info'), alert: 'Fill in your personal information.') && return unless @order.present? && @order.user.personal_info_filled_in?
+    when 'order-confirmation'
+      @order = current_user.orders.pending_verification.find_by(unit: @unit)
+      redirect_to(wizard_path(:'finalize-payment'), alert: 'Fill in your payment details and agree to our terms.') && return unless @order.present?
     end
   end
 
