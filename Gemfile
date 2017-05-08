@@ -20,6 +20,7 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem "jquery-slick-rails"
 gem 'jquery-validation-rails'
+gem 'jquery_mask_rails'
 gem 'omniauth-google-oauth2'
 gem 'rails_admin'
 gem 'rails_admin_import'

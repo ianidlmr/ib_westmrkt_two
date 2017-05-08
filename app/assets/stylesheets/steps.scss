@@ -81,6 +81,19 @@ body.orders-steps.show {
     font-size: 14px;
   }
 
+  .input-select-label {
+    margin-bottom: 0;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  @media #{$sm-up} {
+    .country-input {
+      margin-top: 20px;
+      line-height: 50px;
+    }
+  }
+
   //------------------------------------------------------------------------------
   // Finalize Payment
   .deal-sheet-text {

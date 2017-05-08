@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require jquery.validate
+//= require jquery.validate.additional-methods
+//= require jquery.mask
 //= require jquery.slick
 //= require jquery.countdown.min
 //= require nouislider.min

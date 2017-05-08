@@ -1,18 +1,26 @@
 $(function() {
   if ($('body.orders-steps.show').length) {
+    $("input[name='order[user_attributes][phone_number]']").mask("(000)-000-0000");
+    $("input[name='order[address][postal_code]']").mask("A0A 0A0");
+
+    jQuery.validator.addMethod("cdnPostal", function(postal, element) {
+        return this.optional(element) ||
+        postal.match(/[a-zA-Z][0-9][a-zA-Z](-| |)[0-9][a-zA-Z][0-9]/);
+    }, "Please specify a valid postal code.");
+
     $.extend($.validator.messages, { equalTo: "Passwords do not match." })
     $('.simple_form.edit_order').validate({
       rules: {
         "order[user_attributes][first_name]": {required: true},
         "order[user_attributes][last_name]": {required: true},
-        "order[user_attributes][phone_number]": {required: true},
+        "order[user_attributes][phone_number]": {required: true, phoneUS: true},
         "order[user_attributes][occupation]": {required: true},
         "order[address][street_1]": {required: true},
         "order[address][street_2]": {required: false},
         "order[address][city]": {required: true},
         "order[address][country_code]": {required: true},
         "order[address][state]": {required: true},
-        "order[address][postal_code]": {required: true},
+        "order[address][postal_code]": {required: true, cdnPostal: true},
         "order[agree_to_deal_sheet_and_terms]": {required: true},
         "order[broker]": {required: true},
         "order[postal_code]": {required: true}
@@ -29,6 +37,8 @@ $(function() {
       errorPlacement: function(error, element) {
         if ($(element).prop('id') === 'order_agree_to_deal_sheet_and_terms' || $(element).prop('id') === 'order_broker') {
           $(element).parents('.checkbox-label').append(error);
+        } else {
+          error.insertAfter(element);
         }
       },
 

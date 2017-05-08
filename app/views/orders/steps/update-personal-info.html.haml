@@ -30,23 +30,23 @@
                   .input-text-wrap
                     = u.label 'First Name', class: 'input-text-label', required: true
                     = u.input :first_name, label: false
-                    %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
+                    %span.form-control-feedback= fa_icon 'check'
                 .col-sm-6
                   .input-text-wrap
                     = u.label 'Last Name', class: 'input-text-label', required: true
                     = u.input :last_name, label: false
-                    %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
+                    %span.form-control-feedback= fa_icon 'check'
               .row
                 .col-sm-6
                   .input-text-wrap
                     = u.label 'Phone', class: 'input-text-label', required: true
                     = u.input :phone_number, label: false
-                    %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
+                    %span.form-control-feedback= fa_icon 'check'
                 .col-sm-6
                   .input-text-wrap
                     = u.label 'Occupation', class: 'input-text-label', required: true
                     = u.input :occupation, label: false
-                    %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
+                    %span.form-control-feedback= fa_icon 'check'
 
           %h1 Address Information
           .form-inputs
@@ -56,34 +56,34 @@
                   .input-text-wrap
                     = a.label 'Address line 1', class: 'input-text-label'
                     = a.input :street_1, label: false
-                    %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
+                    %span.form-control-feedback= fa_icon 'check'
                 .col-sm-6
                   .input-text-wrap
                     = a.label 'Address line 2 (optional)', class: 'input-text-label', required: false
                     = a.input :street_2, label: false
-                    %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
+                    %span.form-control-feedback= fa_icon 'check'
               .row
                 .col-sm-6
-                  .input-text-wrap
+                  .input-text-wrap.country-input
                     = a.label 'Country', class: 'input-text-label'
-                    = a.input :country_code, label: false
-                    %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
+                    = a.input :country_code, label: false, disabled: true, input_html: { value: 'Canada' }
+                    %span.form-control-feedback= fa_icon 'check'
                 .col-sm-6
                   .input-text-wrap
-                    / = a.label 'Province', class: 'input-select-label'
+                    = a.label 'Province', class: 'input-select-label'
                     = a.input :state, collection: Address.select_options_for_province, include_blank: false, label: false, selected: 'ON', input_html: { class: 'selectize' }
-                    %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
+                    %span.form-control-feedback= fa_icon 'check'
               .row
                 .col-sm-6
                   .input-text-wrap
                     = a.label 'Postal Code', class: 'input-text-label'
                     = a.input :postal_code, label: false
-                    %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
+                    %span.form-control-feedback= fa_icon 'check'
                 .col-sm-6
                   .input-text-wrap
                     = a.label 'City', class: 'input-text-label'
                     = a.input :city, label: false
-                    %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
+                    %span.form-control-feedback= fa_icon 'check'
 
         .final-check-container
           %h1 Final Check
@@ -125,7 +125,7 @@
                 .input-text-wrap
                   = f.label 'Promo Code (optional)', class: 'input-text-label'
                   = f.input :promo_code, label: false
-                  %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
+                  %span.form-control-feedback= fa_icon 'check'
 
         #floating-box.visible-xs{ style: 'margin: 40px 0 40px 0;' }
           .unit-info-container.text-center

@@ -68,6 +68,13 @@
   top: 4px;
 }
 
+.form-control-feedback {
+  color: #64C879;
+  display: none;
+  top: 18px;
+  width: 16px;
+}
+
 // Select inputs
 @mixin select-dropdown {
   .selectize-input,
