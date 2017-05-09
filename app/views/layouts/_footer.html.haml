@@ -24,7 +24,10 @@
         .col-xs-6.col-sm-4.col-md-6.bedroom-footer-column
           - description_slice.each do |unit_type|
             = link_to unit_types_path(number_of_bedrooms: pluralize(unit_type.number_of_bedrooms, 'bedroom')) do
-              %p= pluralize(unit_type.number_of_bedrooms, 'bedroom')
+              - if unit_type.number_of_bedrooms == 0
+                %p Studio
+              - else
+                %p= pluralize(unit_type.number_of_bedrooms, 'bedroom')
 
     .col-xs-10.col-xs-offset-1.col-sm-5.col-sm-offset-0.col-md-2.col-md-offset-0
       %h4

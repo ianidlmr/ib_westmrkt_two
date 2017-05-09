@@ -1,7 +1,16 @@
 # frozen_string_literal: true
 class HomeController < ApplicationController
   def index
-    @options = UnitType.select(:number_of_bedrooms).distinct.sort_by(&:number_of_bedrooms)
+    options = UnitType.select(:number_of_bedrooms).distinct.sort_by(&:number_of_bedrooms)
+    @options = options.map do |unit_type|
+      if unit_type.number_of_bedrooms == 3
+        "3+ bedroom units"
+      elsif unit_type.number_of_bedrooms == 0
+        "Studio"
+      else
+        "#{unit_type.number_of_bedrooms}" + " bedroom units"
+      end
+    end
   end
 
   def about; end
