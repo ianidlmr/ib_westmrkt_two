@@ -149,17 +149,6 @@ body.unit-types.index {
     }
   }
 
-  .bedrooms-filter {
-    width: 100%;
-    display: flex;
-    top: 0;
-    left: 0;
-    position: absolute;
-    background: white;
-    border-bottom: 1px solid #ccc;
-    z-index: 26;
-  }
-
   .bedroom {
     border-right: 1px solid #ccc;
 
@@ -233,6 +222,10 @@ body.unit-types.index {
     background: white;
     border-bottom: 1px solid #ccc;
     z-index: 26;
+
+    @media screen and (min-width: 1200px) {
+      left: 8px;
+    }
   }
 
   @media #{$xs-down} {

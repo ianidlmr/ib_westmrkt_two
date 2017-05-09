@@ -1,5 +1,33 @@
 $(function() {
   if ($('body.unit-types.index').length) {
+    if (sessionStorage.getItem('queryString')) {
+      var sendingData = false;
+      var dataObject = JSON.parse(sessionStorage.getItem('dataObject'));
+      var queryString = sessionStorage.getItem('queryString');
+      window.history.pushState(null, document.title, '?' + queryString);
+
+      if (!sendingData) {
+        sendingData = true;
+
+        $.ajax({
+          url: '/unit-types',
+          type: 'GET',
+          dataType: 'SCRIPT',
+          data: dataObject,
+          beforeSend: function() {
+            $('.tab-pane#zero-bed, .tab-pane#one-bed, .tab-pane#two-bed, .tab-pane#three-bed').html("<div class='dot-animation-two'><div class='circleone'></div><div class='circletwo'></div><div class='circlethree'></div></div>");
+          }
+        })
+        .done(function(data) {
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+        })
+        .always(function() {
+          sendingData = false;
+        });
+      }
+    }
+
     function getParameterByName(name, url) {
       if (!url) {
         url = window.location.href;
@@ -118,7 +146,7 @@ $(function() {
         var priceSlider = document.getElementById('price-average');
         var priceVal = parseFloat(priceSlider.noUiSlider.get().match(/[\d\.]+/g)[0]);
         var price = priceVal < 100 ? priceVal * 1000000 : priceVal * 1000;
-        var dataObject = { balcony: $("input[name='balcony']").val(), den: $("input[name='den']").val(), number_of_bathrooms: $("input[name='number_of_bathrooms']").val(), price: price};
+        var dataObject = { balcony: $("input[name='balcony']").val(), den: $("input[name='den']").val(), number_of_bathrooms: $("input[name='number_of_bathrooms']").val(), price: price.toString() };
 
         if (!sendingData) {
           sendingData = true;
@@ -135,6 +163,8 @@ $(function() {
                 return key + "=" + dataObject[key];
               }).join('&');
               window.history.pushState(null, document.title, '?' + queryString);
+              sessionStorage.setItem('dataObject', JSON.stringify(dataObject));
+              sessionStorage.setItem('queryString', queryString);
             }
           })
           .done(function(data) {
