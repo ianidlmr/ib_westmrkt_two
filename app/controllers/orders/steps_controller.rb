@@ -31,7 +31,7 @@ class Orders::StepsController < ApplicationController
         @order.update_column(:current_step, next_step)
         redirect_to next_wizard_path
       else
-        render_wizard @prder
+        render_wizard @order
       end
     end
 

@@ -1,5 +1,5 @@
 $(function() {
-  if ($('body.orders-steps.show').length) {
+  if ($('body.orders-steps.show').length || $('body.orders-steps.update').length) {
     $("input[name='order[user_attributes][phone_number]']").mask("(000)-000-0000");
     $("input[name='order[address][postal_code]']").mask("A0A 0A0");
 

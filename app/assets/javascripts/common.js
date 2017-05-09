@@ -86,7 +86,13 @@ $(function() {
         'A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.' +
       '</div>' +
     '</div>';
-    $('.navbar').after(successAlert);
+
+    if ($('.navbar.secondary').length > 0) {
+      $('.navbar.secondary').after(successAlert);
+    } else {
+      $('.navbar').after(successAlert);
+    }
+
     $('.alert').not('.alert-danger').delay(3000).slideUp(750);
     sessionStorage.removeItem('signup-success');
   };
@@ -132,7 +138,13 @@ $(function() {
         'Signed in successfully.' +
       '</div>' +
     '</div>';
-    $('.navbar').after(successAlert);
+
+    if ($('.navbar.secondary').length > 0) {
+      $('.navbar.secondary').after(successAlert);
+    } else {
+      $('.navbar').after(successAlert);
+    }
+
     $('.alert').not('.alert-danger').delay(3000).slideUp(750);
     sessionStorage.removeItem('login-success');
   }
