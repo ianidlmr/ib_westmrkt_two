@@ -95,8 +95,8 @@ $(function() {
         showMask();
       }
 
-      if($(".filters-container").css('bottom') == '-530px') {
-        $(".filters-container").animate({ bottom: '0px' }, 300);
+      if($(".filters-container").css('top') == '-490px') {
+        $(".filters-container").animate({ top: '101px' }, 300);
         showMask();
       }
     });
@@ -108,8 +108,8 @@ $(function() {
         hideMask();
       }
 
-      if($(".filters-container").css('bottom') == '0px'){
-        $(".filters-container").animate({ bottom: '-530px' }, 300);
+      if($(".filters-container").css('top') == '101px'){
+        $(".filters-container").animate({ top:'-490px' }, 300);
         hideMask();
       }
 
@@ -129,7 +129,7 @@ $(function() {
             dataType: 'SCRIPT',
             data: dataObject,
             beforeSend: function() {
-              $('.tab-pane#one-bed, .tab-pane#two-bed, .tab-pane#three-bed').html("<div class='dot-animation-two'><div class='circleone'></div><div class='circletwo'></div><div class='circlethree'></div></div>");
+              $('.tab-pane#zero-bed, .tab-pane#one-bed, .tab-pane#two-bed, .tab-pane#three-bed').html("<div class='dot-animation-two'><div class='circleone'></div><div class='circletwo'></div><div class='circlethree'></div></div>");
 
               var queryString = Object.keys(dataObject).map(function(key) {
                 return key + "=" + dataObject[key];

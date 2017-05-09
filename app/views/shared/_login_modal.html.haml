@@ -11,12 +11,15 @@
                 .form-inputs
                   .input-text-wrap
                     = f.label 'Email Address', class: 'input-text-label'
-                    = f.input :email, required: true, label: false
+                    = f.input :email, required: true, label: false, autofocus: true
                     %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
                   .input-text-wrap
                     = f.label 'Password', class: 'input-text-label'
                     = f.input :password, required: true, label: false
                     %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
+                  .row
+                    .col-md-12.text-right
+                      %p= link_to 'Forgot password?', '#', 'data-toggle': 'modal', 'data-target': '#reset-password-modal', 'data-dismiss': 'modal', class: 'reset-password-link'
                 .form-actions.text-center
                   = f.button :submit, 'Log In', class: 'btn btn-success btn-block btn-signup'
                   %p{ style: 'margin-top: 10px;' } or

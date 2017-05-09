@@ -125,7 +125,9 @@ a {
   }
 }
 
-#signup-modal, #login-modal {
+#signup-modal,
+#login-modal,
+#reset-password-modal {
   .modal-dialog {
     width: 350px;
     margin: 10px auto;
@@ -135,9 +137,10 @@ a {
 .devise-panel {
   border: 0;
   box-shadow: none;
+  background: transparent;
 
   .panel-heading {
-    background: white;
+    background: transparent;
     border: 0;
   }
 
@@ -164,6 +167,11 @@ a {
       margin: 0;
     }
   }
+}
+
+.reset-password-link {
+  margin-bottom: 15px;
+  font-size: 14px;
 }
 
 .search-unit-container {
@@ -235,77 +243,6 @@ a {
   }
 }
 
-.right-sidebar-nav {
-  .notification-container {
-    background: $brand-info;
-    padding: 33px;
-    color: white;
-    letter-spacing: 0.06em;
-
-    p {
-      font-size: 14px;
-    }
-
-    h5 {
-      font-size: 16px;
-      margin-top: 10px;
-      margin-bottom: 0;
-    }
-
-    a {
-      text-decoration: none;
-      color: white;
-    }
-  }
-
-  .saved-units-container {
-    p.add-message {
-      font-size: 23px;
-      font-weight: bold;
-      letter-spacing: 0.02em;
-      padding: 40px;
-      padding-top: 130px;
-    }
-
-    h3 {
-      padding: 40px;
-      font-weight: normal;
-      margin-top: 60px;
-      font-size: 21px;
-      line-height: 1.5;
-      padding-top: 0;
-    }
-
-    span.red {
-      color: #ff5353;
-    }
-  }
-
-  .saved-unit-types .saved-unit:last-child,
-  .sold-units .sold-unit:last-child {
-    border-bottom: 1px solid rgba(204, 204, 204, 0.8);
-  }
-
-  .saved-unit-types > h2,
-  .sold-units > h2 {
-    padding: 20px 0px 5px 15px;
-    font-size: 14px;
-  }
-
-  .confirmation-container {
-    padding: 5px 0 25px 0;
-
-    h2 {
-      font-size: 14px;
-      color: white;
-    }
-
-    .email {
-      margin-top: 10px;
-    }
-  }
-}
-
 label.error {
   color: #ff5353;
 }
@@ -337,9 +274,10 @@ label.error {
   }
 }
 
-.image-container{
+.image-container {
   display: block;
 }
+
 .explore-container {
   position: relative;
   top: -125px;
@@ -351,78 +289,6 @@ label.error {
   padding: 0;
   .explore-text {
     padding: 54px 66px 59px 79px;
-  }
-}
-
-.bedrooms-filter {
-  width: 100%;
-  display: flex;
-  top: 0;
-  left: 0;
-  position: absolute;
-  background: white;
-  border-bottom: 1px solid #ccc;
-  z-index: 26;
-}
-
-.bedroom {
-  border-right: 1px solid #ccc;
-
-  p {
-    margin: 0;
-  }
-}
-
-.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
-  background: #1a1a1a;
-}
-
-.nav > li > a {
-  padding: 20px 60px;
-  font-size: 16px;
-}
-
-.nav-pills > li > a {
-  border-radius: 0px;
-  color: black;
-}
-
-.nav-pills > li + li {
-  margin-left: 0px;
-}
-
-.nav-item.empty {
-  flex: 1 0 auto;
-}
-
-li.filters {
-  border-left: 1px solid #ccc;
-}
-
-.filters-container {
-  position:fixed;
-  width: 1124px;
-  z-index: 30;
-  text-align:center;
-  height: 350px;
-  font-size:18px;
-  color: #000;
-  background: #FFF;
-  display: flex;
-  justify-content: center; /* align horizontal */
-  flex-direction: column;
-  right: 0;
-  left: 0;
-  margin-right: auto;
-  margin-left: auto;
-  top: -350px;
-  padding-top: 25px;
-
-  @media #{$sm-down} {
-    z-index: 26;
-    top: auto;
-    bottom: -530px;
-    height: 530px;
   }
 }
 
@@ -646,7 +512,8 @@ p.number-of-bathrooms {
   font-size: 16px;
 
   &.login-alert,
-  &.signup-alert {
+  &.signup-alert,
+  &.reset-password-alert {
     margin-bottom: 14px;
     padding: 10px;
     font-size: 14px;

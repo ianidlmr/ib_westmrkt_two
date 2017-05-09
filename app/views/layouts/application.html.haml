@@ -33,7 +33,8 @@
     = render 'layouts/navigation'
     - if "#{controller_path.tr('_', '-').tr('/', '-')} #{action_name.tr('_', '-')}" == "units show"
       = render 'layouts/secondary_navigation'
-    = render 'layouts/flash'
+    .container-fluid.special
+      = render 'layouts/flash'
     %main{ role: 'main' }
       = yield
     %footer
@@ -42,3 +43,4 @@
   - unless "#{controller_path.tr('_', '-').tr('/', '-')} #{action_name.tr('_', '-')}" == "admins-sessions new"
     = render 'shared/signup_modal'
     = render 'shared/login_modal'
+    = render 'shared/reset_password_modal'

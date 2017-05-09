@@ -155,6 +155,38 @@ $(function() {
     $form.prepend('<div class="alert alert-danger login-alert">' + xhr.responseText +'</div>');
   });
 
+  // Reset password validation
+  $(document).on('ajax:success', '.reset-password-user', function(e) {
+    window.location.reload(true);
+    sessionStorage.setItem('reset-password-success', true);
+  });
+
+  if (sessionStorage.getItem('reset-password-success')) {
+    var successAlert = '<div class="alert alert-success">' +
+      '<button class="close" "aria-hidden"="true" "data-dismiss"="alert" "type"="button">' +
+        '×' +
+      '</button>' +
+      '<div id="flash_success">' +
+        'You will receive an email with instructions on how to reset your password in a few minutes.' +
+      '</div>' +
+    '</div>';
+
+    if ($('.navbar.secondary').length > 0) {
+      $('.navbar.secondary').after(successAlert);
+    } else {
+      $('.navbar').after(successAlert);
+    }
+
+    $('.alert').not('.alert-danger').delay(3000).slideUp(750);
+    sessionStorage.removeItem('reset-password-success');
+  }
+
+  $(document).on('ajax:error', '.reset-password-user', function(event, xhr, settings, exceptions) {
+    $('.reset-password-alert').remove();
+    var $form = $('.reset-password-user');
+    $form.prepend('<div class="alert alert-danger reset-password-alert">' + xhr.responseText +'</div>');
+  });
+
   // Open saved unit on click
   $('body').on('click', '.saved-unit', function(e) {
     var thisUnit = this;

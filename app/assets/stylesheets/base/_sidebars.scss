@@ -120,3 +120,74 @@
     }
   }
 }
+
+.right-sidebar-nav {
+  .notification-container {
+    background: $brand-info;
+    padding: 33px;
+    color: white;
+    letter-spacing: 0.06em;
+
+    p {
+      font-size: 14px;
+    }
+
+    h5 {
+      font-size: 16px;
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+
+  .saved-units-container {
+    p.add-message {
+      font-size: 23px;
+      font-weight: bold;
+      letter-spacing: 0.02em;
+      padding: 40px;
+      padding-top: 130px;
+    }
+
+    h3 {
+      padding: 40px;
+      font-weight: normal;
+      margin-top: 60px;
+      font-size: 21px;
+      line-height: 1.5;
+      padding-top: 0;
+    }
+
+    span.red {
+      color: #ff5353;
+    }
+  }
+
+  .saved-unit-types .saved-unit:last-child,
+  .sold-units .sold-unit:last-child {
+    border-bottom: 1px solid rgba(204, 204, 204, 0.8);
+  }
+
+  .saved-unit-types > h2,
+  .sold-units > h2 {
+    padding: 20px 0px 5px 15px;
+    font-size: 14px;
+  }
+
+  .confirmation-container {
+    padding: 5px 0 25px 0;
+
+    h2 {
+      font-size: 14px;
+      color: white;
+    }
+
+    .email {
+      margin-top: 10px;
+    }
+  }
+}

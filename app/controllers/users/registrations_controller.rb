@@ -3,7 +3,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
-  clear_respond_to
   respond_to :json
 
   # GET /resource/sign_up
@@ -12,9 +11,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super do
+      unless resource.persisted?
+        render json: 'Invalid Email or Password', status: 422 and return
+      end
+    end
+  end
 
   # GET /resource/edit
   # def edit
