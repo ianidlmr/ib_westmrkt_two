@@ -1,5 +1,6 @@
 $(function() {
   if ($('body.orders-steps.show').length || $('body.orders-steps.update').length) {
+    // Telephone and postal code masking
     $("input[name='order[user_attributes][phone_number]']").mask("(000)-000-0000");
     $("input[name='order[address][postal_code]']").mask("A0A 0A0");
 
@@ -67,14 +68,14 @@ $(function() {
       $('#floating-box').css({'right': offset + 'px'});
     }
 
-    $('.wrapper').scroll(function() {
+    $('body').scroll(function() {
       if ($(window).width() >= 768) {
-        if($('#floating-box').offset().top + $('#floating-box').height() >= $('footer').offset().top - 30) {
-          $('#floating-box').css({'position': 'absolute', 'bottom': '50px', 'top': 'auto'});
+        if($('#floating-box').offset().top + $('#floating-box').height() >= $('footer').offset().top - 50) {
+          $('#floating-box').css({'position': 'absolute', 'bottom': '90px', 'top': 'auto', 'margin-right': '0px'});
         }
 
-        if($('.wrapper').scrollTop() < $('footer').offset().top + 400) {
-          $('#floating-box').css({'position': 'fixed', 'top': '60px', 'bottom': 'auto'});
+        if($('body').scrollTop() + window.innerHeight < $('footer').offset().top + 50) {
+          $('#floating-box').css({'position': 'fixed', 'top': '60px', 'bottom': 'auto', 'margin-right': '15px'});
         }
       }
     });

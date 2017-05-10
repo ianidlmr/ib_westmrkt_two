@@ -206,7 +206,7 @@ $(function() {
     });
   });
 
-  // Adjust margin on right side for floating box
+  // Floating box margin
   var resizeTimer;
   $(window).on('resize', function(e) {
     clearTimeout(resizeTimer);

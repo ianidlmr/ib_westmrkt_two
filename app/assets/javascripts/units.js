@@ -2,14 +2,14 @@ $(function() {
   if ($('body.units.show').length) {
     openSavedUnit();
 
-    $('.wrapper').scroll(function() {
+    $('body').scroll(function() {
       if ($(window).width() >= 768) {
-        if($('#floating-box').offset().top + $('#floating-box').height() >= $('footer').offset().top - 30) {
-          $('#floating-box').css({'position': 'absolute', 'bottom': '50px', 'top': 'auto'});
+        if($('#floating-box').offset().top + $('#floating-box').height() >= $('footer').offset().top - 50) {
+          $('#floating-box').css({'position': 'absolute', 'bottom': '90px', 'top': 'auto', 'margin-right': '0px'});
         }
 
-        if($('.wrapper').scrollTop() < $('footer').offset().top + 400) {
-          $('#floating-box').css({'position': 'fixed', 'top': '60px', 'bottom': 'auto'});
+        if($('body').scrollTop() + window.innerHeight < $('footer').offset().top + 50) {
+          $('#floating-box').css({'position': 'fixed', 'top': '60px', 'bottom': 'auto', 'margin-right': '15px'});
         }
       }
     });
@@ -67,6 +67,7 @@ $(function() {
       placement: 'top'
     });
 
+    // Photoswipe Lightbox
     $('.picture').each( function() {
       var $pic = $(this),
       getItems = function() {
