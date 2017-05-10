@@ -1,84 +1,49 @@
 .container-fluid.special
-  = form_tag(unit_types_path, method: :get) do
-    .row
-      .col-xs-12
-        .countdown-message.text-center.col-md-12.visible-md.visible-lg
-          - case sale_state
-          - when 'pre_sale_not_started'
-            .col-md-12.visible-md.visible-lg
-              .col-md-6{style: 'text-align: right;'}
-                %h1{ style: 'color: white;padding-top: 14px;' } Pre-Sale ending in
-
-              .col-md-6{style: "padding: 0;text-align: left;"}
-                .countdown{data: { epoch_time: @epoch_time } }
-            .visible-xs
-              %h2{ style: 'color: white;' } Pre-Sale starting in
+  .row
+    .col-xs-12
+      = form_tag(unit_types_path, method: :get) do
+        .countdown-message.text-center
+          .countdown-container
+            - case sale_state
+            - when 'pre_sale_not_started'
+              %h2.pre-sale Pre-Sale starting in
               .countdown{data: { epoch_time: @epoch_time } }
-
-          - when 'pre_sale_started'
-            .col-md-12
-              .col-md-6{style: 'text-align: right;'}
-                %h1{ style: 'color: white;padding-top: 14px;' } Pre-Sale ending in
-
-              .col-md-6{style: "padding: 0;text-align: left;"}
-                .countdown{data: { epoch_time: @epoch_time } }
-            .visible-xs
-              %h2{ style: 'color: white;' } Pre-Sale ending in
+            - when 'pre_sale_started'
+              %h2.pre-sale Pre-Sale ending in
               .countdown{data: { epoch_time: @epoch_time } }
+            - when 'pre_sale_closed'
+              %h2.pre-sale Pre-Sale closed
 
-          - when 'pre_sale_closed'
-            .col-md-12
-              %h2{ style: 'color: white;' } Pre-Sale closed
-
-          .search-container.col-md-12{ style: 'color: white;' }
+          .search-container{ style: 'color: white;' }
             %p{ style: 'display: inline-block;' } I'm looking for
             .select-container{ style: 'width: 170px; display: inline-block;' }
               = select_tag 'number_of_bedrooms', options_for_select(@options), class: 'selectize'
-
-        .countdown-message.text-center.visible-xs.visible-sm
-          - case sale_state
-          - when 'pre_sale_not_started'
-            %h1{ style: 'color: white;' } Pre-Sale starting in
-            .countdown{data: { epoch_time: @epoch_time } }
-          - when 'pre_sale_started'
-            %h1{ style: 'color: white;' } Pre-Sale ending in
-            .countdown{data: { epoch_time: @epoch_time } }
-          - when 'pre_sale_closed'
-            %h1{ style: 'color: white;' } Pre-Sale closed
-
-            .search-container{ style: 'color: white;' }
-              %p{ style: 'display: inline-block;' } I'm looking for
-              .select-container{ style: 'width: 170px; display: inline-block;' }
-                - options = @options.map { |unit_type| (unit_type.number_of_bedrooms == 3 ? '3+' : unit_type.number_of_bedrooms.to_s) + ' bedroom units' }
-                = select_tag 'number_of_bedrooms', options_for_select(options), class: 'selectize'
 
     .row
       .col-xs-12.text-center
         = submit_tag 'Search', class: 'btn btn-lg btn-search'
 
-.container-fluid.special{style: 'margin-top: 30px;'}
-  .row
-    .col-sm-offset-2.col-sm-8.special-margin
-      .save-info
-        %h2 <strong>Search and save $10 000 CAD</strong>
-        %h2{style: 'margin-top: 0px;'} when buying online
-        %h3{style: 'margin-top: 20px;'} Welcome to the new way of buying preconstruction condominiums. Pay a $2000 refundable deposit online to lock in at an online exclusive price and reserve your unit. Book appointment in person at the Junction Gallery within 10 days to finalize your purchase.
+.row.save-info
+  .container-fluid.special
+    .col-sm-2
+    .col-sm-8.special-margin
+      %h2 <strong>Search and save $10 000 CAD</strong>
+      %h2{style: 'margin-top: 0px;'} when buying online
+      %h3{style: 'margin-top: 20px;'} Welcome to the new way of buying preconstruction condominiums. Pay a $2000 refundable deposit online to lock in at an online exclusive price and reserve your unit. Book appointment in person at the Junction Gallery within 10 days to finalize your purchase.
 
-.trending-container-main
-  .explore-how-it-works-container
+.row
+  .col-xs-12
     .container-fluid.special
       .row
-        .col-xs-12.col-md-12
-          .explore-container.col-md-6
-            .explote-sub-container
-              .image-container{style: 'justify-content: center;'}
-                = image_tag('img-explore-railway-market.jpg', class: 'img-responsive')
+        .col-sm-6
+          .image-container
+            = image_tag('img-explore-railway-market.jpg', class: 'img-responsive')
+            .explore-text
+              %h2{style: 'color: white;'} Explore WEST MRKT
+              = image_tag('icons/arrow-right-light.svg')
 
-              .explore-text
-                %h2{style: 'color: white;'} Explore WEST MRKT
-                = image_tag('icons/arrow-right-light.svg')
-
-          .how-it-works-container.col-md-6.visible-md.visible-lg
+        .col-sm-6
+          .how-it-works-container
             %h1 How does it work?
             %ul
               %li 1. Search for unit within availabe layouts.

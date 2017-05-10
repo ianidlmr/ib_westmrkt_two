@@ -10,6 +10,25 @@ body.home {
       padding-top: 40px;
       padding-bottom: 80px;
 
+      .countdown-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+
+        @media #{$xs-down} {
+          flex-wrap: wrap;
+        }
+      }
+
+      .pre-sale {
+        color: white;
+        margin: 0;
+
+        @media #{$xs-down} {
+          width: 100%;
+        }
+      }
+
       h1 {
         margin-top: 0;
         padding-top: 10px;
@@ -19,7 +38,9 @@ body.home {
       .countdown {
         color: #ff5353;
         font-weight: bold;
-        font-size: 45px;
+        font-size: 25px;
+        margin-bottom: 3px;
+        margin-left: 7px;
       }
     }
 
@@ -32,6 +53,13 @@ body.home {
       cursor: cursor;
       text-align: left;
       color: white;
+      line-height: 20px;
+    }
+
+    .selectize-dropdown,
+    .selectize-input,
+    .selectize-input input {
+      font-size: 16px;
     }
 
     .selectize-dropdown {
@@ -50,7 +78,12 @@ body.home {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 20px;
+      margin-top: 50px;
+      margin-bottom: 20px;
+
+      @media #{$xs-down} {
+        flex-wrap: wrap;
+      }
 
       p {
         margin-bottom: 0;
@@ -63,7 +96,65 @@ body.home {
     }
 
     .save-info {
-      padding-bottom: 30px;
+      padding-bottom: 200px;
+      padding-top: 50px;
+      margin-top: 30px;
+
+      @media #{$xs-down} {
+        padding-bottom: 50px;
+      }
+    }
+
+    .image-container {
+      display: block;
+      background: black;
+      top: -125px;
+      position: relative;
+
+      img {
+        margin: 0 auto;
+      }
+
+      @media #{$xs-down} {
+        top: 0;
+      }
+    }
+
+    .explore-text {
+      padding: 54px 66px 59px 79px;
+
+      h2 {
+        color: white;
+      }
+    }
+
+    .how-it-works-container {
+      padding-left: 83px;
+
+      @media #{$sm-down} {
+        padding-left: 0;
+      }
+
+      h1 {
+        margin-top: 65px;
+        margin-bottom: 40px;
+      }
+
+      @media #{$xs-down} {
+        padding-left: 0;
+        margin: 0 15px;
+
+        h1 {
+          margin-top: 25px;
+          margin-bottom: 10px;
+        }
+      }
+
+      li {
+        list-style: none;
+        font-size: 18px;
+        line-height: 3;
+      }
     }
   }
 

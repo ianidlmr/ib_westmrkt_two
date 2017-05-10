@@ -256,42 +256,6 @@ label.error {
   }
 }
 
-.explore-how-it-works-container {
-  margin-top: 150px;
-}
-
-.how-it-works-container {
-  padding-left: 83px;
-  h1{
-    margin-top: 65px;
-    margin-bottom: 40px;
-  }
-
-  li {
-    list-style: none;
-    font-size: 18px;
-    line-height: 3;
-  }
-}
-
-.image-container {
-  display: block;
-}
-
-.explore-container {
-  position: relative;
-  top: -125px;
-  background: #1a1a1a;
-  padding-top: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0;
-  .explore-text {
-    padding: 54px 66px 59px 79px;
-  }
-}
-
 .btn-container {
   display: flex;
   justify-content: center;
