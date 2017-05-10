@@ -247,15 +247,6 @@ label.error {
   color: #ff5353;
 }
 
-.trending-container {
-  padding-top: 90px;
-  padding-bottom: 40px;
-
-  @media #{$sm-down} {
-    padding-top: 40px;
-  }
-}
-
 .btn-container {
   display: flex;
   justify-content: center;

@@ -1,33 +1,5 @@
 $(function() {
   if ($('body.unit-types.index').length) {
-    if (sessionStorage.getItem('queryString')) {
-      var sendingData = false;
-      var dataObject = JSON.parse(sessionStorage.getItem('dataObject'));
-      var queryString = sessionStorage.getItem('queryString');
-      window.history.pushState(null, document.title, '?' + queryString);
-
-      if (!sendingData) {
-        sendingData = true;
-
-        $.ajax({
-          url: '/unit-types',
-          type: 'GET',
-          dataType: 'SCRIPT',
-          data: dataObject,
-          beforeSend: function() {
-            $('.tab-pane#zero-bed, .tab-pane#one-bed, .tab-pane#two-bed, .tab-pane#three-bed').html("<div class='dot-animation-two'><div class='circleone'></div><div class='circletwo'></div><div class='circlethree'></div></div>");
-          }
-        })
-        .done(function(data) {
-        })
-        .fail(function(jqXHR, textStatus, errorThrown) {
-        })
-        .always(function() {
-          sendingData = false;
-        });
-      }
-    }
-
     function getParameterByName(name, url) {
       if (!url) {
         url = window.location.href;
@@ -51,6 +23,37 @@ $(function() {
         }
       });
     }
+
+    if (sessionStorage.getItem('queryString')) {
+      var sendingData = false;
+      var dataObject = JSON.parse(sessionStorage.getItem('dataObject'));
+      var queryString = sessionStorage.getItem('queryString');
+      window.history.pushState(null, document.title, '?' + queryString);
+      $('li.filters a span').show();
+      $('li.filters a').css({'font-weight': 'bold'});
+
+      if (!sendingData) {
+        sendingData = true;
+
+        $.ajax({
+          url: '/unit-types',
+          type: 'GET',
+          dataType: 'SCRIPT',
+          data: dataObject,
+          beforeSend: function() {
+            $('.tab-pane#zero-bed, .tab-pane#one-bed, .tab-pane#two-bed, .tab-pane#three-bed').html("<div class='dot-animation-two'><div class='circleone'></div><div class='circletwo'></div><div class='circlethree'></div></div>");
+          }
+        })
+        .done(function(data) {
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+        })
+        .always(function() {
+          sendingData = false;
+        });
+      }
+    }
+
 
     var searchParams = {
       balcony: getParameterByName('balcony') !== null && getParameterByName('balcony').length > 0  ? JSON.parse(getParameterByName('balcony')) : '',

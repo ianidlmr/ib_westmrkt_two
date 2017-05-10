@@ -41,9 +41,38 @@ body.unit-types.index {
     }
   }
 
+  .trending-container {
+    padding-top: 90px;
+    padding-bottom: 40px;
+
+    @media #{$sm-down} {
+      padding-top: 70px;
+    }
+  }
+
   @media #{$sm-down} {
     .trending-container {
       margin: 10px;
+    }
+  }
+
+  .price-container {
+    background: #1a1a1a;
+    width: 50%;
+    padding: 10px 20px;
+
+    .price {
+      color: white;
+    }
+
+    .savings {
+      color: #BFEAFE;
+    }
+
+    @media #{$xs-down} {
+      p {
+        font-size: 14px;
+      }
     }
   }
 
@@ -85,6 +114,17 @@ body.unit-types.index {
       font-size: 16px;
       margin-bottom: 0;
       margin-left: 5px;
+    }
+  }
+
+  .units-left {
+    width: 50%;
+    padding: 10px 15px;
+
+    @media #{$xs-down} {
+      p {
+        font-size: 14px;
+      }
     }
   }
 
@@ -157,6 +197,20 @@ body.unit-types.index {
     }
   }
 
+  .bedrooms-filter {
+    width: 1124px;
+    display: flex;
+    top: 0;
+    position: absolute;
+    background: white;
+    border-bottom: 1px solid #ccc;
+    z-index: 26;
+
+    @media screen and (min-width: 1200px) {
+      left: 8px;
+    }
+  }
+
   .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
     background: #1a1a1a;
     color: white;
@@ -165,6 +219,29 @@ body.unit-types.index {
   .nav > li > a {
     padding: 20px 60px;
     font-size: 16px;
+  }
+
+  @media #{$sm-down} {
+    .nav > li > a {
+      padding: 20px 40px;
+      font-size: 14px;
+    }
+
+    .bedrooms-filter {
+      width: 100%;
+    }
+  }
+
+  @media #{$xs-down} {
+    .nav > li > a {
+      padding: 15px 15px;
+    }
+  }
+
+  @media #{$xxs-only} {
+    .nav > li > a {
+      padding: 11px 11px;
+    }
   }
 
   .nav-pills > li > a {
@@ -211,37 +288,6 @@ body.unit-types.index {
     @media #{$sm-down} {
       top: -490px;
       height: 490px;
-    }
-  }
-
-  .bedrooms-filter {
-    width: 1124px;
-    display: flex;
-    top: 0;
-    position: absolute;
-    background: white;
-    border-bottom: 1px solid #ccc;
-    z-index: 26;
-
-    @media screen and (min-width: 1200px) {
-      left: 8px;
-    }
-  }
-
-  @media #{$xs-down} {
-    .nav > li > a {
-      padding: 15px 8px;
-    }
-  }
-
-  @media #{$sm-down} {
-    .nav > li > a {
-      padding: 15px 15px;
-      font-size: 14px;
-    }
-
-    .bedrooms-filter {
-      width: 100%;
     }
   }
 

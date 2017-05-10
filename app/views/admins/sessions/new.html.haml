@@ -1,9 +1,20 @@
-%h2 Log in
-= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .form-inputs
-    = f.input :email, required: false, autofocus: true
-    = f.input :password, required: false
-    = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
-  .form-actions
-    = f.button :submit, 'Log in'
-= render 'admins/shared/links'
+.container-fluid.special
+  .row
+    .col-xs-12.col-sm-offset-4.col-sm-4
+      .panel.panel-default.devise-panel
+        .panel-heading
+          .heading-container
+            %h2.text-uppercase.text-center WEST <strong>MRKT.</strong>
+            = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+              = f.error_notification
+              .form-inputs
+                .input-text-wrap
+                  = f.label 'Email Address', class: 'input-text-label'
+                  = f.input :email, required: true, label: false, autofocus: true
+                  %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
+                .input-text-wrap
+                  = f.label 'Password', class: 'input-text-label'
+                  = f.input :password, required: true, label: false
+                  %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
+              .form-actions.text-center
+                = f.button :submit, 'Log In', class: 'btn btn-success btn-block btn-signup'

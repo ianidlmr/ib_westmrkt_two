@@ -1,7 +1,7 @@
-.container-fluid.special
-  .row
-    .col-xs-12
-      = form_tag(unit_types_path, method: :get) do
+= form_tag(unit_types_path, method: :get) do
+  .container-fluid.special
+    .row
+      .col-xs-12
         .countdown-message.text-center
           .countdown-container
             - case sale_state
