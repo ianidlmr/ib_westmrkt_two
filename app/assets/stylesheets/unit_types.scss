@@ -240,7 +240,7 @@ body.unit-types.index {
 
   @media #{$xxs-only} {
     .nav > li > a {
-      padding: 11px 11px;
+      padding: 11px 8px;
     }
   }
 
@@ -259,6 +259,29 @@ body.unit-types.index {
 
   li.filters {
     border-left: 1px solid #ccc;
+
+    span {
+      font-size: 7px;
+      position: absolute;
+      top: 18px;
+      right: 50px;
+      display: none;
+
+      @media #{$sm-down} {
+        top: 15px;
+        right: 33px;
+      }
+
+      @media #{$xs-down} {
+        top: 12px;
+        right: 6px;
+      }
+
+      @media #{$xxs-only} {
+        top: 8px;
+        right: 6px;
+      }
+    }
   }
 
   .filters-container {
