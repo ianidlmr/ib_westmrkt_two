@@ -36,16 +36,20 @@ class Orders::StepsController < ApplicationController
     end
 
     if params[:order][:broker].present?
-      @order.update_attributes(
-        broker: params[:order][:broker],
-        agree_to_deal_sheet_and_terms: params[:order][:agree_to_deal_sheet_and_terms],
-        sale_person_name: params[:order][:sale_person_name]
-      )
-      if @order.save
+      begin
         @order.process_payment!
-        redirect_to next_wizard_path
-      else
-        render_wizard @order
+        @order.update_attributes(
+          broker: params[:order][:broker],
+          agree_to_deal_sheet_and_terms: params[:order][:agree_to_deal_sheet_and_terms],
+          sale_person_name: params[:order][:sale_person_name]
+        )
+        if @order.save
+          redirect_to next_wizard_path
+        else
+          render_wizard @order
+        end
+      rescue AASM::InvalidTransition => e
+        redirect_to(wizard_path(:'finalize-payment'), alert: 'Please try again with a different card.') && return
       end
     end
   end

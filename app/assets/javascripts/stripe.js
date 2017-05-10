@@ -43,15 +43,21 @@ $(function() {
     // Handle form submission
     var $form = $('.simple_form.edit_order');
     $form.on('submit', function(event) {
-      if (!success) {
+      if (!success && $form.valid()) {
         event.preventDefault();
+        event.stopPropagation();
+        $form.find('[type=submit]').prop('disabled', true);
 
         stripe.createToken(card).then(function(result) {
           if (result.error) {
             // Inform the user if there was an error
-            var errorElement = document.getElementById('card-errors');
-            errorElement.textContent = result.error.message;
+            var errorElement = $('#card-errors');
+            errorElement.show();
+            errorElement.text = result.error.message;
+            $form.find('[type=submit]').prop('disabled', false);
+            return false;
           } else {
+            $form.find('[type=submit]').prop('value', 'Processing card');
             stripeTokenHandler(result.token);
           }
         });
@@ -71,14 +77,15 @@ $(function() {
         },
 
         error: function(jqXHR, textStatus, errorThrown) {
-          // $form.find('[type=submit]').html('Try again').prop('disabled', false).removeClass('success').addClass('error');
-          // /* Show Stripe errors on the form */
-          // if (jqXHR.responseText.length) {
-          //   $form.find('.payment-errors').text(jqXHR.responseText);
-          // } else {
-          //   $form.find('.payment-errors').text('Try refreshing the page and trying again.');
-          // }
-          // $form.find('.payment-errors').closest('.row').show();
+          $form.find('[type=submit]').prop('value', 'Try again');
+          $form.find('[type=submit]').prop('disabled', false)
+          /* Show Stripe errors on the form */
+          if (jqXHR.responseText.length) {
+            $form.find('#card-errors').text(jqXHR.responseText);
+          } else {
+            $form.find('#card-errors').text('Try refreshing the page and trying again.');
+          }
+          $form.find('#card-errors').closest('.row').show();
         }
       });
     }
