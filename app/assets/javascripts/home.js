@@ -36,6 +36,7 @@ $(function() {
     }
   }
 
+  // Carousel settings
   if ($('body.home.about').length) {
     $('.about-carousel').slick({
       dots: true,
@@ -51,7 +52,8 @@ $(function() {
     },6000);
   }
 
-  if ($('body.home.help').length) {
+  // Help and specification animation
+  if ($('body.home.help').length || $('body.home.specifications').length) {
     $('.help-option').click(function() {
       var helpMenuArrow = $(this).children('.help-option svg');
       var helpMenuAnswer = $(this).children('.help-option p');
