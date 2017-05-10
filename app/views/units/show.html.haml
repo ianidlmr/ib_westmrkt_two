@@ -94,7 +94,7 @@
           .row{style: 'margin-top: 20px;'}
             .col-xs-4
               %p{ style: 'margin: 0; font-size: 15px;'} Bedrooms
-              %h2{ style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.unit_type.number_of_bedrooms == 0 ? 'Studio' : @unit.unit_type.number_of_bedrooms}
+              %h2{ style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.unit_type.number_of_bedrooms == 0 ? 'S' : @unit.unit_type.number_of_bedrooms}
             .col-xs-4
               %p{style: 'margin: 0; font-size: 15px;'} Den
               %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.unit_type.den  ? 'Included' : 'Not Included'}
