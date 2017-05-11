@@ -1,7 +1,7 @@
 #floating-box
   - if @select_options.present?
     .units-dropdown.text-center{ style: 'background: white;' }
-      %p Available units in this layout
+      %p Available suites in this layout
       .select-container
         = select_tag 'unit_number', options_for_select(@select_options, @selected_option), class: 'selectize'
 
@@ -10,17 +10,17 @@
       = image_tag('icons/bolt.svg')
       .trending-copy
         %p.title Trending now
-        %p.description It's highly possible this unit will be sold out this week
+        %p.description It's highly possible this suite will be sold out this week
 
   .price-container.text-center{ style: (@unit.trending? ? '' : 'border-top: 1px solid rgba(204, 204, 204, 0.8);') }
     %h2.price $#{ @unit.price } CAD
     .parking-message
       %p.parking Parking and storage not included
-      = fa_icon 'question-circle', class: 'parking-tip', data: { toggle: 'tooltip' }, title: 'Parking and storage is available to purchase during finalizing deal with Sale Team'
+      = fa_icon 'question-circle', class: 'parking-tip', data: { toggle: 'tooltip' }, title: 'Parking and storage available for purchase when finalizing your purchase with the sales team.'
 
   .checkout-container.text-center
     %h1 $3000 CAD
-    %p Deposit required to buy selected unit
+    %p Deposit required to buy selected suite
 
     - if @unit.available?
       - if sale_state == 'pre_sale_not_started'
@@ -37,7 +37,7 @@
               Contact
               :erb
                 <%= mail_to "help@lowerjct.com", nil, style: "font-weight: bold; text-decoration: underline; color: black;" %>
-              to purchase more units
+              to purchase additional suites
           - else
             = link_to new_unit_order_path(@unit), class: 'link-no-decoration' do
               %button.btn.btn-success.btn-block.btn-checkout Proceed to Checkout
@@ -70,7 +70,7 @@
               - unit_saved = @unit.likes.where(user: current_user).present?
               .saved-container{ style: 'display: flex; color: black; align-items: center;' }
                 %h1{style: 'margin: 0;'}
-                  Unit #{@unit.unit_number}
+                  Suite #{@unit.unit_number}
                 .saved-message{ style: 'margin-left: 12px;', data: { url: like_unit_path(@unit) } }
                   - if unit_saved
                     = image_tag('icons/saved.svg')
@@ -80,13 +80,13 @@
                     %p Add to Saved
             - else
               %h1{style: 'margin: 0;'}
-                Unit #{@unit.unit_number}
+                Suite #{@unit.unit_number}
 
           - else
             = link_to '#', 'data-toggle': 'modal', 'data-target': '#signup-modal', 'data-dismiss': 'modal', class: 'login-link' do
               .saved-container{ style: 'display: flex; color: black; align-items: center;' }
                 %h1{style: 'margin: 0;'}
-                  Unit #{@unit.unit_number}
+                  Suite #{@unit.unit_number}
                 .saved-message{ style: 'margin-left: 12px;', data: { url: '' } }
                   = image_tag('icons/add-to-saved.svg')
                   %p Add to Saved
@@ -156,7 +156,7 @@
           = image_tag "photo-view.jpg"
           = image_tag "img-explore-railway-market.jpg"
         %h1 Aesthetic
-        %p.aesthetic A few lines about the aesthetic of the building and the interior of the unit. Painting a portrait of what life would be like living here.
+        %p.aesthetic Designed by TACT Architecture, West Market rises 15 storeys and neighbours the Museum of Contemporary Art in the iconic Auto Building. Its mixed material facade is punctuated with wood clad cutouts, floating green spaces, and generous balconies.
         = link_to 'Full specification', specifications_path, target: '_blank', class: 'link-animation'
 
 .pswp{"aria-hidden" => "true", role: "dialog", tabindex: "-1"}

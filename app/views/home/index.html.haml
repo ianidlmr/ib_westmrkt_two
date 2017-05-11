@@ -6,13 +6,13 @@
           .countdown-container
             - case sale_state
             - when 'pre_sale_not_started'
-              %h2.pre-sale Pre-Sale starting in
+              %h2.pre-sale Pre-sale starting in
               .countdown{data: { epoch_time: @epoch_time } }
             - when 'pre_sale_started'
-              %h2.pre-sale Pre-Sale ending in
+              %h2.pre-sale Pre-sale ending in
               .countdown{data: { epoch_time: @epoch_time } }
             - when 'pre_sale_closed'
-              %h2.pre-sale Pre-Sale closed
+              %h2.pre-sale Pre-sale closed
 
           .search-container{ style: 'color: white;' }
             %p{ style: 'display: inline-block;' } I'm looking for
@@ -27,9 +27,9 @@
   .container-fluid.special
     .col-sm-2
     .col-sm-8.special-margin
-      %h2 <strong>Search and save $10 000 CAD</strong>
-      %h2{style: 'margin-top: 0px;'} when buying online
-      %h3{style: 'margin-top: 20px;'} Welcome to the new way of buying preconstruction condominiums. Pay a $2000 refundable deposit online to lock in at an online exclusive price and reserve your unit. Book appointment in person at the Junction Gallery within 10 days to finalize your purchase.
+      %h2 <strong>Save up to $15 000</strong>
+      %h2.buy-heading when you buy online
+      %h3.buy-info Welcome to the future of buying pre-construction residences. Pay a $3000 deposit online to reserve your unit and save up to $15 000 off list price. Complete the paperwork in person at the Lower Junction Gallery within 5 days to finalize your purchase.
 
 .row
   .col-xs-12

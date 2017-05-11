@@ -3,7 +3,7 @@
     .col-xs-12.col-sm-offset-4.col-sm-4
       .panel.panel-default.devise-panel
         .panel-heading
-          %h2 Your Units
+          %h2 Your Suites
           - if current_user.units.present?
             - current_user.units.each do |unit|
               .row{style: 'margin-top: 20px;'}
@@ -11,7 +11,7 @@
                   %h2
                     %strong= unit.unit_type.name
                   %h2
-                    %strong Unit #{unit.unit_number}
+                    %strong Suite #{unit.unit_number}
               .row{style: 'margin-top: 20px;'}
                 .col-xs-6
                   %p{style: 'margin: 0; font-size: 15px;'} Floor No.

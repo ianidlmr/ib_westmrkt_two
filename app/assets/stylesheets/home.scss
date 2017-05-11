@@ -103,6 +103,14 @@ body.home {
       @media #{$xs-down} {
         padding-bottom: 50px;
       }
+
+      .buy-heading {
+        margin-top: 0px;
+      }
+
+      .buy-info {
+        margin-top: 20px;
+      }
     }
 
     .image-container {

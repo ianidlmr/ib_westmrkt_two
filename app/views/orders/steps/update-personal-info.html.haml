@@ -2,27 +2,27 @@
   .unit-info-container.text-center
     %p #{@unit.unit_type.name}
     %p.unit-number
-      %strong Unit #{@unit.unit_number}
+      %strong Suite #{@unit.unit_number}
 
   .price-container.text-center
     %h2.price $#{@unit.price} CAD
-    %p Total price of unit
+    %p Total price of suite
 
   .checkout-container.text-center
     %h2
       %strong $3000 CAD
-    %p Deposit required to buy selected unit
+    %p Deposit required to buy selected suite
 
 = simple_form_for(@order, url: wizard_path, method: :put) do |f|
   .container-fluid.special
     .row
       .col-sm-6.special-margin
         .personal-info-container
-          %h1 Your details
+          %h1 Purchase details
           %p You've signed up with <strong>#{current_user.email}</strong>
-          %p Please note that information you provide below will be used to create the contract. All details should match information on photo ID you will be asked to confirm your identification and finalize the purchase.
+          %p Please ensure the information provided below matches a piece of photo ID. You will be required to present your photo ID when finalizing your purchase with the sales team.
 
-          %h1 Personal details
+          %h1 Personal
           .form-inputs
             = f.simple_fields_for :user do |u|
               .row
@@ -48,7 +48,7 @@
                     = u.input :occupation, label: false
                     %span.form-control-feedback= fa_icon 'check'
 
-          %h1 Address Information
+          %h1 Address
           .form-inputs
             = f.simple_fields_for :address do |a|
               .row
@@ -89,7 +89,7 @@
         .final-check-container
           %h1 Final Check
           %h2
-            %strong #{@unit.unit_type.name} Unit #{@unit.unit_number}
+            %strong #{@unit.unit_type.name} Suite #{@unit.unit_number}
           .row
             .col-xs-3
               %p.title Floor No.
@@ -132,16 +132,16 @@
           .unit-info-container.text-center
             %p #{@unit.unit_type.name}
             %p.unit-number
-              %strong Unit #{@unit.unit_number}
+              %strong Suite #{@unit.unit_number}
 
           .price-container.text-center
             %h2.price $#{@unit.price} CAD
-            %p Total price of unit
+            %p Total price of suite
 
           .checkout-container.text-center
             %h2
               %strong $3000 CAD
-            %p Deposit required to buy selected unit
+            %p Deposit required to buy selected suite
 
         .form-actions.text-left
           = f.button :submit, 'Next', class: 'btn btn-info btn-lg btn-next'

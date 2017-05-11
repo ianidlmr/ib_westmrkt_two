@@ -4,16 +4,16 @@
   .unit-info-container.text-center
     %p #{@unit.unit_type.name}
     %p.unit-number
-      %strong Unit #{@unit.unit_number}
+      %strong Suite #{@unit.unit_number}
 
   .price-container.text-center
     %h2.price $#{@unit.price} CAD
-    %p Total price of unit
+    %p Total price of suite
 
   .checkout-container.text-center
     %h2
       %strong $3000 CAD
-    %p Deposit required to buy selected unit
+    %p Deposit required to buy selected suite
 
 = simple_form_for(@order, url: wizard_path, method: :put) do |f|
   .container-fluid.special
@@ -40,8 +40,8 @@
             %span I'm not a broker
 
         .sales-person-container
-          %h1 Sales Person help
-          %p Did a Lower Junction Sales Person help you with this purchase? Please select from the drop-down list.
+          %h1 Sales Assistance
+          %p Did anyone from the Lower Junction Sales Team assist you with this purchase?
           .row
             .col-xs-6
               .sale-person-select
@@ -55,7 +55,7 @@
             .stripe-image
               = image_tag 'powered_by_stripe.png', class: 'img-responsive'
 
-          %p.deposit-info Payment is super secure. It reserves your unit at the discounted price.
+          %p.deposit-info Payment is secure. It reserves your unit at the posted price. Your sale must be confirmed within 5 days.
 
           .form-row
             #card-element

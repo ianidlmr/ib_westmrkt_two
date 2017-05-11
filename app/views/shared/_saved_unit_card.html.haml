@@ -26,8 +26,8 @@
         %p.checkout-message{style: 'color: black;'}
           Contact
           :erb
-            <%= mail_to "help@lowerjct.com", nil, style: "font-weight: bold; text-decoration: underline; color: black;" %>
-          to purchase more units
+            <%= mail_to "help@lowerjct.com", nil, style: "font-weight: bold; text-decoration: underline; color: %black;" %>
+          to purchase additional suites
       - else
         = link_to new_unit_order_path(liked_unit.unit), class: 'link-no-decoration' do
           %button.btn.btn-success.btn-checkout Proceed to Checkout
@@ -38,4 +38,3 @@
       = link_to unit_type_unit_path(liked_unit.unit.unit_type, liked_unit.unit) do
         %button.btn.btn-view{style: 'color: black;'} View
       %p.checkout-message{style: 'color: black;'} Please check your email to confirm your email address before continuing.
-
