@@ -77,15 +77,17 @@ $(function() {
         },
 
         error: function(jqXHR, textStatus, errorThrown) {
+          var errorElement = $('#card-errors');
+          errorElement.show();
           $form.find('[type=submit]').prop('value', 'Try again');
           $form.find('[type=submit]').prop('disabled', false)
-          /* Show Stripe errors on the form */
+
+          // Show Stripe errors on the form
           if (jqXHR.responseText.length) {
             $form.find('#card-errors').text(jqXHR.responseText);
           } else {
             $form.find('#card-errors').text('Try refreshing the page and trying again.');
           }
-          $form.find('#card-errors').closest('.row').show();
         }
       });
     }
