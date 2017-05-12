@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Admin.find_or_create_by(email: 'ecommerce@idlmr.com') do |user|
-  password: 'TskApAck8c2qs8UU', password_confirmation: 'TskApAck8c2qs8UU'
+  user.password = 'TskApAck8c2qs8UU'
 end
 Setting.pre_sale_start_date = '2017/05/28'
 Setting.pre_sale_end_date = '2017/06/06'
