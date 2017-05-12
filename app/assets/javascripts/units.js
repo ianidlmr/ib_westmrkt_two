@@ -2,23 +2,6 @@ $(function() {
   if ($('body.units.show').length) {
     openSavedUnit();
 
-    $('body').scroll(function() {
-      if ($(window).width() >= 768) {
-        if($('#floating-box').offset().top + $('#floating-box').height() >= $('footer').offset().top - 50) {
-          $('#floating-box').css({'position': 'absolute', 'bottom': '90px', 'top': 'auto', 'margin-right': '0px'});
-        }
-
-        if($('body').scrollTop() + window.innerHeight < $('footer').offset().top + 50) {
-          $('#floating-box').css({'position': 'fixed', 'top': '60px', 'bottom': 'auto', 'margin-right': '15px'});
-        }
-      }
-    });
-
-    if ($(window).width() >= 768) {
-      var offset = ($(window).width() - $('.container-fluid.special').outerWidth()) / 2;
-      $('#floating-box').css({'right': offset + 'px'});
-    }
-
     $('.selectize').selectize({
       create: true,
       sortField: 'text',
@@ -73,15 +56,14 @@ $(function() {
       getItems = function() {
         var items = [];
         $pic.find('a').each(function() {
-          var $href   = $(this).attr('href'),
-          $size   = $(this).data('size').split('x'),
-          $width  = $size[0],
-          $height = $size[1];
+          var $href = $(this).attr('href'),
+          $width = document.getElementById('floor-plan-image').naturalWidth,
+          $height = document.getElementById('floor-plan-image').naturalHeight;
 
           var item = {
-            src : $href,
-            w   : $width,
-            h   : $height
+            src: $href,
+            w: $width,
+            h: $height
           };
 
           items.push(item);

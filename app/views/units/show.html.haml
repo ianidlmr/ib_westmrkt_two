@@ -94,26 +94,26 @@
           .row{style: 'margin-top: 20px;'}
             .col-xs-4
               %p{ style: 'margin: 0; font-size: 15px;'} Bedrooms
-              %h2{ style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.unit_type.number_of_bedrooms == 0 ? 'S' : @unit.unit_type.number_of_bedrooms}
+              %h2{ style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit_type.number_of_bedrooms == 0 ? 'S' : @unit_type.number_of_bedrooms}
             .col-xs-4
               %p{style: 'margin: 0; font-size: 15px;'} Den
-              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.unit_type.den  ? 'Included' : 'Not Included'}
+              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit_type.den ? 'Included' : 'Not Included'}
             .col-xs-4
               %p{style: 'margin: 0; font-size: 15px;'} Interior SQFT
-              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.unit_type.interior_sqft}
+              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit_type.interior_sqft}
 
           .row{style: 'margin-top: 20px;'}
             .col-xs-4
               %p{style: 'margin: 0; font-size: 15px;'} Bathrooms
-              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.unit_type.number_of_bathrooms}
+              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit_type.number_of_bathrooms}
 
             .col-xs-4
               %p{style: 'margin: 0; font-size: 15px;'} Balcony
-              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.unit_type.balcony ? 'Included' : 'Not Included'}
+              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit_type.balcony ? 'Included' : 'Not Included'}
 
             .col-xs-4
               %p{style: 'margin: 0; font-size: 15px;'} Balcony SQFT
-              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.unit_type.balcony_sqft}
+              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit_type.balcony_sqft}
 
           .row{style: 'margin-top: 20px;'}
             .col-xs-4
@@ -125,9 +125,9 @@
                 %h2{style: 'margin: 0; font-size: 18px;'} #{@unit.orientation}
 
             .col-xs-4
-              = image_tag 'bldg3.svg', class: 'img-responsive', style: "height: 120px;"
+              = image_tag @unit.key_map_top_image_url, class: 'img-responsive', style: "height: 120px;"
             .col-xs-4
-              = image_tag 'asset_2.svg', class: 'img-responsive', style: "height: 120px;"
+              = image_tag @unit.key_map_side_image_url, class: 'img-responsive', style: "height: 120px;"
 
 .floorplan-row
   .container-fluid.special
@@ -140,10 +140,10 @@
             = image_tag('icons/zoom-in.svg', class: 'zoom-in')
           .picture{ itemscope: "",  itemtype: "http://schema.org/ImageGallery" }
             %figure{ itemprop: "associatedMedia",  itemscope: "",  itemtype: "http://schema.org/ImageObject" }
-              = link_to image_path('bitmap-floorplan-2.png'), itemprop: "contentUrl", data: { index: "0", size: "1000x667" } do
-                = image_tag("bitmap-floorplan-2.png", alt: "Beach",  height: "400",  itemprop: "thumbnail", class: 'img-responsive')
+              = link_to image_path(@unit_type.floor_plan_image_url), itemprop: "contentUrl", data: { index: "0" } do
+                = image_tag @unit_type.floor_plan_image_url, alt: @unit_type.name,  height: "400",  itemprop: "thumbnail", class: 'img-responsive', id: 'floor-plan-image'
 
-        %p.unit-type-description= @unit.unit_type.description
+        %p.unit-type-description= @unit_type.description
 
 .aesthetic-row
   .container-fluid.special

@@ -40,6 +40,10 @@ class UnitType < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Instance methods
+  def floor_plan_image_url
+    Setting.amazon_s3_bucket_url + name.gsub(' ', '-').downcase +  '_floorplan.png'
+  end
+
   def quantity_remaining
     units.where(state: :available).count
   end

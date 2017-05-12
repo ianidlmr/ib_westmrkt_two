@@ -82,6 +82,14 @@ class Unit < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Instance methods
+  def key_map_top_image_url
+    Setting.amazon_s3_bucket_url + unit_number.to_s +  '_keymap_top.svg'
+  end
+
+  def key_map_side_image_url
+    Setting.amazon_s3_bucket_url + unit_number.to_s +  '_keymap_side.svg'
+  end
+
   def views
     Ahoy::Event.where_properties(id: id).size
   end
