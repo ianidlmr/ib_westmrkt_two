@@ -152,12 +152,20 @@
         #view-carousel
           .carousel-item
             .carousel-item-heading
-              %h1 View from the window
-            = image_tag "photo-view.jpg"
+              %h1 Kitchen
+            = image_tag 'kitchen.jpg', class: 'img-responsive'
           .carousel-item
             .carousel-item-heading
-              %h1 View from the window
-            = image_tag "img-explore-railway-market.jpg"
+              %h1 Living Room
+            = image_tag 'living-room.jpg', class: 'img-responsive'
+          .carousel-item
+            .carousel-item-heading
+              %h1 Bath
+            = image_tag 'bathroom.jpg', class: 'img-responsive'
+          .carousel-item
+            .carousel-item-heading
+              %h1 Bedroom
+            = image_tag 'bedroom.jpg', class: 'img-responsive'
         %h1 Aesthetic
         %p.aesthetic Designed by TACT Architecture, West Market rises 15 storeys and neighbours the Museum of Contemporary Art in the iconic Auto Building. Its mixed material facade is punctuated with wood clad cutouts, floating green spaces, and generous balconies.
         = link_to 'Full specification', specifications_path, target: '_blank', class: 'link-animation'

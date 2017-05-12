@@ -268,9 +268,13 @@ body.units.show {
   }
 
   @media only screen and (max-width: 530px) {
-    .view-carousel {
+    #view-carousel {
       left: 0px !important;
     }
+  }
+
+  #view-carousel {
+    margin-top: 80px;
   }
 
   .carousel-item {
@@ -279,7 +283,11 @@ body.units.show {
       width: 100%;
       height: 100%;
       color: white;
-      padding: 50px;
+      padding: 30px;
+
+      @media #{$xs-down} {
+        padding: 10px;
+      }
     }
   }
 
@@ -298,7 +306,7 @@ body.units.show {
     display: none;
   }
 
-  .view-carousel button {
+  #view-carousel button {
     display: none !important;
   }
 
