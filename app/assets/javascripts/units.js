@@ -30,7 +30,7 @@ $(function() {
         option: function(data, escape) {
           var unitData = JSON.parse(data.text);
           return '<div class="option">' +
-                  '<span class="unit-number">Unit ' + escape(unitData.number) + '</span>' +
+                  '<span class="unit-number">Suite ' + escape(unitData.number) + '</span>' +
                   '<span class="unit-price">$' + escape(unitData.price) + '</span>' +
                   '<span class="unit-orientation">&#8593; ' + escape(unitData.orientation) + '</span>' +
                   '<span class="space"></span>' +
@@ -39,7 +39,7 @@ $(function() {
         item: function(data, escape) {
           var unitData = JSON.parse(data.text);
           return '<div class="item">' +
-                  '<span class="unit-number">Unit ' + escape(unitData.number) + '</span>' +
+                  '<span class="unit-number">Suite ' + escape(unitData.number) + '</span>' +
                   '<span class="unit-price">$' + escape(unitData.price) + '</span>' +
                   '<span class="unit-orientation">&#8593; ' + escape(unitData.orientation) + '</span>' +
                   '<span class="space"></span>' +

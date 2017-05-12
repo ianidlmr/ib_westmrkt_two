@@ -25,7 +25,7 @@
           - description_slice.each do |unit_type|
             = link_to unit_types_path(number_of_bedrooms: pluralize(unit_type.number_of_bedrooms, 'bedroom')) do
               - if unit_type.number_of_bedrooms == 0
-                %p Studio
+                %p Studios
               - else
                 %p= pluralize(unit_type.number_of_bedrooms, 'bedroom')
 

@@ -65,16 +65,16 @@
           .unit-info-container.text-center
             %p #{@unit.unit_type.name}
             %p.unit-number
-              %strong Unit #{@unit.unit_number}
+              %strong Suite #{@unit.unit_number}
 
           .price-container.text-center
             %h2.price $#{@unit.price} CAD
-            %p Total price of unit
+            %p Total price of suite
 
           .checkout-container.text-center
             %h2
               %strong $3000 CAD
-            %p Deposit required to buy selected unit
+            %p Deposit required to buy selected suite
 
         .form-actions.text-left.confirm-and-pay-container
           = f.button :submit, 'Confirm & Pay', class: 'btn btn-success btn-lg btn-pay'

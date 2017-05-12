@@ -31,7 +31,7 @@
           .panel-footer{ style: 'display: flex; width: 100%; padding: 0px;' }
             .units-left
               %p
-                %strong Only #{pluralize(unit_type.quantity_remaining, 'unit')} left</strong>
+                %strong Only #{pluralize(unit_type.quantity_remaining, 'suite')} left</strong>
               %p.total-views= pluralize(unit_type.total_views, 'view')
             .price-container
               %p.price For $#{price_converter(available_unit.price)} #{available_unit.currency}
