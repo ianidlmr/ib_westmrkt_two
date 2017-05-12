@@ -273,6 +273,16 @@ body.units.show {
     }
   }
 
+  .carousel-item {
+    .carousel-item-heading {
+      background: black;
+      width: 100%;
+      height: 100%;
+      color: white;
+      padding: 50px;
+    }
+  }
+
   .slick-dots {
     position: relative;
     left: 85%;

@@ -1,10 +1,14 @@
-.row
-  - if @one_bedroom_unit_types.blank?
+- if @one_bedroom_unit_types.blank?
+  .row
     .col-md-12.text-center
       %h1 Sorry, no results for 1 Bedroom
       %p Use tabs to display search results or try to use less filters to find what you’re looking for
       %button.btn.btn-lg.btn-black Reset all filters
-  - else
+- else
+  .row
+    .col-xs-12
+      %h1.select-heading Select a suite type
+  .row
     - @one_bedroom_unit_types.each do |unit_type|
       .col-sm-6
         - available_unit = unit_type.units.where(state: :available).first

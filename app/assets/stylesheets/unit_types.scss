@@ -1,4 +1,13 @@
 body.unit-types.index {
+  .select-heading {
+    margin: 0;
+    margin: 20px 0 50px 0;
+
+    @media #{$xs-down} {
+      margin: 0 0 30px 0;
+    }
+  }
+
   .unit-panel {
     border: none;
     cursor: pointer;
