@@ -48,6 +48,22 @@ body.units.show {
     border-bottom: 1px solid rgba(204, 204, 204, 0.8);
   }
 
+  .selectize-dropdown-content .greyed-out.option {
+    color: rgba(0, 0, 0, 0.2);
+
+    .space {
+      position: relative;
+
+      i.fa {
+        font-size: 9px;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        color: black;
+      }
+    }
+  }
+
   .saved-container {
     text-align: center;
     color: white;
