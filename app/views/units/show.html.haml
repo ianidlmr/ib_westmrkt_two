@@ -31,7 +31,7 @@
         %p.checkout-message Pre-sale has ended
       - elsif user_signed_in?
         - if current_user.confirmed?
-          - if (current_user.orders.successful.count > 0 || current_user.orders.pending_verification.count > 0) && !current_user.allow_multiple_orders
+          - if (current_user.orders.successful.count.positive? || current_user.orders.pending_verification.count.positive?) && !current_user.allow_multiple_orders
             %button.btn.btn-success.btn-block.btn-checkout{ disabled: true } Proceed to Checkout
             %p.checkout-message
               Contact
@@ -53,7 +53,7 @@
   .unit-info-footer
     .watchers-container
       = image_tag('icons/eye-dark.svg')
-      %p #{pluralize(@unit_views, 'view')}
+      %p= pluralize(@unit_views, 'view')
     .people-saved-container
       = image_tag('icons/add-to-saved.svg')
       %p #{pluralize(@unit.users.count, 'person')} added to saved
@@ -62,14 +62,14 @@
   .container-fluid.special
     .row
       .col-sm-6.special-margin
-        .unit-info-container{style: 'margin-top: 40px;'}
-          %h1{style: 'margin: 0;'}
+        .unit-info-container{ style: 'margin-top: 40px;' }
+          %h1{ style: 'margin: 0;' }
             #{@unit_type.name}
           - if user_signed_in?
             - if @unit.available?
               - unit_saved = @unit.likes.where(user: current_user).present?
               .saved-container{ style: 'display: flex; color: black; align-items: center;' }
-                %h1{style: 'margin: 0;'}
+                %h1{ style: 'margin: 0;' }
                   Suite #{@unit.unit_number}
                 .saved-message{ style: 'margin-left: 12px;', data: { url: like_unit_path(@unit) } }
                   - if unit_saved
@@ -79,55 +79,55 @@
                     = image_tag('icons/add-to-saved.svg')
                     %p Add to Saved
             - else
-              %h1{style: 'margin: 0;'}
+              %h1{ style: 'margin: 0;' }
                 Suite #{@unit.unit_number}
 
           - else
             = link_to '#', 'data-toggle': 'modal', 'data-target': '#signup-modal', 'data-dismiss': 'modal', class: 'login-link' do
               .saved-container{ style: 'display: flex; color: black; align-items: center;' }
-                %h1{style: 'margin: 0;'}
+                %h1{ style: 'margin: 0;' }
                   Suite #{@unit.unit_number}
                 .saved-message{ style: 'margin-left: 12px;', data: { url: '' } }
                   = image_tag('icons/add-to-saved.svg')
                   %p Add to Saved
 
-          .row{style: 'margin-top: 20px;'}
+          .row.unit-content
             .col-xs-4
-              %p{ style: 'margin: 0; font-size: 15px;'} Bedrooms
-              %h2{ style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit_type.number_of_bedrooms == 0 ? 'S' : @unit_type.number_of_bedrooms}
+              %p Bedrooms
+              %h2= @unit_type.number_of_bedrooms.zero? ? 'S' : @unit_type.number_of_bedrooms.to_s
             .col-xs-4
-              %p{style: 'margin: 0; font-size: 15px;'} Den
-              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit_type.den ? 'Included' : 'Not Included'}
+              %p Den
+              %h2= @unit_type.den ? 'Included' : 'Not Included'
             .col-xs-4
-              %p{style: 'margin: 0; font-size: 15px;'} Interior SQFT
-              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit_type.interior_sqft}
+              %p Interior SQFT
+              %h2= @unit_type.interior_sqft.to_s
 
-          .row{style: 'margin-top: 20px;'}
+          .row.unit-content
             .col-xs-4
-              %p{style: 'margin: 0; font-size: 15px;'} Bathrooms
-              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit_type.number_of_bathrooms}
-
-            .col-xs-4
-              %p{style: 'margin: 0; font-size: 15px;'} Balcony
-              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit_type.balcony ? 'Included' : 'Not Included'}
+              %p Bathrooms
+              %h2= @unit_type.number_of_bathrooms.to_s
 
             .col-xs-4
-              %p{style: 'margin: 0; font-size: 15px;'} Balcony SQFT
-              %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit_type.balcony_sqft}
-
-          .row{style: 'margin-top: 20px;'}
-            .col-xs-4
-              .height-container{style: "height: 120px;"}
-                %p{style: 'margin: 0; font-size: 15px;'} Floor No.
-                %h2{style: 'margin: 0; margin-bottom: 20px; font-size: 18px;'} #{@unit.floor_number}
-
-                %p{style: 'margin: 0; font-size: 15px;'} Side of the bldg.
-                %h2{style: 'margin: 0; font-size: 18px;'} #{@unit.orientation}
+              %p Balcony
+              %h2= @unit_type.balcony ? 'Included' : 'Not Included'
 
             .col-xs-4
-              = image_tag @unit.key_map_top_image_url, class: 'img-responsive', style: "height: 120px;"
+              %p Balcony SQFT
+              %h2= @unit_type.balcony_sqft.to_s
+
+          .row.unit-content
             .col-xs-4
-              = image_tag @unit.key_map_side_image_url, class: 'img-responsive', style: "height: 120px;"
+              .height-container
+                %p Floor No.
+                %h2= @unit.floor_number.to_s
+
+                %p Side of the bldg.
+                %h2.orientation= @unit.orientation.to_s
+
+            .col-xs-4
+              = image_tag @unit.key_map_top_image_url, class: 'img-responsive', style: 'height: 120px;'
+            .col-xs-4
+              = image_tag @unit.key_map_side_image_url, class: 'img-responsive', style: 'height: 120px;'
 
 .floorplan-row
   .container-fluid.special
@@ -137,11 +137,11 @@
 
         .floor-plan-container
           .floor-plan-image
-            = image_tag('icons/zoom-in.svg', class: 'zoom-in')
-          .picture{ itemscope: "",  itemtype: "http://schema.org/ImageGallery" }
-            %figure{ itemprop: "associatedMedia",  itemscope: "",  itemtype: "http://schema.org/ImageObject" }
-              = link_to image_path(@unit_type.floor_plan_image_url), itemprop: "contentUrl", data: { index: "0" } do
-                = image_tag @unit_type.floor_plan_image_url, alt: @unit_type.name,  height: "400",  itemprop: "thumbnail", class: 'img-responsive', id: 'floor-plan-image'
+            = image_tag 'icons/zoom-in.svg', class: 'zoom-in'
+          .picture{ itemscope: '', itemtype: 'http://schema.org/ImageGallery' }
+            %figure{ itemprop: 'associatedMedia', itemscope: '', itemtype: 'http://schema.org/ImageObject' }
+              = link_to image_path(@unit_type.floor_plan_image_url), itemprop: 'contentUrl', data: { index: '0' } do
+                = image_tag @unit_type.floor_plan_image_url, alt: @unit_type.name, height: '400', itemprop: 'thumbnail', class: 'img-responsive', id: 'floor-plan-image'
 
         %p.unit-type-description= @unit_type.description
 
@@ -170,8 +170,8 @@
         %p.aesthetic Designed by TACT Architecture, West Market rises 15 storeys and neighbours the Museum of Contemporary Art in the iconic Auto Building. Its mixed material facade is punctuated with wood clad cutouts, floating green spaces, and generous balconies.
         = link_to 'Full specification', specifications_path, target: '_blank', class: 'link-animation'
 
-.pswp{"aria-hidden" => "true", role: "dialog", tabindex: "-1"}
-  .pswp__bg{style: "opacity: 1;"}
+.pswp{ 'aria-hidden' => 'true', role: 'dialog', tabindex: '-1' }
+  .pswp__bg{ style: 'opacity: 1;' }
   .pswp__scroll-wrap
     .pswp__container
       .pswp__item
@@ -180,14 +180,14 @@
     .pswp__ui.pswp__ui--hidden
       .pswp__top-bar
         .pswp__counter
-        %button.pswp__button.pswp__button--close{ title: "Close (Esc)" }
-        %button.pswp__button.pswp__button--fs{ title: "Toggle fullscreen" }
-        %button.pswp__button.pswp__button--zoom{ title: "Zoom in/out" }
+        %button.pswp__button.pswp__button--close{ title: 'Close (Esc)' }
+        %button.pswp__button.pswp__button--fs{ title: 'Toggle fullscreen' }
+        %button.pswp__button.pswp__button--zoom{ title: 'Zoom in/out' }
         .pswp__preloader
           .pswp__preloader__icn
             .pswp__preloader__cut
               .pswp__preloader__donut
-      %button.pswp__button.pswp__button--arrow--left{ title: "Previous (arrow left)" }
-      %button.pswp__button.pswp__button--arrow--right{ title: "Next (arrow right)" }
+      %button.pswp__button.pswp__button--arrow--left{ title: 'Previous (arrow left)' }
+      %button.pswp__button.pswp__button--arrow--right{ title: 'Next (arrow right)' }
       .pswp__caption
         .pswp__caption__center

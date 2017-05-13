@@ -6,7 +6,7 @@ class HomeController < ApplicationController
       if unit_type.number_of_bedrooms == 0
         ['Studios', 0]
       else
-        ["#{unit_type.number_of_bedrooms}" + ' bedroom suites', unit_type.number_of_bedrooms]
+        [unit_type.number_of_bedrooms.to_s + ' bedroom suites', unit_type.number_of_bedrooms]
       end
     end
   end

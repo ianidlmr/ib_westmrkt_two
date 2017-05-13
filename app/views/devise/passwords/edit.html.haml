@@ -13,7 +13,7 @@
               .form-inputs
                 .input-text-wrap
                   = f.label 'Password', class: 'input-text-label'
-                  = f.input :password, label: 'New password', required: true, autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), label: false
+                  = f.input :password, required: true, autofocus: true, label: false
                   %span.form-control-feedback{ style: 'color: #64C879;' }= fa_icon 'check'
                 .input-text-wrap
                   = f.label 'Confirm your new password', class: 'input-text-label'

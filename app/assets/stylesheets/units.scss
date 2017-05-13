@@ -88,6 +88,7 @@ body.units.show {
     margin-top: 90px;
     margin-right: 15px;
     top: 60px;
+    z-index: 5;
 
     @media #{$sm-only} {
       width: 350px;
@@ -233,6 +234,28 @@ body.units.show {
 
   .unit-info-row {
     padding-bottom: 40px;
+  }
+
+  .unit-content {
+    p {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    h2 {
+      margin: 0;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+  }
+
+  .height-container {
+    height: 120px;
+
+    .orientation {
+      margin: 0;
+      font-size: 18px;
+    }
   }
 
   .floorplan-row {

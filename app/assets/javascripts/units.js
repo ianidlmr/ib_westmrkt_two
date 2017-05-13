@@ -8,7 +8,6 @@ $(function() {
       onChange: function(unitData) {
         window.location = JSON.parse(unitData).url;
       },
-      hideSelected: true,
       render: {
         option: function(data, escape) {
           var unitData = JSON.parse(data.text);

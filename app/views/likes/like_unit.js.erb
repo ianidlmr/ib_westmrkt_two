@@ -1,4 +1,4 @@
 $('.saved-units-container').html("<%= escape_javascript(render 'shared/saved_units') %>")
-$('.saved-icon').html("<%= escape_javascript(render 'shared/saved_count') %>")
+$('.saved-icon').html("<%= escape_javascript(render 'shared/saved_count', count: @liked_units_count) %>")
 $('.saved-container').children('.saved-message').html("<%= escape_javascript(image_tag('icons/saved.svg')) %><p>Saved</p>")
 openSavedUnit();

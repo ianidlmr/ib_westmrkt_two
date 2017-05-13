@@ -4,7 +4,7 @@
     %meta{ charset: 'utf-8' }/
     %meta{ content: 'IE=edge', 'http-equiv' => 'X-UA-Compatible' }/
     %meta{ content: 'width=device-width, initial-scale=1', name: 'viewport' }/
-    %meta{ name: 'viewport', content: { 'width': 'device-width', 'initial-scale': '1.0', 'maximum-scale': '1.0', 'user-scalable': 'no'} }
+    %meta{ name: 'viewport', content: { 'width': 'device-width', 'initial-scale': '1.0', 'maximum-scale': '1.0', 'user-scalable': 'no' } }
     -# The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
 
     %title WEST MRKT
@@ -12,9 +12,9 @@
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
 
-    - if "#{controller_path.tr('_', '-').tr('/', '-')} #{action_name.tr('_', '-')}" == "home about"
-      %script{ src: "https://api.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js" }
-      %link{ href: "https://api.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css", rel: "stylesheet" }
+    - if "#{controller_path.tr('_', '-').tr('/', '-')} #{action_name.tr('_', '-')}" == 'home about'
+      %script{ src: 'https://api.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.js' }
+      %link{ href: 'https://api.mapbox.com/mapbox-gl-js/v0.34.0/mapbox-gl.css', rel: 'stylesheet' }
 
     -# Loading Typekit font
     = javascript_include_tag 'https://use.typekit.net/nff7niv.js'
@@ -31,7 +31,7 @@
     .right-sidebar
       = render 'layouts/right_sidebar'
     = render 'layouts/navigation'
-    - if "#{controller_path.tr('_', '-').tr('/', '-')} #{action_name.tr('_', '-')}" == "units show"
+    - if "#{controller_path.tr('_', '-').tr('/', '-')} #{action_name.tr('_', '-')}" == 'units show'
       = render 'layouts/secondary_navigation'
     .container-fluid.special
       = render 'layouts/flash'
@@ -40,7 +40,7 @@
     %footer
       = render 'layouts/footer'
 
-  - unless "#{controller_path.tr('_', '-').tr('/', '-')} #{action_name.tr('_', '-')}" == "admins-sessions new"
+  - unless "#{controller_path.tr('_', '-').tr('/', '-')} #{action_name.tr('_', '-')}" == 'admins-sessions new'
     = render 'shared/signup_modal'
     = render 'shared/login_modal'
     = render 'shared/reset_password_modal'

@@ -8,10 +8,10 @@
           %p.text-center.col-12 We've received your order.
         .row.c-four.text-center
           .circle-check
-            %svg{:height => "73px", :version => "1.1", :viewbox => "563 174 73 73", :width => "73px", :xmlns => "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink"}
-              %ellipse#Oval-2{:cx => "599.5", :cy => "210.5", :fill => "none", :rx => "35.5", :ry => "35.5", :stroke => "#64C879", "stroke-width" => "1"}
-            %svg#check{:height => "27px", :version => "1.1", :viewbox => "580 197 39 27", :width => "39px", :xmlns => "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink"}
-              %polyline#tick{:fill => "none", :points => "581 210.215158 593.392421 222.607579 618 198", :stroke => "#64C879", "stroke-width" => "1"}
+            %svg{ height: '73px', version: '1.1', viewbox: '563 174 73 73', width: '73px', xmlns: 'http://www.w3.org/2000/svg', 'xmlns:xlink' => 'http://www.w3.org/1999/xlink' }
+              %ellipse#Oval-2{ cx: '599.5', cy: '210.5', fill: 'none', rx: '35.5', ry: '35.5', stroke: '#64C879', 'stroke-width' => '1' }
+            %svg#check{ height: '27px', version: '1.1', viewbox: '580 197 39 27', width: '39px', xmlns: 'http://www.w3.org/2000/svg', 'xmlns:xlink' => 'http://www.w3.org/1999/xlink' }
+              %polyline#tick{ fill: 'none', :points => '581 210.215158 593.392421 222.607579 618 198', :stroke => '#64C879', 'stroke-width' => '1' }
 
 .container-fluid.special
   .overflow-container
@@ -22,4 +22,4 @@
         %h2 Purchase Details
         %p You can access the suite you’ve purchased from the My Account page.
         = link_to edit_user_registration_path do
-          %button.btn.btn-block.btn-black{type: "button"} My Account
+          %button.btn.btn-block.btn-black{ type: 'button' } My Account

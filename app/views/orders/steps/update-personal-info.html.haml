@@ -1,6 +1,6 @@
-#floating-box.hidden-xs
+.hidden-xs#floating-box
   .unit-info-container.text-center
-    %p #{@unit.unit_type.name}
+    %p= @unit.unit_type.name.to_s
     %p.unit-number
       %strong Suite #{@unit.unit_number}
 
@@ -93,31 +93,31 @@
           .row
             .col-xs-3
               %p.title Floor No.
-              %h2.content #{@unit.floor_number}
+              %h2.content= @unit.floor_number.to_s
 
               %p.title Side of the bldg.
-              %h2.content #{@unit.orientation}
+              %h2.content= @unit.orientation.to_s
 
             .col-xs-3
               %p.title Den
-              %h2.content #{@unit.unit_type.den  ? 'Included' : 'Not Included'}
+              %h2.content= @unit.unit_type.den ? 'Included' : 'Not Included'
 
               %p.title Balcony
-              %h2.content #{@unit.unit_type.balcony ? 'Included' : 'Not Included'}
+              %h2.content= @unit.unit_type.balcony ? 'Included' : 'Not Included'
 
             .col-xs-3
               %p.title Bedrooms
-              %h2.content #{@unit.unit_type.number_of_bedrooms}
+              %h2.content= @unit.unit_type.number_of_bedrooms.to_s
 
               %p.title Bathrooms
-              %h2.content #{@unit.unit_type.number_of_bathrooms}
+              %h2.content= @unit.unit_type.number_of_bathrooms.to_s
 
             .col-xs-3
               %p.title Interior SQFT
-              %h2.content #{@unit.unit_type.interior_sqft}
+              %h2.content= @unit.unit_type.interior_sqft.to_s
 
               %p.title Balcony SQFT
-              %h2.content #{@unit.unit_type.balcony_sqft}
+              %h2.content= @unit.unit_type.balcony_sqft.to_s
 
         .promo-container
           .row
@@ -128,7 +128,7 @@
                   = f.input :promo_code, label: false
                   %span.form-control-feedback= fa_icon 'check'
 
-        #floating-box.visible-xs{ style: 'margin: 40px 0 40px 0;' }
+        .visible-xs#floating-box{ style: 'margin: 40px 0 40px 0;' }
           .unit-info-container.text-center
             %p #{@unit.unit_type.name}
             %p.unit-number

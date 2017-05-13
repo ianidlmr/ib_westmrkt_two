@@ -1,4 +1,4 @@
 %h3 Saved
 .circle{ class: circle_class }
   %p.amount
-    #{@liked_units_count.present? && @liked_units_count > 0 ? @liked_units_count : 0}
+    = count.present? && count.positive? ? count.to_s : '0'

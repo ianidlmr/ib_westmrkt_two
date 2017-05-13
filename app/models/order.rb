@@ -125,7 +125,7 @@ class Order < ApplicationRecord
     if stripe_customer.present?
       begin
         charge = Stripe::Charge.create(
-          amount: 300000,
+          amount: 300_000,
           currency: unit.currency.downcase,
           customer: user.stripe_token,
           metadata: {

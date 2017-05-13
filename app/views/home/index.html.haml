@@ -7,10 +7,10 @@
             - case sale_state
             - when 'pre_sale_not_started'
               %h2.pre-sale Pre-sale starting in
-              .countdown{data: { epoch_time: @epoch_time } }
+              .countdown{ data: { epoch_time: @epoch_time } }
             - when 'pre_sale_started'
               %h2.pre-sale Pre-sale ending in
-              .countdown{data: { epoch_time: @epoch_time } }
+              .countdown{ data: { epoch_time: @epoch_time } }
             - when 'pre_sale_closed'
               %h2.pre-sale Pre-sale closed
 

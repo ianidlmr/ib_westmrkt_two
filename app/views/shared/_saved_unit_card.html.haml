@@ -11,19 +11,19 @@
     - if sale_state == 'pre_sale_not_started'
       %button.btn.btn-success.btn-checkout{ disabled: true } Proceed to Checkout
       = link_to unit_type_unit_path(liked_unit.unit.unit_type, liked_unit.unit) do
-        %button.btn.btn-view{style: 'color: black;'} View
-      %p.checkout-message{style: 'color: black;'} Pre-sale will be available soon
+        %button.btn.btn-view.black View
+      %p.checkout-message.black Pre-sale will be available soon
     - elsif sale_state == 'pre_sale_ended'
       %button.btn.btn-success.btn-checkout{ disabled: true } Proceed to Checkout
       = link_to unit_type_unit_path(liked_unit.unit.unit_type, liked_unit.unit) do
-        %button.btn.btn-view{style: 'color: black;'} View
-      %p.checkout-message{style: 'color: black;'} Pre-sale has ended
+        %button.btn.btn-view.black View
+      %p.checkout-message.black Pre-sale has ended
     - elsif current_user.confirmed?
-      - if (current_user.orders.successful.count > 0 || current_user.orders.pending_verification.count > 0) && !current_user.allow_multiple_orders
+      - if (current_user.orders.successful.count.positive? || current_user.orders.pending_verification.count.positive?) && !current_user.allow_multiple_orders
         %button.btn.btn-success.btn-checkout{ disabled: true } Proceed to Checkout
         = link_to unit_type_unit_path(liked_unit.unit.unit_type, liked_unit.unit) do
-          %button.btn.btn-view{style: 'color: black;'} View
-        %p.checkout-message{style: 'color: black;'}
+          %button.btn.btn-view.black View
+        %p.checkout-message.black
           Contact
           :erb
             <%= mail_to "help@lowerjct.com", nil, style: "font-weight: bold; text-decoration: underline; color: %black;" %>
@@ -32,9 +32,9 @@
         = link_to new_unit_order_path(liked_unit.unit), class: 'link-no-decoration' do
           %button.btn.btn-success.btn-checkout Proceed to Checkout
         = link_to unit_type_unit_path(liked_unit.unit.unit_type, liked_unit.unit) do
-          %button.btn.btn-view{style: 'color: black;'} View
+          %button.btn.btn-view.black View
     - else
       %button.btn.btn-success.btn-checkout{ disabled: true } Proceed to Checkout
       = link_to unit_type_unit_path(liked_unit.unit.unit_type, liked_unit.unit) do
-        %button.btn.btn-view{style: 'color: black;'} View
-      %p.checkout-message{style: 'color: black;'} Please check your email to confirm your email address before continuing.
+        %button.btn.btn-view.black View
+      %p.checkout-message.black Please check your email to confirm your email address before continuing.

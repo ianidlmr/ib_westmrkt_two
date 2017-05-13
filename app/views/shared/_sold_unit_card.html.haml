@@ -5,4 +5,4 @@
     %h2= "$#{price_converter(liked_unit.unit.price)} CAD"
     %h2.square-icon-heading= fa_icon 'square', class: 'square-icon'
     %h2 &#8593; #{liked_unit.unit.orientation}
-  = image_tag('icons/delete-icon.svg', class: 'delete-icon', data: { url: unlike_unit_path(liked_unit.unit) } )
+  = image_tag 'icons/delete-icon.svg', class: 'delete-icon', data: { url: unlike_unit_path(liked_unit.unit) }

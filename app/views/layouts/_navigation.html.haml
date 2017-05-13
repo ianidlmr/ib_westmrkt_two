@@ -1,14 +1,14 @@
 .container-fluid.special
   %nav.navbar.primary
     .nav-block
-      - if params[:controller] == 'orders/steps' && (params[:id] == "update-personal-info" || params[:id] == "finalize-payment" )
-
-        - session[:back_url_step_1] = url_for(:back) if params[:id] == "update-personal-info" && !url_for(:back).include?('finalize-payment')
-        - session[:back_url_step_2] = url_for(:back) if params[:id] == "finalize-payment"
-        - previous_page = params[:id] == "update-personal-info" ? session[:back_url_step_1] : session[:back_url_step_2]
+      - if params[:controller] == 'orders/steps' && (params[:id] == 'update-personal-info' || params[:id] == 'finalize-payment')
+        :ruby
+          - session[:back_url_step_1] = url_for(:back) if params[:id] == 'update-personal-info' && !url_for(:back).include?('finalize-payment')
+          - session[:back_url_step_2] = url_for(:back) if params[:id] == 'finalize-payment'
+          - previous_page = params[:id] == 'update-personal-info' ? session[:back_url_step_1] : session[:back_url_step_2]
 
         = link_to previous_page, class: 'back-link' do
-          = image_tag "icons/arrow-left.svg", class: 'img-responsive'
+          = image_tag 'icons/arrow-left.svg', class: 'img-responsive'
           %span Back
 
         .logo-right
@@ -27,4 +27,4 @@
           .logo
             = image_tag 'icons/logo.svg', class: 'img-responsive logo'
         .saved-icon
-          = render 'shared/saved_count'
+          = render 'shared/saved_count', count: @liked_units_count

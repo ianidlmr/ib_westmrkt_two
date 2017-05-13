@@ -10,3 +10,9 @@ linters:
 
   LeadingCommentSpace:
     enabled: false
+
+  RepeatedId:
+    enabled: false
+
+  RepeatedId:
+    enabled: false

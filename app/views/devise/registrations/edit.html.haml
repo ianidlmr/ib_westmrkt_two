@@ -6,49 +6,49 @@
           %h2 Your Suites
           - if current_user.units.present?
             - current_user.units.each do |unit|
-              .row{style: 'margin-top: 20px;'}
+              .row.unit-name
                 .col-xs-12
                   %h2
                     %strong= unit.unit_type.name
                   %h2
-                    %strong Suite #{unit.unit_number}
-              .row{style: 'margin-top: 20px;'}
+                    %strong Suite unit.unit_number.to_s
+              .row.unit-info
                 .col-xs-6
-                  %p{style: 'margin: 0; font-size: 15px;'} Floor No.
-                  %h2{style: 'margin: 0; margin-bottom: 10px; font-size: 18px;'} #{unit.floor_number}
+                  %p Floor No.
+                  %h2= unit.floor_number.to_s
                 .col-xs-6
-                  %p{style: 'margin: 0; font-size: 15px;'} Bedrooms
-                  %h2{style: 'margin: 0; margin-bottom: 10px; font-size: 18px;'} #{unit.unit_type.number_of_bedrooms}
-              .row{style: 'margin-top: 10px;'}
+                  %p Bedrooms
+                  %h2= unit.unit_type.number_of_bedrooms.to_s
+              .row.unit-info
                 .col-xs-6
-                  %p{style: 'margin: 0; font-size: 15px;'} Side of the bldg.
-                  %h2{style: 'margin: 0; margin-bottom: 10px; font-size: 18px;'} #{unit.orientation}
+                  %p Side of the bldg.
+                  %h2= unit.orientation.to_s
                 .col-xs-6
-                  %p{style: 'margin: 0; font-size: 15px;'} Bathrooms
-                  %h2{style: 'margin: 0; margin-bottom: 10px; font-size: 18px;'} #{unit.unit_type.number_of_bathrooms}
+                  %p Bathrooms
+                  %h2= unit.unit_type.number_of_bathrooms.to_s
 
-              .row{style: 'margin-top: 10px;'}
+              .row.unit-info
                 .col-xs-6
-                  %p{style: 'margin: 0; font-size: 15px;'} Den
-                  %h2{style: 'margin: 0; margin-bottom: 10px; font-size: 18px;'} #{unit.unit_type.den  ? 'Included' : 'Not Included'}
+                  %p Den
+                  %h2= unit.unit_type.den ? 'Included' : 'Not Included'
                 .col-xs-6
-                  %p{style: 'margin: 0; font-size: 15px;'} Interior SQFT
-                  %h2{style: 'margin: 0; margin-bottom: 10px; font-size: 18px;'} #{unit.unit_type.interior_sqft}
+                  %p Interior SQFT
+                  %h2= unit.unit_type.interior_sqft.to_s
 
-              .row{style: 'margin-top: 10px;'}
+              .row.unit-info
                 .col-xs-6
-                  %p{style: 'margin: 0; font-size: 15px;'} Balcony
-                  %h2{style: 'margin: 0; margin-bottom: 10px; font-size: 18px;'} #{unit.unit_type.balcony ? 'Included' : 'Not Included'}
+                  %p Balcony
+                  %h2= unit.unit_type.balcony ? 'Included' : 'Not Included'
                 .col-xs-6
-                  %p{style: 'margin: 0; font-size: 15px;'} Balcony SQFT
-                  %h2{style: 'margin: 0; margin-bottom: 10px; font-size: 18px;'} #{unit.unit_type.balcony_sqft}
+                  %p Balcony SQFT
+                  %h2= unit.unit_type.balcony_sqft.to_s
 
-              .row{style: 'margin-top: 10px;'}
+              .row.cost-info
                 .col-xs-12
                   %h2 Total cost $#{unit.price} CAD
                   %p You've paid $3000 CAD deposit
 
-              .row{style: 'margin-top: 10px;'}
+              .row.need-help
                 .col-xs-12.text-center
                   %p Need help? <strong>+1 (666) 123 - 9857</strong>
 
@@ -81,9 +81,3 @@
 
               .form-actions.text-center
                 = f.button :submit, 'Update', class: 'btn btn-success btn-block'
-                -#
-                  %p{ style: 'margin-top: 10px;' } o
-                  = link_to omniauth_authorize_path(resource_name, :google_oauth2), class: 'btn btn-block btn-white btn-google' do
-                    = image_tag('icons/google-logo.svg', class: 'img-responsive google-logo')
-                    %span Connect with Google
-                    %span
