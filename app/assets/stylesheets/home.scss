@@ -5,6 +5,7 @@ body.home {
   &.index {
     // Countdown
     .countdown-message {
+      box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.2);
       color: white;
       background: #1a1a1a;
       padding-top: 40px;
@@ -80,6 +81,7 @@ body.home {
       justify-content: center;
       margin-top: 50px;
       margin-bottom: 20px;
+      color: white;
 
       @media #{$xs-down} {
         flex-wrap: wrap;
@@ -88,17 +90,20 @@ body.home {
       p {
         margin-bottom: 0;
         margin-right: 10px;
+        display: inline-block;
       }
 
       .select-container {
         width: 210px !important;
+        display: inline-block;
       }
     }
 
     .save-info {
       padding-bottom: 200px;
-      padding-top: 50px;
-      margin-top: 30px;
+      padding-top: 150px;
+      margin-top: -100px;
+      background: white;
 
       @media #{$xs-down} {
         padding-bottom: 50px;

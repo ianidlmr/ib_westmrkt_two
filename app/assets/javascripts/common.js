@@ -208,39 +208,41 @@ $(function() {
   });
 
   // Floating box margin
-  if ($(window).width() >= 768) {
-    var offset = ($(window).width() - $('.container-fluid.special').outerWidth()) / 2;
-    $('#floating-box').css({'right': offset + 'px'});
+  if ($('#floating-box').length) {
+    if ($(window).width() >= 768) {
+      var offset = ($(window).width() - $('.container-fluid.special').outerWidth()) / 2;
+      $('#floating-box').css({'right': offset + 'px'});
+    }
+
+    var resizeTimer;
+    $(window).on('resize', function(e) {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        if ($(window).width() >= 768) {
+          var offset = ($(window).width() - $('.container-fluid.special').outerWidth()) / 2;
+          $('#floating-box').css({'right': offset + 'px'});
+        } else {
+          $('#floating-box').css({'right': '0px'});
+        }
+      }, 250);
+    });
+
+    // Floating box scroll
+    $('body').scroll(function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        if ($(window).width() >= 768) {
+          if($('#floating-box').offset().top + $('#floating-box').height() >= $('footer').offset().top - 50) {
+            $('#floating-box').css({'position': 'absolute', 'bottom': '90px', 'top': 'auto', 'margin-right': '0px'});
+          }
+
+          if($('body').scrollTop() + window.innerHeight < $('footer').offset().top + 50) {
+            $('#floating-box').css({'position': 'fixed', 'top': '60px', 'bottom': 'auto', 'margin-right': '15px'});
+          }
+        }
+      }, 50);
+    });
   }
-
-  var resizeTimer;
-  $(window).on('resize', function(e) {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function() {
-      if ($(window).width() >= 768) {
-        var offset = ($(window).width() - $('.container-fluid.special').outerWidth()) / 2;
-        $('#floating-box').css({'right': offset + 'px'});
-      } else {
-        $('#floating-box').css({'right': '0px'});
-      }
-    }, 250);
-  });
-
-  // Floating box scroll
-  $('body').scroll(function() {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function() {
-      if ($(window).width() >= 768) {
-        if($('#floating-box').offset().top + $('#floating-box').height() >= $('footer').offset().top - 50) {
-          $('#floating-box').css({'position': 'absolute', 'bottom': '90px', 'top': 'auto', 'margin-right': '0px'});
-        }
-
-        if($('body').scrollTop() + window.innerHeight < $('footer').offset().top + 50) {
-          $('#floating-box').css({'position': 'fixed', 'top': '60px', 'bottom': 'auto', 'margin-right': '15px'});
-        }
-      }
-    }, 50);
-  });
 });
 
 function showMask() {

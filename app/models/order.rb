@@ -106,6 +106,9 @@ class Order < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Rails Admin Config
+  def rails_admin_url_helper
+    RailsAdmin::Engine.routes.url_helpers
+  end
 
   #------------------------------------------------------------------------------
   private
@@ -122,14 +125,17 @@ class Order < ApplicationRecord
     if stripe_customer.present?
       begin
         charge = Stripe::Charge.create(
-          amount: 3000,
+          amount: 300000,
           currency: unit.currency.downcase,
           customer: user.stripe_token,
           metadata: {
             order_id: id,
+            unit_id: unit.id,
             user_id: user.id,
             user_email: user.email,
-            unit_id: unit.id
+            user_first_name: user.first_name,
+            user_last_name: user.last_name,
+            admin_url: "https://#{Rails.application.secrets[:domain]}#{rails_admin_url_helper.show_path(model_name: 'order', id: id)}"
           }
         )
         update_column(:stripe_charge_id, charge.id)

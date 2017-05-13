@@ -1,5 +1,10 @@
 body.orders-steps {
   @include select-dropdown;
+
+  nav.navbar.primary {
+    box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.2);
+  }
+
   //------------------------------------------------------------------------------
   // Floating Box
   #floating-box {
@@ -253,8 +258,9 @@ body.orders-steps {
 
   //------------------------------------------------------------------------------
   // Order Confirmation
-  .overflow-container {
+  .overflow-container.first {
     overflow-x: hidden;
+    box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.2);
   }
 
   .c-one {

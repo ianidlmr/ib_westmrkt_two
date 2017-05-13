@@ -232,15 +232,18 @@ body.units.show {
   }
 
   .unit-info-row {
-    padding-bottom: 20px;
+    padding-bottom: 40px;
   }
 
   .floorplan-row {
     padding-top: 30px;
+    background: white;
+    padding-bottom: 214px;
   }
 
   .aesthetic-row {
-    padding-bottom: 100px;
+    margin-top: -214px;
+    padding-bottom: 60px;
 
     p.aesthetic {
       margin: 40px 0;

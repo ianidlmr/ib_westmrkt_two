@@ -5,3 +5,10 @@ body.devise-confirmations.show {
     margin-bottom: 10px;
   }
 }
+
+body.users-registrations.edit,
+body.users-registrations.update {
+  nav.navbar.primary {
+    box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.2);
+  }
+}
