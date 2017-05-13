@@ -121,28 +121,15 @@ $(function() {
 
     $('.filters').on('click', function(e) {
       e.preventDefault();
-      if($(".filters-container").css('top') == '-350px') {
-        $(".filters-container").animate({ top: '113px' }, 300);
-        showMask();
-      }
-
-      if($(".filters-container").css('top') == '-490px') {
-        $(".filters-container").animate({ top: '101px' }, 300);
-        showMask();
-      }
+      var bedroomsFilterHeight = $('.nav.nav-pills').outerHeight();
+      $(".filters-container").animate({ top: bedroomsFilterHeight }, 300);
+      showMask();
     });
 
     $('body').on('click', '.btn-accept, .btn-clear', function(e) {
       e.preventDefault();
-      if($(".filters-container").css('top') == '113px'){
-        $(".filters-container").animate({ top:'-350px' }, 300);
-        hideMask();
-      }
-
-      if($(".filters-container").css('top') == '101px'){
-        $(".filters-container").animate({ top:'-490px' }, 300);
-        hideMask();
-      }
+      $(".filters-container").animate({ top:'-1000px' }, 300);
+      hideMask();
 
       if ($(this).hasClass('btn-accept')) {
         var sendingData = false;

@@ -221,8 +221,12 @@ body.unit-types.index {
     border-bottom: 1px solid #ccc;
     z-index: 26;
 
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1280px) {
       left: 8px;
+    }
+
+    @media screen and (min-width: 1200px) and (max-width: 1279px) {
+      left: 0;
     }
   }
 
@@ -300,7 +304,7 @@ body.unit-types.index {
   }
 
   .filters-container {
-    position:fixed;
+    position: absolute;
     width: 1124px;
     z-index: 30;
     text-align:center;
@@ -315,7 +319,7 @@ body.unit-types.index {
     left: 0;
     margin-right: auto;
     margin-left: auto;
-    top: -350px;
+    top: -1000px;
     padding-top: 25px;
 
     @media screen and (max-width: 1199px) {
@@ -323,9 +327,12 @@ body.unit-types.index {
       padding-top: 0;
     }
 
+    @media screen and (min-width: 1200px) and (max-width: 1279px) {
+      width: 1139px;
+    }
+
     @media #{$sm-down} {
-      top: -490px;
-      height: 490px;
+      height: 450px;
     }
   }
 

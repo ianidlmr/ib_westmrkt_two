@@ -31,38 +31,37 @@
       .tab-pane#three-bed{ role: 'tabpanel', class: (bedrooms == '3' ? 'active' : '') }
         = render 'three_plus_bedroom_unit_types'
 
-.container-fluid.special
-  .filters-container
-    .flex-row
-      .price-column
-        %h1
-          %strong Price
-        #price-average{ data: { lowest_price: @lowest_price, highest_price: @highest_price } }
-        = hidden_field_tag 'price'
+.filters-container
+  .flex-row
+    .price-column
+      %h1
+        %strong Price
+      #price-average{ data: { lowest_price: @lowest_price, highest_price: @highest_price } }
+      = hidden_field_tag 'price'
 
-      .den-column
-        %h1
-          %strong Den
-        %p.den{ data: { value: 'true' } } Included
-        %p.den{ data: { value: 'false' } } Not Included
-        = hidden_field_tag 'den'
+    .den-column
+      %h1
+        %strong Den
+      %p.den{ data: { value: 'true' } } Included
+      %p.den{ data: { value: 'false' } } Not Included
+      = hidden_field_tag 'den'
 
-      .balcony-column
-        %h1
-          %strong Balcony
-        %p.balcony{ data: { value: 'true' } } Included
-        %p.balcony{ data: { value: 'false' } } Not Included
-        = hidden_field_tag 'balcony'
+    .balcony-column
+      %h1
+        %strong Balcony
+      %p.balcony{ data: { value: 'true' } } Included
+      %p.balcony{ data: { value: 'false' } } Not Included
+      = hidden_field_tag 'balcony'
 
-      .bathroom-column
-        %h1
-          %strong Bathrooms
-        .bathroom-container{ style: 'display: flex; justify-content: space-between;' }
-          %p.number-of-bathrooms{ data: { value: '1' } } 1 Bathroom
-          %p.number-of-bathrooms{ data: { value: '2' } } 2 Bathrooms
-          %p.number-of-bathrooms{ data: { value: '3' } } 3+ Bathrooms
-        = hidden_field_tag 'number_of_bathrooms'
+    .bathroom-column
+      %h1
+        %strong Bathrooms
+      .bathroom-container{ style: 'display: flex; justify-content: space-between;' }
+        %p.number-of-bathrooms{ data: { value: '1' } } 1 Bathroom
+        %p.number-of-bathrooms{ data: { value: '2' } } 2 Bathrooms
+        %p.number-of-bathrooms{ data: { value: '3' } } 3+ Bathrooms
+      = hidden_field_tag 'number_of_bathrooms'
 
-    .btn-container
-      = link_to 'Clear All', '#', class: 'btn-clear'
-      = link_to 'Apply', '#', class: 'btn-accept'
+  .btn-container
+    = link_to 'Clear All', '#', class: 'btn-clear'
+    = link_to 'Apply', '#', class: 'btn-accept'
