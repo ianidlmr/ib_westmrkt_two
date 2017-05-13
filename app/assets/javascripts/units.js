@@ -10,7 +10,6 @@ $(function() {
       },
       render: {
         option: function(data, escape) {
-          debugger;
           var unitData = JSON.parse(data.text);
           var className = data.text === this.getValue() ? 'greyed-out' : '';
           var spanHTML = data.text === this.getValue() ? '<span class="space"><i class="fa fa-circle" aria-hidden="true"></i></span>' : '<span class="space"></span>';
