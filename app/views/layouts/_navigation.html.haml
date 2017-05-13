@@ -23,7 +23,8 @@
           .menu-title
             %p Menu
 
-        .logo
-          = image_tag 'icons/logo.svg', class: 'img-responsive logo'
+        = link_to root_path do
+          .logo
+            = image_tag 'icons/logo.svg', class: 'img-responsive logo'
         .saved-icon
           = render 'shared/saved_count'

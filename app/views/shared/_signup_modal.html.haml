@@ -8,6 +8,12 @@
               %h2.text-uppercase.text-center WEST <strong>MRKT.</strong>
               = simple_form_for(resource, as: resource_name, url: user_registration_path, remote: true, html: { class: 'sign-up-new-user'}) do |f|
                 = f.error_notification
+                .text-center
+                  = link_to omniauth_authorize_path(resource_name, :google_oauth2), class: 'btn btn-block btn-white btn-google' do
+                    = image_tag('icons/google-logo.svg', class: 'img-responsive google-logo')
+                    %span Sign Up with Google
+                    %span
+                  %p{ style: 'margin-top: 10px;' } or
                 .form-inputs
                   .input-text-wrap
                     = f.label 'Email Address', class: 'input-text-label'
@@ -32,8 +38,6 @@
 
                 .form-actions.text-center
                   = f.button :submit, 'Create Account', class: 'btn btn-success btn-block btn-signup'
-                  %p{ style: 'margin-top: 10px;' } or
-                  = link_to 'Sign Up with Google', omniauth_authorize_path(resource_name, :google_oauth2)
 
             .panel-footer
               %p Already have an account?

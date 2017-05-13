@@ -13,4 +13,3 @@ Setting.pre_sale_end_date = '2017/06/06'
 Setting.last_chance_limit = 5
 Setting.trending_limit = 300
 Setting.amazon_s3_bucket_url = 'https://s3.amazonaws.com/west_market-global/west_market/'
-

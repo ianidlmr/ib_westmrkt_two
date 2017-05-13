@@ -1,5 +1,6 @@
 $(function() {
   $('.alert').not('.alert-danger').delay(3000).slideUp(750);
+  $("input[name='unit_number']").mask("000000000");
 
   // Sidebar
   $('body').on('touchstart click', function(e) {
