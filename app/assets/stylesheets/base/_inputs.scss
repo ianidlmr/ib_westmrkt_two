@@ -28,6 +28,21 @@
   transition: 0.3s border-color, 0.3s box-shadow;
 }
 
+.input-text-wrap {
+  span.unit-search {
+    position: absolute;
+    right: 0;
+    font-weight: bold;
+    top: 16px;
+  }
+}
+
+.input-text-wrap {
+  input[name="unit_number"] {
+    font-size: 16px;
+  }
+}
+
 .input-text-wrap [type="text"]:focus,
 .input-text-wrap [type="password"]:focus,
 .input-text-wrap [type="number"]:focus,

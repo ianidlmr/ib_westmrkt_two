@@ -354,6 +354,72 @@ body.unit-types.index {
     }
   }
 
+  .dot-animation-two {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    @media #{$sm-down} {
+      left: 42%;
+    }
+  }
+
+  .dot-animation-two .circleone:before {
+    content: ' \25CF';
+    font-size: 30px;
+    position: absolute;
+    animation: scale_and_fade 1s linear infinite;
+  }
+
+  .dot-animation-two .circletwo:before {
+    content: ' \25CF';
+    font-size: 30px;
+    position: absolute;
+    left: 25px;
+    animation: scale_and_fade 1s linear infinite;
+    animation-delay: 0.1s;
+  }
+
+  .dot-animation-two .circlethree:before {
+    content: ' \25CF';
+    font-size: 30px;
+    position: absolute;
+    left: 50px;
+    animation: scale_and_fade 1s linear infinite;
+    animation-delay: 0.2s;
+  }
+
+  @keyframes scale_and_fade {
+    0% {
+      transform: scale(0, 0);
+      transform: translateY(0px);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(10, 10);
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+  }
+
+  p.den,
+  p.balcony,
+  p.number-of-bathrooms {
+    cursor: pointer;
+
+    &.bold {
+      font-weight: bold;
+    }
+  }
+
+  @media #{$sm-down} {
+    p.number-of-bathrooms {
+      margin-right: 10px;
+      font-size: 15px;
+    }
+  }
+
+
   // Price slider
   #price-average {
     margin-top: 50px;
