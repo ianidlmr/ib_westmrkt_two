@@ -1,8 +1,8 @@
 = javascript_include_tag 'https://js.stripe.com/v3/'
 
-#floating-box.hidden-xs
+.hidden-xs#floating-box
   .unit-info-container.text-center
-    %p #{@unit.unit_type.name}
+    %p= @unit.unit_type.name
     %p.unit-number
       %strong Suite #{@unit.unit_number}
 
@@ -61,9 +61,9 @@
             #card-element
           #card-errors
 
-        #floating-box.visible-xs
+        .visible-xs#floating-box
           .unit-info-container.text-center
-            %p #{@unit.unit_type.name}
+            %p= @unit.unit_type.name
             %p.unit-number
               %strong Suite #{@unit.unit_number}
 

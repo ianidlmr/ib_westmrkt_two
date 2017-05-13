@@ -2,10 +2,10 @@
   .unit-info
     %h2 Suite #{liked_unit.unit.unit_number}
     %h2.square-icon-heading= fa_icon 'square', class: 'square-icon'
-    %h2= "$#{price_converter(liked_unit.unit.price)} CAD"
+    %h2= `$#{price_converter(liked_unit.unit.price)} CAD`
     %h2.square-icon-heading= fa_icon 'square', class: 'square-icon'
     %h2 &#8593; #{liked_unit.unit.orientation}
-  = image_tag('icons/delete-icon.svg', class: 'delete-icon hidden', data: { url: unlike_unit_path(liked_unit.unit) } )
+  = image_tag('icons/delete-icon.svg', class: 'delete-icon hidden', data: { url: unlike_unit_path(liked_unit.unit) })
   %p.people-saved #{pluralize(liked_unit.unit.users.count, 'person')} added to saved
   .btn-checkout-container.hidden
     - if sale_state == 'pre_sale_not_started'

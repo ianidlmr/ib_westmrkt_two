@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 class HomeController < ApplicationController
   def index
-    options = UnitType.select(:number_of_bedrooms).distinct.sort_by { |unit_type| unit_type.number_of_bedrooms == 0 ? 4 : unit_type.number_of_bedrooms }
+    options = UnitType.select(:number_of_bedrooms).distinct.sort_by { |unit_type| unit_type.number_of_bedrooms.zero? ? 4 : unit_type.number_of_bedrooms }
     @options = options.map do |unit_type|
-      if unit_type.number_of_bedrooms == 0
+      if unit_type.number_of_bedrooms.zero?
         ['Studios', 0]
       else
         [unit_type.number_of_bedrooms.to_s + ' bedroom suites', unit_type.number_of_bedrooms]

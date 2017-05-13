@@ -4,7 +4,7 @@
       .confirmation-container.text-center{ style: 'background: #ff5353;' }
         %h2 Confirm your email to make a purchase
         %h2.email
-          %strong #{current_user.email}
+          %strong= current_user.email
           = link_to confirmation_path, method: :post do
             %button.btn.btn-white{ style: 'margin-top: 20px;' } Resend email confirmation
 

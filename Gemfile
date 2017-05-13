@@ -43,7 +43,6 @@ end
 group :development do
   gem 'bullet'
   gem 'haml_lint', require: false
-  gem 'scss_lint', require: false
   gem 'rubocop', require: false
   gem 'listen', '~> 3.0.5'
   gem 'pry-rails'

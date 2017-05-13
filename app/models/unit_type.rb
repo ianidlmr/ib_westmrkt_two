@@ -48,12 +48,12 @@ class UnitType < ApplicationRecord
     units.where(state: :available).count
   end
 
-  def has_available_units?
-    quantity_remaining > 0
+  def available_units?
+    quantity_remaining.positive?
   end
 
   def total_views
-    self.class.includes(:units).where(id: self).first.units.map(&:views).reduce(:+)
+    self.class.includes(:units).find(self).units.map(&:views).reduce(:+)
   end
 
   def last_chance?

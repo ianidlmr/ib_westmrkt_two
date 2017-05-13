@@ -130,7 +130,7 @@
 
         .visible-xs#floating-box{ style: 'margin: 40px 0 40px 0;' }
           .unit-info-container.text-center
-            %p #{@unit.unit_type.name}
+            %p= @unit.unit_type.name
             %p.unit-number
               %strong Suite #{@unit.unit_number}
 

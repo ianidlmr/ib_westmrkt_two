@@ -13,7 +13,7 @@
         %p.description It's highly possible this suite will be sold out this week
 
   .price-container.text-center{ style: (@unit.trending? ? '' : 'border-top: 1px solid rgba(204, 204, 204, 0.8);') }
-    %h2.price $#{ @unit.price } CAD
+    %h2.price $#{@unit.price} CAD
     .parking-message
       %p.parking Parking and storage not included
       = fa_icon 'question-circle', class: 'parking-tip', data: { toggle: 'tooltip' }, title: 'Parking and storage available for purchase when finalizing your purchase with the sales team.'
@@ -63,8 +63,7 @@
     .row
       .col-sm-6.special-margin
         .unit-info-container{ style: 'margin-top: 40px;' }
-          %h1{ style: 'margin: 0;' }
-            #{@unit_type.name}
+          %h1{ style: 'margin: 0;' }= @unit_type.name
           - if user_signed_in?
             - if @unit.available?
               - unit_saved = @unit.likes.where(user: current_user).present?

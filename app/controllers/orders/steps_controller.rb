@@ -8,7 +8,7 @@ class Orders::StepsController < ApplicationController
     @unit = Unit.on_hold.find(params[:unit_id])
     handle_tasks_for_current_step; return if performed?
     render_wizard
-  rescue ActiveRecord::RecordNotFound => e
+  rescue ActiveRecord::RecordNotFound
     redirect_to(units_path, alert: 'This unit is not available.') && (return)
   end
 
@@ -47,7 +47,7 @@ class Orders::StepsController < ApplicationController
         else
           render_wizard @order
         end
-      rescue AASM::InvalidTransition => e
+      rescue AASM::InvalidTransition
         redirect_to(wizard_path(:'finalize-payment'), alert: 'Please try again with a different card.') && return
       end
     end
