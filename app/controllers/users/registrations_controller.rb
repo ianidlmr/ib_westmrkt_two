@@ -12,9 +12,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super do
-      unless resource.persisted?
-        render(json: 'Invalid Email or Password', status: 422) && return
+    unless request.path_info == '/users/sign_up'
+      super do
+        unless resource.persisted?
+          render(json: 'Invalid Email or Password', status: 422) && return
+        end
       end
     end
   end
