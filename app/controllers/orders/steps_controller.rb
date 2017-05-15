@@ -69,17 +69,17 @@ class Orders::StepsController < ApplicationController
     end
   end
 
-  # def order_params(step)
-  #   permitted_attributes = case step.to_s
-  #     when 'update-personal-info'
-  #       [user_attributes: [:first_name, :last_name, :phone_number, :occupation]]
-  #     when 'finalize-payment'
-  #       [:agree_to_deal_sheet, :agree_to_terms_and_conditions, :broker]
-  #     when 'order-confirmation'
-  #       []
-  #     end
-  #   params.require(:order).permit(permitted_attributes)
-  # end
+  def order_params(step)
+    permitted_attributes = case step.to_s
+      when 'update-personal-info'
+        [user_attributes: [:first_name, :last_name, :phone_number, :occupation]]
+      when 'finalize-payment'
+        [:agree_to_deal_sheet, :agree_to_terms_and_conditions, :broker]
+      when 'order-confirmation'
+        []
+      end
+    params.require(:order).permit(permitted_attributes)
+  end
 
   def address_params
     params.require(:order).permit(address: [:street_1, :street_2, :city, :state, :postal_code, :country_code])
