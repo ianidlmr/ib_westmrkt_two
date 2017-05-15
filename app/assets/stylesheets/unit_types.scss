@@ -221,6 +221,9 @@ body.unit-types.index {
     border-bottom: 1px solid #ccc;
     z-index: 26;
     display: inline-block;
+    -webkit-box-shadow: 0px 5px 20px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 5px 20px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 5px 20px 0px rgba(0,0,0,0.2);
 
     @media screen and (min-width: 1280px) {
       left: 8px;
@@ -231,6 +234,7 @@ body.unit-types.index {
     }
   }
 
+  
   .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
     background: #1a1a1a;
     color: white;
