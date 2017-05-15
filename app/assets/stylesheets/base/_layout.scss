@@ -129,6 +129,7 @@ a {
 #signup-modal,
 #login-modal,
 #reset-password-modal {
+  overflow-y: auto;
   .modal-dialog {
     width: 350px;
     margin: 10px auto;
