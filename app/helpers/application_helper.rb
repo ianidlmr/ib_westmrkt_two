@@ -18,9 +18,9 @@ module ApplicationHelper
 
   def sale_state
     # pre_sale_start_date = Setting.pre_sale_start_date
-    # pre_sale_start_date_epoch = (DateTime.new(pre_sale_start_date[0..3].to_i, pre_sale_start_date[4..5].to_i, pre_sale_start_date[6..7].to_i).beginning_of_day.utc.to_f * 1000).floor
-    # pre_sale_end_date = Setting.pre_sale_end_date.to_s
-    # pre_sale_end_date_epoch = (DateTime.new(pre_sale_end_date[0..3].to_i, pre_sale_end_date[4..5].to_i, pre_sale_end_date[6..7].to_i).beginning_of_day.utc.to_f * 1000).floor
+    # pre_sale_start_date_epoch = (DateTime.parse(pre_sale_start_date).utc.to_f * 1000).floor
+    # pre_sale_end_date = Setting.pre_sale_end_date
+    # pre_sale_end_date_epoch = (DateTime.parse(pre_sale_end_date).utc.to_f * 1000).floor
     # current_time = (Time.zone.now.utc.to_f * 1000).floor
     # if current_time < pre_sale_start_date_epoch
     #   @epoch_time = pre_sale_start_date_epoch
@@ -31,6 +31,7 @@ module ApplicationHelper
     # else current_time >= pre_sale_end_date_epoch
     #   return 'pre_sale_closed'
     # end
+    # For local and testing
     @epoch_time = ((DateTime.now + 30.days).utc.to_f * 1000).floor
     'pre_sale_started'
   end
