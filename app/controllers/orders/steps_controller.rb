@@ -81,7 +81,7 @@ class Orders::StepsController < ApplicationController
   #   params.require(:order).permit(permitted_attributes)
   # end
 
-  # def address_params
-  #   params.require(:order).permit(address: [:street_1, :street_2, :city, :state, :postal_code, :country_code])
-  # end
+  def address_params
+    params.require(:order).permit(address: [:street_1, :street_2, :city, :state, :postal_code, :country_code])
+  end
 end
