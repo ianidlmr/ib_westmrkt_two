@@ -220,7 +220,7 @@ body.unit-types.index {
     background: white;
     border-bottom: 1px solid #ccc;
     z-index: 26;
-    background: #1a1a1a;
+    display: inline-block;
 
     @media screen and (min-width: 1280px) {
       left: 8px;
@@ -284,7 +284,7 @@ body.unit-types.index {
 
   li.filters {
     border-left: 1px solid #ccc;
-
+    float: right;
     span {
       font-size: 7px;
       position: absolute;
