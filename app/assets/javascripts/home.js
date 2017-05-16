@@ -22,7 +22,7 @@ $(function() {
       plugins: ['hidden_textfield'],
       hideSelected: true,
 
-      onDropdownOpen: function ($dropdown) {
+      onDropdownOpen: function () {
         $('.selectize-input').prop('disabled',true).off('click');
       }
 

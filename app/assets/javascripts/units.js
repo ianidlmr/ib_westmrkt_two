@@ -8,6 +8,9 @@ $(function() {
       onChange: function(unitData) {
         window.location = JSON.parse(unitData).url;
       },
+      onDropdownOpen: function () {
+        $('.selectize-input').prop('disabled',true).off('click');
+      },
       render: {
         option: function(data, escape) {
           var unitData = JSON.parse(data.text);
