@@ -1,3 +1,5 @@
+var ARROWS = {W: '&#8592; ', E: '&#8594; ', N: '&#8593; ' , S: '&#8595; '};
+
 $(function() {
   if ($('body.units.show').length) {
     openSavedUnit();
@@ -19,7 +21,7 @@ $(function() {
           return '<div class="' + className + ' option">' +
                   '<span class="unit-number">Suite ' + escape(unitData.number) + '</span>' +
                   '<span class="unit-price">$' + escape(unitData.price) + '</span>' +
-                  '<span class="unit-orientation">&#8593; ' + escape(unitData.orientation) + '</span>' +
+                  '<span class="unit-orientation">' + getOrientationArrow(unitData.orientation) + escape(unitData.orientation) + '</span>' +
                   spanHTML +
                 '</div>';
         },
@@ -28,7 +30,7 @@ $(function() {
           return '<div class="item">' +
                   '<span class="unit-number">Suite ' + escape(unitData.number) + '</span>' +
                   '<span class="unit-price">$' + escape(unitData.price) + '</span>' +
-                  '<span class="unit-orientation">&#8593; ' + escape(unitData.orientation) + '</span>' +
+                  '<span class="unit-orientation">' + getOrientationArrow(unitData.orientation) + escape(unitData.orientation) + '</span>' +
                   '<span class="space"></span>' +
                 '</div>';
         },
@@ -108,4 +110,8 @@ function openSavedUnit() {
       $option.css({'background': '#f5f5f5'});
     }
   });
+}
+
+function getOrientationArrow(orientation) {
+  return ARROWS[orientation]
 }
