@@ -41,6 +41,13 @@
   input[name="unit_number"] {
     font-size: 16px;
   }
+
+  .search-field-and-button-wrapper {
+    input[name="unit_number"] {
+      width: 72%;
+      border-bottom: 0px;
+    }
+  }
 }
 
 .input-text-wrap [type="text"]:focus,

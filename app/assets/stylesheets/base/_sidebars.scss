@@ -191,3 +191,17 @@
     }
   }
 }
+
+.search-field-and-button-wrapper {
+  border-bottom: 4px solid #ccc;
+  padding-bottom: 10px;
+
+  .custom-search-button{
+    border: 0px;
+    background: transparent;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 40px;
+    position: relative;
+  }
+}
