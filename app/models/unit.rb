@@ -28,6 +28,8 @@
 class Unit < ApplicationRecord
   include AASM
 
+  ARROWS = {W: '&#8592; ',E: '&#8594; ',N: '&#8593; ',S: '&#8595; '};
+
   #------------------------------------------------------------------------------
   # Associations
   belongs_to :owner, class_name: 'User'
@@ -82,6 +84,10 @@ class Unit < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Instance methods
+  def orientation_arrow
+    ARROWS[self.orientation.to_sym]
+  end
+
   def key_map_top_image_url
     Setting.amazon_s3_bucket_url + unit_number.to_s +  '_keymap_top.svg'
   end

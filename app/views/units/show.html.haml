@@ -121,7 +121,9 @@
                 %h2= @unit.floor_number.to_s
 
                 %p Side of the bldg.
-                %h2.orientation= @unit.orientation.to_s
+                %h2.orientation
+                  = @unit.orientation_arrow.html_safe
+                  = @unit.orientation.to_s
 
             .col-xs-4
               = image_tag @unit.key_map_top_image_url, class: 'img-responsive', style: 'height: 120px;'
