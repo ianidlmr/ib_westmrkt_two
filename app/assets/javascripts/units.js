@@ -1,4 +1,4 @@
-var ARROWS = {W: '&#8592; ', E: '&#8594; ', N: '&#8593; ' , S: '&#8595; '};
+var ARROWS = {W: '&#8592; ',E: '&#8594; ',N: '&#8593; ',S: '&#8595; '};
 
 $(function() {
   if ($('body.units.show').length) {
