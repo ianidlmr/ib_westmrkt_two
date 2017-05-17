@@ -74,10 +74,6 @@
   color: #adadad;
   font-weight: normal;
   text-transform: capitalize;
-  left: 36px;
-  font-size: 15px;
-  color: black;
-  top: 28px;
 
   &.has-error {
     color: #ff5353; 
@@ -86,10 +82,22 @@
 
 .input-text-wrap.is-focused .input-text-label, .input-text-wrap.has-value .input-text-label {
   top: 0;
-  left:0;
   font-size: 12px;
   line-height: 15px;
 }
+
+.input-text-wrap.is-focused label::after, .input-text-wrap.has-value label::after {
+  top: 4px;
+}
+
+.input-text-wrap.is-focused .search-field-and-button-wrapper, .input-text-wrap.has-value .search-field-and-button-wrapper {
+  border-bottom: 4px solid #ccc;
+}
+
+.input-text-wrap.sidebar-not-focused-input.is-focused .input-text-label, .input-text-wrap.sidebar-not-focused-input.has-value .input-text-label {
+  left:0px;
+}
+
 .input-text-wrap.is-focused .custom-search-button, .input-text-wrap.has-value .custom-search-button{
   display: inline;
 }
@@ -97,16 +105,28 @@
 .input-text-wrap.is-focused .search-magnifying-glass, .input-text-wrap.has-value .search-magnifying-glass{
   display: none;
 }
-
-.input-text-wrap.is-focused label::after, .input-text-wrap.has-value label::after {
-  top: 4px;
+.input-text-wrap.sidebar-not-focused-input.is-focused .search-field-and-button-wrapper, .input-text-wrap.has-value .search-field-and-button-wrapper {
+  border-bottom: 4px solid #ccc;
+  margin-left: 0px;
 }
-.input-text-wrap.is-focused .search-field-and-button-wrapper, .input-text-wrap.has-value .search-field-and-button-wrapper {
+
+.input-text-wrap.sidebar-not-focused-input.is-focused .search-magnifying-glass, .input-text-wrap.sidebar-not-focused-input.has-value .search-magnifying-glass{
+  display: none;
+}
+
+.search-not-focused-input .input-text-label {
+  margin-left: 15%;
+  font-size: 15px;
+  top: 28px;
+}
+
+.search-not-focused-input .search-field-and-button-wrapper{
   border-bottom: 4px solid #ccc;
 }
 
-
-  
+.input-text-wrap.search-not-focused-input.is-focused .input-text-label, .input-text-wrap.search-not-focused-input.has-value .input-text-label {
+  margin-left: 0%;
+}
 
 .form-control-feedback {
   color: #64C879;

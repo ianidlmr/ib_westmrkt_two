@@ -42,8 +42,17 @@ $(function() {
     }
   });
 
+  var EnterClicked = false;
+
+  $('.custom-search-button').mousedown(function() {
+    EnterClicked = true;
+  })
+  .mouseup(function() {
+    EnterClicked = false
+  });
+
   $('.input-text-wrap input').on('blur', function(e) {
-    if (!$(e.target).val().length) {
+    if (!$(e.target).val().length && !EnterClicked) {
       $(this).closest('.input-text-wrap').removeClass('is-focused');
     }
   });
