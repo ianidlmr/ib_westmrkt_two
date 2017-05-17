@@ -18,8 +18,8 @@ $(function() {
           var spanHTML = data.text === this.getValue() ? '<span class="space"><i class="fa fa-circle" aria-hidden="true"></i></span>' : '<span class="space"></span>';
           return '<div class="' + className + ' option">' +
                   '<span class="unit-number unit-number-left-aligned">Suite ' + escape(unitData.number) + '</span>' +
-                  '<span class="unit-price unit-price-right-aligned" style="width: 45%;">$' + escape(unitData.price) + '</span>' +
-                  '<span class="unit-orientation unit-orientation-right-aligned" style="width: 15%;">&#8593; ' + escape(unitData.orientation) + '</span>' +
+                  '<span class="unit-price unit-price-right-aligned">$' + escape(unitData.price) + '</span>' +
+                  '<span class="unit-orientation unit-orientation-right-aligned">&#8593; ' + escape(unitData.orientation) + '</span>' +
                   spanHTML +
                 '</div>';
         },
