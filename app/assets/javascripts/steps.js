@@ -83,7 +83,10 @@ $(function() {
       create: true,
       sortField: 'text',
       plugins: ['hidden_textfield'],
-      hideSelected: true
+      hideSelected: true,
+      onDropdownOpen: function () {
+        $('.selectize-input').prop('disabled',true).off('click');
+      }
     });
   }
 });
