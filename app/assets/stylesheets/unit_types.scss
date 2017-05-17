@@ -159,7 +159,7 @@ body.unit-types.index {
       width: 40%;
       padding: 0 38px;
 
-      @media #{$sm-down} {
+      @media #{$xs-down} {
         width: 100%;
         padding: 0 15px;
       }
@@ -169,7 +169,7 @@ body.unit-types.index {
         left: 4px;
         top: 158px;
 
-        @media #{$sm-down} {
+        @media #{$xs-down} {
           font-size: 14px;
         }
       }
@@ -181,7 +181,7 @@ body.unit-types.index {
       width: 20%;
       padding: 0 20px;
 
-      @media #{$sm-down} {
+      @media #{$xs-down} {
         width: 50%;
       }
     }
@@ -339,7 +339,7 @@ body.unit-types.index {
       width: 1139px;
     }
 
-    @media #{$sm-down} {
+    @media #{$xs-down} {
       h1 {
         margin-top: 10px;
         font-size: 16px;
