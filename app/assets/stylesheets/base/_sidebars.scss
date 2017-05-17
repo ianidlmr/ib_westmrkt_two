@@ -193,7 +193,7 @@
 }
 
 .search-field-and-button-wrapper {
-  border-bottom: 4px solid #ccc;
+  border-bottom: 0px;
   padding-bottom: 10px;
 
   .custom-search-button{
@@ -203,5 +203,6 @@
     font-weight: bold;
     line-height: 40px;
     position: relative;
+    display: none;
   }
 }

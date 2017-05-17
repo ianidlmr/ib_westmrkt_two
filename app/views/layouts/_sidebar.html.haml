@@ -2,8 +2,10 @@
   %li.search-unit-container
     .input-text-wrap
       = form_tag search_path, method: :get do
+        
         = label_tag 'Search by Suite Number', nil, class: 'input-text-label'
         %span.search-field-and-button-wrapper
+          = image_tag 'temp.png', height: 35, width: 35, class: 'search-magnifying-glass'
           = text_field_tag 'unit_number'
           = submit_tag 'ENTER', class: "custom-search-button"
   = link_to root_path do

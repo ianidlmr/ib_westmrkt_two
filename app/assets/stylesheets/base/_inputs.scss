@@ -74,21 +74,39 @@
   color: #adadad;
   font-weight: normal;
   text-transform: capitalize;
+  left: 36px;
+  font-size: 15px;
+  color: black;
+  top: 28px;
 
   &.has-error {
-    color: #ff5353;
+    color: #ff5353; 
   }
 }
 
 .input-text-wrap.is-focused .input-text-label, .input-text-wrap.has-value .input-text-label {
   top: 0;
+  left:0;
   font-size: 12px;
   line-height: 15px;
+}
+.input-text-wrap.is-focused .custom-search-button, .input-text-wrap.has-value .custom-search-button{
+  display: inline;
+}
+
+.input-text-wrap.is-focused .search-magnifying-glass, .input-text-wrap.has-value .search-magnifying-glass{
+  display: none;
 }
 
 .input-text-wrap.is-focused label::after, .input-text-wrap.has-value label::after {
   top: 4px;
 }
+.input-text-wrap.is-focused .search-field-and-button-wrapper, .input-text-wrap.has-value .search-field-and-button-wrapper {
+  border-bottom: 4px solid #ccc;
+}
+
+
+  
 
 .form-control-feedback {
   color: #64C879;
