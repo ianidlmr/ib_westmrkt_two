@@ -64,6 +64,10 @@ class UnitType < ApplicationRecord
     total_views >= Setting.trending_limit
   end
 
+  def total_bedrooms
+   number_of_bedrooms > 0 ? number_of_bedrooms.to_s : 'S'
+  end
+
   #------------------------------------------------------------------------------
   # Rails Admin Config
 

@@ -44,6 +44,21 @@ body.units.show {
     }
   }
 
+  .selectize-dropdown-content , .selectize-input {
+    .unit-number-left-aligned{
+      width: 35%;
+      text-align: left;
+    }
+    .unit-price-right-aligned {
+      width: 40%;
+      text-align: left;
+    }
+    .unit-orientation-right-aligned {
+      width: 15%;
+      text-align: left;
+    }
+  }
+
   .selectize-dropdown-content .option {
     border-bottom: 1px solid rgba(204, 204, 204, 0.8);
   }
