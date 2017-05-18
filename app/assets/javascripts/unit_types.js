@@ -124,6 +124,7 @@ $(function() {
       var bedroomsFilterHeight = $('.nav.nav-pills').outerHeight();
       $(".filters-container").animate({ top: bedroomsFilterHeight }, 300);
       showMask();
+      $(".filters-container").addClass('filter-panel-open')
     });
 
     $('body').on('click', '.btn-accept, .btn-clear', function(e) {
@@ -179,5 +180,18 @@ $(function() {
       $('li.filters a span').hide();
       $('li.filters a').css({'font-weight': 'normal'});
     });
+
+    // close filter panel when someone clicks outside filter panel
+    $(document).click(function(event) {
+      // check if filter panel is open and filters button is not clicked
+      if ($('.filters-container').hasClass('filter-panel-open') && !$(event.target).closest('.filters').length) {
+        // click event must be outside the filter panel
+        if(!$(event.target).closest('.filters-container').length && !$(event.target).closest('.bedrooms-filter').length ) {
+          $(".filters-container").animate({ top:'-1000px' }, 300);
+          hideMask();
+        }
+      }
+    })
+
   }
 });
