@@ -30,9 +30,9 @@ $(function() {
   // Input styling
   $('.input-text-wrap input').each(function(index, node) {
     if (node.value.length > 0 && node.value != ' ') {
-      $(node).closest('.input-text-wrap').addClass('is-focused');
+      $(node).closest('.input-text-wrap').removeClass('is-focused');
     } else {
-      $(this).closest('.input-text-wrap').removeClass('is-focused');
+      $(this).closest('.input-text-wrap').addClass('is-focused');
     }
   });
 
