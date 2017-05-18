@@ -11,14 +11,17 @@
                   %h2
                     %strong= unit.unit_type.name
                   %h2
-                    %strong Suite unit.unit_number.to_s
+                    %strong
+                      = 'Suite'
+                      = unit.unit_number.to_s
               .row.unit-info
                 .col-xs-6
                   %p Floor No.
                   %h2= unit.floor_number.to_s
                 .col-xs-6
                   %p Bedrooms
-                  %h2= unit.unit_type.number_of_bedrooms.to_s
+                  %h2= unit.unit_type.total_bedrooms
+
               .row.unit-info
                 .col-xs-6
                   %p Side of the bldg.
