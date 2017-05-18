@@ -17,18 +17,18 @@ $(function() {
           var className = data.text === this.getValue() ? 'greyed-out' : '';
           var spanHTML = data.text === this.getValue() ? '<span class="space"><i class="fa fa-circle" aria-hidden="true"></i></span>' : '<span class="space"></span>';
           return '<div class="' + className + ' option">' +
-                  '<span class="unit-number">Suite ' + escape(unitData.number) + '</span>' +
-                  '<span class="unit-price">$' + escape(unitData.price) + '</span>' +
-                  '<span class="unit-orientation">&#8593; ' + escape(unitData.orientation) + '</span>' +
+                  '<span class="unit-number unit-number-left-aligned">Suite ' + escape(unitData.number) + '</span>' +
+                  '<span class="unit-price unit-price-right-aligned">$' + escape(unitData.price) + '</span>' +
+                  '<span class="unit-orientation unit-orientation-right-aligned">&#8593; ' + escape(unitData.orientation) + '</span>' +
                   spanHTML +
                 '</div>';
         },
         item: function(data, escape) {
           var unitData = JSON.parse(data.text);
           return '<div class="item">' +
-                  '<span class="unit-number">Suite ' + escape(unitData.number) + '</span>' +
-                  '<span class="unit-price">$' + escape(unitData.price) + '</span>' +
-                  '<span class="unit-orientation">&#8593; ' + escape(unitData.orientation) + '</span>' +
+                  '<span class="unit-number unit-number-left-aligned">Suite ' + escape(unitData.number) + '</span>' +
+                  '<span class="unit-price unit-price-right-aligned">$' + escape(unitData.price) + '</span>' +
+                  '<span class="unit-orientation unit-orientation-right-aligned">&#8593; ' + escape(unitData.orientation) + '</span>' +
                   '<span class="space"></span>' +
                 '</div>';
         },
