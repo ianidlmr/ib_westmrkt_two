@@ -125,13 +125,10 @@ $(function() {
       e.preventDefault();
       var key = this.className;
       trimmed_key = key.trim().replace(/-/g, '_')
-      if ($(this).hasClass('bold'))
-      {
+      if ($(this).hasClass('bold')) {
         $(this).removeClass('bold')
         $("input[name='" +trimmed_key.replace(/bold/g, '').trim() + "']").val('');
-      }
-      else
-      {
+      } else {
         $("input[name='" + trimmed_key + "']").val($(this).data('value'));
       }
       updateOptionValueUI(key, $(this).data('value'));
