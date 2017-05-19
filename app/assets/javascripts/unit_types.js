@@ -24,6 +24,17 @@ $(function() {
       });
     }
 
+    function BoldFilterTextUI(){
+      if (!$('.flex-row').find('.bold').length){
+        $('li.filters a').css({'font-weight': 'normal'});
+        $('li.filters a span').hide();
+      }
+      else{
+        $('li.filters a').css({'font-weight': 'bold'});
+        $('li.filters a span').show();
+      }
+    }
+
     if (sessionStorage.getItem('queryString')) {
       var sendingData = false;
       var dataObject = JSON.parse(sessionStorage.getItem('dataObject'));
@@ -113,9 +124,13 @@ $(function() {
     $('.den, .balcony, .number-of-bathrooms').on('click', function(e) {
       e.preventDefault();
       var key = this.className;
-      $('li.filters a span').show();
-      $('li.filters a').css({'font-weight': 'bold'});
-      $("input[name='" + key.trim().replace(/-/g, '_') + "']").val($(this).data('value'));
+      trimmed_key = key.trim().replace(/-/g, '_')
+      if ($(this).hasClass('bold')) {
+        $(this).removeClass('bold')
+        $("input[name='" +trimmed_key.replace(/bold/g, '').trim() + "']").val('');
+      } else {
+        $("input[name='" + trimmed_key + "']").val($(this).data('value'));
+      }
       updateOptionValueUI(key, $(this).data('value'));
     });
 
@@ -137,7 +152,7 @@ $(function() {
         var priceVal = parseFloat(priceSlider.noUiSlider.get().match(/[\d\.]+/g)[0]);
         var price = priceVal < 100 ? priceVal * 1000000 : priceVal * 1000;
         var dataObject = { balcony: $("input[name='balcony']").val(), den: $("input[name='den']").val(), number_of_bathrooms: $("input[name='number_of_bathrooms']").val(), price: price.toString() };
-
+        BoldFilterTextUI()
         if (!sendingData) {
           sendingData = true;
 
