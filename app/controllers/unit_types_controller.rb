@@ -27,7 +27,7 @@ class UnitTypesController < ApplicationController
         query: proc { |value| "balcony = #{value}" }
       }, {
         param: :number_of_bathrooms,
-        query: proc { |value| value == '3' ? "number_of_bathrooms >= #{value}" : "number_of_bathrooms = #{value}" }
+        query: proc { |value| value.include?('3') ? "number_of_bathrooms IN (#{value}) OR number_of_bathrooms > 3 " : "number_of_bathrooms IN (#{value})" }
       }, {
         param: :price,
         query: proc { |value| "units.price <= #{value}" }
