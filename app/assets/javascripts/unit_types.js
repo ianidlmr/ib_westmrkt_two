@@ -24,8 +24,8 @@ $(function() {
       });
     }
 
-    function BoldFilterTextUI(){
-      if (!$('.flex-row').find('.bold').length){
+    function BoldFilterTextUI(price){
+      if (!$('.flex-row').find('.bold').length && price == $('#price-average').data('highest-price') ){
         $('li.filters a').css({'font-weight': 'normal'});
         $('li.filters a span').hide();
       }
@@ -152,7 +152,7 @@ $(function() {
         var priceVal = parseFloat(priceSlider.noUiSlider.get().match(/[\d\.]+/g)[0]);
         var price = priceVal < 100 ? priceVal * 1000000 : priceVal * 1000;
         var dataObject = { balcony: $("input[name='balcony']").val(), den: $("input[name='den']").val(), number_of_bathrooms: $("input[name='number_of_bathrooms']").val(), price: price.toString() };
-        BoldFilterTextUI()
+        BoldFilterTextUI(price)
         if (!sendingData) {
           sendingData = true;
 
