@@ -113,9 +113,23 @@ $(function() {
     $('.den, .balcony, .number-of-bathrooms').on('click', function(e) {
       e.preventDefault();
       var key = this.className;
-      $('li.filters a span').show();
-      $('li.filters a').css({'font-weight': 'bold'});
-      $("input[name='" + key.trim().replace(/-/g, '_') + "']").val($(this).data('value'));
+      trimmed_key = key.trim().replace(/-/g, '_')
+      if ($(this).hasClass('bold'))
+      {
+        $(this).removeClass('bold')
+        $("input[name='" +trimmed_key.replace(/bold/g, '').trim() + "']").val('');
+        if (!$('.flex-row').find('.bold').length){
+          $('li.filters a').css({'font-weight': 'normal'});
+          $('li.filters a span').hide();
+        }
+      }
+      else
+      {
+        $('li.filters a span').show();
+        $('li.filters a').css({'font-weight': 'bold'});
+        $("input[name='" + trimmed_key + "']").val($(this).data('value'));
+      }
+
       updateOptionValueUI(key, $(this).data('value'));
     });
 
