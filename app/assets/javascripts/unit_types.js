@@ -1,5 +1,6 @@
 $(function() {
   if ($('body.unit-types.index').length) {
+    var searchParams;
     function getParameterByName(name, url) {
       if (!url) {
         url = window.location.href;
@@ -24,6 +25,19 @@ $(function() {
       });
     }
 
+    function searchParamsToRefreshUi(){
+      searchParams = {
+        balcony: getParameterByName('balcony') !== null && getParameterByName('balcony').length > 0  ? JSON.parse(getParameterByName('balcony')) : '',
+        den: getParameterByName('den') !== null && getParameterByName('den').length > 0 ? JSON.parse(getParameterByName('den')) : '',
+        'number-of-bathrooms': getParameterByName('number_of_bathrooms') !== null && getParameterByName('number_of_bathrooms').length > 0 ? JSON.parse('['+getParameterByName('number_of_bathrooms')+']') : '',
+        price: getParameterByName('price') !== null && getParameterByName('price').length > 0 ? JSON.parse(getParameterByName('price')) : ''
+      };
+
+      Object.keys(searchParams).forEach(function(key) {
+        updateOptionValueUI(key, searchParams[key])
+      });
+
+    }
     function BoldFilterTextUI(price){
       if (!$('.flex-row').find('.bold').length && price == $('#price-average').data('highest-price') ){
         $('li.filters a').css({'font-weight': 'normal'});
@@ -65,16 +79,7 @@ $(function() {
       }
     }
 
-    var searchParams = {
-      balcony: getParameterByName('balcony') !== null && getParameterByName('balcony').length > 0  ? JSON.parse(getParameterByName('balcony')) : '',
-      den: getParameterByName('den') !== null && getParameterByName('den').length > 0 ? JSON.parse(getParameterByName('den')) : '',
-      'number-of-bathrooms': getParameterByName('number_of_bathrooms') !== null && getParameterByName('number_of_bathrooms').length > 0 ? JSON.parse('['+getParameterByName('number_of_bathrooms')+']') : '',
-      price: getParameterByName('price') !== null && getParameterByName('price').length > 0 ? JSON.parse(getParameterByName('price')) : ''
-    };
-
-    Object.keys(searchParams).forEach(function(key) {
-      updateOptionValueUI(key, searchParams[key])
-    });
+    searchParamsToRefreshUi();
 
     var priceSlider = document.getElementById('price-average');
     noUiSlider.create(priceSlider, {
@@ -134,7 +139,6 @@ $(function() {
     });
 
     $('.number-of-bathrooms').on('click', function(e) {
-      debugger
       e.preventDefault();
       var key = this.className;
       if ($(this).hasClass('bold')) {
@@ -227,6 +231,8 @@ $(function() {
         if(!$(event.target).closest('.filters-container').length && !$(event.target).closest('.bedrooms-filter').length ) {
           $(".filters-container").animate({ top:'-1000px' }, 300);
           hideMask();
+          searchParamsToRefreshUi();
+          $("input[name='number_of_bathrooms[]']").val(searchParams['number-of-bathrooms'];);
         }
       }
     })
