@@ -232,7 +232,7 @@ $(function() {
           $(".filters-container").animate({ top:'-1000px' }, 300);
           hideMask();
           searchParamsToRefreshUi();
-          $("input[name='number_of_bathrooms[]']").val(searchParams['number-of-bathrooms'];);
+          $("input[name='number_of_bathrooms[]']").val(searchParams['number-of-bathrooms']);
         }
       }
     })
