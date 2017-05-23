@@ -173,7 +173,7 @@ $(function() {
         var priceVal = parseFloat(priceSlider.noUiSlider.get().match(/[\d\.]+/g)[0]);
         var price = priceVal < 100 ? priceVal * 1000000 : priceVal * 1000;
 
-        var dataObject = { balcony: $("input[name='balcony']").val(), den: $("input[name='den']").val(), number_of_bathrooms: $("input[name='number_of_bathrooms']").val(), price: price.toString() };
+        var dataObject = { balcony: $("input[name='balcony']").val(), den: $("input[name='den']").val(), number_of_bathrooms: $("input[name='number_of_bathrooms[]']").val(), price: price.toString() };
         BoldFilterTextUI(price)
         if (!sendingData) {
           sendingData = true;
