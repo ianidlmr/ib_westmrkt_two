@@ -93,7 +93,7 @@ class User < ApplicationRecord
     )
     # No need to confirm the email address when a user signs up from their social media account
     user.skip_confirmation!
-    user.save
+    user.save(:validate => false)
     user
   end
 
