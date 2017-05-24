@@ -191,3 +191,25 @@
     }
   }
 }
+
+.search-field-and-button-wrapper {
+  border-bottom: 0px;
+  padding-bottom: 10px;
+
+  .custom-search-button{
+    border: 0px;
+    background: transparent;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 40px;
+    position: relative;
+    display: none;
+  }
+}
+
+.sidebar-not-focused-input .input-text-label {
+  left: 36px;
+  font-size: 15px;
+  top: 28px;
+  
+}

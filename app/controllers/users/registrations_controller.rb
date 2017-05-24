@@ -12,13 +12,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    unless request.path_info == '/users/sign_up'
-      super do
-        unless resource.persisted?
-          render(json: 'Invalid Email or Password', status: 422) && return
+
+    respond_to do |format|
+      format.js {
+        super do
+          unless resource.persisted?
+            render(json: 'Invalid Email or Password', status: 422) && return
+          end
         end
-      end
+      }
+
+      format.html {super}
     end
+
   end
 
   # GET /resource/edit

@@ -20,7 +20,7 @@ $(function() {
       hideMask();
       $('.sidebar').css({'box-shadow': 'none'});
       $('.sidebar').removeClass('sidebar-is-open');
-    } else if (!$(e.target).hasClass('right-sidebar') && !$(e.target).parents('.right-sidebar').length && $('.right-sidebar').hasClass('right-sidebar-is-open')) {
+    } else if (!$(e.target).hasClass('right-sidebar') && !$(e.target).parents('.right-sidebar').length && $('.right-sidebar').hasClass('right-sidebar-is-open') && !$(e.target).hasClass('modal') && !$(e.target).parents('.modal').length) {
       hideMask();
       $('.right-sidebar').removeClass('right-sidebar-is-open');
       $('.right-sidebar').css({'box-shadow': 'none'});
@@ -30,9 +30,9 @@ $(function() {
   // Input styling
   $('.input-text-wrap input').each(function(index, node) {
     if (node.value.length > 0 && node.value != ' ') {
-      $(node).closest('.input-text-wrap').addClass('is-focused');
+      $(node).closest('.input-text-wrap').removeClass('is-focused');
     } else {
-      $(this).closest('.input-text-wrap').removeClass('is-focused');
+      $(this).closest('.input-text-wrap').addClass('is-focused');
     }
   });
 
@@ -42,8 +42,17 @@ $(function() {
     }
   });
 
+  var EnterClicked = false;
+
+  $('.custom-search-button').mousedown(function() {
+    EnterClicked = true;
+  })
+  .mouseup(function() {
+    EnterClicked = false
+  });
+
   $('.input-text-wrap input').on('blur', function(e) {
-    if (!$(e.target).val().length) {
+    if (!$(e.target).val().length && !EnterClicked) {
       $(this).closest('.input-text-wrap').removeClass('is-focused');
     }
   });

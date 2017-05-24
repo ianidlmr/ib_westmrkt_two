@@ -44,14 +44,16 @@
         %strong Den
       %p.den{ data: { value: 'true' } } Included
       %p.den{ data: { value: 'false' } } Not Included
-      = hidden_field_tag 'den'
+      - den_params = params[:den].present? ? params[:den] :  ''
+      = hidden_field_tag 'den', den_params
 
     .balcony-column
       %h1
         %strong Balcony
       %p.balcony{ data: { value: 'true' } } Included
       %p.balcony{ data: { value: 'false' } } Not Included
-      = hidden_field_tag 'balcony'
+      - balcony_params = params[:balcony].present? ? params[:balcony] : ''
+      = hidden_field_tag 'balcony', balcony_params || ''
 
     .bathroom-column
       %h1
@@ -60,7 +62,8 @@
         %p.number-of-bathrooms{ data: { value: '1' } } 1 Bathroom
         %p.number-of-bathrooms{ data: { value: '2' } } 2 Bathrooms
         %p.number-of-bathrooms{ data: { value: '3' } } 3+ Bathrooms
-      = hidden_field_tag 'number_of_bathrooms'
+        - bathromm_params = params[:number_of_bathrooms].present? ? params[:number_of_bathrooms] : ''
+      = hidden_field_tag 'number_of_bathrooms[]', bathromm_params
 
   .btn-container
     = link_to 'Clear All', '#', class: 'btn-clear'
