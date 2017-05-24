@@ -20,7 +20,7 @@ $(function() {
       hideMask();
       $('.sidebar').css({'box-shadow': 'none'});
       $('.sidebar').removeClass('sidebar-is-open');
-    } else if (!$(e.target).hasClass('right-sidebar') && !$(e.target).parents('.right-sidebar').length && $('.right-sidebar').hasClass('right-sidebar-is-open')) {
+    } else if (!$(e.target).hasClass('right-sidebar') && !$(e.target).parents('.right-sidebar').length && $('.right-sidebar').hasClass('right-sidebar-is-open') && !$(e.target).hasClass('modal') && !$(e.target).parents('.modal').length) {
       hideMask();
       $('.right-sidebar').removeClass('right-sidebar-is-open');
       $('.right-sidebar').css({'box-shadow': 'none'});
