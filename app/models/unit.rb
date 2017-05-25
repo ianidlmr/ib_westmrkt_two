@@ -85,7 +85,7 @@ class Unit < ApplicationRecord
   #------------------------------------------------------------------------------
   # Instance methods
   def orientation_arrow
-    'icons/' + ARROWS[self.orientation.to_sym] + '.svg'
+    'icons/' + ARROWS[orientation.to_sym] + '.svg'
   end
 
   def key_map_top_image_url
