@@ -93,7 +93,7 @@ class User < ApplicationRecord
     )
     # No need to confirm the email address when a user signs up from their social media account
     user.skip_confirmation!
-    user.save(:validate => false)
+    user.save(validate: false)
     user
   end
 
@@ -101,6 +101,10 @@ class User < ApplicationRecord
   # Instance methods
   def personal_info_filled_in?
     address.present?
+  end
+
+  def full_name
+    (str = "#{first_name rescue ('')} #{last_name rescue ('')}".strip).empty? ? email : str
   end
 
   #------------------------------------------------------------------------------

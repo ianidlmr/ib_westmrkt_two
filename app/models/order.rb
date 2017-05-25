@@ -156,7 +156,7 @@ class Order < ApplicationRecord
       subject: '',
       template_id: '72acd583-1649-49ef-9fbd-41a1d42a6ada',
       substitutions: {
-        '-name-': unit.owner.first_name + ' ' + unit.owner.last_name,
+        '-name-': unit.owner.full_name,
         '-confirmation_number-': confirmation_number,
         '-date-': DateTime.now.strftime('%a, %B %e, %Y'),
         '-unit_number-': unit.unit_number.to_s,
