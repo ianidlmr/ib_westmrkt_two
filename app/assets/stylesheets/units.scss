@@ -57,6 +57,14 @@ body.units.show {
       width: 15%;
       text-align: left;
     }
+    .unit-orientation-right-aligned svg{
+      margin-right: 4px;
+      margin-top: 1px;
+    }
+    .white-svg-arrow svg{
+      fill: #ffffff;
+    }
+
   }
 
   .selectize-dropdown-content .option {
@@ -286,6 +294,11 @@ body.units.show {
     .orientation {
       margin: 0;
       font-size: 18px;
+    }
+
+    .orientation .arrow-svg{
+      width: 11px;
+      margin-top: -3px;
     }
   }
 

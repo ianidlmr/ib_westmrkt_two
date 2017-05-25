@@ -122,7 +122,7 @@
 
                 %p Side of the bldg.
                 %h2.orientation
-                  = @unit.orientation_arrow.html_safe
+                  = image_tag(@unit.orientation_arrow, class: "arrow-svg")
                   = @unit.orientation.to_s
 
             .col-xs-4

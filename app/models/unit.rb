@@ -28,7 +28,7 @@
 class Unit < ApplicationRecord
   include AASM
 
-  ARROWS = {W: '&#8592; ',E: '&#8594; ',N: '&#8593; ',S: '&#8595; '};
+  ARROWS = {W: 'leftwards',E: 'rightwards' ,N: 'upwards',S: 'downwards'};
 
   #------------------------------------------------------------------------------
   # Associations
@@ -85,7 +85,7 @@ class Unit < ApplicationRecord
   #------------------------------------------------------------------------------
   # Instance methods
   def orientation_arrow
-    ARROWS[self.orientation.to_sym]
+    'icons/' + ARROWS[self.orientation.to_sym] + '.svg'
   end
 
   def key_map_top_image_url
