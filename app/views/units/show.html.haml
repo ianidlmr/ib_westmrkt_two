@@ -93,18 +93,18 @@
           .row.unit-content
             .col-xs-4
               %p Bedrooms
-              %h2= @unit_type.number_of_bedrooms.zero? ? 'S' : @unit_type.number_of_bedrooms.to_s
+              %h2= @unit_type.number_of_bedrooms.zero? ? 'S' : @unit_type.number_of_bedrooms
             .col-xs-4
               %p Den
               %h2= @unit_type.den ? 'Included' : 'Not Included'
             .col-xs-4
               %p Interior SQFT
-              %h2= @unit_type.interior_sqft.to_s
+              %h2= @unit_type.interior_sqft
 
           .row.unit-content
             .col-xs-4
               %p Bathrooms
-              %h2= @unit_type.number_of_bathrooms.to_s
+              %h2= @unit_type.number_of_bathrooms
 
             .col-xs-4
               %p Balcony
@@ -112,16 +112,18 @@
 
             .col-xs-4
               %p Balcony SQFT
-              %h2= @unit_type.balcony_sqft.to_s
+              %h2= @unit_type.balcony_sqft
 
           .row.unit-content
             .col-xs-4
               .height-container
                 %p Floor No.
-                %h2= @unit.floor_number.to_s
+                %h2= @unit.floor_number
 
                 %p Side of the bldg.
-                %h2.orientation= @unit.orientation.to_s
+                %h2.orientation
+                  = image_tag(@unit.orientation_arrow, class: "arrow-svg")
+                  = @unit.orientation
 
             .col-xs-4
               = image_tag @unit.key_map_top_image_url, class: 'img-responsive', style: 'height: 120px;'
