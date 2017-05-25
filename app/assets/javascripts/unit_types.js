@@ -17,7 +17,7 @@ $(function() {
       $options.each(function (i, node) {
         var $option = $(node);
         is_bathroom = $option.hasClass('number-of-bathrooms') && (value.indexOf(String($option.data('value'))) != -1 || value.indexOf($option.data('value')) != -1 )
-        if ($option.data('value') === value && !$option.hasClass('bold') || is_bathroom) {
+        if ($option.data('value') === value && (!$option.hasClass('bold') || $option.hasClass('bold')) || is_bathroom) {
           $option.addClass('bold');
         } else {
           $option.removeClass('bold');
@@ -233,6 +233,9 @@ $(function() {
           hideMask();
           searchParamsToRefreshUi();
           $("input[name='number_of_bathrooms[]']").val(searchParams['number-of-bathrooms']);
+          priceSlider.noUiSlider.set(searchParams['price']);
+          $("input[name='balcony']").val(searchParams['balcony']);
+          $("input[name='den']").val(searchParams['den']);
         }
       }
     })
