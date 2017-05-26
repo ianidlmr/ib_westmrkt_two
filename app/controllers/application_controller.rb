@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   # TODO: Remove before public launch
   if Rails.env.production? || Rails.env.integration?
-    http_basic_authenticate_with name: 'railway', password: 'railwaydevbbq' # keeping the same credentials as integration server
+    http_basic_authenticate_with name: 'idlmr', password: 'idlmr-178' # keeping the same credentials as integration server
   end
 
   def liked_unit_groups
