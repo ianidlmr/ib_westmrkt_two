@@ -55,10 +55,11 @@ class User < ApplicationRecord
   #------------------------------------------------------------------------------
   # Validations
   validates :email, :first_name, :last_name, presence: true
+  validates :phone_number, length: {minimum: 10, maximum: 11}, if: -> { phone_number.present? }
 
   #------------------------------------------------------------------------------
   # Callbacks
-  # before_validation :normalize_phone_numbers
+  before_validation :normalize_phone_number
   after_create :create_stripe_account
   after_save :update_stripe_account, if: :email_changed?
 
@@ -125,5 +126,10 @@ class User < ApplicationRecord
       customer.email = email
       customer.save
     end
+  end
+
+  def normalize_phone_number
+    # remove all characters except digits
+    phone_number.gsub!(/\D+/, "") if phone_number.present?
   end
 end
