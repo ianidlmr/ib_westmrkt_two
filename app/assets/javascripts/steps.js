@@ -19,7 +19,7 @@ $(function() {
         "order[address][street_1]": {required: true},
         "order[address][street_2]": {required: false},
         "order[address][city]": {required: true},
-        "order[address][country_code]": {required: true},
+        "order[address][country]": {required: true},
         "order[address][state]": {required: true},
         "order[address][postal_code]": {required: true, cdnPostal: true},
         "order[agree_to_deal_sheet_and_terms]": {required: true},

@@ -66,8 +66,8 @@
                 .col-sm-6
                   .input-text-wrap.country-input
                     = a.label 'Country', class: 'input-text-label'
-                    = a.input :country_code, label: false, disabled: true, input_html: { value: 'Canada' }
-                    = a.input :country_code, as: :hidden, input_html: { value: 'Canada' }
+                    = a.input :country, label: false, disabled: true, input_html: { value: 'Canada' }
+                    = a.input :country, as: :hidden, input_html: { value: 'Canada' }
                     %span.form-control-feedback= fa_icon 'check'
                 .col-sm-6
                   .input-text-wrap

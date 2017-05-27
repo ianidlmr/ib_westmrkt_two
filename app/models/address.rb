@@ -3,16 +3,16 @@
 #
 # Table name: addresses
 #
-#  id           :integer          not null, primary key
-#  street_1     :string
-#  street_2     :string
-#  city         :string
-#  state        :string
-#  postal_code  :string
-#  country_code :string
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  user_id      :integer
+#  id          :integer          not null, primary key
+#  street_1    :string
+#  street_2    :string
+#  city        :string
+#  state       :string
+#  postal_code :string
+#  country     :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  user_id     :integer
 #
 # Indexes
 #
@@ -29,7 +29,6 @@ class Address < ApplicationRecord
 
   #------------------------------------------------------------------------------
   # Validations
-  validates :street_1, :city, :state, :postal_code, :country_code, presence: true
 
   #------------------------------------------------------------------------------
   # Callbacks
