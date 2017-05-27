@@ -17,17 +17,11 @@ class Orders::StepsController < ApplicationController
     handle_tasks_for_current_step; return if performed?
 
     if params[:order][:address].present?
-      @address = Address.new(
-        street_1: params[:order][:address][:street_1],
-        street_2: params[:order][:address][:street_2],
-        city: params[:order][:address][:city],
-        state: params[:order][:address][:state],
-        postal_code: params[:order][:address][:postal_code],
-        country_code: params[:order][:address][:country_code],
-        user: current_user
-      )
+      if params[:order][:promo_code].present?
+        @order.update(promo_code: params[:order][:promo_code])
+      end
 
-      if @address.save
+      if @address.update_attributes(address_params) && current_user.update_attributes(order_params[:user_attributes])
         @order.update_column(:current_step, next_step)
         redirect_to next_wizard_path
       else
@@ -37,12 +31,8 @@ class Orders::StepsController < ApplicationController
 
     if params[:order][:broker].present?
       begin
-        @order.update_attributes(
-          broker: params[:order][:broker],
-          agree_to_deal_sheet_and_terms: params[:order][:agree_to_deal_sheet_and_terms],
-          sale_person_name: params[:order][:sale_person_name]
-        )
-        if @order.process_payment! && @order.save
+        @order.update_attributes(order_params)
+        if @order.process_payment!
           redirect_to next_wizard_path
         else
           render_wizard @order
@@ -59,6 +49,7 @@ class Orders::StepsController < ApplicationController
     case @step.to_s
     when 'update-personal-info'
       @order = current_user.orders.in_progress.find_by(unit: @unit)
+      @address = Address.find_or_create_by!(user: current_user)
       redirect_to(units_path, alert: 'You are only allowed one order at the moment. If you would like more please contact our agents.') && return unless @order.present?
     when 'finalize-payment'
       @order = current_user.orders.in_progress.find_by(unit: @unit)
@@ -69,19 +60,17 @@ class Orders::StepsController < ApplicationController
     end
   end
 
-  def order_params(step)
-    permitted_attributes = case step.to_s
+  def order_params
+    permitted_attributes = case @step.to_s
       when 'update-personal-info'
         [user_attributes: [:first_name, :last_name, :phone_number, :occupation]]
       when 'finalize-payment'
-        [:agree_to_deal_sheet, :agree_to_terms_and_conditions, :broker]
-      when 'order-confirmation'
-        []
+        [:agree_to_deal_sheet_and_terms, :broker]
       end
     params.require(:order).permit(permitted_attributes)
   end
 
   def address_params
-    params.require(:order).permit(address: [:street_1, :street_2, :city, :state, :postal_code, :country_code])
+    params.require(:order).permit(address: [:street_1, :street_2, :city, :state, :postal_code, :country])[:address]
   end
 end
