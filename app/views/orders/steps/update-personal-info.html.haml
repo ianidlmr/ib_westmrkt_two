@@ -28,23 +28,23 @@
               .row
                 .col-sm-6
                   .input-text-wrap
-                    = u.label 'First Name', class: 'input-text-label', required: true
+                    = u.label 'First Name', class: 'input-text-label checkout-form', required: true
                     = u.input :first_name, label: false
                     %span.form-control-feedback= fa_icon 'check'
                 .col-sm-6
                   .input-text-wrap
-                    = u.label 'Last Name', class: 'input-text-label', required: true
+                    = u.label 'Last Name', class: 'input-text-label checkout-form', required: true
                     = u.input :last_name, label: false
                     %span.form-control-feedback= fa_icon 'check'
               .row
                 .col-sm-6
                   .input-text-wrap
-                    = u.label 'Phone', class: 'input-text-label', required: true
+                    = u.label 'Phone', class: 'input-text-label checkout-form', required: true
                     = u.input :phone_number, label: false
                     %span.form-control-feedback= fa_icon 'check'
                 .col-sm-6
                   .input-text-wrap
-                    = u.label 'Occupation', class: 'input-text-label', required: true
+                    = u.label 'Occupation', class: 'input-text-label checkout-form', required: true
                     = u.input :occupation, label: false
                     %span.form-control-feedback= fa_icon 'check'
 
@@ -54,18 +54,18 @@
               .row
                 .col-sm-6
                   .input-text-wrap
-                    = a.label 'Address line 1', class: 'input-text-label'
+                    = a.label 'Address line 1', class: 'input-text-label checkout-form'
                     = a.input :street_1, label: false
                     %span.form-control-feedback= fa_icon 'check'
                 .col-sm-6
                   .input-text-wrap
-                    = a.label 'Address line 2 (optional)', class: 'input-text-label', required: false
+                    = a.label 'Address line 2 (optional)', class: 'input-text-label checkout-form', required: false
                     = a.input :street_2, label: false
                     %span.form-control-feedback= fa_icon 'check'
               .row
                 .col-sm-6
                   .input-text-wrap.country-input
-                    = a.label 'Country', class: 'input-text-label'
+                    = a.label 'Country', class: 'input-text-label checkout-form'
                     = a.input :country, label: false, disabled: true, input_html: { value: 'Canada' }
                     = a.input :country, as: :hidden, input_html: { value: 'Canada' }
                     %span.form-control-feedback= fa_icon 'check'
@@ -77,12 +77,12 @@
               .row
                 .col-sm-6
                   .input-text-wrap
-                    = a.label 'Postal Code', class: 'input-text-label'
+                    = a.label 'Postal Code', class: 'input-text-label checkout-form'
                     = a.input :postal_code, label: false
                     %span.form-control-feedback= fa_icon 'check'
                 .col-sm-6
                   .input-text-wrap
-                    = a.label 'City', class: 'input-text-label'
+                    = a.label 'City', class: 'input-text-label checkout-form'
                     = a.input :city, label: false
                     %span.form-control-feedback= fa_icon 'check'
 
@@ -124,7 +124,7 @@
             .col-xs-6.col-md-6.col-lg-5
               .form-inputs
                 .input-text-wrap
-                  = f.label 'Promo Code (optional)', class: 'input-text-label'
+                  = f.label 'Promo Code (optional)', class: 'input-text-label checkout-form'
                   = f.input :promo_code, label: false
                   %span.form-control-feedback= fa_icon 'check'
 

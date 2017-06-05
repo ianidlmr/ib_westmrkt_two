@@ -3,7 +3,7 @@ nav.navbar {
   border-radius: 0;
   margin: 0;
   border: 0;
-  background-color: black;
+  background-color: #333333;
   display: flex;
   align-items: center;
   font-size: 14px;
@@ -35,7 +35,7 @@ nav.navbar {
     align-items: center;
 
     p.amount {
-      color: black;
+      color: #565A5C;
       margin: 0;
       font-size: 12px;
     }
@@ -96,6 +96,13 @@ nav.navbar {
       @media #{$xs-down} {
         width: 90px;
       }
+    }
+
+    .logo-home {
+      text-align: center;
+      margin: 0 auto;
+      font-size: 30px;
+      color: white;
     }
 
     .hamburger-container {
@@ -189,7 +196,7 @@ nav.navbar {
   }
 
   &.secondary {
-    background: #1a1a1a;
+    background: #333333;
     box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.2);
 
     .unit-type {
@@ -235,7 +242,7 @@ nav.navbar {
     border: 1px solid #e6e6e6;
 
     a {
-      color: black;
+      color: #333333;
       text-decoration: none;
     }
   }

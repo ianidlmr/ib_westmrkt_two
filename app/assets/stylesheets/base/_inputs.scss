@@ -76,8 +76,12 @@
   text-transform: capitalize;
 
   &.has-error {
-    color: #ff5353; 
+    color: #ff5353;
   }
+}
+
+.input-text-label.checkout-form{
+  top: 0px;
 }
 
 .my-account-container .input-text-label{

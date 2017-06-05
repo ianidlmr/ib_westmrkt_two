@@ -7,7 +7,7 @@ body.home {
     .countdown-message {
       box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.2);
       color: white;
-      background: #1a1a1a;
+      background: black;
       padding-top: 40px;
       padding-bottom: 80px;
 
@@ -37,7 +37,7 @@ body.home {
       }
 
       .countdown {
-        color: #ff5353;
+        color: #FF5A5F;
         font-weight: bold;
         font-size: 25px;
         margin-bottom: 3px;
@@ -400,7 +400,7 @@ body.home {
 
       .row.view h2 {
         position: relative;
-        top: -37px;
+        top: -43px;
       }
 
       .row.view p {
@@ -418,6 +418,11 @@ body.home {
 
       .twelve .row {
         background: #FFFFFF;
+      }
+
+      .row.twelve {
+        margin-left: 0px;
+        margin-right: 0px;
       }
 
       .twelve p:first-of-type {
