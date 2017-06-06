@@ -24,6 +24,10 @@
 #  index_units_on_owner_id      (owner_id)
 #  index_units_on_unit_type_id  (unit_type_id)
 #
+# Foreign Keys
+#
+#  fk_rails_...  (unit_type_id => unit_types.id)
+#
 
 class Unit < ApplicationRecord
   include AASM

@@ -14,6 +14,11 @@
 #  index_likes_on_unit_id  (unit_id)
 #  index_likes_on_user_id  (user_id)
 #
+# Foreign Keys
+#
+#  fk_rails_...  (unit_id => units.id)
+#  fk_rails_...  (user_id => users.id)
+#
 
 class Like < ApplicationRecord
   #------------------------------------------------------------------------------

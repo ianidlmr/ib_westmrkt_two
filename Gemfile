@@ -8,7 +8,7 @@ gem 'puma', '~> 3.0'
 
 gem 'aasm'
 gem 'ahoy_matey'
-# gem 'airbrake', '5.2.3'
+gem 'airbrake', '~> 6.1'
 # gem 'airbrake-ruby', '1.2.2'
 gem 'annotate'
 gem 'autoprefixer-rails'

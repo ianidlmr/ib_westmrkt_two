@@ -10,8 +10,8 @@
 #  updated_at                    :datetime         not null
 #  unit_id                       :integer
 #  promo_code                    :string
-#  agree_to_deal_sheet_and_terms :boolean          default("false")
-#  broker                        :boolean          default("false")
+#  agree_to_deal_sheet_and_terms :boolean          default(FALSE)
+#  broker                        :boolean          default(FALSE)
 #  payment_state                 :string           default("in_progress")
 #  current_step                  :string           default("update-personal-info")
 #  sale_person_name              :string
@@ -20,6 +20,11 @@
 #
 #  index_orders_on_unit_id  (unit_id)
 #  index_orders_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (unit_id => units.id)
+#  fk_rails_...  (user_id => users.id)
 #
 
 class Order < ApplicationRecord
