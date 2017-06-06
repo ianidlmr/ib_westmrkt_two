@@ -53,6 +53,9 @@ GEM
       safely_block (>= 0.1.1)
       user_agent_parser
       uuidtools
+    airbrake (5.2.3)
+      airbrake-ruby (~> 1.2)
+    airbrake-ruby (1.2.2)
     airbrussh (1.1.2)
       sshkit (>= 1.6.1, != 1.7.0)
     annotate (2.6.5)
@@ -241,6 +244,9 @@ GEM
       loofah (~> 2.0)
     rails-settings-cached (0.6.5)
       rails (>= 4.2.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
     rails_admin (1.1.1)
       builder (~> 3.1)
       coffee-rails (~> 4.0)
@@ -260,6 +266,8 @@ GEM
       rails_admin (>= 0.6.6)
       rchardet (~> 1.6)
       simple_xlsx_reader (~> 1.0)
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (5.0.2)
       actionpack (= 5.0.2)
       activesupport (= 5.0.2)
@@ -361,6 +369,8 @@ PLATFORMS
 DEPENDENCIES
   aasm
   ahoy_matey
+  airbrake (= 5.2.3)
+  airbrake-ruby (= 1.2.2)
   annotate
   autoprefixer-rails
   bootstrap-sass (~> 3.3.6)
@@ -389,6 +399,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.2)
   rails-settings-cached
+  rails_12factor
   rails_admin
   rails_admin_import
   rubocop

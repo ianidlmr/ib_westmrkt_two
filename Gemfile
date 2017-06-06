@@ -8,8 +8,8 @@ gem 'puma', '~> 3.0'
 
 gem 'aasm'
 gem 'ahoy_matey'
-# gem 'airbrake', '5.2.3'
-# gem 'airbrake-ruby', '1.2.2'
+gem 'airbrake', '5.2.3'
+gem 'airbrake-ruby', '1.2.2'
 gem 'annotate'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
@@ -61,7 +61,7 @@ group :integration do
   gem 'newrelic_rpm'
 end
 
-# gem 'rails_12factor', group: :production
+gem 'rails_12factor', group: :production
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
