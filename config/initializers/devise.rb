@@ -12,6 +12,7 @@ Devise.setup do |config|
   # secret keys for these environments are set via Figaro
   if %w(integration production).include? Rails.env
     config.secret_key = Figaro.env.secret_key_base
+    config.secret_key = Figaro.env.devise_secret_key if Rails.env.production?
   end
 
   # ==> Mailer Configuration
