@@ -53,6 +53,9 @@ GEM
       safely_block (>= 0.1.1)
       user_agent_parser
       uuidtools
+    airbrake (5.2.3)
+      airbrake-ruby (~> 1.2)
+    airbrake-ruby (1.2.2)
     airbrussh (1.1.2)
       sshkit (>= 1.6.1, != 1.7.0)
     annotate (2.6.5)
@@ -366,6 +369,8 @@ PLATFORMS
 DEPENDENCIES
   aasm
   ahoy_matey
+  airbrake (= 5.2.3)
+  airbrake-ruby (= 1.2.2)
   annotate
   autoprefixer-rails
   bootstrap-sass (~> 3.3.6)
