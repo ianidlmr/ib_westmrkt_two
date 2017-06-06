@@ -7,7 +7,7 @@
 #
 # Configuration details:
 # https://github.com/airbrake/airbrake-ruby#configuration
-Airbrake.configure(:my_notifier) do |c|
+Airbrake.configure do |c|
   # You must set both project_id & project_key. To find your project_id and
   # project_key navigate to your project's General Settings and copy the values
   # from the right sidebar.
@@ -50,6 +50,14 @@ Airbrake.configure(:my_notifier) do |c|
   # https://github.com/airbrake/airbrake-ruby#blacklist_keys
   c.blacklist_keys = [/password/i]
 end
+
+Airbrake.configure(:project_a) do |c|
+  c.project_id = 145024
+  c.project_key = 'bb8427aeef79f963c2702085b183ef6d'
+end
+
+Airbrake[:project_a].notify('Oops!', params)
+%i(project_a project_b).each { |notifier_name| Airbrake[notifier_name].close }
 
 # If Airbrake doesn't send any expected exceptions, we suggest to uncomment the
 # line below. It might simplify debugging of background Airbrake workers, which
