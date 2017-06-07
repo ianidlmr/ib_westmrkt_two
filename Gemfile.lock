@@ -392,6 +392,7 @@ DEPENDENCIES
   aasm
   ahoy_matey
   airbrake (~> 6.1)
+  airbrake-ruby (= 2.2.5)
   annotate
   autoprefixer-rails
   bootstrap-sass (~> 3.3.6)
