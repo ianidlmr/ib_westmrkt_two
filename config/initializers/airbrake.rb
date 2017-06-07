@@ -20,12 +20,12 @@ Airbrake.configure do |c|
   # helps us to filter out repetitive data from backtrace frames and link to
   # GitHub files from our dashboard.
   # https://github.com/airbrake/airbrake-ruby#root_directory
-  c.root_directory = Rails.root
+  # c.root_directory = Rails.root
 
   # By default, Airbrake Ruby outputs to STDOUT. In Rails apps it makes sense to
   # use the Rails' logger.
   # https://github.com/airbrake/airbrake-ruby#logger
-  c.logger = Rails.logger
+  # c.logger = Rails.logger
 
   # Configures the environment the application is running in. Helps the Airbrake
   # dashboard to distinguish between exceptions occurring in different
@@ -41,12 +41,13 @@ Airbrake.configure do |c|
   # https://github.com/airbrake/airbrake-ruby#ignore_environments
   c.ignore_environments = %w(test development)
 
+
   # A list of parameters that should be filtered out of what is sent to
   # Airbrake. By default, all "password" attributes will have their contents
   # replaced.
   # https://github.com/airbrake/airbrake-ruby#blacklist_keys
   # c.blacklist_keys = [/password/i, /authorization/i]
-  c.blacklist_keys = Rails.application.config.filter_parameters
+  # c.blacklist_keys = Rails.application.config.filter_parameters
 
   # Alternatively, you can integrate with Rails' filter_parameters.
   # Read more: https://goo.gl/gqQ1xS
