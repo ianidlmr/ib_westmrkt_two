@@ -14,6 +14,12 @@ server '52.60.205.109', user: 'deploy', roles: %w(app db puma_role), primary: tr
 # utility
 server '52.60.174.146', user: 'deploy', roles: %w(app cron)
 
+config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+if ENV["RAILS_LOG_TO_STDOUT"].present?
+  logger           = ActiveSupport::Logger.new(STDOUT)
+  logger.formatter = config.log_formatter
+  config.logger = ActiveSupport::TaggedLogging.new(logger)
+end
 # Configuration
 # =============
 # You can set any configuration variable like in config/deploy.rb
