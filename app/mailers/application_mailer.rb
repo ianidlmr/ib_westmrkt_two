@@ -37,6 +37,7 @@ class ApplicationMailer < ActionMailer::Base
 
     # Build up Mail paramters and add personalizations with templates
     mail.from = Email.new(email: Rails.application.secrets[:sendgrid_from_email], name: Rails.application.secrets[:sendgrid_from_name])
+    # mail.from = Email.new(email: 'ianappmailer@gmail.com')
     mail.subject = options[:subject]
     mail.contents = Content.new(type: 'text/html', value: '<br/>') # A non-empty string needs to be here
     mail.personalizations = personalization

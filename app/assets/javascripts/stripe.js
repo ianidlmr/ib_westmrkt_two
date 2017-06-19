@@ -91,5 +91,12 @@ $(function() {
         }
       });
     }
+
+    // stripe_iframe = all('iframe[name=stripe_checkout_app]').last
+    // Capybara.within_frame stripe_iframe do
+    //   page.execute_script(%Q{ $('input#card_number').val('4242 4242 4242 4242'); })
+    //   page.execute_script(%Q{ $('input#cc-exp').val('12/16'); })
+    //   #rest of the Stripe-capybara
+    // end
   }
 });
